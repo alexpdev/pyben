@@ -12,10 +12,20 @@
 # OTHER DEALINGS IN THE SOFTWARE.
 #####################################################################
 
+from pyben import classes, bencode
 from pyben.bencode import load, loads, dump, dumps
 from pyben.classes import Benencoder, Bendecoder
 
-__version__ = "0.1"
+__version__ = "0.2"
 __author__ = "alexpdev"
 
-__all__ = ["dump", "dumps", "load", "loads", "Benencoder", "Bendecoder"]
+__all__ = [
+    "dump",
+    "dumps",
+    "load",
+    "loads",
+    "Benencoder",
+    "Bendecoder",
+    "classes",
+    "bencode",
+]
