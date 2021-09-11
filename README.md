@@ -3,7 +3,7 @@
 Small library for encoding/decoding bencode data.
 Pyben Enables fast and easy encoding and decoding of bencoded data.
 
-![PyBen][./assets/pyben.png]
+![PyBen](./assets/pyben.png)
 
 ![GitHub repo size](https://img.shields.io/github/repo-size/alexpdev/pyben)
 ![GitHub contributors](https://img.shields.io/github/license/alexpdev/pyben)
