@@ -13,9 +13,10 @@
 #####################################################################
 
 from pyben.bencode import load, loads, dump, dumps
+from pyben.classes import Benencoder, Bendecoder
 
 __version__ = "0.1"
 __author__ = "alexpdev"
 
-__all__ = ["dump", "dumps", "load", "loads"]
+__all__ = ["dump", "dumps", "load", "loads", "Benencoder", "Bendecoder"]
 
