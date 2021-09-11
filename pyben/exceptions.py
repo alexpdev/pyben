@@ -12,6 +12,7 @@
 # OTHER DEALINGS IN THE SOFTWARE.
 #####################################################################
 
+
 class DecodeError(Exception):
     """Error occured during decode process."""
 
@@ -26,6 +27,7 @@ class EncodeError(Exception):
     def __init__(self, val=None, msg=None):
         self.val = val
         self.msg = msg
+
 
 class FilePathError(Exception):
     """Bad path error."""

@@ -8,5 +8,7 @@
   },
   "keywords": ["library", "bencode", "bittorrent", "encodings"],
   "author": "alexpdev",
+  "email": "alexpdev@protonmail.com",
+  "url": "https://github.com/alexpdev/pyben",
   "license": "GNU LGPL V3"
 }

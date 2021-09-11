@@ -17,6 +17,7 @@ import re
 import json
 from pyben.exceptions import FilePathError, DecodeError, EncodeError
 
+
 class Bendecoder:
     """Decode class contains all decode methods."""
 

@@ -19,4 +19,3 @@ __version__ = "0.1"
 __author__ = "alexpdev"
 
 __all__ = ["dump", "dumps", "load", "loads", "Benencoder", "Bendecoder"]
-

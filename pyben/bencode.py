@@ -31,6 +31,7 @@ b'd5:item1l5:item2i3eli4eedi5e5:item6eee'
 
 """
 
+
 def dump(obj, iobuffer):
     """
     dump(obj, iobuffer)
@@ -72,6 +73,7 @@ def dumps(obj):
     """
     return benencode(obj)
 
+
 def load(iobuffer):
     """
     load(iobuffer)
@@ -94,6 +96,7 @@ def load(iobuffer):
         with open(iobuffer, "rb") as fd:
             decoded, _ = bendecode(fd.read())
     return decoded
+
 
 def loads(encoded):
     """
