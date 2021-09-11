@@ -12,5 +12,10 @@
 # OTHER DEALINGS IN THE SOFTWARE.
 #####################################################################
 
+from pyben.bencode import load, loads, dump, dumps
+
 __version__ = "0.1"
 __author__ = "alexpdev"
+
+__all__ = ["dump", "dumps", "load", "loads"]
+
