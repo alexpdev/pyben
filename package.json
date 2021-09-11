@@ -1,0 +1,12 @@
+{
+  "name": "pyben",
+  "version": "0.1",
+  "description": "Small library for encoding/decoding bencode data. Pyben Enables fast and easy encoding and decoding of bencoded data.",
+  "directories": {
+    "doc": "docs",
+    "test": "tests"
+  },
+  "keywords": ["library", "bencode", "bittorrent", "encodings"],
+  "author": "alexpdev",
+  "license": "GNU LGPL V3"
+}
