@@ -12,8 +12,9 @@ __pycache__/
 *.slo
 *.lo
 *.o
+pdoc/
 *.obj
-
+.vscode/
 # Precompiled Headers
 *.gch
 *.pch

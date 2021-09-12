@@ -12,11 +12,14 @@
 # OTHER DEALINGS IN THE SOFTWARE.
 #####################################################################
 
+"""Exceptions used throughout the PyBen Package/Library."""
+
 
 class DecodeError(Exception):
     """Error occured during decode process."""
 
     def __init__(self, val=None, msg=None):
+        """Construct Exception DecodeError."""
         self.val = val
         self.msg = msg
 
@@ -25,6 +28,7 @@ class EncodeError(Exception):
     """Error occured during encoding process."""
 
     def __init__(self, val=None, msg=None):
+        """Construct Exception EncodeError."""
         self.val = val
         self.msg = msg
 
@@ -33,5 +37,6 @@ class FilePathError(Exception):
     """Bad path error."""
 
     def __init__(self, obj=None, msg=None):
+        """Construct Exception Subclass FilePathError."""
         self.obj = obj
         self.msg = msg

@@ -12,12 +12,16 @@
 # OTHER DEALINGS IN THE SOFTWARE.
 #####################################################################
 
+"""
+Library of functions and classes for encoding and decoding bencoded data.
+
+Features json-like api inspired by the json library from python stdlib.
+"""
+
 import re
 from pyben.exceptions import DecodeError, EncodeError
 
 """
-Library of functions and classes for encoding and decoding bencoded data.
-
 Usage: How to Encode/Decode:
 
 >>> import pyben
@@ -34,16 +38,19 @@ b'd5:item1l5:item2i3eli4eedi5e5:item6eee'
 
 def dump(obj, iobuffer):
     """
-    dump(obj, iobuffer)
-
     Shortcut function for bencode encode data and write to file.
 
     Args
-    -------
+    -----------------
     * obj : any
         Data to be encoded.
     * iobuffer : IOBuffer
         File of path-like to write the data to.
+
+    Returns
+    -----------------
+    * iobuffer : any
+        String or FileIO type given as parameter.
     """
     encoded = benencode(obj)
     if hasattr(iobuffer, "write"):
@@ -57,28 +64,24 @@ def dump(obj, iobuffer):
 
 def dumps(obj):
     """
-    dumps(obj)
-
     Shortuct function to encoding given obj to bencode encoding.
 
     Args
     --------
     obj : any
-        object to be encoded.py
+        Object to be encoded.py.
 
     Returns
     ---------
     bytes:
-         encoded data
+         Encoded data.
     """
     return benencode(obj)
 
 
 def load(iobuffer):
     """
-    load(iobuffer)
-
-    Loads bencoded data from a file of path object and decodes it.
+    Load bencoded data from a file of path object and decodes it.
 
     Args
     --------
@@ -87,8 +90,8 @@ def load(iobuffer):
 
     Returns
     ---------
-    (any)
-        usually a dictionary... decoded data
+    any
+        usually a dictionary... decoded contents of file.
     """
     if hasattr(iobuffer, "read"):
         decoded, _ = bendecode(iobuffer.read())
@@ -100,8 +103,6 @@ def load(iobuffer):
 
 def loads(encoded):
     """
-    loads(encoded)
-
     Shortcut function for decoding encoded data.py.
 
     Args
@@ -112,7 +113,7 @@ def loads(encoded):
     Returns
     ---------
     any:
-         usually a dictionary, decoded data.
+         Usually a dictionary, decoded data.
     """
     decoded, _ = bendecode(encoded)
     return decoded
@@ -120,19 +121,17 @@ def loads(encoded):
 
 def bendecode_str(bits):
     """
-    bendecode_str(bits)
-
     Bendecode string types.
 
     Args
-    --------
+    -----------------
     bits : bytes
-        Bencoded string
+        Bencoded string.
 
     Returns
-    ---------
+    -----------------
     str:
-         Decoded data string
+         Decoded data string.
     """
     match = re.match(br"(\d+):", bits)
     word_len, start = int(match.groups()[0]), match.span()[1]
@@ -146,19 +145,17 @@ def bendecode_str(bits):
 
 def bendecode_int(bits):
     """
-    bendecode_int
-
     Decode digits.
 
     Args
-    --------
+    -----------------
     bits : bytes
         Bencoded intiger bytes
 
     Returns
-    ---------
+    -----------------
     int:
-         decoded int value
+        Decoded int value.
     """
     obj = re.match(br"i(-?\d+)e", bits)
     return int(obj.group(1)), obj.end()
@@ -166,17 +163,15 @@ def bendecode_int(bits):
 
 def bendecode_dict(bits):
     """
-    bendecode_dict
-
     Decode dictionary and it's contents.
 
     Args
-    --------
+    -----------------
     bits : bytes
         Bencoded dictionary.
 
     Returns
-    ---------
+    -----------------
     dict
         Decoded dictionary and contents
     """
@@ -193,17 +188,15 @@ def bendecode_dict(bits):
 
 def bendecode_list(bits):
     """
-    bendecode_list
-
     Decode list and list contents.
 
     Args
-    --------
+    -----------------
     bits : bytes
         Bencoded list.
 
     Returns
-    ---------
+    -----------------
     list:
          decoded list and contents.
     """
@@ -218,22 +211,20 @@ def bendecode_list(bits):
 
 def bendecode(bits):
     """
-    bendecode
-
     Decode bencoded data.
 
     Args
-    --------
+    -----------------
     bits : bytes
         Bencoded data.
 
     Raises
-    --------
-    Exception
+    -----------------
+    DecodeError:
         Malformed data.
 
     Returns
-    ---------
+    -----------------
     any:
          decoded data.
     """
@@ -255,8 +246,6 @@ def bendecode(bits):
 
 def benencode(val):
     """
-    benencode
-
     Encode data with bencoding.
 
     Args
@@ -264,11 +253,10 @@ def benencode(val):
     val : any
         Data for encoding.
 
-
     Raises
     --------
-    Exception:
-        BenencodingError.
+    EncodeError:
+        Cannot interpret data.
 
     Returns
     ---------
@@ -291,19 +279,17 @@ def benencode(val):
 
 def bencode_bits(bits):
     """
-    bencode_bits
-
     Encode bytes.
 
     Args
     --------
-    bits : bytes or bytearray
+    bits : bytes-like
         string
 
     Returns
     ---------
     bytes:
-         bencoded string
+         Bencoded string.
     """
     size = str(len(bits)) + ":"
     return size.encode("utf-8") + bits
@@ -311,19 +297,17 @@ def bencode_bits(bits):
 
 def bencode_str(txt):
     """
-    bencode_str
-
     Encode string types.
 
     Args
     --------
     txt (str): string
-
+        Any text string.
 
     Returns
     ---------
     bytes:
-         bencoded string
+         Bencoded string.
     """
     size = str(len(txt)) + ":"
     return size.encode("utf-8") + txt.encode("utf-8")
@@ -331,38 +315,34 @@ def bencode_str(txt):
 
 def bencode_int(i):
     """
-    bencode_int
-
     Encode integer type.
 
     Args
     --------
     i : int
-        number that needs encoding
+        Number that needs encoding.
 
     Returns
     ---------
     bytes:
-         bencoded int
+         Bencoded Integer.
     """
     return ("i" + str(i) + "e").encode("utf-8")
 
 
 def bencode_list(elems):
     """
-    bencode_list
-
     Encode list and contents.
 
     Args
     --------
     elems : list
-        list of items for bencoding
+        List of items for bencoding.
 
     Returns
     ---------
     bytes:
-         bencoded list and contents
+         Bencoded list and contents.
     """
     arr = bytearray("l", encoding="utf-8")
     for elem in elems:
@@ -374,14 +354,12 @@ def bencode_list(elems):
 
 def bencode_dict(dic):
     """
-    bencode_dict
-
     Encode dictionary and contents.
 
     Args
     --------
     dic : dict
-        key,value pairs of items for bencoding.
+        Any dictionary containing items that can be bencoded.
 
     Returns
     ---------

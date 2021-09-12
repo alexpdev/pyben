@@ -12,6 +12,13 @@
 # OTHER DEALINGS IN THE SOFTWARE.
 #####################################################################
 
+"""
+OOP implementation of bencode decoders and encoders.
+
+This style is not recommended as it can get bulky. The json-like api
+from the bencode.py module is much easier to use.
+"""
+
 import os
 import re
 import json
@@ -27,7 +34,8 @@ class Bendecoder:
 
         Args
         --------
-            data (bytes-like, optional): target data for decoding.
+        data: bytes-like
+            (Optional) (default=None)Target data for decoding.
         """
         self.data = data
         self.decoded = None
@@ -36,18 +44,16 @@ class Bendecoder:
     @classmethod
     def load(cls, item):
         """
-        Bendecoder.load(item)
-
         Extract contents from path/path-like and return Decoded data.
 
         Args
         --------
-        path : str or IOBuffer
+        path : path-like or iobuffer
             Path containing bencoded data.
 
         Raises
         ---------
-        FilePathError
+        FilePathError:
             Incorrect path or IOBuffer doesnt exist.
 
         Returns
@@ -68,8 +74,6 @@ class Bendecoder:
     @classmethod
     def loads(cls, data):
         """
-        Benencoder.loads(data)
-
         Shortcut to Decode raw bencoded data.
 
         Args
@@ -143,12 +147,13 @@ class Bendecoder:
 
         Args
         --------
-        bits (bytearray): bytes of data for decoding.
+        bits: bytearray
+            Bytes of data for decoding.
 
         Returns
         ---------
-        [dict]
-            : dictionary and contents.
+        dict
+            Dictionary and contents.
         """
         dic, feed = {}, 1
         while not bits[feed:].startswith(b"e"):
@@ -171,8 +176,8 @@ class Bendecoder:
 
         Returns
         ---------
-        list
-            : decoded list and contents
+        list:
+            decoded list and contents
         """
         lst, feed = [], 1
         while not bits[feed:].startswith(b"e"):
@@ -188,12 +193,13 @@ class Bendecoder:
 
         Args
         --------
-        bits (bytearray): bencoded string.
+        bits: bytes-like
+            Bencoded string.
 
         Returns
         ---------
-        [str]
-            : decoded string.
+        str:
+            Decoded string.
         """
         match = re.match(br"(\d+):", bits)
         word_len, start = int(match.groups()[0]), match.span()[1]
@@ -206,16 +212,17 @@ class Bendecoder:
 
     def _decode_int(self, bits):
         """
-        Decode intiger.
+        Decode integer type.
 
         Args
         --------
-        bits (bytearray): bencoded intiger.
+        bits: bytes-like
+            Bencoded intiger.
 
         Returns
         ---------
-        [int]
-            : decoded intiger.
+        int:
+            Decoded intiger.
         """
         obj = re.match(br"i(-?\d+)e", bits)
         return int(obj.group(1)), obj.end()
@@ -230,8 +237,8 @@ class Benencoder:
 
         Args
         --------
-        data : any, optional
-            Target data for encoding. Defaults to None.
+        data : any
+            (Optional) Target data for encoding. Defaults to None.
         """
         self.data = data
         self.encoded = None
@@ -239,9 +246,7 @@ class Benencoder:
     @classmethod
     def dump(cls, data, path):
         """
-        Benecoder.dump(data,path)
-
-        Shortcut Classmethod for encoding data and writing to file. This
+        Shortcut Classmethod for encoding data and writing to file.
 
         Args
         --------
@@ -266,8 +271,6 @@ class Benencoder:
     @classmethod
     def dumps(cls, data):
         """
-        self.dumps(data)
-
         Shortcut method for encoding data and immediately returning it.
 
         Args
@@ -278,15 +281,13 @@ class Benencoder:
         Returns
         ---------
         bytes:
-             encoded data.
+             Encoded data.
         """
         return cls(data).encode()
 
     def encode(self, val=None):
         """
-        self.encode(val)
-
-        Encodes data provided as an arguement or provided at initialization.
+        Encode data provided as an arguement or provided at initialization.
 
         Args
         --------
@@ -305,8 +306,6 @@ class Benencoder:
 
     def _encode(self, val):
         """
-        self._encode(val)
-
         Encode data with bencode protocol.
 
         args
@@ -342,8 +341,6 @@ class Benencoder:
 
     def _encode_str(self, txt):
         """
-        _encode_str(self, txt)
-
         Decode string.
 
         Args
@@ -352,32 +349,31 @@ class Benencoder:
 
         Returns
         ---------
-        [bytes]
-            : bencoded string.
+        bytes:
+            Bencoded string.
         """
         size = str(len(txt)).encode("utf-8")
         return size + b":" + txt.encode("utf-8")
 
     def _encode_int(self, i):
         """
-        _encode_int(self,i)
-
         Encode intiger.
 
         Args
         --------
         i : int
-            Intiger
+            Integer for encoding.
 
         Returns
         ---------
-        bytes
-            : bencoded intiger.
+        bytes:
+            Bencoded intiger.
         """
         return b"i" + str(i).encode("utf-8") + b"e"
 
     def _encode_list(self, elems):
-        """Encode list and its contents.
+        """
+        Encode list and its contents.
 
         Args
         --------
@@ -386,8 +382,8 @@ class Benencoder:
 
         Returns
         ---------
-        bytes
-            : bencoded data
+        bytes:
+            Bencoded data
         """
         lst = [b"l"]
         for elem in elems:

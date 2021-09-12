@@ -12,6 +12,12 @@
 # OTHER DEALINGS IN THE SOFTWARE.
 #####################################################################
 
+"""
+PyBen is a library for decoding/encoding data, with the bencode specification.
+
+Bencode is commonly used for encoding Bittorrent Protocol Metafiles (.torrent).
+"""
+
 from pyben import classes, bencode
 from pyben.bencode import load, loads, dump, dumps, benencode, bendecode
 from pyben.classes import Benencoder, Bendecoder
