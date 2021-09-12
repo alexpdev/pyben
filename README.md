@@ -39,7 +39,7 @@ The API is intentionally designed to mimic Python's json module.
 >>> encoded = pyben.dumps(data)
 >>> encoded
 b'd5:item1l5:item2i3eli4eedi5e5:item6eee'
->>> decoded = pybem.loads(encoded)
+>>> decoded = pyben.loads(encoded)
 {'item1': ['item2', 3, [4], {5: 'item6'}]}
 ```
 
