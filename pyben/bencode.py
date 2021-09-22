@@ -36,6 +36,9 @@ def dump(obj, iobuffer):
     """
     Shortcut function for bencode encode data and write to file.
 
+    Works effectively the same as it's json equivelant except also
+    accepts a path as well as an open fileIO.
+
     Args
     -----------------
     * obj : any

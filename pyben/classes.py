@@ -37,7 +37,7 @@ class Bendecoder:
 
         Args
         --------
-        data: ``bytes`` or `bytearray`
+        data : ``bytes`` or `bytearray`
             (Optional) (default=None)Target data for decoding.
         """
         self.data = data
@@ -139,7 +139,7 @@ class Bendecoder:
 
         Args
         --------
-        bits: ``bytes`` or `bytearray`
+        bits : ``bytes`` or `bytearray`
             `Bytes` of data for decoding.
 
         Returns
@@ -186,7 +186,7 @@ class Bendecoder:
 
         Args
         --------
-        bits: ``bytes`` or `bytearray`
+        bits : ``bytes`` or `bytearray`
             Bencoded string.
 
         Returns
@@ -210,7 +210,7 @@ class Bendecoder:
 
         Args
         --------
-        bits: ``bytes`` or `bytearray`
+        bits : ``bytes`` or `bytearray`
             Bencoded intiger.
 
         Returns

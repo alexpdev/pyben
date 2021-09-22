@@ -20,9 +20,13 @@ class DecodeError(Exception):
     """
     Error occured during decode process.
 
+    Raised when attempting to decode an incompatible bytearray.
+    Mostly it indicates the object is a hash digest and should remian
+    as a bytes object.
+
     Args
     ------
-    val: any
+    val : any
         Value that cause the exception
     """
 
@@ -37,9 +41,13 @@ class EncodeError(Exception):
     """
     Error occured during encoding process.
 
+    Raised when attempting to bencode encode an incompatible
+    data type into bencode format. Bencode accepts lists, dicts,
+    strings, integers, and bytes.
+
     Args
     ------
-    val: any
+    val : any
         Value that cause the exception
     """
 
@@ -55,9 +63,12 @@ class FilePathError(Exception):
     """
     Bad path error.
 
+    Generally raised when the file at the path specified
+    does not exist.
+
     Args
     ------
-    val: any
+    val : any
         Value that cause the exception
     """
 
