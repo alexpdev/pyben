@@ -1,6 +1,4 @@
 import os
-from datetime import date
-import shutil
 import pytest
 import pyben
 from tests import testfile, testmeta, rmpath
@@ -70,3 +68,22 @@ def test_dump_eq_load(tempmeta):
     pyben.dump(meta, path)
     assert meta == pyben.load(path)
     rmpath(path)
+
+
+def test_pyben_excp3():
+    try:
+        raise pyben.exceptions.DecodeError(b"000000|`")
+    except pyben.exceptions.DecodeError:
+        assert True
+
+def test_pyben_excp2():
+    try:
+        raise pyben.exceptions.EncodeError("000000|`")
+    except pyben.exceptions.EncodeError:
+        assert True
+
+def test_pyben_excp1():
+    try:
+        raise pyben.exceptions.FilePathError("somefile.torrent")
+    except pyben.exceptions.FilePathError:
+        assert True

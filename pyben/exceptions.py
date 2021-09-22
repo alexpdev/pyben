@@ -20,23 +20,24 @@ class DecodeError(Exception):
 
     def __init__(self, val=None, msg=None):
         """Construct Exception DecodeError."""
-        self.val = val
-        self.msg = msg
+        msg = f"Decoder is unable to interpret {type(val)} type = {str(val)}"
+        super().__init__(msg)
 
 
 class EncodeError(Exception):
     """Error occured during encoding process."""
 
-    def __init__(self, val=None, msg=None):
+    def __init__(self, val=None):
         """Construct Exception EncodeError."""
-        self.val = val
-        self.msg = msg
+        msg = f"Encoder is unable to interpret {type(val)} type = {str(val)}"
+        super().__init__(msg)
+
 
 
 class FilePathError(Exception):
     """Bad path error."""
 
-    def __init__(self, obj=None, msg=None):
+    def __init__(self, obj=None):
         """Construct Exception Subclass FilePathError."""
-        self.obj = obj
-        self.msg = msg
+        msg = f"{str(obj)} doesn't exist or is unavailable."
+        super().__init__(msg)

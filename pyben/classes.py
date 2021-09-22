@@ -17,6 +17,11 @@ OOP implementation of bencode decoders and encoders.
 
 This style is not recommended as it can get bulky. The json-like api
 from the bencode.py module is much easier to use.
+
+Classes
+----------
+Bendecoder
+Benencoder
 """
 
 import os
@@ -34,12 +39,11 @@ class Bendecoder:
 
         Args
         --------
-        data: bytes-like
+        data: ``bytes`` or `bytearray`
             (Optional) (default=None)Target data for decoding.
         """
         self.data = data
         self.decoded = None
-        self.json = None
 
     @classmethod
     def load(cls, item):
@@ -48,12 +52,12 @@ class Bendecoder:
 
         Args
         --------
-        path : path-like or iobuffer
+        path : `str` or `path-like`
             Path containing bencoded data.
 
         Raises
         ---------
-        FilePathError:
+        `FilePathError`:
             Incorrect path or IOBuffer doesnt exist.
 
         Returns
@@ -78,8 +82,8 @@ class Bendecoder:
 
         Args
         --------
-        data : bytes
-            Bendencoded bytes.
+        data : ``bytes`` or `bytearray`
+            Bendencoded `bytes`.
 
         Returns
         ---------
@@ -95,7 +99,7 @@ class Bendecoder:
 
         Args
         -------
-        bits : bytes
+        bits : ``bytes``
             bencoded data for decoding.
 
         Returns
@@ -106,16 +110,6 @@ class Bendecoder:
         data = self.data if not data else data
         self.decoded, _ = self._decode(bits=data)
         return self.decoded
-
-    def json(self, bits=None):
-        """Return output of the decoder json serialized."""
-        if not bits:
-            if self.decoded is None:
-                self.decoded = self.decode(self.data)
-        else:
-            self.decoded = self.decode(bits)
-        self.json = json.dumps(self.decoded)
-        return self.json
 
     def _decode(self, bits=None):
         if bits is None:
@@ -147,12 +141,12 @@ class Bendecoder:
 
         Args
         --------
-        bits: bytearray
-            Bytes of data for decoding.
+        bits: ``bytes`` or `bytearray`
+            `Bytes` of data for decoding.
 
         Returns
         ---------
-        dict
+        `dict`
             Dictionary and contents.
         """
         dic, feed = {}, 1
@@ -171,12 +165,12 @@ class Bendecoder:
 
         Args
         --------
-        bits : bytearray
+        bits : `bytearray`
             Bencoded data.
 
         Returns
         ---------
-        list:
+        `list`:
             decoded list and contents
         """
         lst, feed = [], 1
@@ -193,12 +187,12 @@ class Bendecoder:
 
         Args
         --------
-        bits: bytes-like
+        bits: ``bytes`` or `bytearray`
             Bencoded string.
 
         Returns
         ---------
-        str:
+        `str`:
             Decoded string.
         """
         match = re.match(br"(\d+):", bits)
@@ -216,12 +210,12 @@ class Bendecoder:
 
         Args
         --------
-        bits: bytes-like
+        bits: ``bytes`` or `bytearray`
             Bencoded intiger.
 
         Returns
         ---------
-        int:
+        `int`:
             Decoded intiger.
         """
         obj = re.match(br"i(-?\d+)e", bits)
@@ -257,7 +251,7 @@ class Benencoder:
 
         Returns
         ---------
-        bool:
+        `bool`:
              Return True if success.txt
         """
         encoded = cls(data).encode()
@@ -280,7 +274,7 @@ class Benencoder:
 
         Returns
         ---------
-        bytes:
+        `bytes`:
              Encoded data.
         """
         return cls(data).encode()
@@ -296,7 +290,7 @@ class Benencoder:
 
         Returns
         ---------
-        bytes:
+        `bytes`:
              encoded data
         """
         if val is None:
@@ -310,7 +304,7 @@ class Benencoder:
 
         args
         --------
-        bits : bytes
+        bits : `bytes`
             Bencoded data for decoding.
 
         returns
@@ -349,7 +343,7 @@ class Benencoder:
 
         Returns
         ---------
-        bytes:
+        `bytes`:
             Bencoded string.
         """
         size = str(len(txt)).encode("utf-8")
@@ -361,12 +355,12 @@ class Benencoder:
 
         Args
         --------
-        i : int
+        i : `int`
             Integer for encoding.
 
         Returns
         ---------
-        bytes:
+        `bytes`:
             Bencoded intiger.
         """
         return b"i" + str(i).encode("utf-8") + b"e"
@@ -382,7 +376,7 @@ class Benencoder:
 
         Returns
         ---------
-        bytes:
+        `bytes`:
             Bencoded data
         """
         lst = [b"l"]
@@ -404,7 +398,7 @@ class Benencoder:
 
         Returns
         ---------
-        bytes
+        `bytes`
             Bencoded data.
         """
         result = b"d"

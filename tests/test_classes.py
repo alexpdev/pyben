@@ -1,6 +1,30 @@
+import os
 import pytest
 from pyben.classes import Bendecoder, Benencoder
-from tests.testdata import data
+from tests import data, testfile, rmpath, testmeta
+
+# tfile={
+# "announce": "http://ubuntu.com/announce",
+# "info": {
+#  "name": "ubuntu.iso",
+#  "length": 12845738,
+#  "piece length": 262144,
+#  "private": 1,
+#  "source": "ubuntu",
+# },
+# "created by": "mktorrent",
+# }
+
+@pytest.fixture
+def tfile():
+    tempfile = testfile()
+    yield tempfile
+    rmpath(tempfile)
+
+@pytest.fixture
+def tmeta():
+    info = testmeta()
+    return info
 
 
 @pytest.fixture
@@ -69,6 +93,17 @@ def test_decode_class(tdata):
             decoded = decoder.decode(benitem)
             assert decoded == item
 
+def test_decode_load(tfile):
+    decoder = Bendecoder()
+    output = decoder.load(tfile)
+    assert isinstance(output, dict)
+
+def test_decode_loads(tfile):
+    inp = open(tfile,"rb").read()
+    decoder = Bendecoder()
+    out = decoder.loads(inp)
+    assert out["info"]["length"] == 12845738
+
 
 def test_bencode_str(strings):
     encoder = Benencoder()
@@ -89,6 +124,16 @@ def test_bencode_list(lists):
     for lst, benlist in lists:
         encoded = encoder._encode_list(lst)
         assert encoded == benlist
+
+def test_bencode_dump(tmeta, tfile):
+    encoder = Benencoder()
+    encoder.dump(tmeta, tfile)
+    assert os.path.exists(tfile)
+
+def test_bencode_dumps(tmeta):
+    encoder = Benencoder()
+    reg = encoder.dumps(tmeta)
+    assert isinstance(reg, bytes)
 
 
 def test_decode_dict(dicts):

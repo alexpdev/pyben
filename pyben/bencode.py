@@ -73,7 +73,7 @@ def dumps(obj):
 
     Returns
     ---------
-    bytes:
+    `bytes`:
          Encoded data.
     """
     return benencode(obj)
@@ -85,7 +85,7 @@ def load(iobuffer):
 
     Args
     --------
-    iobuffer : path or file
+    iobuffer : `str` or path-like or `BytesIO`
         Open and/or read data from file to be decoded
 
     Returns
