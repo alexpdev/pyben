@@ -11,8 +11,7 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 # OTHER DEALINGS IN THE SOFTWARE.
 #####################################################################
-"""
-OOP implementation of bencode decoders and encoders.
+"""OOP implementation of bencode decoders and encoders.
 
 This style is not recommended as it can get bulky. The json-like api
 from the bencode.py module is much easier to use.

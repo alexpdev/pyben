@@ -19,11 +19,6 @@ def tempmeta():
     return meta, tfile
 
 
-@pytest.fixture
-def encoded():
-    meta = testmeta()
-
-
 def test_api_loads():
     encoded = b"di1234el5:helloi99876eee"
     assert pyben.loads(encoded) == {1234: ["hello", 99876]}

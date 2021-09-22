@@ -11,8 +11,7 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 # OTHER DEALINGS IN THE SOFTWARE.
 #####################################################################
-"""
-Library of functions and classes for encoding and decoding bencoded data.
+"""Library of functions and classes for encoding and decoding bencoded data.
 
 Features json-like api inspired by the json library from python stdlib.
 Usage: How to Encode/Decode:

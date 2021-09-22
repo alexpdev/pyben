@@ -88,8 +88,8 @@ def test_decode_dict_class(dicts):
 
 def test_decode_class(tdata):
     decoder = Bendecoder()
-    for data in tdata:
-        for item, benitem in data:
+    for val in tdata:
+        for item, benitem in val:
             decoded = decoder.decode(benitem)
             assert decoded == item
 
@@ -145,7 +145,7 @@ def test_decode_dict(dicts):
 
 def test_decode(tdata):
     encoder = Benencoder()
-    for data in tdata:
-        for item, benitem in data:
+    for val in tdata:
+        for item, benitem in val:
             encoded = encoder.encode(item)
             assert encoded == benitem

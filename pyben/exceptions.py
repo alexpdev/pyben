@@ -19,9 +19,14 @@ class DecodeError(Exception):
 
     """
     Error occured during decode process.
+
+    Args
+    ------
+    val: any
+        Value that cause the exception
     """
 
-    def __init__(self, val=None, msg=None):
+    def __init__(self, val=None):
         """Construct Exception DecodeError."""
         msg = f"Decoder is unable to interpret {type(val)} type = {str(val)}"
         super().__init__(msg)
@@ -31,6 +36,11 @@ class EncodeError(Exception):
 
     """
     Error occured during encoding process.
+
+    Args
+    ------
+    val: any
+        Value that cause the exception
     """
 
     def __init__(self, val=None):
@@ -44,6 +54,11 @@ class FilePathError(Exception):
 
     """
     Bad path error.
+
+    Args
+    ------
+    val: any
+        Value that cause the exception
     """
 
     def __init__(self, obj=None):
