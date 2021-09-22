@@ -15,6 +15,10 @@ __pycache__/
 pdoc/
 *.obj
 .vscode/
+.codacy-coverage
+coverage.xml
+.coverage
+docs_
 # Precompiled Headers
 *.gch
 *.pch
