@@ -17,7 +17,9 @@
 
 class DecodeError(Exception):
 
-    """Error occured during decode process."""
+    """
+    Error occured during decode process.
+    """
 
     def __init__(self, val=None, msg=None):
         """Construct Exception DecodeError."""
@@ -27,7 +29,9 @@ class DecodeError(Exception):
 
 class EncodeError(Exception):
 
-    """Error occured during encoding process."""
+    """
+    Error occured during encoding process.
+    """
 
     def __init__(self, val=None):
         """Construct Exception EncodeError."""
@@ -37,8 +41,10 @@ class EncodeError(Exception):
 
 
 class FilePathError(Exception):
-    
-    """Bad path error."""
+
+    """
+    Bad path error.
+    """
 
     def __init__(self, obj=None):
         """Construct Exception Subclass FilePathError."""
