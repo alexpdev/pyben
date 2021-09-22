@@ -19,15 +19,11 @@ To install PyBen, follow these steps:
 
 Using pip:
 
-    ```bash
-        pip install pyben
-    ```
+`pip install pyben`
 
 Using git:
 
-    ```cmd
-        git clone https://github.com/alexpdev/pyben.git
-    ```
+`git clone https://github.com/alexpdev/pyben.git`
 
 ## Using PyBen
 

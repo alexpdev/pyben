@@ -11,7 +11,8 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 # OTHER DEALINGS IN THE SOFTWARE.
 #####################################################################
-"""OOP implementation of bencode decoders and encoders.
+"""
+OOP implementation of bencode decoders and encoders.
 
 This style is not recommended as it can get bulky. The json-like api
 from the bencode.py module is much easier to use.
@@ -71,7 +72,7 @@ class Bendecoder:
             with open(item, "rb") as fd:
                 data = fd.read()
                 return decoder.decode(data)
-        raise FilePathError()
+        raise FilePathError(item)
 
     @classmethod
     def loads(cls, data):
@@ -131,7 +132,7 @@ class Bendecoder:
             dic, feed = self._decode_dict(bits)
             return dic, feed
         else:
-            raise DecodeError(bits, "Unrecognized data. Cannot decode.")
+            raise DecodeError(bits)
 
     def _decode_dict(self, bits):
         """
@@ -375,7 +376,7 @@ class Benencoder:
 
         Args
         --------
-        elems : list
+        elems : `list`
             List of content to be encoded.
 
         Returns
@@ -397,7 +398,7 @@ class Benencoder:
 
         Args
         --------
-        dic : dict
+        dic : `dict`
             Dictionary of data for encoding.
 
         Returns

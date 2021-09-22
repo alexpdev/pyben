@@ -11,7 +11,8 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 # OTHER DEALINGS IN THE SOFTWARE.
 #####################################################################
-"""PyBen is a library for decoding/encoding data, with the bencode specification.
+"""
+PyBen is a library for decoding/encoding data, with the bencode specification.
 
 Bencode is commonly used for encoding Bittorrent Protocol Metafiles (.torrent).
 """
