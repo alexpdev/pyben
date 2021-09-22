@@ -19,6 +19,7 @@ pdoc/
 coverage.xml
 .coverage
 docs_
+codacy.sh
 # Precompiled Headers
 *.gch
 *.pch
