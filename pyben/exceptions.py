@@ -16,6 +16,7 @@
 
 
 class DecodeError(Exception):
+
     """Error occured during decode process."""
 
     def __init__(self, val=None, msg=None):
@@ -25,6 +26,7 @@ class DecodeError(Exception):
 
 
 class EncodeError(Exception):
+
     """Error occured during encoding process."""
 
     def __init__(self, val=None):
@@ -35,6 +37,7 @@ class EncodeError(Exception):
 
 
 class FilePathError(Exception):
+    
     """Bad path error."""
 
     def __init__(self, obj=None):

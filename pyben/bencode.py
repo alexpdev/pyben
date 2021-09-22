@@ -11,17 +11,10 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 # OTHER DEALINGS IN THE SOFTWARE.
 #####################################################################
-
 """
 Library of functions and classes for encoding and decoding bencoded data.
 
 Features json-like api inspired by the json library from python stdlib.
-"""
-
-import re
-from pyben.exceptions import DecodeError, EncodeError
-
-"""
 Usage: How to Encode/Decode:
 
 >>> import pyben
@@ -32,8 +25,12 @@ Usage: How to Encode/Decode:
 b'd5:item1l5:item2i3eli4eedi5e5:item6eee'
 >>> decoded = pybem.loads(encoded)
 {'item1': ['item2', 3, [4], {5: 'item6'}]}
-
 """
+
+
+import re
+from pyben.exceptions import DecodeError, EncodeError
+
 
 
 def dump(obj, iobuffer):
@@ -138,7 +135,7 @@ def bendecode_str(bits):
     word = bits[start : start + word_len]
     try:
         word = word.decode("utf-8")
-    except:
+    except UnicodeDecodeError:
         word = word.hex()
     return word, start + word_len
 
@@ -263,13 +260,13 @@ def benencode(val):
     bytes:
          Bencoded data.
     """
-    if type(val) == str:
+    if isinstance(val, str):
         return bencode_str(val)
-    elif type(val) == int:
+    elif isinstance(val, int):
         return bencode_int(val)
-    elif type(val) == list:
+    elif isinstance(val, list):
         return bencode_list(val)
-    elif type(val) == dict:
+    elif isinstance(val, dict):
         return bencode_dict(val)
     elif hasattr(val, "hex"):
         return bencode_bits(val)

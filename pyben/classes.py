@@ -11,7 +11,6 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 # OTHER DEALINGS IN THE SOFTWARE.
 #####################################################################
-
 """
 OOP implementation of bencode decoders and encoders.
 
@@ -26,11 +25,11 @@ Benencoder
 
 import os
 import re
-import json
 from pyben.exceptions import FilePathError, DecodeError, EncodeError
 
 
 class Bendecoder:
+
     """Decode class contains all decode methods."""
 
     def __init__(self, data=None):
@@ -181,7 +180,8 @@ class Bendecoder:
         feed += 1
         return lst, feed
 
-    def _decode_str(self, bits):
+    @staticmethod
+    def _decode_str(bits):
         """
         Decode string.
 
@@ -200,11 +200,12 @@ class Bendecoder:
         word = bits[start : start + word_len]
         try:
             word = word.decode("utf-8")
-        except:
+        except UnicodeDecodeError:
             word = word.hex()
         return word, start + word_len
 
-    def _decode_int(self, bits):
+    @staticmethod
+    def _decode_int(bits):
         """
         Decode integer type.
 
@@ -223,6 +224,7 @@ class Bendecoder:
 
 
 class Benencoder:
+
     """Encode collection of methods for Bencoding data."""
 
     def __init__(self, data=None):
@@ -312,28 +314,30 @@ class Benencoder:
         any:
              the decoded data.
         """
-        if type(val) == str:
+        if isinstance(val, str):
             return self._encode_str(val)
 
         if hasattr(val, "hex"):
             return self._encode_bytes(val)
 
-        elif type(val) == int:
+        elif isinstance(val, int):
             return self._encode_int(val)
 
-        elif type(val) == list:
+        elif isinstance(val, list):
             return self._encode_list(val)
 
-        elif type(val) == dict:
+        elif isinstance(val, dict):
             return self._encode_dict(val)
 
         raise EncodeError(val)
 
-    def _encode_bytes(self, val):
+    @staticmethod
+    def _encode_bytes(val):
         size = str(len(val)) + ":"
         return size.encode("utf-8") + val
 
-    def _encode_str(self, txt):
+    @staticmethod
+    def _encode_str(txt):
         """
         Decode string.
 
@@ -349,7 +353,8 @@ class Benencoder:
         size = str(len(txt)).encode("utf-8")
         return size + b":" + txt.encode("utf-8")
 
-    def _encode_int(self, i):
+    @staticmethod
+    def _encode_int(i):
         """
         Encode intiger.
 
