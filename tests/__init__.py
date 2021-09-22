@@ -2,6 +2,7 @@ import os
 import shutil
 from tests.testdata import ints, strings, dicts, lists, data
 from pyben import bencode
+from hashlib import sha256
 
 __all__ = ["lists", "strings", "dicts", "ints", "data"]
 
@@ -25,6 +26,9 @@ def testmeta():
             "private": 1,
             "source": "ubuntu",
         },
+        "pieces root" : {
+            sha256("abcdefghijklmnopqrstuvwxyz".encode("utf-8")).digest() :
+            sha256("abdjclkldjridleopfgjrik".encode("utf-8")).digest()},
         "created by": "mktorrent",
     }
     return meta

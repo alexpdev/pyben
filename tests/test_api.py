@@ -61,7 +61,7 @@ def test_api_dump_iobuffer(tempmeta):
 def test_dump_eq_load(tempmeta):
     meta, path = tempmeta
     pyben.dump(meta, path)
-    assert meta == pyben.load(path)
+    assert meta["info"] == pyben.load(path)["info"]
     rmpath(path)
 
 

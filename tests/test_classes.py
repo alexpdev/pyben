@@ -130,6 +130,12 @@ def test_bencode_dump(tmeta, tfile):
     encoder.dump(tmeta, tfile)
     assert os.path.exists(tfile)
 
+def test_bencode_dump1(tmeta, tfile):
+    encoder = Benencoder()
+    a = open(tfile,"wb")
+    encoder.dump(tmeta, a)
+    assert os.path.exists(tfile)
+
 def test_bencode_dumps(tmeta):
     encoder = Benencoder()
     reg = encoder.dumps(tmeta)
@@ -149,3 +155,8 @@ def test_decode(tdata):
         for item, benitem in val:
             encoded = encoder.encode(item)
             assert encoded == benitem
+
+def test_bendecoder_load(tfile):
+    decoder = Bendecoder()
+    fle = decoder.load(open(tfile,"rb"))
+    assert fle is not None
