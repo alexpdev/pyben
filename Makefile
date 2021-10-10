@@ -71,7 +71,7 @@ coverage: ## check code coverage quickly with the default Python
 
 push: lint docs clean test coverage
 	git add .
-	git commit -m "auto push commit coverage"
+	git commit -m "Updates to testing suit, style linting, bug fixes."
 	git push
 	bash codacy.sh report -r coverage.xml
 
