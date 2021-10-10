@@ -1,5 +1,8 @@
 include LICENSE
-include README.rst
+include README.md
+include .pylintrc
+include .prospector.yml
+include mkdocs.yml
 
 recursive-include pyben *
 recursive-include tests *
@@ -7,7 +10,7 @@ recursive-include assets *
 recursive-include .github *
 recursive-exclude * __pycache__
 recursive-exclude * *.py[cod]
-recursive-exclude docs *
+recursive-include docs *
 recursive-exclude site *
 
-recursive-include docs *.rst conf.py Makefile make.bat *.jpg *.png *.gif *.json *.md
+recursive-include Makefile make.bat *.jpg *.png *.gif *.json *.md *.ico

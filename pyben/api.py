@@ -62,7 +62,7 @@ Functions
 
 """
 
-from .bencode import benencode, bendecode
+from .bencode import bendecode, benencode
 
 
 def dump(obj, buffer):

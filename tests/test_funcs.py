@@ -14,25 +14,38 @@
 """Pytest tests for functions in pyben package."""
 
 import pytest
-from pyben.bencode import (
-    bendecode,
-    benencode,
-    bendecode_str,
-    bendecode_int,
-    bendecode_list,
-    bendecode_dict,
-    bencode_str,
-    bencode_int,
-    bencode_list,
-    bencode_dict,
-)
-from . import ints, strings, dicts, lists
+
+from pyben.bencode import (bencode_dict, bencode_int, bencode_list,
+                           bencode_str, bendecode, bendecode_dict,
+                           bendecode_int, bendecode_list, bendecode_str,
+                           benencode)
+from pyben.exceptions import DecodeError, EncodeError
+
+from . import dicts, ints, lists, strings
 
 
 @pytest.fixture
 def metadata():
     """Pytest fixture functionality test fixture."""
     return ints, strings, dicts, lists
+
+
+def test_malformed_bytes():
+    """Test byte string literal that is not understood by decoder."""
+    data = b"i123elees11:hello world!spqyt"
+    try:
+        _ = bendecode(data)
+    except DecodeError:
+        assert True  # nosec
+
+
+def test_undecodable_data():
+    """Test type not understood by encoder."""
+    data = set([1, 2, 3, 4, 5])
+    try:
+        _ = benencode(data)
+    except EncodeError:
+        assert True  # nosec
 
 
 def test_matadata(metadata):

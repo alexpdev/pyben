@@ -13,11 +13,12 @@
 #####################################################################
 """Testing module for Pyben package."""
 
-from hashlib import sha256
 import os
 import shutil
+from hashlib import sha256
 
 import pytest
+
 import pyben
 
 
@@ -32,6 +33,8 @@ def rmpath(path):
 
 def testmeta():
     """Create dummy metadata."""
+    pieces_key = sha256("bcdfghjklmnpqrstvwxyz".encode("utf-8")).digest()
+    pieces_val = sha256("aeiou".encode("utf-8")).digest()
     meta = {
         "announce": "http://ubuntu.com/announce",
         "info": {
@@ -41,11 +44,7 @@ def testmeta():
             "private": 1,
             "source": "ubuntu",
         },
-        "pieces root": {
-            sha256("abcdefghijklmnopqrstuvwxyz".encode("utf-8"))
-            .digest(): sha256("abdjclkldjridleopfgjrik".encode("utf-8"))
-            .digest()
-        },
+        "pieces root": {pieces_key: pieces_val},
         "created by": "mktorrent",
     }
     assert isinstance(meta, dict)  # nosec

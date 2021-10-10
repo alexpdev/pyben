@@ -25,7 +25,8 @@ Classes
 
 import os
 import re
-from pyben.exceptions import FilePathError, DecodeError, EncodeError
+
+from pyben.exceptions import DecodeError, EncodeError
 
 
 class Bendecoder:
@@ -68,14 +69,11 @@ class Bendecoder:
         decoder = cls()
         if hasattr(item, "read"):
             data = item.read()
-            return decoder.decode(data)
 
-        if os.path.exists(item) and os.path.isfile(item):
+        elif os.path.exists(item) and os.path.isfile(item):
             with open(item, "rb") as _fd:
                 data = _fd.read()
-                return decoder.decode(data)
-
-        raise FilePathError(item)
+        return decoder.decode(data)
 
     @classmethod
     def loads(cls, data):

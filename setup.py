@@ -20,8 +20,8 @@
 ############################################################################
 """Pyben setuptools data."""
 
-from setuptools import setup, find_packages
 import json
+from setuptools import find_packages, setup
 
 INFO = json.load(open('./package.json'))
 
@@ -36,7 +36,6 @@ setup(
     classifiers=[
         "Development Status :: 3 - Alpha",
         "Operating System :: OS Independent",
-        "Programming Language :: Python :: 3.5",
         "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
