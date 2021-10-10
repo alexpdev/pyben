@@ -32,7 +32,7 @@ def metadata():
 
 def test_malformed_bytes():
     """Test byte string literal that is not understood by decoder."""
-    data = b"i123elees11:hello world!spqyt"
+    data = b"dspi123elees11:hello world!spqyt"
     try:
         _ = bendecode(data)
     except DecodeError:
