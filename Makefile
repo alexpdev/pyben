@@ -1,4 +1,4 @@
-.PHONY: clean clean-test clean-pyc clean-build docs help
+.PHONY: clean docs help push release dist install lint
 .DEFAULT_GOAL := help
 
 define BROWSER_PYSCRIPT
@@ -26,56 +26,51 @@ BROWSER := python -c "$$BROWSER_PYSCRIPT"
 help:
 	@python -c "$$PRINT_HELP_PYSCRIPT" < $(MAKEFILE_LIST)
 
-clean: clean-build clean-pyc clean-test ## remove all build, test, coverage and Python artifacts
+clean: clean-build ## remove all build, test, coverage and Python artifacts
 
 clean-build: ## remove build artifacts
 	rm -fr build/
 	rm -fr dist/
 	rm -fr .eggs/
-	find . -name '*.egg-info' -exec rm -fr {} +
-	find . -name '*.egg' -exec rm -f {} +
-
-clean-pyc: ## remove Python file artifacts
-	find . -name '*.pyc' -exec rm -f {} +
-	find . -name '*.pyo' -exec rm -f {} +
-	find . -name '*~' -exec rm -f {} +
-	find . -name '__pycache__' -exec rm -fr {} +
-
-clean-test: ## remove test and coverage artifacts
+	rm -fr *.egg-info
+	rm -fr *.egg
+	rm -f **.pyc
+	rm -f **.pyo
+	rm -f **~
+	rm -fr **/__pycache__
 	rm -fr .tox/
 	rm -f .coverage
 	rm -fr htmlcov/
 	rm -fr .pytest_cache
+	rm -fr corbertura.xml
 
 lint: ## check style with flake8
-	flake8 qtc tests
+	black pyben tests
+	pylint pyben tests
+	pycodestyle pyben tests
+	pydocstyle pyben tests
+	pyroma .
+	bandit pyben/*
+	pep257 pyben
 
 test: ## run tests quickly with the default Python
-	python setup.py test
-
-test-all: ## run tests on every Python version with tox
-	tox
+	pytest tests
+	pytest --coverage tests
+	pytest --pylint tests
 
 coverage: ## check code coverage quickly with the default Python
 	coverage run -m pytest tests
-	coverage xml -o corbertura.xml
+	coverage xml -o coverage.xml
 
-push: coverage
+push: clean lint docs coverage
 	git add .
 	git commit -m "auto push commit coverage"
 	git push
-	bash codacy.sh report -r corbertura.xml
+	bash codacy.sh report -r coverage.xml
 
 docs: ## generate Sphinx HTML documentation, including API docs
-	rm -f docs/qtc.rst
-	rm -f docs/modules.rst
-	sphinx-apidoc -o docs/ qtc
-	$(MAKE) -C docs clean
-	$(MAKE) -C docs html
-	$(BROWSER) docs/_build/html/index.html
-
-servedocs: docs ## compile the docs watching for changes
-	watchmedo shell-command -p '*.rst' -c '$(MAKE) -C docs html' -R -D .
+	rm -rf docs
+	mkdocs build
 
 release: dist ## package and upload a release
 	twine upload dist/*
@@ -83,6 +78,7 @@ release: dist ## package and upload a release
 dist: clean ## builds source and wheel package
 	python setup.py sdist
 	python setup.py bdist_wheel
+	python setup.py bdist_egg
 	ls -l dist
 
 install: clean ## install the package to the active Python's site-packages

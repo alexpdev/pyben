@@ -11,12 +11,10 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 # OTHER DEALINGS IN THE SOFTWARE.
 #####################################################################
-
 """Exceptions used throughout the PyBen Package/Library."""
 
 
 class DecodeError(Exception):
-
     """
     Error occured during decode process.
 
@@ -25,9 +23,9 @@ class DecodeError(Exception):
     as a bytes object.
 
     Args
-    ------
+    -----
     val : any
-        Value that cause the exception
+    -   Value that cause the exception
     """
 
     def __init__(self, val=None):
@@ -37,7 +35,6 @@ class DecodeError(Exception):
 
 
 class EncodeError(Exception):
-
     """
     Error occured during encoding process.
 
@@ -46,9 +43,9 @@ class EncodeError(Exception):
     strings, integers, and bytes.
 
     Args
-    ------
+    -----
     val : any
-        Value that cause the exception
+    -   Value that cause the exception
     """
 
     def __init__(self, val=None):
@@ -57,9 +54,7 @@ class EncodeError(Exception):
         super().__init__(msg)
 
 
-
 class FilePathError(Exception):
-
     """
     Bad path error.
 
@@ -67,9 +62,9 @@ class FilePathError(Exception):
     does not exist.
 
     Args
-    ------
+    -----
     val : any
-        Value that cause the exception
+    -   Value that cause the exception
     """
 
     def __init__(self, obj=None):

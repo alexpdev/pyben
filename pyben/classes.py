@@ -19,8 +19,8 @@ from the bencode.py module is much easier to use.
 
 Classes
 ----------
-Bendecoder
-Benencoder
+* Bendecoder
+* Benencoder
 """
 
 import os
@@ -29,7 +29,6 @@ from pyben.exceptions import FilePathError, DecodeError, EncodeError
 
 
 class Bendecoder:
-
     """Decode class contains all decode methods."""
 
     def __init__(self, data=None):
@@ -38,8 +37,8 @@ class Bendecoder:
 
         Args
         --------
-        data : ``bytes`` or `bytearray`
-            (Optional) (default=None)Target data for decoding.
+        data : `bytes` or `bytearray`
+            (Optional) (default=None) Target data for decoding.
         """
         self.data = data
         self.decoded = None
@@ -68,10 +67,12 @@ class Bendecoder:
         if hasattr(item, "read"):
             data = item.read()
             return decoder.decode(data)
-        elif os.path.exists(item) and os.path.isfile(item):
-            with open(item, "rb") as fd:
-                data = fd.read()
+
+        if os.path.exists(item) and os.path.isfile(item):
+            with open(item, "rb") as _fd:
+                data = _fd.read()
                 return decoder.decode(data)
+
         raise FilePathError(item)
 
     @classmethod
@@ -103,36 +104,48 @@ class Bendecoder:
 
         Returns
         --------
-        any
-            the decoded data.
+        any : the decoded data.
         """
         data = self.data if not data else data
         self.decoded, _ = self._decode(bits=data)
         return self.decoded
 
     def _decode(self, bits=None):
+        """
+        Decode bencoded data.
+
+        Args
+        -------
+        bits : ``bytes``
+            Bencoded data for decoding.
+
+        Returns
+        --------
+        any : The decoded data.
+        """
         if bits is None:
             bits = self.data
+
         if bits.startswith(b"i"):
             match, feed = self._decode_int(bits)
             return match, feed
 
         # decode string
-        elif chr(bits[0]).isdigit():
+        if chr(bits[0]).isdigit():
             num, feed = self._decode_str(bits)
             return num, feed
 
         # decode list and contents
-        elif bits.startswith(b"l"):
+        if bits.startswith(b"l"):
             lst, feed = self._decode_list(bits)
             return lst, feed
 
         # decode dictionary and contents
-        elif bits.startswith(b"d"):
+        if bits.startswith(b"d"):
             dic, feed = self._decode_dict(bits)
             return dic, feed
-        else:
-            raise DecodeError(bits)
+
+        raise DecodeError(bits)
 
     def _decode_dict(self, bits):
         """
@@ -145,20 +158,19 @@ class Bendecoder:
 
         Returns
         ---------
-        `dict`
-            Dictionary and contents.
+        `dict` : Dictionary and contents.
         """
-        dic, feed = {}, 1
+        dct, feed = {}, 1
         while not bits[feed:].startswith(b"e"):
             match1, rest = self._decode(bits[feed:])
             feed += rest
             match2, rest = self._decode(bits[feed:])
             feed += rest
-            dic[match1] = match2
+            dct[match1] = match2
         feed += 1
-        return dic, feed
+        return dct, feed
 
-    def _decode_list(self, bits):
+    def _decode_list(self, data):
         """
         Decode list and its contents.
 
@@ -169,16 +181,15 @@ class Bendecoder:
 
         Returns
         ---------
-        `list`:
-            decoded list and contents
+        `list`: decoded list and contents
         """
-        lst, feed = [], 1
-        while not bits[feed:].startswith(b"e"):
-            match, rest = self._decode(bits[feed:])
-            lst.append(match)
+        seq, feed = [], 1
+        while not data[feed:].startswith(b"e"):
+            match, rest = self._decode(data[feed:])
+            seq.append(match)
             feed += rest
         feed += 1
-        return lst, feed
+        return seq, feed
 
     @staticmethod
     def _decode_str(bits):
@@ -192,17 +203,20 @@ class Bendecoder:
 
         Returns
         ---------
-        `str`:
-            Decoded string.
+        `str`: Decoded string.
         """
         match = re.match(br"(\d+):", bits)
-        word_len, start = int(match.groups()[0]), match.span()[1]
-        word = bits[start : start + word_len]
+        word_size, start = int(match.groups()[0]), match.span()[1]
+        finish = start + word_size
+        word = bits[start:finish]
+
         try:
             word = word.decode("utf-8")
+
         except UnicodeDecodeError:
-            word = word.hex()
-        return word, start + word_len
+            pass
+
+        return word, finish
 
     @staticmethod
     def _decode_int(bits):
@@ -224,8 +238,7 @@ class Bendecoder:
 
 
 class Benencoder:
-
-    """Encode collection of methods for Bencoding data."""
+    """Encoder for bencode encoding used for Bittorrent meta-files."""
 
     def __init__(self, data=None):
         """
@@ -248,20 +261,19 @@ class Benencoder:
         --------
         data : any
             Raw data to be encoded, usually dict.txt
-        path : path-like or iobuffer
+        path : path-like or `BytesIO`
             Where encoded data should be written to.py
 
         Returns
         ---------
-        `bool`:
-             Return True if success.txt
+        `bool` : Return True if success.txt
         """
         encoded = cls(data).encode()
         if hasattr(path, "write"):
             path.write(encoded)
         else:
-            with open(path, "wb") as fd:
-                fd.write(encoded)
+            with open(path, "wb") as _fd:
+                _fd.write(encoded)
         return True
 
     @classmethod
@@ -276,8 +288,7 @@ class Benencoder:
 
         Returns
         ---------
-        `bytes`:
-             Encoded data.
+        `bytes`: Encoded data.
         """
         return cls(data).encode()
 
@@ -292,8 +303,7 @@ class Benencoder:
 
         Returns
         ---------
-        `bytes`:
-             encoded data
+        `bytes` : encoded data
         """
         if val is None:
             val = self.data
@@ -304,15 +314,14 @@ class Benencoder:
         """
         Encode data with bencode protocol.
 
-        args
+        Args
         --------
         bits : `bytes`
             Bencoded data for decoding.
 
-        returns
+        Returns
         ---------
-        any:
-             the decoded data.
+        any : the decoded data.
         """
         if isinstance(val, str):
             return self._encode_str(val)
@@ -320,19 +329,23 @@ class Benencoder:
         if hasattr(val, "hex"):
             return self._encode_bytes(val)
 
-        elif isinstance(val, int):
+        if isinstance(val, int):
             return self._encode_int(val)
 
-        elif isinstance(val, list):
+        if isinstance(val, list):
             return self._encode_list(val)
 
-        elif isinstance(val, dict):
+        if isinstance(val, dict):
             return self._encode_dict(val)
+
+        if isinstance(val, tuple):
+            return self._encode_list(list(val))
 
         raise EncodeError(val)
 
     @staticmethod
     def _encode_bytes(val):
+        """Bencode encoding bytes as string literal."""
         size = str(len(val)) + ":"
         return size.encode("utf-8") + val
 
@@ -343,32 +356,31 @@ class Benencoder:
 
         Args
         --------
-        txt (str): string.
+        txt : `str`
+            Any string literal.
 
         Returns
         ---------
-        `bytes`:
-            Bencoded string.
+        `bytes` : Bencoded string.
         """
         size = str(len(txt)).encode("utf-8")
         return size + b":" + txt.encode("utf-8")
 
     @staticmethod
-    def _encode_int(i):
+    def _encode_int(num):
         """
         Encode intiger.
 
         Args
         --------
-        i : `int`
+        num : `int`
             Integer for encoding.
 
         Returns
         ---------
-        `bytes`:
-            Bencoded intiger.
+        `bytes` : Bencoded intiger.
         """
-        return b"i" + str(i).encode("utf-8") + b"e"
+        return b"i" + str(num).encode("utf-8") + b"e"
 
     def _encode_list(self, elems):
         """
@@ -381,8 +393,7 @@ class Benencoder:
 
         Returns
         ---------
-        `bytes`:
-            Bencoded data
+        `bytes` : Bencoded data
         """
         lst = [b"l"]
         for elem in elems:
@@ -403,10 +414,9 @@ class Benencoder:
 
         Returns
         ---------
-        `bytes`
-            Bencoded data.
+        `bytes` : Bencoded data.
         """
         result = b"d"
-        for k, v in dic.items():
-            result += b"".join([self._encode(k), self._encode(v)])
+        for key, val in dic.items():
+            result += b"".join([self._encode(key), self._encode(val)])
         return result + b"e"

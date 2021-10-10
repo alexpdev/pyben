@@ -14,7 +14,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install pycodestyle pydocstyle pyroma coverage pytest
+          pip install coverage pytest
 
       - name: Run tests and collect coverage
         run: |

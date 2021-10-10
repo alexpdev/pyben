@@ -1,0 +1,3888 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Python Bencode Library API.">
+    
+    <link rel="canonical" href="https://alexpdev.github.io/pyben/api/">
+    <link rel="shortcut icon" href="../img/favicon.ico">
+
+    
+    <title>API - My Docs</title>
+    
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/v4-shims.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hack-font@3.3.0/build/web/hack.min.css">
+    <link href='//rsms.me/inter/inter.css' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
+    <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="../css/base.min.css" rel="stylesheet">
+    <link href="../css/cinder.min.css" rel="stylesheet">
+
+    
+        
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/github.min.css">
+        
+    
+    <link href="../assets/_mkdocstrings.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+            <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+        <![endif]-->
+
+    
+
+     
+</head>
+
+<body>
+
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+
+            
+              <a class="navbar-brand" href="..">My Docs</a>
+            
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li >
+                        <a href="..">Home</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../about/">About</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../LICENSE/">License</a>
+                    </li>
+                
+                
+                
+                    <li class="active">
+                        <a href="./">API</a>
+                    </li>
+                
+                
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                            <i class="fas fa-search"></i> Search
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../LICENSE/">
+                            <i class="fas fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li class="disabled">
+                        <a rel="next" >
+                            Next <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/alexpdev/pyben/edit/master/docs/api.md"><i class="fab fa-github"></i> Edit on GitHub</a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <div class="container">
+        
+        
+        <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="first-level active"><a href="#api-reference">API Reference</a></li>
+            <li class="second-level"><a href="#pyben">pyben</a></li>
+                
+                <li class="third-level"><a href="#pyben--modules">Modules</a></li>
+                <li class="third-level"><a href="#pyben--classes">Classes</a></li>
+                <li class="third-level"><a href="#pyben--functions">Functions</a></li>
+            <li class="second-level"><a href="#pyben.api">api</a></li>
+                
+                <li class="third-level"><a href="#pyben.api--bencode-utility-library">Bencode utility library.</a></li>
+                <li class="third-level"><a href="#pyben.api.dump">dump()</a></li>
+                <li class="third-level"><a href="#pyben.api.dumps">dumps()</a></li>
+                <li class="third-level"><a href="#pyben.api.load">load()</a></li>
+                <li class="third-level"><a href="#pyben.api.loads">loads()</a></li>
+            <li class="second-level"><a href="#pyben.bencode">bencode</a></li>
+                
+                <li class="third-level"><a href="#pyben.bencode--functions">Functions</a></li>
+                <li class="third-level"><a href="#pyben.bencode.bencode_bytes">bencode_bytes()</a></li>
+                <li class="third-level"><a href="#pyben.bencode.bencode_dict">bencode_dict()</a></li>
+                <li class="third-level"><a href="#pyben.bencode.bencode_int">bencode_int()</a></li>
+                <li class="third-level"><a href="#pyben.bencode.bencode_list">bencode_list()</a></li>
+                <li class="third-level"><a href="#pyben.bencode.bencode_str">bencode_str()</a></li>
+                <li class="third-level"><a href="#pyben.bencode.bendecode">bendecode()</a></li>
+                <li class="third-level"><a href="#pyben.bencode.bendecode_dict">bendecode_dict()</a></li>
+                <li class="third-level"><a href="#pyben.bencode.bendecode_int">bendecode_int()</a></li>
+                <li class="third-level"><a href="#pyben.bencode.bendecode_list">bendecode_list()</a></li>
+                <li class="third-level"><a href="#pyben.bencode.bendecode_str">bendecode_str()</a></li>
+                <li class="third-level"><a href="#pyben.bencode.benencode">benencode()</a></li>
+            <li class="second-level"><a href="#pyben.classes">classes</a></li>
+                
+                <li class="third-level"><a href="#pyben.classes--classes">Classes</a></li>
+                <li class="third-level"><a href="#pyben.classes.Bendecoder">Bendecoder</a></li>
+                <li class="third-level"><a href="#pyben.classes.Benencoder">Benencoder</a></li>
+            <li class="second-level"><a href="#pyben.exceptions">exceptions</a></li>
+                
+                <li class="third-level"><a href="#pyben.exceptions.DecodeError">DecodeError</a></li>
+                <li class="third-level"><a href="#pyben.exceptions.EncodeError">EncodeError</a></li>
+                <li class="third-level"><a href="#pyben.exceptions.FilePathError">FilePathError</a></li>
+            <li class="second-level"><a href="#pyben.api">pyben.api</a></li>
+                
+            <li class="second-level"><a href="#pyben.api--bencode-utility-library">Bencode utility library.</a></li>
+                
+                <li class="third-level"><a href="#pyben.api--functions">Functions</a></li>
+                <li class="third-level"><a href="#pyben.api--usage-examples">Usage Examples</a></li>
+            <li class="second-level"><a href="#pyben.api.dump">dump()</a></li>
+                
+                <li class="third-level"><a href="#pyben.api.dump--args">Args</a></li>
+            <li class="second-level"><a href="#pyben.api.dumps">dumps()</a></li>
+                
+                <li class="third-level"><a href="#pyben.api.dumps--args">Args</a></li>
+                <li class="third-level"><a href="#pyben.api.dumps--returns">Returns</a></li>
+            <li class="second-level"><a href="#pyben.api.load">load()</a></li>
+                
+                <li class="third-level"><a href="#pyben.api.load--args">Args</a></li>
+                <li class="third-level"><a href="#pyben.api.load--returns">Returns</a></li>
+            <li class="second-level"><a href="#pyben.api.loads">loads()</a></li>
+                
+                <li class="third-level"><a href="#pyben.api.loads--args">Args</a></li>
+                <li class="third-level"><a href="#pyben.api.loads--returns">Returns</a></li>
+            <li class="second-level"><a href="#pyben.classes">pyben.classes</a></li>
+                
+                <li class="third-level"><a href="#pyben.classes--classes">Classes</a></li>
+            <li class="second-level"><a href="#pyben.classes.Bendecoder">Bendecoder</a></li>
+                
+                <li class="third-level"><a href="#pyben.classes.Bendecoder.__init__">__init__()</a></li>
+                <li class="third-level"><a href="#pyben.classes.Bendecoder.decode">decode()</a></li>
+                <li class="third-level"><a href="#pyben.classes.Bendecoder.load">load()</a></li>
+                <li class="third-level"><a href="#pyben.classes.Bendecoder.loads">loads()</a></li>
+            <li class="second-level"><a href="#pyben.classes.Benencoder">Benencoder</a></li>
+                
+                <li class="third-level"><a href="#pyben.classes.Benencoder.__init__">__init__()</a></li>
+                <li class="third-level"><a href="#pyben.classes.Benencoder.dump">dump()</a></li>
+                <li class="third-level"><a href="#pyben.classes.Benencoder.dumps">dumps()</a></li>
+                <li class="third-level"><a href="#pyben.classes.Benencoder.encode">encode()</a></li>
+            <li class="second-level"><a href="#pyben.bencode">pyben.bencode</a></li>
+                
+                <li class="third-level"><a href="#pyben.bencode--functions">Functions</a></li>
+            <li class="second-level"><a href="#pyben.bencode.bencode_bytes">bencode_bytes()</a></li>
+                
+                <li class="third-level"><a href="#pyben.bencode.bencode_bytes--args">Args</a></li>
+                <li class="third-level"><a href="#pyben.bencode.bencode_bytes--returns">Returns</a></li>
+            <li class="second-level"><a href="#pyben.bencode.bencode_dict">bencode_dict()</a></li>
+                
+                <li class="third-level"><a href="#pyben.bencode.bencode_dict--args">Args</a></li>
+                <li class="third-level"><a href="#pyben.bencode.bencode_dict--returns">Returns</a></li>
+            <li class="second-level"><a href="#pyben.bencode.bencode_int">bencode_int()</a></li>
+                
+                <li class="third-level"><a href="#pyben.bencode.bencode_int--args">Args</a></li>
+                <li class="third-level"><a href="#pyben.bencode.bencode_int--returns">Returns</a></li>
+            <li class="second-level"><a href="#pyben.bencode.bencode_list">bencode_list()</a></li>
+                
+                <li class="third-level"><a href="#pyben.bencode.bencode_list--args">Args</a></li>
+                <li class="third-level"><a href="#pyben.bencode.bencode_list--returns">Returns</a></li>
+            <li class="second-level"><a href="#pyben.bencode.bencode_str">bencode_str()</a></li>
+                
+                <li class="third-level"><a href="#pyben.bencode.bencode_str--args">Args</a></li>
+                <li class="third-level"><a href="#pyben.bencode.bencode_str--returns">Returns</a></li>
+            <li class="second-level"><a href="#pyben.bencode.bendecode">bendecode()</a></li>
+                
+                <li class="third-level"><a href="#pyben.bencode.bendecode--args">Args</a></li>
+                <li class="third-level"><a href="#pyben.bencode.bendecode--raises">Raises</a></li>
+                <li class="third-level"><a href="#pyben.bencode.bendecode--returns">Returns</a></li>
+            <li class="second-level"><a href="#pyben.bencode.bendecode_dict">bendecode_dict()</a></li>
+                
+                <li class="third-level"><a href="#pyben.bencode.bendecode_dict--args">Args</a></li>
+                <li class="third-level"><a href="#pyben.bencode.bendecode_dict--returns">Returns</a></li>
+            <li class="second-level"><a href="#pyben.bencode.bendecode_int">bendecode_int()</a></li>
+                
+                <li class="third-level"><a href="#pyben.bencode.bendecode_int--args">Args</a></li>
+                <li class="third-level"><a href="#pyben.bencode.bendecode_int--returns">Returns</a></li>
+            <li class="second-level"><a href="#pyben.bencode.bendecode_list">bendecode_list()</a></li>
+                
+                <li class="third-level"><a href="#pyben.bencode.bendecode_list--args">Args</a></li>
+                <li class="third-level"><a href="#pyben.bencode.bendecode_list--returns">Returns</a></li>
+            <li class="second-level"><a href="#pyben.bencode.bendecode_str">bendecode_str()</a></li>
+                
+                <li class="third-level"><a href="#pyben.bencode.bendecode_str--args">Args</a></li>
+                <li class="third-level"><a href="#pyben.bencode.bendecode_str--returns">Returns</a></li>
+            <li class="second-level"><a href="#pyben.bencode.benencode">benencode()</a></li>
+                
+                <li class="third-level"><a href="#pyben.bencode.benencode--args">Args</a></li>
+                <li class="third-level"><a href="#pyben.bencode.benencode--raises">Raises</a></li>
+                <li class="third-level"><a href="#pyben.bencode.benencode--returns">Returns</a></li>
+            <li class="second-level"><a href="#pyben.exceptions">pyben.exceptions</a></li>
+                
+            <li class="second-level"><a href="#pyben.exceptions.DecodeError">DecodeError</a></li>
+                
+                <li class="third-level"><a href="#pyben.exceptions.DecodeError--args">Args</a></li>
+                <li class="third-level"><a href="#pyben.exceptions.DecodeError.__init__">__init__()</a></li>
+            <li class="second-level"><a href="#pyben.exceptions.EncodeError">EncodeError</a></li>
+                
+                <li class="third-level"><a href="#pyben.exceptions.EncodeError--args">Args</a></li>
+                <li class="third-level"><a href="#pyben.exceptions.EncodeError.__init__">__init__()</a></li>
+            <li class="second-level"><a href="#pyben.exceptions.FilePathError">FilePathError</a></li>
+                
+                <li class="third-level"><a href="#pyben.exceptions.FilePathError--args">Args</a></li>
+                <li class="third-level"><a href="#pyben.exceptions.FilePathError.__init__">__init__()</a></li>
+    </ul>
+</div></div>
+        <div class="col-md-9" role="main">
+
+<h1 id="api-reference">API Reference</h1>
+
+
+  <div class="doc doc-object doc-module">
+
+<a id="pyben"></a>
+    <div class="doc doc-contents first">
+
+      <p>PyBen is a library for decoding/encoding data, with the bencode specification.</p>
+<p>Bencode is commonly used for encoding Bittorrent Protocol Metafiles (.torrent).</p>
+<h3 id="pyben--modules">Modules</h3>
+<ul>
+<li>api</li>
+<li>classes</li>
+<li>bencode</li>
+</ul>
+<h3 id="pyben--classes">Classes</h3>
+<ul>
+<li>Bendecoder</li>
+<li>Benencoder</li>
+</ul>
+<h3 id="pyben--functions">Functions</h3>
+<ul>
+<li>bendecode</li>
+<li>benencode</li>
+<li>dump</li>
+<li>dumps</li>
+<li>load</li>
+<li>loads</li>
+</ul>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-module">
+
+
+
+<h2 id="pyben.api" class="doc doc-heading">
+        <code>api</code>
+
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <h3 id="pyben.api--bencode-utility-library">Bencode utility library.</h3>
+<p>Features simple API inspired by json and pickle modules in stdlib.</p>
+<h4 id="pyben.api--functions">Functions</h4>
+<ul>
+<li>dump</li>
+<li>dumps</li>
+<li>load</li>
+<li>loads</li>
+</ul>
+<h4 id="pyben.api--usage-examples">Usage Examples</h4>
+<h5 id="pyben.api--encode-inline-code">Encode inline code:</h5>
+<pre><code>&gt;&gt;&gt; import os
+&gt;&gt;&gt; import pyben
+&gt;&gt;&gt; data = {"item1": ["item2", 3, [4], {5: "item6"}]}
+&gt;&gt;&gt; encoded = pyben.dumps(data)
+&gt;&gt;&gt; encoded
+... b'd5:item1l5:item2i3eli4eedi5e5:item6eee'
+</code></pre>
+<h5 id="pyben.api--encode-to-file">Encode to file:</h5>
+<pre><code>&gt;&gt;&gt; fd = "path/to/file"
+&gt;&gt;&gt; pyben.dump(data, fd)
+&gt;&gt;&gt; os.path.exists(fd)
+... True
+&gt;&gt;&gt; encoded_file = open(fd, "rb").read()
+&gt;&gt;&gt; encoded_file == encoded
+... True
+</code></pre>
+<h5 id="pyben.api--decode-inline-code">Decode inline code:</h5>
+<pre><code>&gt;&gt;&gt; decoded = pybem.loads(encoded)
+&gt;&gt;&gt; decoded
+... {'item1': ['item2', 3, [4], {5: 'item6'}]}
+&gt;&gt;&gt; decoded == data
+... True
+</code></pre>
+<h5 id="pyben.api--decode-from-file">Decode from file:</h5>
+<pre><code>&gt;&gt;&gt; decoded_file = pyben.load(fd)
+&gt;&gt;&gt; decoded_file
+... {'item1': ['item2', 3, [4], {5: 'item6'}]}
+&gt;&gt;&gt; decoded_file == data
+... True
+</code></pre>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h3 id="pyben.api.dump" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">dump</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">buffer</span><span class="p">)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Shortcut function for bencode encode data and write to file.</p>
+<p>Works effectively the same as it's json equivelant except also
+accepts a path as well as an open fileIO.</p>
+<h5 id="pyben.api.dump--args">Args</h5>
+<p>obj : any
+*   Data to be encoded.
+buffer : <code>str</code> or <code>BytesIO</code>
+*   File of path-like to write the data to.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>pyben\api.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">dump</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">buffer</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Shortcut function for bencode encode data and write to file.</span>
+
+<span class="sd">    Works effectively the same as it&#39;s json equivelant except also</span>
+<span class="sd">    accepts a path as well as an open fileIO.</span>
+
+<span class="sd">    Args</span>
+<span class="sd">    -----------------</span>
+<span class="sd">    obj : any</span>
+<span class="sd">    *   Data to be encoded.</span>
+<span class="sd">    buffer : `str` or `BytesIO`</span>
+<span class="sd">    *   File of path-like to write the data to.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">encoded</span> <span class="o">=</span> <span class="n">benencode</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="s2">&quot;write&quot;</span><span class="p">):</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">_fd</span><span class="p">:</span>
+            <span class="n">_fd</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">encoded</span><span class="p">)</span>
+
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">buffer</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">encoded</span><span class="p">)</span>
+        <span class="n">buffer</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h3 id="pyben.api.dumps" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">dumps</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Shortuct function to encoding given obj to bencode encoding.</p>
+<h5 id="pyben.api.dumps--args">Args</h5>
+<p>obj : <code>any</code>
+*   Object to be encoded.py.</p>
+<h5 id="pyben.api.dumps--returns">Returns</h5>
+<p><code>bytes</code> :
+*   Encoded data.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>pyben\api.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">dumps</span><span class="p">(</span><span class="n">obj</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Shortuct function to encoding given obj to bencode encoding.</span>
+
+<span class="sd">    Args</span>
+<span class="sd">    --------</span>
+<span class="sd">    obj : `any`</span>
+<span class="sd">    *   Object to be encoded.py.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    --------</span>
+<span class="sd">    `bytes` :</span>
+<span class="sd">    *   Encoded data.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">benencode</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h3 id="pyben.api.load" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">load</span><span class="p">(</span><span class="n">buffer</span><span class="p">)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Load bencoded data from a file of path object and decodes it.</p>
+<h5 id="pyben.api.load--args">Args</h5>
+<p>buffer : <code>str</code> or <code>BytesIO</code>
+*   Open and/or read data from file to be decoded.</p>
+<h5 id="pyben.api.load--returns">Returns</h5>
+<p><code>any</code> :
+*   (commonly <code>dict</code>), Decoded contents of file.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>pyben\api.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="n">buffer</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Load bencoded data from a file of path object and decodes it.</span>
+
+<span class="sd">    Args</span>
+<span class="sd">    --------</span>
+<span class="sd">    buffer : `str` or `BytesIO`</span>
+<span class="sd">    *   Open and/or read data from file to be decoded.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    ---------</span>
+<span class="sd">    `any` :</span>
+<span class="sd">    *   (commonly `dict`), Decoded contents of file.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="s2">&quot;read&quot;</span><span class="p">):</span>
+        <span class="n">decoded</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">bendecode</span><span class="p">(</span><span class="n">buffer</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">_fd</span><span class="p">:</span>
+            <span class="n">decoded</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">bendecode</span><span class="p">(</span><span class="n">_fd</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+
+    <span class="k">return</span> <span class="n">decoded</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h3 id="pyben.api.loads" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">loads</span><span class="p">(</span><span class="n">encoded</span><span class="p">)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Shortcut function for decoding encoded data.</p>
+<h5 id="pyben.api.loads--args">Args</h5>
+<p>encoded : <code>bytes</code>
+*   Bencoded data.</p>
+<h5 id="pyben.api.loads--returns">Returns</h5>
+<p><code>any</code> :
+*   (commonly <code>dict</code>), Decoded data.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>pyben\api.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">loads</span><span class="p">(</span><span class="n">encoded</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Shortcut function for decoding encoded data.</span>
+
+<span class="sd">    Args</span>
+<span class="sd">    --------</span>
+<span class="sd">    encoded : `bytes`</span>
+<span class="sd">    *   Bencoded data.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    --------</span>
+<span class="sd">    `any` :</span>
+<span class="sd">    *   (commonly `dict`), Decoded data.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">decoded</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">bendecode</span><span class="p">(</span><span class="n">encoded</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">decoded</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-module">
+
+
+
+<h2 id="pyben.bencode" class="doc doc-heading">
+        <code>bencode</code>
+
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>API helper functions for decoding and encoding data with bencode format.</p>
+<h4 id="pyben.bencode--functions">Functions</h4>
+<ul>
+<li>bendecode</li>
+<li>bendecode_dict</li>
+<li>bendecode_int</li>
+<li>bendecode_list</li>
+<li>
+<p>bendecode_str</p>
+</li>
+<li>
+<p>benencode</p>
+</li>
+<li>bencode_bytes</li>
+<li>bencode_dict</li>
+<li>bencode_int</li>
+<li>bencode_list</li>
+<li>bencode_str</li>
+</ul>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h3 id="pyben.bencode.bencode_bytes" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">bencode_bytes</span><span class="p">(</span><span class="n">bits</span><span class="p">)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Encode bytes.</p>
+<h5 id="pyben.bencode.bencode_bytes--args">Args</h5>
+<p>bits : <code>bytes</code></p>
+<blockquote>
+<p>Bytes treated as a byte-string literal.</p>
+</blockquote>
+<h5 id="pyben.bencode.bencode_bytes--returns">Returns</h5>
+<p><code>bytes</code>:</p>
+<blockquote>
+<p>Bencode encoded byte string literal.</p>
+</blockquote>
+
+        <details class="quote">
+          <summary>Source code in <code>pyben\bencode.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">bencode_bytes</span><span class="p">(</span><span class="n">bits</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Encode bytes.</span>
+
+<span class="sd">    Args</span>
+<span class="sd">    --------</span>
+<span class="sd">    bits : `bytes`</span>
+<span class="sd">    &gt;   Bytes treated as a byte-string literal.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    ---------</span>
+<span class="sd">    `bytes`:</span>
+<span class="sd">    &gt;   Bencode encoded byte string literal.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">size</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">bits</span><span class="p">))</span> <span class="o">+</span> <span class="s2">&quot;:&quot;</span>
+    <span class="k">return</span> <span class="n">size</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="n">bits</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h3 id="pyben.bencode.bencode_dict" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">bencode_dict</span><span class="p">(</span><span class="n">dic</span><span class="p">)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Encode dictionary and contents.</p>
+<h5 id="pyben.bencode.bencode_dict--args">Args</h5>
+<p>dic : <code>dict</code></p>
+<blockquote>
+<p>Any dictionary containing items that can be bencoded.</p>
+</blockquote>
+<h5 id="pyben.bencode.bencode_dict--returns">Returns</h5>
+<p><code>bytes</code> :</p>
+<blockquote>
+<p>Bencoded key, value pairs of data.</p>
+</blockquote>
+
+        <details class="quote">
+          <summary>Source code in <code>pyben\bencode.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">bencode_dict</span><span class="p">(</span><span class="n">dic</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Encode dictionary and contents.</span>
+
+<span class="sd">    Args</span>
+<span class="sd">    --------</span>
+<span class="sd">    dic : `dict`</span>
+<span class="sd">    &gt;   Any dictionary containing items that can be bencoded.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    ---------</span>
+<span class="sd">    `bytes` :</span>
+<span class="sd">    &gt;   Bencoded key, value pairs of data.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="sa">b</span><span class="s2">&quot;d&quot;</span>
+
+    <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">dic</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">result</span> <span class="o">+=</span> <span class="sa">b</span><span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">benencode</span><span class="p">(</span><span class="n">key</span><span class="p">),</span> <span class="n">benencode</span><span class="p">(</span><span class="n">val</span><span class="p">)])</span>
+
+    <span class="k">return</span> <span class="n">result</span> <span class="o">+</span> <span class="sa">b</span><span class="s2">&quot;e&quot;</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h3 id="pyben.bencode.bencode_int" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">bencode_int</span><span class="p">(</span><span class="n">i</span><span class="p">)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Encode integer type.</p>
+<h5 id="pyben.bencode.bencode_int--args">Args</h5>
+<p>i : <code>int</code></p>
+<blockquote>
+<p>Number that needs encoding.</p>
+</blockquote>
+<h5 id="pyben.bencode.bencode_int--returns">Returns</h5>
+<p><code>bytes</code> :</p>
+<blockquote>
+<p>Bencoded Integer.</p>
+</blockquote>
+
+        <details class="quote">
+          <summary>Source code in <code>pyben\bencode.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">bencode_int</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Encode integer type.</span>
+
+<span class="sd">    Args</span>
+<span class="sd">    --------</span>
+<span class="sd">    i : `int`</span>
+<span class="sd">    &gt;   Number that needs encoding.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    ---------</span>
+<span class="sd">    `bytes` :</span>
+<span class="sd">    &gt;   Bencoded Integer.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">(</span><span class="s2">&quot;i&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;e&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h3 id="pyben.bencode.bencode_list" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">bencode_list</span><span class="p">(</span><span class="n">elems</span><span class="p">)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Encode list and contents.</p>
+<h5 id="pyben.bencode.bencode_list--args">Args</h5>
+<p>elems : <code>list</code></p>
+<blockquote>
+<p>List of items for bencoding.</p>
+</blockquote>
+<h5 id="pyben.bencode.bencode_list--returns">Returns</h5>
+<p><code>bytes</code> :</p>
+<blockquote>
+<p>Bencoded list and contents.</p>
+</blockquote>
+
+        <details class="quote">
+          <summary>Source code in <code>pyben\bencode.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">bencode_list</span><span class="p">(</span><span class="n">elems</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Encode list and contents.</span>
+
+<span class="sd">    Args</span>
+<span class="sd">    --------</span>
+<span class="sd">    elems : `list`</span>
+<span class="sd">    &gt;   List of items for bencoding.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    ---------</span>
+<span class="sd">    `bytes` :</span>
+<span class="sd">    &gt;   Bencoded list and contents.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">arr</span> <span class="o">=</span> <span class="nb">bytearray</span><span class="p">(</span><span class="s2">&quot;l&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">elems</span><span class="p">:</span>
+        <span class="n">encoded</span> <span class="o">=</span> <span class="n">benencode</span><span class="p">(</span><span class="n">elem</span><span class="p">)</span>
+        <span class="n">arr</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">encoded</span><span class="p">)</span>
+
+    <span class="n">arr</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;e&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">arr</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h3 id="pyben.bencode.bencode_str" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">bencode_str</span><span class="p">(</span><span class="n">txt</span><span class="p">)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Encode string literals.</p>
+<h5 id="pyben.bencode.bencode_str--args">Args</h5>
+<p>txt : <code>str</code></p>
+<blockquote>
+<p>Any text string.</p>
+</blockquote>
+<h5 id="pyben.bencode.bencode_str--returns">Returns</h5>
+<p><code>bytes</code> :</p>
+<blockquote>
+<p>Bencoded string literal.</p>
+</blockquote>
+
+        <details class="quote">
+          <summary>Source code in <code>pyben\bencode.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">bencode_str</span><span class="p">(</span><span class="n">txt</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Encode string literals.</span>
+
+<span class="sd">    Args</span>
+<span class="sd">    --------</span>
+<span class="sd">    txt : `str`</span>
+<span class="sd">    &gt;   Any text string.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    ---------</span>
+<span class="sd">    `bytes` :</span>
+<span class="sd">    &gt;   Bencoded string literal.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">size</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">txt</span><span class="p">))</span> <span class="o">+</span> <span class="s2">&quot;:&quot;</span>
+    <span class="k">return</span> <span class="n">size</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="n">txt</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h3 id="pyben.bencode.bendecode" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">bendecode</span><span class="p">(</span><span class="n">bits</span><span class="p">)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Decode bencoded data.</p>
+<h5 id="pyben.bencode.bendecode--args">Args</h5>
+<p>bits : <code>bytes</code></p>
+<blockquote>
+<p>Bencode encoded data.</p>
+</blockquote>
+<h5 id="pyben.bencode.bendecode--raises">Raises</h5>
+<p><code>DecodeError</code> :</p>
+<blockquote>
+<p>Malformed data.</p>
+</blockquote>
+<h5 id="pyben.bencode.bendecode--returns">Returns</h5>
+<p>any :</p>
+<blockquote>
+<p>Bencode decoded data.</p>
+</blockquote>
+
+        <details class="quote">
+          <summary>Source code in <code>pyben\bencode.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">bendecode</span><span class="p">(</span><span class="n">bits</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Decode bencoded data.</span>
+
+<span class="sd">    Args</span>
+<span class="sd">    -----------------</span>
+<span class="sd">    bits : `bytes`</span>
+<span class="sd">    &gt;   Bencode encoded data.</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    -----------------</span>
+<span class="sd">    `DecodeError` :</span>
+<span class="sd">    &gt;   Malformed data.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -----------------</span>
+<span class="sd">    any :</span>
+<span class="sd">    &gt;   Bencode decoded data.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">bits</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;i&quot;</span><span class="p">):</span>
+        <span class="n">match</span><span class="p">,</span> <span class="n">feed</span> <span class="o">=</span> <span class="n">bendecode_int</span><span class="p">(</span><span class="n">bits</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">match</span><span class="p">,</span> <span class="n">feed</span>
+
+    <span class="k">if</span> <span class="nb">chr</span><span class="p">(</span><span class="n">bits</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">isdigit</span><span class="p">():</span>
+        <span class="n">match</span><span class="p">,</span> <span class="n">feed</span> <span class="o">=</span> <span class="n">bendecode_str</span><span class="p">(</span><span class="n">bits</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">match</span><span class="p">,</span> <span class="n">feed</span>
+
+    <span class="k">if</span> <span class="n">bits</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;l&quot;</span><span class="p">):</span>
+        <span class="n">lst</span><span class="p">,</span> <span class="n">feed</span> <span class="o">=</span> <span class="n">bendecode_list</span><span class="p">(</span><span class="n">bits</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">lst</span><span class="p">,</span> <span class="n">feed</span>
+
+    <span class="k">if</span> <span class="n">bits</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;d&quot;</span><span class="p">):</span>
+        <span class="n">dic</span><span class="p">,</span> <span class="n">feed</span> <span class="o">=</span> <span class="n">bendecode_dict</span><span class="p">(</span><span class="n">bits</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">dic</span><span class="p">,</span> <span class="n">feed</span>
+
+    <span class="k">raise</span> <span class="n">DecodeError</span><span class="p">(</span><span class="n">bits</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h3 id="pyben.bencode.bendecode_dict" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">bendecode_dict</span><span class="p">(</span><span class="n">bits</span><span class="p">)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Decode dictionary and it's contents.</p>
+<h5 id="pyben.bencode.bendecode_dict--args">Args</h5>
+<p>bits : <code>bytes</code></p>
+<blockquote>
+<p>Bencoded dictionary.</p>
+</blockquote>
+<h5 id="pyben.bencode.bendecode_dict--returns">Returns</h5>
+<p><code>dict</code></p>
+<blockquote>
+<p>Decoded dictionary and contents</p>
+</blockquote>
+
+        <details class="quote">
+          <summary>Source code in <code>pyben\bencode.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">bendecode_dict</span><span class="p">(</span><span class="n">bits</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Decode dictionary and it&#39;s contents.</span>
+
+<span class="sd">    Args</span>
+<span class="sd">    ---------</span>
+<span class="sd">    bits : `bytes`</span>
+<span class="sd">    &gt;   Bencoded dictionary.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    ---------</span>
+<span class="sd">    `dict`</span>
+<span class="sd">    &gt;   Decoded dictionary and contents</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">dic</span><span class="p">,</span> <span class="n">feed</span> <span class="o">=</span> <span class="p">{},</span> <span class="mi">1</span>
+
+    <span class="k">while</span> <span class="ow">not</span> <span class="n">bits</span><span class="p">[</span><span class="n">feed</span><span class="p">:]</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;e&quot;</span><span class="p">):</span>
+        <span class="n">match1</span><span class="p">,</span> <span class="n">rest</span> <span class="o">=</span> <span class="n">bendecode</span><span class="p">(</span><span class="n">bits</span><span class="p">[</span><span class="n">feed</span><span class="p">:])</span>
+        <span class="n">feed</span> <span class="o">+=</span> <span class="n">rest</span>
+        <span class="n">match2</span><span class="p">,</span> <span class="n">rest</span> <span class="o">=</span> <span class="n">bendecode</span><span class="p">(</span><span class="n">bits</span><span class="p">[</span><span class="n">feed</span><span class="p">:])</span>
+        <span class="n">feed</span> <span class="o">+=</span> <span class="n">rest</span>
+        <span class="n">dic</span><span class="p">[</span><span class="n">match1</span><span class="p">]</span> <span class="o">=</span> <span class="n">match2</span>
+
+    <span class="n">feed</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">dic</span><span class="p">,</span> <span class="n">feed</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h3 id="pyben.bencode.bendecode_int" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">bendecode_int</span><span class="p">(</span><span class="n">bits</span><span class="p">)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Decode digits.</p>
+<h5 id="pyben.bencode.bendecode_int--args">Args</h5>
+<p>bits : <code>bytes</code></p>
+<blockquote>
+<p>Bencoded intiger bytes</p>
+</blockquote>
+<h5 id="pyben.bencode.bendecode_int--returns">Returns</h5>
+<p><code>int</code> :</p>
+<blockquote>
+<p>Decoded int value.</p>
+</blockquote>
+
+        <details class="quote">
+          <summary>Source code in <code>pyben\bencode.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">bendecode_int</span><span class="p">(</span><span class="n">bits</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Decode digits.</span>
+
+<span class="sd">    Args</span>
+<span class="sd">    -----------------</span>
+<span class="sd">    bits : `bytes`</span>
+<span class="sd">    &gt;   Bencoded intiger bytes</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -----------------</span>
+<span class="sd">    `int` :</span>
+<span class="sd">    &gt;   Decoded int value.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">obj</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">br</span><span class="s2">&quot;i(-?\d+)e&quot;</span><span class="p">,</span> <span class="n">bits</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)),</span> <span class="n">obj</span><span class="o">.</span><span class="n">end</span><span class="p">()</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h3 id="pyben.bencode.bendecode_list" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">bendecode_list</span><span class="p">(</span><span class="n">bits</span><span class="p">)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Decode list and list contents.</p>
+<h5 id="pyben.bencode.bendecode_list--args">Args</h5>
+<p>bits : <code>bytes</code></p>
+<blockquote>
+<p>Bencoded list.</p>
+</blockquote>
+<h5 id="pyben.bencode.bendecode_list--returns">Returns</h5>
+<p><code>list</code> :</p>
+<blockquote>
+<p>Bencode decoded list and contents.</p>
+</blockquote>
+
+        <details class="quote">
+          <summary>Source code in <code>pyben\bencode.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">bendecode_list</span><span class="p">(</span><span class="n">bits</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Decode list and list contents.</span>
+
+<span class="sd">    Args</span>
+<span class="sd">    -----------------</span>
+<span class="sd">    bits : `bytes`</span>
+<span class="sd">    &gt;   Bencoded list.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -----------------</span>
+<span class="sd">    `list` :</span>
+<span class="sd">    &gt;   Bencode decoded list and contents.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">lst</span><span class="p">,</span> <span class="n">feed</span> <span class="o">=</span> <span class="p">[],</span> <span class="mi">1</span>
+
+    <span class="k">while</span> <span class="ow">not</span> <span class="n">bits</span><span class="p">[</span><span class="n">feed</span><span class="p">:]</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;e&quot;</span><span class="p">):</span>
+        <span class="n">match</span><span class="p">,</span> <span class="n">rest</span> <span class="o">=</span> <span class="n">bendecode</span><span class="p">(</span><span class="n">bits</span><span class="p">[</span><span class="n">feed</span><span class="p">:])</span>
+        <span class="n">lst</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">match</span><span class="p">)</span>
+        <span class="n">feed</span> <span class="o">+=</span> <span class="n">rest</span>
+
+    <span class="n">feed</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">lst</span><span class="p">,</span> <span class="n">feed</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h3 id="pyben.bencode.bendecode_str" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">bendecode_str</span><span class="p">(</span><span class="n">units</span><span class="p">)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Bendecode string types.</p>
+<h5 id="pyben.bencode.bendecode_str--args">Args</h5>
+<p>bits : <code>bytes</code></p>
+<blockquote>
+<p>Bencoded string.</p>
+</blockquote>
+<h5 id="pyben.bencode.bendecode_str--returns">Returns</h5>
+<p><code>str</code> :</p>
+<blockquote>
+<p>Decoded data string.</p>
+</blockquote>
+
+        <details class="quote">
+          <summary>Source code in <code>pyben\bencode.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">bendecode_str</span><span class="p">(</span><span class="n">units</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Bendecode string types.</span>
+
+<span class="sd">    Args</span>
+<span class="sd">    ---------</span>
+<span class="sd">    bits : `bytes`</span>
+<span class="sd">    &gt;   Bencoded string.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    ---------</span>
+<span class="sd">    `str` :</span>
+<span class="sd">    &gt;   Decoded data string.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">match</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">br</span><span class="s2">&quot;(\d+):&quot;</span><span class="p">,</span> <span class="n">units</span><span class="p">)</span>
+    <span class="n">word_len</span><span class="p">,</span> <span class="n">start</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">match</span><span class="o">.</span><span class="n">groups</span><span class="p">()[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">match</span><span class="o">.</span><span class="n">span</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">end</span> <span class="o">=</span> <span class="n">start</span> <span class="o">+</span> <span class="n">word_len</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">units</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">end</span><span class="p">]</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+
+    <span class="k">except</span> <span class="ne">UnicodeDecodeError</span><span class="p">:</span>
+        <span class="k">pass</span>
+
+    <span class="k">return</span> <span class="n">text</span><span class="p">,</span> <span class="n">end</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h3 id="pyben.bencode.benencode" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">benencode</span><span class="p">(</span><span class="n">val</span><span class="p">)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Encode data with bencoding.</p>
+<h5 id="pyben.bencode.benencode--args">Args</h5>
+<p>val : any</p>
+<blockquote>
+<p>Data for encoding.</p>
+</blockquote>
+<h5 id="pyben.bencode.benencode--raises">Raises</h5>
+<p><code>EncodeError</code> :</p>
+<blockquote>
+<p>Cannot interpret data.</p>
+</blockquote>
+<h5 id="pyben.bencode.benencode--returns">Returns</h5>
+<p><code>bytes</code> :</p>
+<blockquote>
+<p>Bencoded data.</p>
+</blockquote>
+
+        <details class="quote">
+          <summary>Source code in <code>pyben\bencode.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">benencode</span><span class="p">(</span><span class="n">val</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Encode data with bencoding.</span>
+
+<span class="sd">    Args</span>
+<span class="sd">    --------</span>
+<span class="sd">    val : any</span>
+<span class="sd">    &gt;   Data for encoding.</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    --------</span>
+<span class="sd">    `EncodeError` :</span>
+<span class="sd">    &gt;   Cannot interpret data.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    ---------</span>
+<span class="sd">    `bytes` :</span>
+<span class="sd">    &gt;   Bencoded data.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">bencode_str</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">bencode_int</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">bencode_list</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">bencode_dict</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="s2">&quot;hex&quot;</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">bencode_bytes</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">bencode_list</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">val</span><span class="p">))</span>
+
+    <span class="k">raise</span> <span class="n">EncodeError</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-module">
+
+
+
+<h2 id="pyben.classes" class="doc doc-heading">
+        <code>classes</code>
+
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>OOP implementation of bencode decoders and encoders.</p>
+<p>This style is not recommended as it can get bulky. The json-like api
+from the bencode.py module is much easier to use.</p>
+<h4 id="pyben.classes--classes">Classes</h4>
+<ul>
+<li>Bendecoder</li>
+<li>Benencoder</li>
+</ul>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-class">
+
+
+
+<h3 id="pyben.classes.Bendecoder" class="doc doc-heading">
+        <code>
+Bendecoder        </code>
+
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Decode class contains all decode methods.</p>
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h4 id="pyben.classes.Bendecoder.__init__" class="doc doc-heading">
+<code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-special"><code>special</code></small>
+  </span>
+
+</h4>
+
+    <div class="doc doc-contents ">
+
+      <p>Initialize instance with optional pre compiled data.</p>
+<h6 id="pyben.classes.Bendecoder.__init__--args">Args</h6>
+<p>data : <code>bytes</code> or <code>bytearray</code>
+    (Optional) (default=None) Target data for decoding.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>pyben\classes.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Initialize instance with optional pre compiled data.</span>
+
+<span class="sd">    Args</span>
+<span class="sd">    --------</span>
+<span class="sd">    data : `bytes` or `bytearray`</span>
+<span class="sd">        (Optional) (default=None) Target data for decoding.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">decoded</span> <span class="o">=</span> <span class="kc">None</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h4 id="pyben.classes.Bendecoder.decode" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">decode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+
+</h4>
+
+    <div class="doc doc-contents ">
+
+      <p>Decode bencoded data.</p>
+<h6 id="pyben.classes.Bendecoder.decode--args">Args</h6>
+<p>bits : <code>bytes</code>
+    bencoded data for decoding.</p>
+<h6 id="pyben.classes.Bendecoder.decode--returns">Returns</h6>
+<p>any : the decoded data.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>pyben\classes.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">decode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Decode bencoded data.</span>
+
+<span class="sd">    Args</span>
+<span class="sd">    -------</span>
+<span class="sd">    bits : ``bytes``</span>
+<span class="sd">        bencoded data for decoding.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    --------</span>
+<span class="sd">    any : the decoded data.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">data</span> <span class="k">else</span> <span class="n">data</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">decoded</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_decode</span><span class="p">(</span><span class="n">bits</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">decoded</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h4 id="pyben.classes.Bendecoder.load" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">load</span><span class="p">(</span><span class="n">item</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-classmethod"><code>classmethod</code></small>
+  </span>
+
+</h4>
+
+    <div class="doc doc-contents ">
+
+      <p>Extract contents from path/path-like and return Decoded data.</p>
+<h6 id="pyben.classes.Bendecoder.load--args">Args</h6>
+<p>path : <code>str</code> or <code>path-like</code>
+    Path containing bencoded data.</p>
+<h6 id="pyben.classes.Bendecoder.load--raises">Raises</h6>
+<p><code>FilePathError</code>:
+    Incorrect path or IOBuffer doesnt exist.</p>
+<h6 id="pyben.classes.Bendecoder.load--returns">Returns</h6>
+<p>any
+    Decoded contents of file, Usually a dictionary.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>pyben\classes.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="nd">@classmethod</span>
+<span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Extract contents from path/path-like and return Decoded data.</span>
+
+<span class="sd">    Args</span>
+<span class="sd">    --------</span>
+<span class="sd">    path : `str` or `path-like`</span>
+<span class="sd">        Path containing bencoded data.</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    ---------</span>
+<span class="sd">    `FilePathError`:</span>
+<span class="sd">        Incorrect path or IOBuffer doesnt exist.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    ---------</span>
+<span class="sd">    any</span>
+<span class="sd">        Decoded contents of file, Usually a dictionary.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">decoder</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">()</span>
+    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="s2">&quot;read&quot;</span><span class="p">):</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">decoder</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">item</span><span class="p">)</span> <span class="ow">and</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">item</span><span class="p">):</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">_fd</span><span class="p">:</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">_fd</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+            <span class="k">return</span> <span class="n">decoder</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+    <span class="k">raise</span> <span class="n">FilePathError</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h4 id="pyben.classes.Bendecoder.loads" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">loads</span><span class="p">(</span><span class="n">data</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-classmethod"><code>classmethod</code></small>
+  </span>
+
+</h4>
+
+    <div class="doc doc-contents ">
+
+      <p>Shortcut to Decode raw bencoded data.</p>
+<h6 id="pyben.classes.Bendecoder.loads--args">Args</h6>
+<p>data : <code>bytes</code> or <code>bytearray</code>
+    Bendencoded <code>bytes</code>.</p>
+<h6 id="pyben.classes.Bendecoder.loads--returns">Returns</h6>
+<p>any
+    Decoded data usually a dictionary.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>pyben\classes.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="nd">@classmethod</span>
+<span class="k">def</span> <span class="nf">loads</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Shortcut to Decode raw bencoded data.</span>
+
+<span class="sd">    Args</span>
+<span class="sd">    --------</span>
+<span class="sd">    data : ``bytes`` or `bytearray`</span>
+<span class="sd">        Bendencoded `bytes`.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    ---------</span>
+<span class="sd">    any</span>
+<span class="sd">        Decoded data usually a dictionary.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">decoder</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">decoder</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-class">
+
+
+
+<h3 id="pyben.classes.Benencoder" class="doc doc-heading">
+        <code>
+Benencoder        </code>
+
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Encoder for bencode encoding used for Bittorrent meta-files.</p>
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h4 id="pyben.classes.Benencoder.__init__" class="doc doc-heading">
+<code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-special"><code>special</code></small>
+  </span>
+
+</h4>
+
+    <div class="doc doc-contents ">
+
+      <p>Initialize Benencoder insance with optional pre compiled data.</p>
+<h6 id="pyben.classes.Benencoder.__init__--args">Args</h6>
+<p>data : any
+    (Optional) Target data for encoding. Defaults to None.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>pyben\classes.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Initialize Benencoder insance with optional pre compiled data.</span>
+
+<span class="sd">    Args</span>
+<span class="sd">    --------</span>
+<span class="sd">    data : any</span>
+<span class="sd">        (Optional) Target data for encoding. Defaults to None.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">encoded</span> <span class="o">=</span> <span class="kc">None</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h4 id="pyben.classes.Benencoder.dump" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">dump</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-classmethod"><code>classmethod</code></small>
+  </span>
+
+</h4>
+
+    <div class="doc doc-contents ">
+
+      <p>Shortcut Classmethod for encoding data and writing to file.</p>
+<h6 id="pyben.classes.Benencoder.dump--args">Args</h6>
+<p>data : any
+    Raw data to be encoded, usually dict.txt
+path : path-like or <code>BytesIO</code>
+    Where encoded data should be written to.py</p>
+<h6 id="pyben.classes.Benencoder.dump--returns">Returns</h6>
+<p><code>bool</code> : Return True if success.txt</p>
+
+        <details class="quote">
+          <summary>Source code in <code>pyben\classes.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="nd">@classmethod</span>
+<span class="k">def</span> <span class="nf">dump</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Shortcut Classmethod for encoding data and writing to file.</span>
+
+<span class="sd">    Args</span>
+<span class="sd">    --------</span>
+<span class="sd">    data : any</span>
+<span class="sd">        Raw data to be encoded, usually dict.txt</span>
+<span class="sd">    path : path-like or `BytesIO`</span>
+<span class="sd">        Where encoded data should be written to.py</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    ---------</span>
+<span class="sd">    `bool` : Return True if success.txt</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">encoded</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">()</span>
+    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s2">&quot;write&quot;</span><span class="p">):</span>
+        <span class="n">path</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">encoded</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">_fd</span><span class="p">:</span>
+            <span class="n">_fd</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">encoded</span><span class="p">)</span>
+    <span class="k">return</span> <span class="kc">True</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h4 id="pyben.classes.Benencoder.dumps" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">dumps</span><span class="p">(</span><span class="n">data</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-classmethod"><code>classmethod</code></small>
+  </span>
+
+</h4>
+
+    <div class="doc doc-contents ">
+
+      <p>Shortcut method for encoding data and immediately returning it.</p>
+<h6 id="pyben.classes.Benencoder.dumps--args">Args</h6>
+<p>data : any
+    Raw data to be encoded usually a dictionary.</p>
+<h6 id="pyben.classes.Benencoder.dumps--returns">Returns</h6>
+<p><code>bytes</code>: Encoded data.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>pyben\classes.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="nd">@classmethod</span>
+<span class="k">def</span> <span class="nf">dumps</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Shortcut method for encoding data and immediately returning it.</span>
+
+<span class="sd">    Args</span>
+<span class="sd">    --------</span>
+<span class="sd">    data : any</span>
+<span class="sd">        Raw data to be encoded usually a dictionary.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    ---------</span>
+<span class="sd">    `bytes`: Encoded data.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">()</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h4 id="pyben.classes.Benencoder.encode" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">encode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+
+</h4>
+
+    <div class="doc doc-contents ">
+
+      <p>Encode data provided as an arguement or provided at initialization.</p>
+<h6 id="pyben.classes.Benencoder.encode--args">Args</h6>
+<p>val : any, optional
+    Data for encoding. Defaults to None.</p>
+<h6 id="pyben.classes.Benencoder.encode--returns">Returns</h6>
+<p><code>bytes</code> : encoded data</p>
+
+        <details class="quote">
+          <summary>Source code in <code>pyben\classes.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">encode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Encode data provided as an arguement or provided at initialization.</span>
+
+<span class="sd">    Args</span>
+<span class="sd">    --------</span>
+<span class="sd">    val : any, optional</span>
+<span class="sd">        Data for encoding. Defaults to None.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    ---------</span>
+<span class="sd">    `bytes` : encoded data</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">val</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">val</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">encoded</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_encode</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">encoded</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-module">
+
+
+
+<h2 id="pyben.exceptions" class="doc doc-heading">
+        <code>exceptions</code>
+
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Exceptions used throughout the PyBen Package/Library.</p>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-class">
+
+
+
+<h3 id="pyben.exceptions.DecodeError" class="doc doc-heading">
+        <code>
+DecodeError            (<span title="Exception">Exception</span>)
+        </code>
+
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Error occured during decode process.</p>
+<p>Raised when attempting to decode an incompatible bytearray.
+Mostly it indicates the object is a hash digest and should remian
+as a bytes object.</p>
+<h5 id="pyben.exceptions.DecodeError--args">Args</h5>
+<p>val : any
+-   Value that cause the exception</p>
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h4 id="pyben.exceptions.DecodeError.__init__" class="doc doc-heading">
+<code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-special"><code>special</code></small>
+  </span>
+
+</h4>
+
+    <div class="doc doc-contents ">
+
+      <p>Construct Exception DecodeError.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>pyben\exceptions.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Construct Exception DecodeError.&quot;&quot;&quot;</span>
+    <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Decoder is unable to interpret </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">val</span><span class="p">)</span><span class="si">}</span><span class="s2"> type = </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">val</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-class">
+
+
+
+<h3 id="pyben.exceptions.EncodeError" class="doc doc-heading">
+        <code>
+EncodeError            (<span title="Exception">Exception</span>)
+        </code>
+
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Error occured during encoding process.</p>
+<p>Raised when attempting to bencode encode an incompatible
+data type into bencode format. Bencode accepts lists, dicts,
+strings, integers, and bytes.</p>
+<h5 id="pyben.exceptions.EncodeError--args">Args</h5>
+<p>val : any
+-   Value that cause the exception</p>
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h4 id="pyben.exceptions.EncodeError.__init__" class="doc doc-heading">
+<code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-special"><code>special</code></small>
+  </span>
+
+</h4>
+
+    <div class="doc doc-contents ">
+
+      <p>Construct Exception EncodeError.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>pyben\exceptions.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Construct Exception EncodeError.&quot;&quot;&quot;</span>
+    <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Encoder is unable to interpret </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">val</span><span class="p">)</span><span class="si">}</span><span class="s2"> type = </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">val</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-class">
+
+
+
+<h3 id="pyben.exceptions.FilePathError" class="doc doc-heading">
+        <code>
+FilePathError            (<span title="Exception">Exception</span>)
+        </code>
+
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Bad path error.</p>
+<p>Generally raised when the file at the path specified
+does not exist.</p>
+<h5 id="pyben.exceptions.FilePathError--args">Args</h5>
+<p>val : any
+-   Value that cause the exception</p>
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h4 id="pyben.exceptions.FilePathError.__init__" class="doc doc-heading">
+<code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-special"><code>special</code></small>
+  </span>
+
+</h4>
+
+    <div class="doc doc-contents ">
+
+      <p>Construct Exception Subclass FilePathError.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>pyben\exceptions.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Construct Exception Subclass FilePathError.&quot;&quot;&quot;</span>
+    <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span><span class="si">}</span><span class="s2"> doesn&#39;t exist or is unavailable.&quot;</span>
+    <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-module">
+
+<a id="pyben.api"></a>
+    <div class="doc doc-contents first">
+
+      <h2 id="pyben.api--bencode-utility-library">Bencode utility library.</h2>
+<p>Features simple API inspired by json and pickle modules in stdlib.</p>
+<h3 id="pyben.api--functions">Functions</h3>
+<ul>
+<li>dump</li>
+<li>dumps</li>
+<li>load</li>
+<li>loads</li>
+</ul>
+<h3 id="pyben.api--usage-examples">Usage Examples</h3>
+<h4 id="pyben.api--encode-inline-code">Encode inline code:</h4>
+<pre><code>&gt;&gt;&gt; import os
+&gt;&gt;&gt; import pyben
+&gt;&gt;&gt; data = {"item1": ["item2", 3, [4], {5: "item6"}]}
+&gt;&gt;&gt; encoded = pyben.dumps(data)
+&gt;&gt;&gt; encoded
+... b'd5:item1l5:item2i3eli4eedi5e5:item6eee'
+</code></pre>
+<h4 id="pyben.api--encode-to-file">Encode to file:</h4>
+<pre><code>&gt;&gt;&gt; fd = "path/to/file"
+&gt;&gt;&gt; pyben.dump(data, fd)
+&gt;&gt;&gt; os.path.exists(fd)
+... True
+&gt;&gt;&gt; encoded_file = open(fd, "rb").read()
+&gt;&gt;&gt; encoded_file == encoded
+... True
+</code></pre>
+<h4 id="pyben.api--decode-inline-code">Decode inline code:</h4>
+<pre><code>&gt;&gt;&gt; decoded = pybem.loads(encoded)
+&gt;&gt;&gt; decoded
+... {'item1': ['item2', 3, [4], {5: 'item6'}]}
+&gt;&gt;&gt; decoded == data
+... True
+</code></pre>
+<h4 id="pyben.api--decode-from-file">Decode from file:</h4>
+<pre><code>&gt;&gt;&gt; decoded_file = pyben.load(fd)
+&gt;&gt;&gt; decoded_file
+... {'item1': ['item2', 3, [4], {5: 'item6'}]}
+&gt;&gt;&gt; decoded_file == data
+... True
+</code></pre>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="pyben.api.dump" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">dump</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">buffer</span><span class="p">)</span></code>
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Shortcut function for bencode encode data and write to file.</p>
+<p>Works effectively the same as it's json equivelant except also
+accepts a path as well as an open fileIO.</p>
+<h4 id="pyben.api.dump--args">Args</h4>
+<p>obj : any
+*   Data to be encoded.
+buffer : <code>str</code> or <code>BytesIO</code>
+*   File of path-like to write the data to.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>pyben\api.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">dump</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">buffer</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Shortcut function for bencode encode data and write to file.</span>
+
+<span class="sd">    Works effectively the same as it&#39;s json equivelant except also</span>
+<span class="sd">    accepts a path as well as an open fileIO.</span>
+
+<span class="sd">    Args</span>
+<span class="sd">    -----------------</span>
+<span class="sd">    obj : any</span>
+<span class="sd">    *   Data to be encoded.</span>
+<span class="sd">    buffer : `str` or `BytesIO`</span>
+<span class="sd">    *   File of path-like to write the data to.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">encoded</span> <span class="o">=</span> <span class="n">benencode</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="s2">&quot;write&quot;</span><span class="p">):</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">_fd</span><span class="p">:</span>
+            <span class="n">_fd</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">encoded</span><span class="p">)</span>
+
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">buffer</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">encoded</span><span class="p">)</span>
+        <span class="n">buffer</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="pyben.api.dumps" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">dumps</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span></code>
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Shortuct function to encoding given obj to bencode encoding.</p>
+<h4 id="pyben.api.dumps--args">Args</h4>
+<p>obj : <code>any</code>
+*   Object to be encoded.py.</p>
+<h4 id="pyben.api.dumps--returns">Returns</h4>
+<p><code>bytes</code> :
+*   Encoded data.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>pyben\api.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">dumps</span><span class="p">(</span><span class="n">obj</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Shortuct function to encoding given obj to bencode encoding.</span>
+
+<span class="sd">    Args</span>
+<span class="sd">    --------</span>
+<span class="sd">    obj : `any`</span>
+<span class="sd">    *   Object to be encoded.py.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    --------</span>
+<span class="sd">    `bytes` :</span>
+<span class="sd">    *   Encoded data.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">benencode</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="pyben.api.load" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">load</span><span class="p">(</span><span class="n">buffer</span><span class="p">)</span></code>
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Load bencoded data from a file of path object and decodes it.</p>
+<h4 id="pyben.api.load--args">Args</h4>
+<p>buffer : <code>str</code> or <code>BytesIO</code>
+*   Open and/or read data from file to be decoded.</p>
+<h4 id="pyben.api.load--returns">Returns</h4>
+<p><code>any</code> :
+*   (commonly <code>dict</code>), Decoded contents of file.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>pyben\api.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="n">buffer</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Load bencoded data from a file of path object and decodes it.</span>
+
+<span class="sd">    Args</span>
+<span class="sd">    --------</span>
+<span class="sd">    buffer : `str` or `BytesIO`</span>
+<span class="sd">    *   Open and/or read data from file to be decoded.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    ---------</span>
+<span class="sd">    `any` :</span>
+<span class="sd">    *   (commonly `dict`), Decoded contents of file.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="s2">&quot;read&quot;</span><span class="p">):</span>
+        <span class="n">decoded</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">bendecode</span><span class="p">(</span><span class="n">buffer</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">_fd</span><span class="p">:</span>
+            <span class="n">decoded</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">bendecode</span><span class="p">(</span><span class="n">_fd</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+
+    <span class="k">return</span> <span class="n">decoded</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="pyben.api.loads" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">loads</span><span class="p">(</span><span class="n">encoded</span><span class="p">)</span></code>
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Shortcut function for decoding encoded data.</p>
+<h4 id="pyben.api.loads--args">Args</h4>
+<p>encoded : <code>bytes</code>
+*   Bencoded data.</p>
+<h4 id="pyben.api.loads--returns">Returns</h4>
+<p><code>any</code> :
+*   (commonly <code>dict</code>), Decoded data.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>pyben\api.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">loads</span><span class="p">(</span><span class="n">encoded</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Shortcut function for decoding encoded data.</span>
+
+<span class="sd">    Args</span>
+<span class="sd">    --------</span>
+<span class="sd">    encoded : `bytes`</span>
+<span class="sd">    *   Bencoded data.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    --------</span>
+<span class="sd">    `any` :</span>
+<span class="sd">    *   (commonly `dict`), Decoded data.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">decoded</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">bendecode</span><span class="p">(</span><span class="n">encoded</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">decoded</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-module">
+
+<a id="pyben.classes"></a>
+    <div class="doc doc-contents first">
+
+      <p>OOP implementation of bencode decoders and encoders.</p>
+<p>This style is not recommended as it can get bulky. The json-like api
+from the bencode.py module is much easier to use.</p>
+<h3 id="pyben.classes--classes">Classes</h3>
+<ul>
+<li>Bendecoder</li>
+<li>Benencoder</li>
+</ul>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-class">
+
+
+
+<h2 id="pyben.classes.Bendecoder" class="doc doc-heading">
+        <code>
+Bendecoder        </code>
+
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Decode class contains all decode methods.</p>
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="pyben.classes.Bendecoder.__init__" class="doc doc-heading">
+<code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-special"><code>special</code></small>
+  </span>
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Initialize instance with optional pre compiled data.</p>
+<h5 id="pyben.classes.Bendecoder.__init__--args">Args</h5>
+<p>data : <code>bytes</code> or <code>bytearray</code>
+    (Optional) (default=None) Target data for decoding.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>pyben\classes.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Initialize instance with optional pre compiled data.</span>
+
+<span class="sd">    Args</span>
+<span class="sd">    --------</span>
+<span class="sd">    data : `bytes` or `bytearray`</span>
+<span class="sd">        (Optional) (default=None) Target data for decoding.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">decoded</span> <span class="o">=</span> <span class="kc">None</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="pyben.classes.Bendecoder.decode" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">decode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Decode bencoded data.</p>
+<h5 id="pyben.classes.Bendecoder.decode--args">Args</h5>
+<p>bits : <code>bytes</code>
+    bencoded data for decoding.</p>
+<h5 id="pyben.classes.Bendecoder.decode--returns">Returns</h5>
+<p>any : the decoded data.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>pyben\classes.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">decode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Decode bencoded data.</span>
+
+<span class="sd">    Args</span>
+<span class="sd">    -------</span>
+<span class="sd">    bits : ``bytes``</span>
+<span class="sd">        bencoded data for decoding.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    --------</span>
+<span class="sd">    any : the decoded data.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">data</span> <span class="k">else</span> <span class="n">data</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">decoded</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_decode</span><span class="p">(</span><span class="n">bits</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">decoded</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="pyben.classes.Bendecoder.load" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">load</span><span class="p">(</span><span class="n">item</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-classmethod"><code>classmethod</code></small>
+  </span>
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Extract contents from path/path-like and return Decoded data.</p>
+<h5 id="pyben.classes.Bendecoder.load--args">Args</h5>
+<p>path : <code>str</code> or <code>path-like</code>
+    Path containing bencoded data.</p>
+<h5 id="pyben.classes.Bendecoder.load--raises">Raises</h5>
+<p><code>FilePathError</code>:
+    Incorrect path or IOBuffer doesnt exist.</p>
+<h5 id="pyben.classes.Bendecoder.load--returns">Returns</h5>
+<p>any
+    Decoded contents of file, Usually a dictionary.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>pyben\classes.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="nd">@classmethod</span>
+<span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Extract contents from path/path-like and return Decoded data.</span>
+
+<span class="sd">    Args</span>
+<span class="sd">    --------</span>
+<span class="sd">    path : `str` or `path-like`</span>
+<span class="sd">        Path containing bencoded data.</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    ---------</span>
+<span class="sd">    `FilePathError`:</span>
+<span class="sd">        Incorrect path or IOBuffer doesnt exist.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    ---------</span>
+<span class="sd">    any</span>
+<span class="sd">        Decoded contents of file, Usually a dictionary.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">decoder</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">()</span>
+    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="s2">&quot;read&quot;</span><span class="p">):</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">decoder</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">item</span><span class="p">)</span> <span class="ow">and</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">item</span><span class="p">):</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">_fd</span><span class="p">:</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">_fd</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+            <span class="k">return</span> <span class="n">decoder</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+    <span class="k">raise</span> <span class="n">FilePathError</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="pyben.classes.Bendecoder.loads" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">loads</span><span class="p">(</span><span class="n">data</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-classmethod"><code>classmethod</code></small>
+  </span>
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Shortcut to Decode raw bencoded data.</p>
+<h5 id="pyben.classes.Bendecoder.loads--args">Args</h5>
+<p>data : <code>bytes</code> or <code>bytearray</code>
+    Bendencoded <code>bytes</code>.</p>
+<h5 id="pyben.classes.Bendecoder.loads--returns">Returns</h5>
+<p>any
+    Decoded data usually a dictionary.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>pyben\classes.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="nd">@classmethod</span>
+<span class="k">def</span> <span class="nf">loads</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Shortcut to Decode raw bencoded data.</span>
+
+<span class="sd">    Args</span>
+<span class="sd">    --------</span>
+<span class="sd">    data : ``bytes`` or `bytearray`</span>
+<span class="sd">        Bendencoded `bytes`.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    ---------</span>
+<span class="sd">    any</span>
+<span class="sd">        Decoded data usually a dictionary.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">decoder</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">decoder</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-class">
+
+
+
+<h2 id="pyben.classes.Benencoder" class="doc doc-heading">
+        <code>
+Benencoder        </code>
+
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Encoder for bencode encoding used for Bittorrent meta-files.</p>
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="pyben.classes.Benencoder.__init__" class="doc doc-heading">
+<code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-special"><code>special</code></small>
+  </span>
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Initialize Benencoder insance with optional pre compiled data.</p>
+<h5 id="pyben.classes.Benencoder.__init__--args">Args</h5>
+<p>data : any
+    (Optional) Target data for encoding. Defaults to None.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>pyben\classes.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Initialize Benencoder insance with optional pre compiled data.</span>
+
+<span class="sd">    Args</span>
+<span class="sd">    --------</span>
+<span class="sd">    data : any</span>
+<span class="sd">        (Optional) Target data for encoding. Defaults to None.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">encoded</span> <span class="o">=</span> <span class="kc">None</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="pyben.classes.Benencoder.dump" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">dump</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-classmethod"><code>classmethod</code></small>
+  </span>
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Shortcut Classmethod for encoding data and writing to file.</p>
+<h5 id="pyben.classes.Benencoder.dump--args">Args</h5>
+<p>data : any
+    Raw data to be encoded, usually dict.txt
+path : path-like or <code>BytesIO</code>
+    Where encoded data should be written to.py</p>
+<h5 id="pyben.classes.Benencoder.dump--returns">Returns</h5>
+<p><code>bool</code> : Return True if success.txt</p>
+
+        <details class="quote">
+          <summary>Source code in <code>pyben\classes.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="nd">@classmethod</span>
+<span class="k">def</span> <span class="nf">dump</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Shortcut Classmethod for encoding data and writing to file.</span>
+
+<span class="sd">    Args</span>
+<span class="sd">    --------</span>
+<span class="sd">    data : any</span>
+<span class="sd">        Raw data to be encoded, usually dict.txt</span>
+<span class="sd">    path : path-like or `BytesIO`</span>
+<span class="sd">        Where encoded data should be written to.py</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    ---------</span>
+<span class="sd">    `bool` : Return True if success.txt</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">encoded</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">()</span>
+    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s2">&quot;write&quot;</span><span class="p">):</span>
+        <span class="n">path</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">encoded</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">_fd</span><span class="p">:</span>
+            <span class="n">_fd</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">encoded</span><span class="p">)</span>
+    <span class="k">return</span> <span class="kc">True</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="pyben.classes.Benencoder.dumps" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">dumps</span><span class="p">(</span><span class="n">data</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-classmethod"><code>classmethod</code></small>
+  </span>
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Shortcut method for encoding data and immediately returning it.</p>
+<h5 id="pyben.classes.Benencoder.dumps--args">Args</h5>
+<p>data : any
+    Raw data to be encoded usually a dictionary.</p>
+<h5 id="pyben.classes.Benencoder.dumps--returns">Returns</h5>
+<p><code>bytes</code>: Encoded data.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>pyben\classes.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="nd">@classmethod</span>
+<span class="k">def</span> <span class="nf">dumps</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Shortcut method for encoding data and immediately returning it.</span>
+
+<span class="sd">    Args</span>
+<span class="sd">    --------</span>
+<span class="sd">    data : any</span>
+<span class="sd">        Raw data to be encoded usually a dictionary.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    ---------</span>
+<span class="sd">    `bytes`: Encoded data.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">()</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="pyben.classes.Benencoder.encode" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">encode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Encode data provided as an arguement or provided at initialization.</p>
+<h5 id="pyben.classes.Benencoder.encode--args">Args</h5>
+<p>val : any, optional
+    Data for encoding. Defaults to None.</p>
+<h5 id="pyben.classes.Benencoder.encode--returns">Returns</h5>
+<p><code>bytes</code> : encoded data</p>
+
+        <details class="quote">
+          <summary>Source code in <code>pyben\classes.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">encode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Encode data provided as an arguement or provided at initialization.</span>
+
+<span class="sd">    Args</span>
+<span class="sd">    --------</span>
+<span class="sd">    val : any, optional</span>
+<span class="sd">        Data for encoding. Defaults to None.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    ---------</span>
+<span class="sd">    `bytes` : encoded data</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">val</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">val</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">encoded</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_encode</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">encoded</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-module">
+
+<a id="pyben.bencode"></a>
+    <div class="doc doc-contents first">
+
+      <p>API helper functions for decoding and encoding data with bencode format.</p>
+<h3 id="pyben.bencode--functions">Functions</h3>
+<ul>
+<li>bendecode</li>
+<li>bendecode_dict</li>
+<li>bendecode_int</li>
+<li>bendecode_list</li>
+<li>
+<p>bendecode_str</p>
+</li>
+<li>
+<p>benencode</p>
+</li>
+<li>bencode_bytes</li>
+<li>bencode_dict</li>
+<li>bencode_int</li>
+<li>bencode_list</li>
+<li>bencode_str</li>
+</ul>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="pyben.bencode.bencode_bytes" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">bencode_bytes</span><span class="p">(</span><span class="n">bits</span><span class="p">)</span></code>
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Encode bytes.</p>
+<h4 id="pyben.bencode.bencode_bytes--args">Args</h4>
+<p>bits : <code>bytes</code></p>
+<blockquote>
+<p>Bytes treated as a byte-string literal.</p>
+</blockquote>
+<h4 id="pyben.bencode.bencode_bytes--returns">Returns</h4>
+<p><code>bytes</code>:</p>
+<blockquote>
+<p>Bencode encoded byte string literal.</p>
+</blockquote>
+
+        <details class="quote">
+          <summary>Source code in <code>pyben\bencode.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">bencode_bytes</span><span class="p">(</span><span class="n">bits</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Encode bytes.</span>
+
+<span class="sd">    Args</span>
+<span class="sd">    --------</span>
+<span class="sd">    bits : `bytes`</span>
+<span class="sd">    &gt;   Bytes treated as a byte-string literal.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    ---------</span>
+<span class="sd">    `bytes`:</span>
+<span class="sd">    &gt;   Bencode encoded byte string literal.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">size</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">bits</span><span class="p">))</span> <span class="o">+</span> <span class="s2">&quot;:&quot;</span>
+    <span class="k">return</span> <span class="n">size</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="n">bits</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="pyben.bencode.bencode_dict" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">bencode_dict</span><span class="p">(</span><span class="n">dic</span><span class="p">)</span></code>
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Encode dictionary and contents.</p>
+<h4 id="pyben.bencode.bencode_dict--args">Args</h4>
+<p>dic : <code>dict</code></p>
+<blockquote>
+<p>Any dictionary containing items that can be bencoded.</p>
+</blockquote>
+<h4 id="pyben.bencode.bencode_dict--returns">Returns</h4>
+<p><code>bytes</code> :</p>
+<blockquote>
+<p>Bencoded key, value pairs of data.</p>
+</blockquote>
+
+        <details class="quote">
+          <summary>Source code in <code>pyben\bencode.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">bencode_dict</span><span class="p">(</span><span class="n">dic</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Encode dictionary and contents.</span>
+
+<span class="sd">    Args</span>
+<span class="sd">    --------</span>
+<span class="sd">    dic : `dict`</span>
+<span class="sd">    &gt;   Any dictionary containing items that can be bencoded.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    ---------</span>
+<span class="sd">    `bytes` :</span>
+<span class="sd">    &gt;   Bencoded key, value pairs of data.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="sa">b</span><span class="s2">&quot;d&quot;</span>
+
+    <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">dic</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">result</span> <span class="o">+=</span> <span class="sa">b</span><span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">benencode</span><span class="p">(</span><span class="n">key</span><span class="p">),</span> <span class="n">benencode</span><span class="p">(</span><span class="n">val</span><span class="p">)])</span>
+
+    <span class="k">return</span> <span class="n">result</span> <span class="o">+</span> <span class="sa">b</span><span class="s2">&quot;e&quot;</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="pyben.bencode.bencode_int" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">bencode_int</span><span class="p">(</span><span class="n">i</span><span class="p">)</span></code>
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Encode integer type.</p>
+<h4 id="pyben.bencode.bencode_int--args">Args</h4>
+<p>i : <code>int</code></p>
+<blockquote>
+<p>Number that needs encoding.</p>
+</blockquote>
+<h4 id="pyben.bencode.bencode_int--returns">Returns</h4>
+<p><code>bytes</code> :</p>
+<blockquote>
+<p>Bencoded Integer.</p>
+</blockquote>
+
+        <details class="quote">
+          <summary>Source code in <code>pyben\bencode.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">bencode_int</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Encode integer type.</span>
+
+<span class="sd">    Args</span>
+<span class="sd">    --------</span>
+<span class="sd">    i : `int`</span>
+<span class="sd">    &gt;   Number that needs encoding.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    ---------</span>
+<span class="sd">    `bytes` :</span>
+<span class="sd">    &gt;   Bencoded Integer.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">(</span><span class="s2">&quot;i&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;e&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="pyben.bencode.bencode_list" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">bencode_list</span><span class="p">(</span><span class="n">elems</span><span class="p">)</span></code>
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Encode list and contents.</p>
+<h4 id="pyben.bencode.bencode_list--args">Args</h4>
+<p>elems : <code>list</code></p>
+<blockquote>
+<p>List of items for bencoding.</p>
+</blockquote>
+<h4 id="pyben.bencode.bencode_list--returns">Returns</h4>
+<p><code>bytes</code> :</p>
+<blockquote>
+<p>Bencoded list and contents.</p>
+</blockquote>
+
+        <details class="quote">
+          <summary>Source code in <code>pyben\bencode.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">bencode_list</span><span class="p">(</span><span class="n">elems</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Encode list and contents.</span>
+
+<span class="sd">    Args</span>
+<span class="sd">    --------</span>
+<span class="sd">    elems : `list`</span>
+<span class="sd">    &gt;   List of items for bencoding.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    ---------</span>
+<span class="sd">    `bytes` :</span>
+<span class="sd">    &gt;   Bencoded list and contents.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">arr</span> <span class="o">=</span> <span class="nb">bytearray</span><span class="p">(</span><span class="s2">&quot;l&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">elems</span><span class="p">:</span>
+        <span class="n">encoded</span> <span class="o">=</span> <span class="n">benencode</span><span class="p">(</span><span class="n">elem</span><span class="p">)</span>
+        <span class="n">arr</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">encoded</span><span class="p">)</span>
+
+    <span class="n">arr</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;e&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">arr</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="pyben.bencode.bencode_str" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">bencode_str</span><span class="p">(</span><span class="n">txt</span><span class="p">)</span></code>
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Encode string literals.</p>
+<h4 id="pyben.bencode.bencode_str--args">Args</h4>
+<p>txt : <code>str</code></p>
+<blockquote>
+<p>Any text string.</p>
+</blockquote>
+<h4 id="pyben.bencode.bencode_str--returns">Returns</h4>
+<p><code>bytes</code> :</p>
+<blockquote>
+<p>Bencoded string literal.</p>
+</blockquote>
+
+        <details class="quote">
+          <summary>Source code in <code>pyben\bencode.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">bencode_str</span><span class="p">(</span><span class="n">txt</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Encode string literals.</span>
+
+<span class="sd">    Args</span>
+<span class="sd">    --------</span>
+<span class="sd">    txt : `str`</span>
+<span class="sd">    &gt;   Any text string.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    ---------</span>
+<span class="sd">    `bytes` :</span>
+<span class="sd">    &gt;   Bencoded string literal.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">size</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">txt</span><span class="p">))</span> <span class="o">+</span> <span class="s2">&quot;:&quot;</span>
+    <span class="k">return</span> <span class="n">size</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="n">txt</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="pyben.bencode.bendecode" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">bendecode</span><span class="p">(</span><span class="n">bits</span><span class="p">)</span></code>
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Decode bencoded data.</p>
+<h4 id="pyben.bencode.bendecode--args">Args</h4>
+<p>bits : <code>bytes</code></p>
+<blockquote>
+<p>Bencode encoded data.</p>
+</blockquote>
+<h4 id="pyben.bencode.bendecode--raises">Raises</h4>
+<p><code>DecodeError</code> :</p>
+<blockquote>
+<p>Malformed data.</p>
+</blockquote>
+<h4 id="pyben.bencode.bendecode--returns">Returns</h4>
+<p>any :</p>
+<blockquote>
+<p>Bencode decoded data.</p>
+</blockquote>
+
+        <details class="quote">
+          <summary>Source code in <code>pyben\bencode.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">bendecode</span><span class="p">(</span><span class="n">bits</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Decode bencoded data.</span>
+
+<span class="sd">    Args</span>
+<span class="sd">    -----------------</span>
+<span class="sd">    bits : `bytes`</span>
+<span class="sd">    &gt;   Bencode encoded data.</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    -----------------</span>
+<span class="sd">    `DecodeError` :</span>
+<span class="sd">    &gt;   Malformed data.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -----------------</span>
+<span class="sd">    any :</span>
+<span class="sd">    &gt;   Bencode decoded data.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">bits</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;i&quot;</span><span class="p">):</span>
+        <span class="n">match</span><span class="p">,</span> <span class="n">feed</span> <span class="o">=</span> <span class="n">bendecode_int</span><span class="p">(</span><span class="n">bits</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">match</span><span class="p">,</span> <span class="n">feed</span>
+
+    <span class="k">if</span> <span class="nb">chr</span><span class="p">(</span><span class="n">bits</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">isdigit</span><span class="p">():</span>
+        <span class="n">match</span><span class="p">,</span> <span class="n">feed</span> <span class="o">=</span> <span class="n">bendecode_str</span><span class="p">(</span><span class="n">bits</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">match</span><span class="p">,</span> <span class="n">feed</span>
+
+    <span class="k">if</span> <span class="n">bits</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;l&quot;</span><span class="p">):</span>
+        <span class="n">lst</span><span class="p">,</span> <span class="n">feed</span> <span class="o">=</span> <span class="n">bendecode_list</span><span class="p">(</span><span class="n">bits</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">lst</span><span class="p">,</span> <span class="n">feed</span>
+
+    <span class="k">if</span> <span class="n">bits</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;d&quot;</span><span class="p">):</span>
+        <span class="n">dic</span><span class="p">,</span> <span class="n">feed</span> <span class="o">=</span> <span class="n">bendecode_dict</span><span class="p">(</span><span class="n">bits</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">dic</span><span class="p">,</span> <span class="n">feed</span>
+
+    <span class="k">raise</span> <span class="n">DecodeError</span><span class="p">(</span><span class="n">bits</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="pyben.bencode.bendecode_dict" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">bendecode_dict</span><span class="p">(</span><span class="n">bits</span><span class="p">)</span></code>
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Decode dictionary and it's contents.</p>
+<h4 id="pyben.bencode.bendecode_dict--args">Args</h4>
+<p>bits : <code>bytes</code></p>
+<blockquote>
+<p>Bencoded dictionary.</p>
+</blockquote>
+<h4 id="pyben.bencode.bendecode_dict--returns">Returns</h4>
+<p><code>dict</code></p>
+<blockquote>
+<p>Decoded dictionary and contents</p>
+</blockquote>
+
+        <details class="quote">
+          <summary>Source code in <code>pyben\bencode.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">bendecode_dict</span><span class="p">(</span><span class="n">bits</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Decode dictionary and it&#39;s contents.</span>
+
+<span class="sd">    Args</span>
+<span class="sd">    ---------</span>
+<span class="sd">    bits : `bytes`</span>
+<span class="sd">    &gt;   Bencoded dictionary.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    ---------</span>
+<span class="sd">    `dict`</span>
+<span class="sd">    &gt;   Decoded dictionary and contents</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">dic</span><span class="p">,</span> <span class="n">feed</span> <span class="o">=</span> <span class="p">{},</span> <span class="mi">1</span>
+
+    <span class="k">while</span> <span class="ow">not</span> <span class="n">bits</span><span class="p">[</span><span class="n">feed</span><span class="p">:]</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;e&quot;</span><span class="p">):</span>
+        <span class="n">match1</span><span class="p">,</span> <span class="n">rest</span> <span class="o">=</span> <span class="n">bendecode</span><span class="p">(</span><span class="n">bits</span><span class="p">[</span><span class="n">feed</span><span class="p">:])</span>
+        <span class="n">feed</span> <span class="o">+=</span> <span class="n">rest</span>
+        <span class="n">match2</span><span class="p">,</span> <span class="n">rest</span> <span class="o">=</span> <span class="n">bendecode</span><span class="p">(</span><span class="n">bits</span><span class="p">[</span><span class="n">feed</span><span class="p">:])</span>
+        <span class="n">feed</span> <span class="o">+=</span> <span class="n">rest</span>
+        <span class="n">dic</span><span class="p">[</span><span class="n">match1</span><span class="p">]</span> <span class="o">=</span> <span class="n">match2</span>
+
+    <span class="n">feed</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">dic</span><span class="p">,</span> <span class="n">feed</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="pyben.bencode.bendecode_int" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">bendecode_int</span><span class="p">(</span><span class="n">bits</span><span class="p">)</span></code>
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Decode digits.</p>
+<h4 id="pyben.bencode.bendecode_int--args">Args</h4>
+<p>bits : <code>bytes</code></p>
+<blockquote>
+<p>Bencoded intiger bytes</p>
+</blockquote>
+<h4 id="pyben.bencode.bendecode_int--returns">Returns</h4>
+<p><code>int</code> :</p>
+<blockquote>
+<p>Decoded int value.</p>
+</blockquote>
+
+        <details class="quote">
+          <summary>Source code in <code>pyben\bencode.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">bendecode_int</span><span class="p">(</span><span class="n">bits</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Decode digits.</span>
+
+<span class="sd">    Args</span>
+<span class="sd">    -----------------</span>
+<span class="sd">    bits : `bytes`</span>
+<span class="sd">    &gt;   Bencoded intiger bytes</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -----------------</span>
+<span class="sd">    `int` :</span>
+<span class="sd">    &gt;   Decoded int value.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">obj</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">br</span><span class="s2">&quot;i(-?\d+)e&quot;</span><span class="p">,</span> <span class="n">bits</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)),</span> <span class="n">obj</span><span class="o">.</span><span class="n">end</span><span class="p">()</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="pyben.bencode.bendecode_list" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">bendecode_list</span><span class="p">(</span><span class="n">bits</span><span class="p">)</span></code>
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Decode list and list contents.</p>
+<h4 id="pyben.bencode.bendecode_list--args">Args</h4>
+<p>bits : <code>bytes</code></p>
+<blockquote>
+<p>Bencoded list.</p>
+</blockquote>
+<h4 id="pyben.bencode.bendecode_list--returns">Returns</h4>
+<p><code>list</code> :</p>
+<blockquote>
+<p>Bencode decoded list and contents.</p>
+</blockquote>
+
+        <details class="quote">
+          <summary>Source code in <code>pyben\bencode.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">bendecode_list</span><span class="p">(</span><span class="n">bits</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Decode list and list contents.</span>
+
+<span class="sd">    Args</span>
+<span class="sd">    -----------------</span>
+<span class="sd">    bits : `bytes`</span>
+<span class="sd">    &gt;   Bencoded list.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -----------------</span>
+<span class="sd">    `list` :</span>
+<span class="sd">    &gt;   Bencode decoded list and contents.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">lst</span><span class="p">,</span> <span class="n">feed</span> <span class="o">=</span> <span class="p">[],</span> <span class="mi">1</span>
+
+    <span class="k">while</span> <span class="ow">not</span> <span class="n">bits</span><span class="p">[</span><span class="n">feed</span><span class="p">:]</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;e&quot;</span><span class="p">):</span>
+        <span class="n">match</span><span class="p">,</span> <span class="n">rest</span> <span class="o">=</span> <span class="n">bendecode</span><span class="p">(</span><span class="n">bits</span><span class="p">[</span><span class="n">feed</span><span class="p">:])</span>
+        <span class="n">lst</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">match</span><span class="p">)</span>
+        <span class="n">feed</span> <span class="o">+=</span> <span class="n">rest</span>
+
+    <span class="n">feed</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">lst</span><span class="p">,</span> <span class="n">feed</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="pyben.bencode.bendecode_str" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">bendecode_str</span><span class="p">(</span><span class="n">units</span><span class="p">)</span></code>
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Bendecode string types.</p>
+<h4 id="pyben.bencode.bendecode_str--args">Args</h4>
+<p>bits : <code>bytes</code></p>
+<blockquote>
+<p>Bencoded string.</p>
+</blockquote>
+<h4 id="pyben.bencode.bendecode_str--returns">Returns</h4>
+<p><code>str</code> :</p>
+<blockquote>
+<p>Decoded data string.</p>
+</blockquote>
+
+        <details class="quote">
+          <summary>Source code in <code>pyben\bencode.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">bendecode_str</span><span class="p">(</span><span class="n">units</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Bendecode string types.</span>
+
+<span class="sd">    Args</span>
+<span class="sd">    ---------</span>
+<span class="sd">    bits : `bytes`</span>
+<span class="sd">    &gt;   Bencoded string.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    ---------</span>
+<span class="sd">    `str` :</span>
+<span class="sd">    &gt;   Decoded data string.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">match</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">br</span><span class="s2">&quot;(\d+):&quot;</span><span class="p">,</span> <span class="n">units</span><span class="p">)</span>
+    <span class="n">word_len</span><span class="p">,</span> <span class="n">start</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">match</span><span class="o">.</span><span class="n">groups</span><span class="p">()[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">match</span><span class="o">.</span><span class="n">span</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">end</span> <span class="o">=</span> <span class="n">start</span> <span class="o">+</span> <span class="n">word_len</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">units</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">end</span><span class="p">]</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+
+    <span class="k">except</span> <span class="ne">UnicodeDecodeError</span><span class="p">:</span>
+        <span class="k">pass</span>
+
+    <span class="k">return</span> <span class="n">text</span><span class="p">,</span> <span class="n">end</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="pyben.bencode.benencode" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">benencode</span><span class="p">(</span><span class="n">val</span><span class="p">)</span></code>
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Encode data with bencoding.</p>
+<h4 id="pyben.bencode.benencode--args">Args</h4>
+<p>val : any</p>
+<blockquote>
+<p>Data for encoding.</p>
+</blockquote>
+<h4 id="pyben.bencode.benencode--raises">Raises</h4>
+<p><code>EncodeError</code> :</p>
+<blockquote>
+<p>Cannot interpret data.</p>
+</blockquote>
+<h4 id="pyben.bencode.benencode--returns">Returns</h4>
+<p><code>bytes</code> :</p>
+<blockquote>
+<p>Bencoded data.</p>
+</blockquote>
+
+        <details class="quote">
+          <summary>Source code in <code>pyben\bencode.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">benencode</span><span class="p">(</span><span class="n">val</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Encode data with bencoding.</span>
+
+<span class="sd">    Args</span>
+<span class="sd">    --------</span>
+<span class="sd">    val : any</span>
+<span class="sd">    &gt;   Data for encoding.</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    --------</span>
+<span class="sd">    `EncodeError` :</span>
+<span class="sd">    &gt;   Cannot interpret data.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    ---------</span>
+<span class="sd">    `bytes` :</span>
+<span class="sd">    &gt;   Bencoded data.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">bencode_str</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">bencode_int</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">bencode_list</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">bencode_dict</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="s2">&quot;hex&quot;</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">bencode_bytes</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">bencode_list</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">val</span><span class="p">))</span>
+
+    <span class="k">raise</span> <span class="n">EncodeError</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-module">
+
+<a id="pyben.exceptions"></a>
+    <div class="doc doc-contents first">
+
+      <p>Exceptions used throughout the PyBen Package/Library.</p>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-class">
+
+
+
+<h2 id="pyben.exceptions.DecodeError" class="doc doc-heading">
+        <code>
+DecodeError            (<span title="Exception">Exception</span>)
+        </code>
+
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Error occured during decode process.</p>
+<p>Raised when attempting to decode an incompatible bytearray.
+Mostly it indicates the object is a hash digest and should remian
+as a bytes object.</p>
+<h4 id="pyben.exceptions.DecodeError--args">Args</h4>
+<p>val : any
+-   Value that cause the exception</p>
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="pyben.exceptions.DecodeError.__init__" class="doc doc-heading">
+<code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-special"><code>special</code></small>
+  </span>
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Construct Exception DecodeError.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>pyben\exceptions.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Construct Exception DecodeError.&quot;&quot;&quot;</span>
+    <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Decoder is unable to interpret </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">val</span><span class="p">)</span><span class="si">}</span><span class="s2"> type = </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">val</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-class">
+
+
+
+<h2 id="pyben.exceptions.EncodeError" class="doc doc-heading">
+        <code>
+EncodeError            (<span title="Exception">Exception</span>)
+        </code>
+
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Error occured during encoding process.</p>
+<p>Raised when attempting to bencode encode an incompatible
+data type into bencode format. Bencode accepts lists, dicts,
+strings, integers, and bytes.</p>
+<h4 id="pyben.exceptions.EncodeError--args">Args</h4>
+<p>val : any
+-   Value that cause the exception</p>
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="pyben.exceptions.EncodeError.__init__" class="doc doc-heading">
+<code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-special"><code>special</code></small>
+  </span>
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Construct Exception EncodeError.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>pyben\exceptions.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Construct Exception EncodeError.&quot;&quot;&quot;</span>
+    <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Encoder is unable to interpret </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">val</span><span class="p">)</span><span class="si">}</span><span class="s2"> type = </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">val</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-class">
+
+
+
+<h2 id="pyben.exceptions.FilePathError" class="doc doc-heading">
+        <code>
+FilePathError            (<span title="Exception">Exception</span>)
+        </code>
+
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Bad path error.</p>
+<p>Generally raised when the file at the path specified
+does not exist.</p>
+<h4 id="pyben.exceptions.FilePathError--args">Args</h4>
+<p>val : any
+-   Value that cause the exception</p>
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="pyben.exceptions.FilePathError.__init__" class="doc doc-heading">
+<code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-special"><code>special</code></small>
+  </span>
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Construct Exception Subclass FilePathError.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>pyben\exceptions.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Construct Exception Subclass FilePathError.&quot;&quot;&quot;</span>
+    <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span><span class="si">}</span><span class="s2"> doesn&#39;t exist or is unavailable.&quot;</span>
+    <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div></div>
+        
+        
+    </div>
+
+    
+      <footer class="col-md-12 text-center">
+          
+          
+            <hr>
+            <p>
+            <small>alexpdev 2021</small><br>
+            
+            <small>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</small>
+            </p>
+          
+
+          
+          
+      </footer>
+    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="../js/bootstrap-3.0.3.min.js"></script>
+
+    
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+        
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    <script>var base_url = ".."</script>
+    
+    <script src="../js/base.js"></script>
+    <script src="../search/main.js"></script>
+
+    <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+    </body>
+
+</html>

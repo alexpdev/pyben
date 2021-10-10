@@ -15,18 +15,41 @@
 PyBen is a library for decoding/encoding data, with the bencode specification.
 
 Bencode is commonly used for encoding Bittorrent Protocol Metafiles (.torrent).
+
+Modules
+---------
+* api
+* classes
+* bencode
+
+Classes
+---------
+* Bendecoder
+* Benencoder
+
+Functions
+---------
+* bendecode
+* benencode
+* dump
+* dumps
+* load
+* loads
+
 """
 
-from pyben import classes, bencode
-from pyben.bencode import load, loads, dump, dumps, benencode, bendecode
+from pyben import classes, bencode, api
+from pyben.api import dump, dumps, load, loads
+from pyben.bencode import benencode, bendecode
 from pyben.classes import Benencoder, Bendecoder
 
-__version__ = "0.2.1"
+__version__ = "0.2.2"
 __author__ = "alexpdev"
 
 __all__ = [
     "Bendecoder",
     "Benencoder",
+    "api",
     "bencode",
     "bendecode",
     "benencode",
