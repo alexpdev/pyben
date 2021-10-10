@@ -42,7 +42,9 @@ clean-build: ## remove build artifacts
 	rm -f .coverage
 	rm -fr htmlcov/
 	rm -fr .pytest_cache
-	rm -fr corbertura.xml
+	rm -f corbertura.xml
+	rm -f coverage.xml
+	rm -fr .codacy-coverage
 
 lint: ## check style with flake8
 	black pyben tests
