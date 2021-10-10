@@ -48,7 +48,7 @@ def testmeta():
         },
         "created by": "mktorrent",
     }
-    assert isinstance(meta, dict)
+    assert isinstance(meta, dict)  # nosec
     return meta
 
 
@@ -59,7 +59,7 @@ def testfile():
     meta = testmeta()
     with open(tfile, "wb") as fd:
         pyben.dump(meta, fd)
-    assert os.path.exists(tfile)
+    assert os.path.exists(tfile)  # nosec
     return tfile
 
 

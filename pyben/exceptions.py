@@ -22,10 +22,11 @@ class DecodeError(Exception):
     Mostly it indicates the object is a hash digest and should remian
     as a bytes object.
 
-    Args
-    -----
+    Args:
+    ----
     val : any
-    -   Value that cause the exception
+        Value that cause the exception
+
     """
 
     def __init__(self, val=None):
@@ -42,10 +43,11 @@ class EncodeError(Exception):
     data type into bencode format. Bencode accepts lists, dicts,
     strings, integers, and bytes.
 
-    Args
-    -----
+    Args:
+    ----
     val : any
-    -   Value that cause the exception
+        Value that cause the exception
+
     """
 
     def __init__(self, val=None):
@@ -61,10 +63,11 @@ class FilePathError(Exception):
     Generally raised when the file at the path specified
     does not exist.
 
-    Args
-    -----
+    Args:
+    ----
     val : any
-    -   Value that cause the exception
+        Value that cause the exception
+
     """
 
     def __init__(self, obj=None):

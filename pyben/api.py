@@ -72,12 +72,13 @@ def dump(obj, buffer):
     Works effectively the same as it's json equivelant except also
     accepts a path as well as an open fileIO.
 
-    Args
-    -----------------
+    Args:
+    ----
     obj : any
-    *   Data to be encoded.
+        Data to be encoded.
     buffer : `str` or `BytesIO`
-    *   File of path-like to write the data to.
+        File of path-like to write the data to.
+
     """
     encoded = benencode(obj)
 
@@ -95,14 +96,15 @@ def dumps(obj):
     Shortuct function to encoding given obj to bencode encoding.
 
     Args
-    --------
+    ----
     obj : `any`
-    *   Object to be encoded.py.
+        Object to be encoded.py.
 
     Returns
-    --------
+    -------
     `bytes` :
-    *   Encoded data.
+        Encoded data.
+
     """
     return benencode(obj)
 
@@ -112,14 +114,15 @@ def load(buffer):
     Load bencoded data from a file of path object and decodes it.
 
     Args
-    --------
+    ----
     buffer : `str` or `BytesIO`
-    *   Open and/or read data from file to be decoded.
+        Open and/or read data from file to be decoded.
 
     Returns
-    ---------
+    -------
     `any` :
-    *   (commonly `dict`), Decoded contents of file.
+        (commonly `dict`), Decoded contents of file.
+
     """
     if hasattr(buffer, "read"):
         decoded, _ = bendecode(buffer.read())
@@ -136,14 +139,15 @@ def loads(encoded):
     Shortcut function for decoding encoded data.
 
     Args
-    --------
+    ----
     encoded : `bytes`
-    *   Bencoded data.
+        Bencoded data.
 
     Returns
-    --------
+    -------
     `any` :
-    *   (commonly `dict`), Decoded data.
+        (commonly `dict`), Decoded data.
+
     """
     decoded, _ = bendecode(encoded)
     return decoded

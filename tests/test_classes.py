@@ -59,19 +59,19 @@ def types():
 
 def test_types(types):
     """Test fixture functionality."""
-    assert len(types) > 1
+    assert len(types) > 1  # nosec
 
 
 def test_encode_tuple_to_list_encode_list_method():
     """Test encoding tuple to list."""
     data = ((130, "foobar", "foo:bar"), b"li130e6:foobar7:foo:bare")
-    assert Benencoder()._encode_list(data[0]) == data[1]
+    assert Benencoder()._encode_list(data[0]) == data[1]  # nosec
 
 
 def test_encode_tuple_to_list_encode_method():
     """Test encoding tuple to list main method."""
     data = ((130, "foobar", "foo:bar"), b"li130e6:foobar7:foo:bare")
-    assert Benencoder().encode(data[0]) == data[1]
+    assert Benencoder().encode(data[0]) == data[1]  # nosec
 
 
 def test_decode_str(strings):
@@ -79,8 +79,8 @@ def test_decode_str(strings):
     decoder = Bendecoder()
     for string, benstring in strings:
         text, feed = decoder._decode_str(benstring)
-        assert string == text
-        assert feed == len(benstring)
+        assert string == text  # nosec
+        assert feed == len(benstring)  # nosec
 
 
 def test_decode_int_class(ints):
@@ -88,8 +88,8 @@ def test_decode_int_class(ints):
     decoder = Bendecoder()
     for num, benint in ints:
         real, feed = decoder._decode_int(benint)
-        assert real == num
-        assert feed == len(benint)
+        assert real == num  # nosec
+        assert feed == len(benint)  # nosec
 
 
 def test_decode_list_class(lists):
@@ -97,7 +97,7 @@ def test_decode_list_class(lists):
     decoder = Bendecoder()
     for lst, benlist in lists:
         decoded, _ = decoder._decode_list(benlist)
-        assert decoded == lst
+        assert decoded == lst  # nosec
 
 
 def test_decode_dict_class(dicts):
@@ -105,7 +105,7 @@ def test_decode_dict_class(dicts):
     decoder = Bendecoder()
     for dct, bendict in dicts:
         decoded, _ = decoder._decode_dict(bendict)
-        assert dct == decoded
+        assert dct == decoded  # nosec
 
 
 def test_decode_class(ints, strings, lists, dicts):
@@ -115,14 +115,14 @@ def test_decode_class(ints, strings, lists, dicts):
     for val in data:
         for item, benitem in val:
             decoded = decoder.decode(benitem)
-            assert decoded == item
+            assert decoded == item  # nosec
 
 
 def test_decode_load(tfile):
     """Test inline decoding."""
     decoder = Bendecoder()
     output = decoder.load(tfile)
-    assert isinstance(output, dict)
+    assert isinstance(output, dict)  # nosec
 
 
 def test_decode_loads(tfile):
@@ -131,7 +131,7 @@ def test_decode_loads(tfile):
         inp = _fd.read()
     decoder = Bendecoder()
     out = decoder.loads(inp)
-    assert out["info"]["length"] == 12845738
+    assert out["info"]["length"] == 12845738  # nosec
 
 
 def test_bencode_str(strings):
@@ -139,7 +139,7 @@ def test_bencode_str(strings):
     encoder = Benencoder()
     for string, benstring in strings:
         text = encoder._encode_str(string)
-        assert benstring == text
+        assert benstring == text  # nosec
 
 
 def test_bencode_int(ints):
@@ -147,7 +147,7 @@ def test_bencode_int(ints):
     encoder = Benencoder()
     for num, benint in ints:
         real = encoder._encode_int(num)
-        assert real == benint
+        assert real == benint  # nosec
 
 
 def test_bencode_list(lists):
@@ -155,14 +155,14 @@ def test_bencode_list(lists):
     encoder = Benencoder()
     for lst, benlist in lists:
         encoded = encoder._encode_list(lst)
-        assert encoded == benlist
+        assert encoded == benlist  # nosec
 
 
 def test_bencode_dump(tmeta, tfile):
     """Test to file encoding with path string."""
     encoder = Benencoder()
     encoder.dump(tmeta, tfile)
-    assert os.path.exists(tfile)
+    assert os.path.exists(tfile)  # nosec
 
 
 def test_bencode_dump1(tmeta, tfile):
@@ -170,14 +170,14 @@ def test_bencode_dump1(tmeta, tfile):
     encoder = Benencoder()
     with open(tfile, "wb") as a:
         encoder.dump(tmeta, a)
-    assert os.path.exists(tfile)
+    assert os.path.exists(tfile)  # nosec
 
 
 def test_bencode_dumps(tmeta):
     """Test inline encoding."""
     encoder = Benencoder()
     reg = encoder.dumps(tmeta)
-    assert isinstance(reg, bytes)
+    assert isinstance(reg, bytes)  # nosec
 
 
 def test_encode_dict(dicts):
@@ -185,7 +185,7 @@ def test_encode_dict(dicts):
     encoder = Benencoder()
     for dct, bendict in dicts:
         encoded = encoder._encode_dict(dct)
-        assert bendict == encoded
+        assert bendict == encoded  # nosec
 
 
 def test_encode(ints, strings, lists, dicts):
@@ -195,7 +195,7 @@ def test_encode(ints, strings, lists, dicts):
     for val in data:
         for item, benitem in val:
             encoded = encoder.encode(item)
-            assert encoded == benitem
+            assert encoded == benitem  # nosec
 
 
 def test_bendecoder_load(tfile):
@@ -203,4 +203,4 @@ def test_bendecoder_load(tfile):
     decoder = Bendecoder()
     with open(tfile, "rb") as _fd:
         data = decoder.load(_fd)
-    assert data is not None
+    assert data is not None  # nosec

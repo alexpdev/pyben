@@ -42,50 +42,50 @@ def test_rmpath():
     with open("rmpath_test_file", "wt") as test_file:
         test_file.write("Testing rmpath function in tests module.")
     rmpath("rmpath_test_file")
-    assert not os.path.exists("rmpath_test_file")
+    assert not os.path.exists("rmpath_test_file")  # nosec
 
 
 def test_api_tuple_to_list():
     """Test encoding tuple to list."""
     lst = (130, "foobar", "foo:bar")
-    assert pyben.dumps(lst) == b"li130e6:foobar7:foo:bare"
+    assert pyben.dumps(lst) == b"li130e6:foobar7:foo:bare"  # nosec
 
 
 def test_api_loads():
     """Test decoding inline."""
     encoded = b"di1234el5:helloi99876eee"
-    assert pyben.loads(encoded) == {1234: ["hello", 99876]}
+    assert pyben.loads(encoded) == {1234: ["hello", 99876]}  # nosec
 
 
 def test_api_dumps():
     """Test encoding inline."""
     meta = {1234: ["hello", 99876]}
-    assert pyben.dumps(meta) == b"di1234el5:helloi99876eee"
+    assert pyben.dumps(meta) == b"di1234el5:helloi99876eee"  # nosec
 
 
 def test_api_loads_exists(tempfile):
     """Test decoding from file."""
     fd = tempfile
-    assert os.path.exists(fd)
+    assert os.path.exists(fd)  # nosec
 
 
 def test_api_loads_type(tempfile):
     """Test inline encoding type."""
     decoded = pyben.load(tempfile)
-    assert isinstance(decoded, dict)
+    assert isinstance(decoded, dict)  # nosec
 
 
 def test_api_loads_containes(tempfile):
     """Test inline decoding containers."""
     decoded = pyben.load(tempfile)
-    assert "ubuntu.com" in decoded["announce"].lower()
+    assert "ubuntu.com" in decoded["announce"].lower()  # nosec
 
 
 def test_api_dump_string(tempmeta):
     """Test encoding to file."""
     meta, path = tempmeta
     pyben.dump(meta, path)
-    assert os.path.exists(path)
+    assert os.path.exists(path)  # nosec
     rmpath(path)
 
 
@@ -94,7 +94,7 @@ def test_api_dump_iobuffer(tempmeta):
     meta, path = tempmeta
     with open(path, "wb") as _fd:
         pyben.dump(meta, _fd)
-    assert os.path.exists(path)
+    assert os.path.exists(path)  # nosec
     rmpath(path)
 
 
@@ -102,7 +102,7 @@ def test_dump_eq_load(tempmeta):
     """Test encoding inline then decoding."""
     meta, path = tempmeta
     pyben.dump(meta, path)
-    assert meta["info"] == pyben.load(path)["info"]
+    assert meta["info"] == pyben.load(path)["info"]  # nosec
     rmpath(path)
 
 
@@ -111,15 +111,15 @@ def test_pyben_excp3():
     try:
         raise pyben.exceptions.DecodeError(b"000000|`")
     except pyben.exceptions.DecodeError:
-        assert True
+        assert True  # nosec
 
 
 def test_pyben_excp2():
-    """Test EncodeError Exception"""
+    """Test EncodeError Exception."""
     try:
         raise pyben.exceptions.EncodeError("000000|`")
     except pyben.exceptions.EncodeError:
-        assert True
+        assert True  # nosec
 
 
 def test_pyben_excp1():
@@ -127,4 +127,4 @@ def test_pyben_excp1():
     try:
         raise pyben.exceptions.FilePathError("somefile.torrent")
     except pyben.exceptions.FilePathError:
-        assert True
+        assert True  # nosec
