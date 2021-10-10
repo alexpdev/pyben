@@ -38,12 +38,12 @@ Functions
 
 """
 
-from pyben import classes, bencode, api
+from pyben import api, bencode, classes
 from pyben.api import dump, dumps, load, loads
-from pyben.bencode import benencode, bendecode
-from pyben.classes import Benencoder, Bendecoder
+from pyben.bencode import bendecode, benencode
+from pyben.classes import Bendecoder, Benencoder
 
-__version__ = "0.2.2"
+__version__ = "0.2.3"
 __author__ = "alexpdev"
 
 __all__ = [

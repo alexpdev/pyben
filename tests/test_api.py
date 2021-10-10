@@ -14,10 +14,12 @@
 """Testing functions for Pyben API module."""
 
 import os
+
 import pytest
 
 import pyben
-from . import testfile, testmeta, rmpath
+
+from . import rmpath, testfile, testmeta
 
 
 @pytest.fixture
@@ -39,9 +41,15 @@ def tempmeta():
 
 def test_rmpath():
     """Test rmpath function."""
-    with open("rmpath_test_file", "wt") as test_file:
+    path = "test_folder"
+    os.mkdir(path)
+    file_path1 = os.path.join(path, "rmpath_test_file1")
+    file_path2 = os.path.join(path, "rmpath_test_file2")
+    with open(file_path1, "wt") as test_file:
         test_file.write("Testing rmpath function in tests module.")
-    rmpath("rmpath_test_file")
+    with open(file_path2, "wt") as test_file:
+        test_file.write("Testing rmpath function in tests module.")
+    rmpath(path)
     assert not os.path.exists("rmpath_test_file")  # nosec
 
 
@@ -87,6 +95,13 @@ def test_api_dump_string(tempmeta):
     pyben.dump(meta, path)
     assert os.path.exists(path)  # nosec
     rmpath(path)
+
+
+def test_api_with_file_load(tempfile):
+    """Test load function with opened BytesIO."""
+    with open(tempfile, "rb") as _fd:
+        data = pyben.load(_fd)
+    assert data is not None  # nosec
 
 
 def test_api_dump_iobuffer(tempmeta):

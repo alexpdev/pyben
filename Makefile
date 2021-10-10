@@ -47,7 +47,10 @@ clean-build: ## remove build artifacts
 	rm -fr .codacy-coverage
 
 lint: ## check style with flake8
-	black pyben tests
+	black pyben
+	black tests
+	isort pyben
+	isort tests
 	pylint pyben tests
 	pycodestyle pyben tests
 	pydocstyle pyben tests

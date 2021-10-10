@@ -33,6 +33,7 @@ Functions
 
 
 import re
+
 from pyben.exceptions import DecodeError, EncodeError
 
 

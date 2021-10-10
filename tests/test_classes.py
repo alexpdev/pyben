@@ -31,9 +31,13 @@ Example of single file .torrent metadata:
 """
 
 import os
+
 import pytest
+
 from pyben.classes import Bendecoder, Benencoder
-from . import ints, strings, dicts, lists, testmeta, testfile, rmpath
+from pyben.exceptions import DecodeError, EncodeError
+
+from . import dicts, ints, lists, rmpath, strings, testfile, testmeta
 
 
 @pytest.fixture
@@ -62,13 +66,42 @@ def test_types(types):
     assert len(types) > 1  # nosec
 
 
-def test_encode_tuple_to_list_encode_list_method():
+def test_decoder_constructor(strings):
+    """Test Bendecoder constructor."""
+    for string, benstring in strings:
+        decoder = Bendecoder(benstring)
+        decoded = decoder.decode()
+        assert decoded == string  # nosec
+
+
+def test_malformed_data():
+    """Test data that cannot be interpreted by decoder."""
+    data = b"li92e12:hello world!::e"
+    decoder = Bendecoder(data)
+    try:
+        _ = decoder.decode()
+    except DecodeError:
+        assert True  # nosec
+
+
+def test_improper_type():
+    """Test type that isn't interpreted by encoder."""
+    vals = [1, 2, 3, 4, 5]
+    data = [12, "hello world!", set(vals)]
+    encoder = Benencoder(data)
+    try:
+        _ = encoder.encode()
+    except EncodeError:
+        assert True  # nosec
+
+
+def test_encode_tuple_to_list():
     """Test encoding tuple to list."""
     data = ((130, "foobar", "foo:bar"), b"li130e6:foobar7:foo:bare")
     assert Benencoder()._encode_list(data[0]) == data[1]  # nosec
 
 
-def test_encode_tuple_to_list_encode_method():
+def test_encode_tuple_cast():
     """Test encoding tuple to list main method."""
     data = ((130, "foobar", "foo:bar"), b"li130e6:foobar7:foo:bare")
     assert Benencoder().encode(data[0]) == data[1]  # nosec
