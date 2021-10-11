@@ -56,7 +56,6 @@ lint: ## check style with flake8
 	pydocstyle pyben tests
 	pyroma .
 	bandit pyben/*
-	pep257 pyben
 	prospector pyben
 	prospector tests
 
@@ -78,6 +77,7 @@ push: lint docs clean test coverage
 docs: ## generate Sphinx HTML documentation, including API docs
 	rm -rf docs
 	mkdocs build
+	touch docs/.nojekyll
 
 release: dist ## package and upload a release
 	twine upload dist/*

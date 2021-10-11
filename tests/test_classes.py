@@ -86,8 +86,8 @@ def test_malformed_data():
 
 def test_improper_type():
     """Test type that isn't interpreted by encoder."""
-    vals = [1, 2, 3, 4, 5]
-    data = [12, "hello world!", set(vals)]
+    vals = {1, 2, 3, 4, 5}
+    data = [12, "hello world!", vals]
     encoder = Benencoder(data)
     try:
         _ = encoder.encode()
@@ -237,3 +237,11 @@ def test_bendecoder_load(tfile):
     with open(tfile, "rb") as _fd:
         data = decoder.load(_fd)
     assert data is not None  # nosec
+
+
+def test_decoder_bits(lists):
+    """Test inline decoding with classes."""
+    for lst, benlist in lists:
+        decoder = Bendecoder(benlist)
+        decoded = decoder.decode()
+        assert decoded == lst  # nosec

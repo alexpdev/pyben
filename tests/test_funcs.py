@@ -41,7 +41,7 @@ def test_malformed_bytes():
 
 def test_undecodable_data():
     """Test type not understood by encoder."""
-    data = set([1, 2, 3, 4, 5])
+    data = {1, 2, 3, 4, 5}
     try:
         _ = benencode(data)
     except EncodeError:
