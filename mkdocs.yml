@@ -9,8 +9,7 @@ nav:
   - License: LICENSE.md
   - API: api.md
 
-
-theme: "cinder"
+theme: material
 
 plugins:
   - search
