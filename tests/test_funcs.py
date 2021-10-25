@@ -21,13 +21,7 @@ from pyben.bencode import (bencode_dict, bencode_int, bencode_list,
                            benencode)
 from pyben.exceptions import DecodeError, EncodeError
 
-from . import dicts, ints, lists, strings
-
-
-@pytest.fixture
-def metadata():
-    """Pytest fixture functionality test fixture."""
-    return ints, strings, dicts, lists
+from . import context
 
 
 def test_malformed_bytes():
@@ -48,128 +42,124 @@ def test_undecodable_data():
         assert True  # nosec
 
 
-def test_matadata(metadata):
-    """Pytest fixture functionality test."""
-    assert len(metadata) > 1  # nosec
-
-
-def test_benencode_tuple_list():
+@pytest.mark.parametrize("decoded, encoded", context.lists())
+def test_benencode_tuple_list(decoded, encoded):
     """Test turning a tuple to a list while encoding."""
-    lst = (130, "foobar", "foo:bar")
-    assert bencode_list(lst) == b"li130e6:foobar7:foo:bare"  # nosec
+    assert bencode_list(decoded) == encoded  # nosec
 
 
-def test_benencode_tuple_to_list():
+@pytest.mark.parametrize("decoded, encoded", context.tuples())
+def test_benencode_tuple_to_list(decoded, encoded):
     """Test turning a tuple to a list while encoding."""
-    lst = (130, "foobar", "foo:bar")
-    assert benencode(lst) == b"li130e6:foobar7:foo:bare"  # nosec
+    assert benencode(decoded) == encoded  # nosec
 
 
-def test_bendecode_str(strings):
+@pytest.mark.parametrize("decoded, encoded", context.strings())
+def test_bendecode_str(decoded, encoded):
     """Test decoding strings."""
-    for string, benstring in strings:
-        text, _ = bendecode_str(benstring)
-        assert string == text  # nosec
+    text, _ = bendecode_str(encoded)
+    assert decoded == text  # nosec
 
 
-def test_bendecode_str_feed(strings):
+@pytest.mark.parametrize("decoded, encoded", context.strings())
+def test_bendecode_str_feed(decoded, encoded):
     """Test decoding strings feeds."""
-    for _, benstring in strings:
-        _, feed = bendecode_str(benstring)
-        assert feed == len(benstring)  # nosec
+    len(decoded)
+    _, feed = bendecode_str(encoded)
+    assert feed == len(encoded)  # nosec
 
 
-def test_bendecode_str_equality(strings):
+@pytest.mark.parametrize("decoded, encoded", context.strings())
+def test_bendecode_str_equality(decoded, encoded):
     """Test equality for testing strings."""
-    for _, benstring in strings:
-        text, _ = bendecode_str(benstring)
-        pre = str(len(text)) + ":" + text
-        assert pre.encode("UTF-8") == benstring  # nosec
+    len(decoded)
+    text, _ = bendecode_str(encoded)
+    pre = str(len(text)) + ":" + text
+    assert pre.encode("UTF-8") == encoded  # nosec
 
 
-def test_bendecode_int(ints):
+@pytest.mark.parametrize("decoded, encoded", context.ints())
+def test_bendecode_int(decoded, encoded):
     """Test decoding integers."""
-    for num, benint in ints:
-        real, _ = bendecode_int(benint)
-        assert real == num  # nosec
+    real, _ = bendecode_int(encoded)
+    assert real == decoded  # nosec
 
 
-def test_bendecode_int_feed(ints):
+@pytest.mark.parametrize("decoded, encoded", context.ints())
+def test_bendecode_int_feed(decoded, encoded):
     """Test decoding integers feeds."""
-    for _, benint in ints:
-        _, feed = bendecode_int(benint)
-        assert feed == len(benint)  # nosec
+    str(decoded)
+    _, feed = bendecode_int(encoded)
+    assert feed == len(encoded)  # nosec
 
 
-def test_bendecode_list(lists):
+@pytest.mark.parametrize("decoded, encoded", context.lists())
+def test_bendecode_list(decoded, encoded):
     """Test decoding lists."""
-    for lst, benlist in lists:
-        decoded, _ = bendecode_list(benlist)
-        assert decoded == lst  # nosec
+    dec, _ = bendecode_list(encoded)
+    assert dec == decoded  # nosec
 
 
-def test_bendecode_list_feed(lists):
+@pytest.mark.parametrize("decoded, encoded", context.lists())
+def test_bendecode_list_feed(decoded, encoded):
     """Test encoding lists feeds."""
-    for _, benlist in lists:
-        _, feed = bendecode_list(benlist)
-        assert feed == len(benlist)  # nosec
+    str(decoded)
+    _, feed = bendecode_list(encoded)
+    assert feed == len(encoded)  # nosec
 
 
-def test_bendecode_dict(dicts):
+@pytest.mark.parametrize("decoded, encoded", context.dicts())
+def test_bendecode_dict(encoded, decoded):
     """Test encoding dicts."""
-    for dct, bendict in dicts:
-        decoded, _ = bendecode_dict(bendict)
-        assert dct == decoded  # nosec
+    dct, _ = bendecode_dict(encoded)
+    assert dct == decoded  # nosec
 
 
-def test_bendecode_dict_feed(dicts):
+@pytest.mark.parametrize("decoded, encoded", context.dicts())
+def test_bendecode_dict_feed(encoded, decoded):
     """Test encoding dicts feeds."""
-    for _, bendict in dicts:
-        _, feed = bendecode_dict(bendict)
-        assert feed == len(bendict)  # nosec
+    str(decoded)
+    _, feed = bendecode_dict(encoded)
+    assert feed == len(encoded)  # nosec
 
 
-def test_bencode_str(strings):
+@pytest.mark.parametrize("decoded, encoded", context.strings())
+def test_bencode_str(encoded, decoded):
     """Test encoding strings."""
-    for string, benstring in strings:
-        text = bencode_str(string)
-        assert benstring == text  # nosec
+    text = bencode_str(decoded)
+    assert encoded == text  # nosec
 
 
-def test_bencode_int(ints):
+@pytest.mark.parametrize("decoded, encoded", context.ints())
+def test_bencode_int(encoded, decoded):
     """Test encoding integers."""
-    for num, benint in ints:
-        real = bencode_int(num)
-        assert real == benint  # nosec
+    real = bencode_int(decoded)
+    assert real == encoded  # nosec
 
 
-def test_bencode_list(lists):
+@pytest.mark.parametrize("decoded, encoded", context.lists())
+def test_bencode_list(encoded, decoded):
     """Test encoding lists."""
-    for lst, benlist in lists:
-        encoded = bencode_list(lst)
-        assert encoded == benlist  # nosec
+    benlist = bencode_list(decoded)
+    assert encoded == benlist  # nosec
 
 
-def test_bencode_dict(dicts):
+@pytest.mark.parametrize("decoded, encoded", context.dicts())
+def test_bencode_dict(encoded, decoded):
     """Test encoding dicts."""
-    for dct, bendict in dicts:
-        encoded = bencode_dict(dct)
-        assert bendict == encoded  # nosec
+    bendict = bencode_dict(decoded)
+    assert bendict == encoded  # nosec
 
 
-def test_bencode_all(ints, strings, dicts, lists):
+@pytest.mark.parametrize("decoded, encoded", context.data())
+def test_bencode_all(encoded, decoded):
     """Test encoding all types."""
-    data = [ints, strings, dicts, lists]
-    for category in data:
-        for unit, benunit in category:
-            encoded = benencode(unit)
-            assert benunit == encoded  # nosec
+    benunit = benencode(decoded)
+    assert benunit == encoded  # nosec
 
 
-def test_bendecode_all(ints, strings, dicts, lists):
+@pytest.mark.parametrize("decoded, encoded", context.data())
+def test_bendecode_all(encoded, decoded):
     """Test decoding all types."""
-    data = [ints, strings, dicts, lists]
-    for category in data:
-        for unit, benunit in category:
-            decoded, _ = bendecode(benunit)
-            assert unit == decoded  # nosec
+    item, _ = bendecode(encoded)
+    assert item == decoded  # nosec

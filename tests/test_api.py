@@ -19,15 +19,15 @@ import pytest
 
 import pyben
 
-from . import rmpath, testfile, testmeta
+from . import context
 
 
 @pytest.fixture
 def tempfile():
     """Pytest Fixture providing temporary file."""
-    fd = testfile()
+    fd = context.testfile()
     yield fd
-    rmpath(fd)
+    context.rmpath(fd)
 
 
 @pytest.fixture
@@ -35,7 +35,7 @@ def tempmeta():
     """Pytest Fixture providing dummy meta data."""
     parent = os.path.dirname(os.path.abspath(__file__))
     tfile = os.path.join(parent, "tempfile.pyben")
-    meta = testmeta()
+    meta = context.testmeta()
     return meta, tfile
 
 
@@ -49,7 +49,7 @@ def test_rmpath():
         test_file.write("Testing rmpath function in tests module.")
     with open(file_path2, "wt") as test_file:
         test_file.write("Testing rmpath function in tests module.")
-    rmpath(path)
+    context.rmpath(path)
     assert not os.path.exists("rmpath_test_file")  # nosec
 
 
@@ -59,16 +59,16 @@ def test_api_tuple_to_list():
     assert pyben.dumps(lst) == b"li130e6:foobar7:foo:bare"  # nosec
 
 
-def test_api_loads():
+@pytest.mark.parametrize("decoded, encoded", context.data())
+def test_api_loads(decoded, encoded):
     """Test decoding inline."""
-    encoded = b"di1234el5:helloi99876eee"
-    assert pyben.loads(encoded) == {1234: ["hello", 99876]}  # nosec
+    assert pyben.loads(encoded) == decoded  # nosec
 
 
-def test_api_dumps():
+@pytest.mark.parametrize("decoded, encoded", context.data())
+def test_api_dumps(decoded, encoded):
     """Test encoding inline."""
-    meta = {1234: ["hello", 99876]}
-    assert pyben.dumps(meta) == b"di1234el5:helloi99876eee"  # nosec
+    assert pyben.dumps(decoded) == encoded  # nosec
 
 
 def test_api_loads_exists(tempfile):
@@ -94,7 +94,7 @@ def test_api_dump_string(tempmeta):
     meta, path = tempmeta
     pyben.dump(meta, path)
     assert os.path.exists(path)  # nosec
-    rmpath(path)
+    context.rmpath(path)
 
 
 def test_api_with_file_load(tempfile):
@@ -110,7 +110,7 @@ def test_api_dump_iobuffer(tempmeta):
     with open(path, "wb") as _fd:
         pyben.dump(meta, _fd)
     assert os.path.exists(path)  # nosec
-    rmpath(path)
+    context.rmpath(path)
 
 
 def test_dump_eq_load(tempmeta):
@@ -118,7 +118,7 @@ def test_dump_eq_load(tempmeta):
     meta, path = tempmeta
     pyben.dump(meta, path)
     assert meta["info"] == pyben.load(path)["info"]  # nosec
-    rmpath(path)
+    context.rmpath(path)
 
 
 def test_pyben_excp3():
@@ -141,5 +141,21 @@ def test_pyben_excp1():
     """Test FilePathError Exception."""
     try:
         raise pyben.exceptions.FilePathError("somefile.torrent")
+    except pyben.exceptions.FilePathError:
+        assert True  # nosec
+
+
+def test_api_param_doesnt_exist():
+    """Test load function with path argument that doesn't exist."""
+    try:
+        pyben.load("loremipsumunimjohnny")
+    except pyben.exceptions.FilePathError:
+        assert True  # nosec
+
+
+def test_api_param_none():
+    """Test load function with None as path argument."""
+    try:
+        pyben.load(None)
     except pyben.exceptions.FilePathError:
         assert True  # nosec
