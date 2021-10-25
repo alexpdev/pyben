@@ -28,9 +28,7 @@ Functions
 * bencode_int
 * bencode_list
 * bencode_str
-
 """
-
 
 import re
 
@@ -313,7 +311,6 @@ def bencode_dict(dic):
     -------
     `bytes` :
         Bencoded key, value pairs of data.
-
     """
     result = b"d"
 

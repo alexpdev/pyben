@@ -63,6 +63,7 @@ Functions
 """
 
 from .bencode import bendecode, benencode
+from .exceptions import FilePathError
 
 
 def dump(obj, buffer):
@@ -85,10 +86,8 @@ def dump(obj, buffer):
     if not hasattr(buffer, "write"):
         with open(buffer, "wb") as _fd:
             _fd.write(encoded)
-
     else:
         buffer.write(encoded)
-        buffer.close()
 
 
 def dumps(obj):
@@ -124,12 +123,17 @@ def load(buffer):
         (commonly `dict`), Decoded contents of file.
 
     """
+    if buffer in [None, ""]:
+        raise FilePathError(buffer)
+
     if hasattr(buffer, "read"):
         decoded, _ = bendecode(buffer.read())
-
     else:
-        with open(buffer, "rb") as _fd:
-            decoded, _ = bendecode(_fd.read())
+        try:
+            with open(buffer, "rb") as _fd:
+                decoded, _ = bendecode(_fd.read())
+        except FileNotFoundError as excp:
+            raise FilePathError(buffer) from excp
 
     return decoded
 

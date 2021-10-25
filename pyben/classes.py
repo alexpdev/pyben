@@ -128,9 +128,6 @@ class Bendecoder:
             The decoded data.
 
         """
-        if bits is None:
-            bits = self.data
-
         if bits.startswith(b"i"):
             match, feed = self._decode_int(bits)
             return match, feed

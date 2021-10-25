@@ -57,8 +57,7 @@ class EncodeError(Exception):
 
 
 class FilePathError(Exception):
-    """
-    Bad path error.
+    """Bad path error.
 
     Generally raised when the file at the path specified
     does not exist.

@@ -56,7 +56,6 @@ lint: ## check style with flake8
 	pydocstyle pyben tests
 	pyroma .
 	bandit pyben/*
-	pep257 pyben
 	prospector pyben
 	prospector tests
 
@@ -66,18 +65,19 @@ test: ## run tests quickly with the default Python
 	pytest tests --pylint
 
 coverage: ## check code coverage quickly with the default Python
-	coverage run -m pytest tests --cov --pylint
+	coverage run --source pyben -m pytest tests
 	coverage xml -o coverage.xml
 
 push: lint docs clean test coverage
 	git add .
-	git commit -m "Updates to testing suit, style linting, bug fixes."
-	git push
+	git commit -m "$m"
+	git push -u origin dev
 	bash codacy.sh report -r coverage.xml
 
 docs: ## generate Sphinx HTML documentation, including API docs
 	rm -rf docs
 	mkdocs build
+	touch docs/.nojekyll
 
 release: dist ## package and upload a release
 	twine upload dist/*
