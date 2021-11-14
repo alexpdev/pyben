@@ -22,6 +22,7 @@ Functions
 * dumps
 * load
 * loads
+* tojson
 
 ## Usage Examples
 
@@ -61,6 +62,8 @@ Functions
     ... True
 
 """
+
+from collections.abc import Mapping
 
 from .bencode import bendecode, benencode
 from .exceptions import FilePathError
@@ -155,3 +158,57 @@ def loads(encoded):
     """
     decoded, _ = bendecode(encoded)
     return decoded
+
+
+def tojson(meta):
+    """Create json searializable data from bencode.
+
+    Parameters
+    ----------
+    meta : `bytes` or `dict`
+        encoded or decoded bencode data.
+
+    Returns
+    -------
+    json : `dict`
+        bencode data as json serializable object dictionary.
+    """
+    if isinstance(meta, (bytes, bytearray)):
+        meta = loads(meta)
+
+    def check_instance(item):
+        """Check and format item according to it's type.
+
+        Parameters
+        ----------
+        item : `any`
+            data that needs to be checked.
+
+        Returns
+        -------
+        item : `any`
+            formatted data cast to type.
+        """
+        if isinstance(item, (str, bytes, int, float)):
+            if isinstance(item, bytes):
+                try:
+                    return item.decode()
+                except UnicodeDecodeError:
+                    return item.hex()
+            else:
+                return item
+        elif isinstance(item, Mapping):
+            return tojson(item)
+        return [isinstance(val) for val in item]
+
+    json = {}
+    for k, v in meta.items():
+        if isinstance(k, (bytes, bytearray)):
+            try:
+                key = k.decode()
+            except UnicodeDecodeError:
+                key = k.hex()
+            json[key] = check_instance(v)
+        else:
+            json[k] = check_instance(v)
+    return json

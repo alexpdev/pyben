@@ -480,6 +480,33 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#pyben.api.tojson" class="md-nav__link">
+    tojson()
+  </a>
+  
+    <nav class="md-nav" aria-label="tojson()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pyben.api.tojson--parameters" class="md-nav__link">
+    Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pyben.api.tojson--returns" class="md-nav__link">
+    Returns
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1264,6 +1291,33 @@
         
           <li class="md-nav__item">
   <a href="#pyben.api.loads--returns" class="md-nav__link">
+    Returns
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pyben.api.tojson" class="md-nav__link">
+    tojson()
+  </a>
+  
+    <nav class="md-nav" aria-label="tojson()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pyben.api.tojson--parameters" class="md-nav__link">
+    Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pyben.api.tojson--returns" class="md-nav__link">
     Returns
   </a>
   
@@ -2125,6 +2179,33 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#pyben.api.tojson" class="md-nav__link">
+    tojson()
+  </a>
+  
+    <nav class="md-nav" aria-label="tojson()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pyben.api.tojson--parameters" class="md-nav__link">
+    Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pyben.api.tojson--returns" class="md-nav__link">
+    Returns
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2920,6 +3001,33 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#pyben.api.tojson" class="md-nav__link">
+    tojson()
+  </a>
+  
+    <nav class="md-nav" aria-label="tojson()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pyben.api.tojson--parameters" class="md-nav__link">
+    Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pyben.api.tojson--returns" class="md-nav__link">
+    Returns
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#pyben.classes" class="md-nav__link">
     pyben.classes
   </a>
@@ -3631,6 +3739,7 @@
 <li>dumps</li>
 <li>load</li>
 <li>loads</li>
+<li>tojson</li>
 </ul>
 <h4 id="pyben.api--usage-examples">Usage Examples</h4>
 <h5 id="pyben.api--encode-inline-code">Encode inline code:</h5>
@@ -3872,6 +3981,88 @@ buffer : <code>str</code> or <code>BytesIO</code>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">decoded</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">bendecode</span><span class="p">(</span><span class="n">encoded</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">decoded</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h3 id="pyben.api.tojson" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">tojson</span><span class="p">(</span><span class="n">meta</span><span class="p">)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Create json searializable data from bencode.</p>
+<h5 id="pyben.api.tojson--parameters">Parameters</h5>
+<p>meta : <code>bytes</code> or <code>dict</code>
+    encoded or decoded bencode data.</p>
+<h5 id="pyben.api.tojson--returns">Returns</h5>
+<p>json : <code>dict</code>
+    bencode data as json serializable object dictionary.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>pyben\api.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">tojson</span><span class="p">(</span><span class="n">meta</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Create json searializable data from bencode.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    meta : `bytes` or `dict`</span>
+<span class="sd">        encoded or decoded bencode data.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    json : `dict`</span>
+<span class="sd">        bencode data as json serializable object dictionary.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">meta</span><span class="p">,</span> <span class="p">(</span><span class="nb">bytes</span><span class="p">,</span> <span class="nb">bytearray</span><span class="p">)):</span>
+        <span class="n">meta</span> <span class="o">=</span> <span class="n">loads</span><span class="p">(</span><span class="n">meta</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">check_instance</span><span class="p">(</span><span class="n">item</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Check and format item according to it&#39;s type.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        item : `any`</span>
+<span class="sd">            data that needs to be checked.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        item : `any`</span>
+<span class="sd">            formatted data cast to type.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">)):</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">):</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="n">item</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
+                <span class="k">except</span> <span class="ne">UnicodeDecodeError</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="n">item</span><span class="o">.</span><span class="n">hex</span><span class="p">()</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">item</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">Mapping</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">tojson</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">[</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">val</span><span class="p">)</span> <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">item</span><span class="p">]</span>
+
+    <span class="n">json</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">meta</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="p">(</span><span class="nb">bytes</span><span class="p">,</span> <span class="nb">bytearray</span><span class="p">)):</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">key</span> <span class="o">=</span> <span class="n">k</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
+            <span class="k">except</span> <span class="ne">UnicodeDecodeError</span><span class="p">:</span>
+                <span class="n">key</span> <span class="o">=</span> <span class="n">k</span><span class="o">.</span><span class="n">hex</span><span class="p">()</span>
+            <span class="n">json</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">check_instance</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">json</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">check_instance</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">json</span>
 </code></pre></div>
         </details>
     </div>
@@ -5357,6 +5548,7 @@ does not exist.</p>
 <li>dumps</li>
 <li>load</li>
 <li>loads</li>
+<li>tojson</li>
 </ul>
 <h3 id="pyben.api--usage-examples">Usage Examples</h3>
 <h4 id="pyben.api--encode-inline-code">Encode inline code:</h4>
@@ -5598,6 +5790,88 @@ buffer : <code>str</code> or <code>BytesIO</code>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">decoded</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">bendecode</span><span class="p">(</span><span class="n">encoded</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">decoded</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="pyben.api.tojson" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">tojson</span><span class="p">(</span><span class="n">meta</span><span class="p">)</span></code>
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Create json searializable data from bencode.</p>
+<h4 id="pyben.api.tojson--parameters">Parameters</h4>
+<p>meta : <code>bytes</code> or <code>dict</code>
+    encoded or decoded bencode data.</p>
+<h4 id="pyben.api.tojson--returns">Returns</h4>
+<p>json : <code>dict</code>
+    bencode data as json serializable object dictionary.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>pyben\api.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">tojson</span><span class="p">(</span><span class="n">meta</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Create json searializable data from bencode.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    meta : `bytes` or `dict`</span>
+<span class="sd">        encoded or decoded bencode data.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    json : `dict`</span>
+<span class="sd">        bencode data as json serializable object dictionary.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">meta</span><span class="p">,</span> <span class="p">(</span><span class="nb">bytes</span><span class="p">,</span> <span class="nb">bytearray</span><span class="p">)):</span>
+        <span class="n">meta</span> <span class="o">=</span> <span class="n">loads</span><span class="p">(</span><span class="n">meta</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">check_instance</span><span class="p">(</span><span class="n">item</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Check and format item according to it&#39;s type.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        item : `any`</span>
+<span class="sd">            data that needs to be checked.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        item : `any`</span>
+<span class="sd">            formatted data cast to type.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">)):</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">):</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="n">item</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
+                <span class="k">except</span> <span class="ne">UnicodeDecodeError</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="n">item</span><span class="o">.</span><span class="n">hex</span><span class="p">()</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">item</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">Mapping</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">tojson</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">[</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">val</span><span class="p">)</span> <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">item</span><span class="p">]</span>
+
+    <span class="n">json</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">meta</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="p">(</span><span class="nb">bytes</span><span class="p">,</span> <span class="nb">bytearray</span><span class="p">)):</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">key</span> <span class="o">=</span> <span class="n">k</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
+            <span class="k">except</span> <span class="ne">UnicodeDecodeError</span><span class="p">:</span>
+                <span class="n">key</span> <span class="o">=</span> <span class="n">k</span><span class="o">.</span><span class="n">hex</span><span class="p">()</span>
+            <span class="n">json</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">check_instance</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">json</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">check_instance</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">json</span>
 </code></pre></div>
         </details>
     </div>
