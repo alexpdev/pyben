@@ -22,6 +22,7 @@ Functions
 * dumps
 * load
 * loads
+* tojson
 
 ## Usage Examples
 
@@ -105,7 +106,7 @@ def dumps(obj):
         Encoded data.
 
     """
-    return benencode(obj)
+    return bytes(benencode(obj))
 
 
 def load(buffer):

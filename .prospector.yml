@@ -26,3 +26,8 @@ pyroma:
 
 pyflakes:
   run: true
+
+mccabe:
+  run: false
+  disable:
+    -MC0001

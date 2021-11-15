@@ -227,8 +227,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../about/" class="md-nav__link">
-        About
+      <a href="../examples/" class="md-nav__link">
+        Examples
       </a>
     </li>
   
@@ -3631,6 +3631,7 @@
 <li>dumps</li>
 <li>load</li>
 <li>loads</li>
+<li>tojson</li>
 </ul>
 <h4 id="pyben.api--usage-examples">Usage Examples</h4>
 <h5 id="pyben.api--encode-inline-code">Encode inline code:</h5>
@@ -3766,7 +3767,7 @@ buffer : <code>str</code> or <code>BytesIO</code>
 <span class="sd">        Encoded data.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">benencode</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">bytes</span><span class="p">(</span><span class="n">benencode</span><span class="p">(</span><span class="n">obj</span><span class="p">))</span>
 </code></pre></div>
         </details>
     </div>
@@ -4665,7 +4666,7 @@ Bendecoder        </code>
 <p>bits : <code>bytes</code>
     bencoded data for decoding.</p>
 <h6 id="pyben.classes.Bendecoder.decode--returns">Returns</h6>
-<p>any :
+<p><code>any</code> :
     the decoded data.</p>
 
         <details class="quote">
@@ -4681,7 +4682,7 @@ Bendecoder        </code>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-<span class="sd">    any :</span>
+<span class="sd">    `any` :</span>
 <span class="sd">        the decoded data.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -4719,7 +4720,7 @@ Bendecoder        </code>
 <p><code>FilePathError</code>:
     Incorrect path or IOBuffer doesnt exist.</p>
 <h6 id="pyben.classes.Bendecoder.load--returns">Returns</h6>
-<p>any
+<p><code>any</code>
     Decoded contents of file, Usually a dictionary.</p>
 
         <details class="quote">
@@ -4741,7 +4742,7 @@ Bendecoder        </code>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-<span class="sd">    any</span>
+<span class="sd">    `any`</span>
 <span class="sd">        Decoded contents of file, Usually a dictionary.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -4781,7 +4782,7 @@ Bendecoder        </code>
 <p>data : <code>bytes</code> or <code>bytearray</code>
     Bendencoded <code>bytes</code>.</p>
 <h6 id="pyben.classes.Bendecoder.loads--returns">Returns</h6>
-<p>any
+<p><code>any</code>
     Decoded data usually a dictionary.</p>
 
         <details class="quote">
@@ -4798,7 +4799,7 @@ Bendecoder        </code>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-<span class="sd">    any</span>
+<span class="sd">    `any`</span>
 <span class="sd">        Decoded data usually a dictionary.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -4868,7 +4869,7 @@ Benencoder        </code>
 
       <p>Initialize Benencoder insance with optional pre compiled data.</p>
       <hr />
-<p>data : any
+<p>data : <code>any</code>
     (Optional) Target data for encoding. Defaults to None.</p>
 
         <details class="quote">
@@ -4879,7 +4880,7 @@ Benencoder        </code>
 
 <span class="sd">    Args:</span>
 <span class="sd">    ----</span>
-<span class="sd">    data : any</span>
+<span class="sd">    data : `any`</span>
 <span class="sd">        (Optional) Target data for encoding. Defaults to None.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -4910,7 +4911,7 @@ Benencoder        </code>
 
       <p>Shortcut Classmethod for encoding data and writing to file.</p>
 <h6 id="pyben.classes.Benencoder.dump--args">Args</h6>
-<p>data : any
+<p>data : <code>any</code>
     Raw data to be encoded, usually dict.txt
 path : path-like or <code>BytesIO</code>
     Where encoded data should be written to.py</p>
@@ -4926,7 +4927,7 @@ path : path-like or <code>BytesIO</code>
 
 <span class="sd">    Args</span>
 <span class="sd">    ----</span>
-<span class="sd">    data : any</span>
+<span class="sd">    data : `any`</span>
 <span class="sd">        Raw data to be encoded, usually dict.txt</span>
 <span class="sd">    path : path-like or `BytesIO`</span>
 <span class="sd">        Where encoded data should be written to.py</span>
@@ -4968,7 +4969,7 @@ path : path-like or <code>BytesIO</code>
 
       <p>Shortcut method for encoding data and immediately returning it.</p>
 <h6 id="pyben.classes.Benencoder.dumps--args">Args</h6>
-<p>data : any
+<p>data : <code>any</code>
     Raw data to be encoded usually a dictionary.</p>
 <h6 id="pyben.classes.Benencoder.dumps--returns">Returns</h6>
 <p><code>bytes</code>: Encoded data.</p>
@@ -4982,7 +4983,7 @@ path : path-like or <code>BytesIO</code>
 
 <span class="sd">    Args</span>
 <span class="sd">    ----</span>
-<span class="sd">    data : any</span>
+<span class="sd">    data : `any`</span>
 <span class="sd">        Raw data to be encoded usually a dictionary.</span>
 
 <span class="sd">    Returns</span>
@@ -5357,6 +5358,7 @@ does not exist.</p>
 <li>dumps</li>
 <li>load</li>
 <li>loads</li>
+<li>tojson</li>
 </ul>
 <h3 id="pyben.api--usage-examples">Usage Examples</h3>
 <h4 id="pyben.api--encode-inline-code">Encode inline code:</h4>
@@ -5492,7 +5494,7 @@ buffer : <code>str</code> or <code>BytesIO</code>
 <span class="sd">        Encoded data.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">benencode</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">bytes</span><span class="p">(</span><span class="n">benencode</span><span class="p">(</span><span class="n">obj</span><span class="p">))</span>
 </code></pre></div>
         </details>
     </div>
@@ -5729,7 +5731,7 @@ Bendecoder        </code>
 <p>bits : <code>bytes</code>
     bencoded data for decoding.</p>
 <h5 id="pyben.classes.Bendecoder.decode--returns">Returns</h5>
-<p>any :
+<p><code>any</code> :
     the decoded data.</p>
 
         <details class="quote">
@@ -5745,7 +5747,7 @@ Bendecoder        </code>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-<span class="sd">    any :</span>
+<span class="sd">    `any` :</span>
 <span class="sd">        the decoded data.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -5783,7 +5785,7 @@ Bendecoder        </code>
 <p><code>FilePathError</code>:
     Incorrect path or IOBuffer doesnt exist.</p>
 <h5 id="pyben.classes.Bendecoder.load--returns">Returns</h5>
-<p>any
+<p><code>any</code>
     Decoded contents of file, Usually a dictionary.</p>
 
         <details class="quote">
@@ -5805,7 +5807,7 @@ Bendecoder        </code>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-<span class="sd">    any</span>
+<span class="sd">    `any`</span>
 <span class="sd">        Decoded contents of file, Usually a dictionary.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -5845,7 +5847,7 @@ Bendecoder        </code>
 <p>data : <code>bytes</code> or <code>bytearray</code>
     Bendencoded <code>bytes</code>.</p>
 <h5 id="pyben.classes.Bendecoder.loads--returns">Returns</h5>
-<p>any
+<p><code>any</code>
     Decoded data usually a dictionary.</p>
 
         <details class="quote">
@@ -5862,7 +5864,7 @@ Bendecoder        </code>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-<span class="sd">    any</span>
+<span class="sd">    `any`</span>
 <span class="sd">        Decoded data usually a dictionary.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -5932,7 +5934,7 @@ Benencoder        </code>
 
       <p>Initialize Benencoder insance with optional pre compiled data.</p>
       <hr />
-<p>data : any
+<p>data : <code>any</code>
     (Optional) Target data for encoding. Defaults to None.</p>
 
         <details class="quote">
@@ -5943,7 +5945,7 @@ Benencoder        </code>
 
 <span class="sd">    Args:</span>
 <span class="sd">    ----</span>
-<span class="sd">    data : any</span>
+<span class="sd">    data : `any`</span>
 <span class="sd">        (Optional) Target data for encoding. Defaults to None.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -5974,7 +5976,7 @@ Benencoder        </code>
 
       <p>Shortcut Classmethod for encoding data and writing to file.</p>
 <h5 id="pyben.classes.Benencoder.dump--args">Args</h5>
-<p>data : any
+<p>data : <code>any</code>
     Raw data to be encoded, usually dict.txt
 path : path-like or <code>BytesIO</code>
     Where encoded data should be written to.py</p>
@@ -5990,7 +5992,7 @@ path : path-like or <code>BytesIO</code>
 
 <span class="sd">    Args</span>
 <span class="sd">    ----</span>
-<span class="sd">    data : any</span>
+<span class="sd">    data : `any`</span>
 <span class="sd">        Raw data to be encoded, usually dict.txt</span>
 <span class="sd">    path : path-like or `BytesIO`</span>
 <span class="sd">        Where encoded data should be written to.py</span>
@@ -6032,7 +6034,7 @@ path : path-like or <code>BytesIO</code>
 
       <p>Shortcut method for encoding data and immediately returning it.</p>
 <h5 id="pyben.classes.Benencoder.dumps--args">Args</h5>
-<p>data : any
+<p>data : <code>any</code>
     Raw data to be encoded usually a dictionary.</p>
 <h5 id="pyben.classes.Benencoder.dumps--returns">Returns</h5>
 <p><code>bytes</code>: Encoded data.</p>
@@ -6046,7 +6048,7 @@ path : path-like or <code>BytesIO</code>
 
 <span class="sd">    Args</span>
 <span class="sd">    ----</span>
-<span class="sd">    data : any</span>
+<span class="sd">    data : `any`</span>
 <span class="sd">        Raw data to be encoded usually a dictionary.</span>
 
 <span class="sd">    Returns</span>
