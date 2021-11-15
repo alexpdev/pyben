@@ -11,14 +11,14 @@
       
       
       
-        <link rel="canonical" href="https://alexpdev.github.io/pyben/about/">
+        <link rel="canonical" href="https://alexpdev.github.io/pyben/examples/">
       
       <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.3.2">
     
     
       
-        <title>About - My Docs</title>
+        <title>Examples - My Docs</title>
       
     
     
@@ -67,7 +67,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#liquores-modum" class="md-skip">
+        <a href="#usage-examples" class="md-skip">
           Skip to content
         </a>
       
@@ -99,7 +99,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              About
+              Examples
             
           </span>
         </div>
@@ -237,12 +237,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          About
+          Examples
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        About
+        Examples
       </a>
       
         
@@ -260,15 +260,36 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#vestaque-iudice-sedebat-turpe-est-sit-virgineos" class="md-nav__link">
-    Vestaque iudice sedebat turpe est sit virgineos
+  <a href="#import-pyben" class="md-nav__link">
+    Import pyben
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#hunc-sub-verba-et-tibi-an-novis" class="md-nav__link">
-    Hunc sub verba et tibi an novis
+  <a href="#example-1" class="md-nav__link">
+    Example 1
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-2" class="md-nav__link">
+    Example 2
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-3" class="md-nav__link">
+    Example 3
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-4" class="md-nav__link">
+    Example 4
   </a>
   
 </li>
@@ -337,15 +358,36 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#vestaque-iudice-sedebat-turpe-est-sit-virgineos" class="md-nav__link">
-    Vestaque iudice sedebat turpe est sit virgineos
+  <a href="#import-pyben" class="md-nav__link">
+    Import pyben
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#hunc-sub-verba-et-tibi-an-novis" class="md-nav__link">
-    Hunc sub verba et tibi an novis
+  <a href="#example-1" class="md-nav__link">
+    Example 1
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-2" class="md-nav__link">
+    Example 2
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-3" class="md-nav__link">
+    Example 3
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-4" class="md-nav__link">
+    Example 4
   </a>
   
 </li>
@@ -362,42 +404,73 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/alexpdev/pyben/edit/master/docs/about.md" title="Edit this page" class="md-content__button md-icon">
+                  <a href="https://github.com/alexpdev/pyben/edit/master/docs/examples.md" title="Edit this page" class="md-content__button md-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
                   </a>
                 
                 
-                <h1 id="liquores-modum">Liquores modum</h1>
-<h2 id="vestaque-iudice-sedebat-turpe-est-sit-virgineos">Vestaque iudice sedebat turpe est sit virgineos</h2>
-<p>Lorem markdownum spissa equidem videri proprium nec claro parvoque uterum!
-Dulcedine desiluit Propoetidas illis contigerant ipsi equidem debere consequar
-caeno. Argis motis: erepta que in <strong>vulgasse</strong> quae <em>Thaumantias</em> montano cornua
-sub genus.</p>
+                <h1 id="usage-examples">Usage Examples</h1>
+<p>PyBen is designed to mimic the pickle and json modules in the python standard library.</p>
+<h2 id="import-pyben">Import pyben</h2>
+<blockquote>
+<p>importing the library</p>
+</blockquote>
+<pre><code>`&gt;&gt;&gt; import pyben`
+</code></pre>
+<h2 id="example-1">Example 1</h2>
+<blockquote>
+<p>Encode most builtin python data types to a bencoded byte sequence.</p>
+</blockquote>
 <ul>
-<li>Quid in</li>
-<li>Tecta signa</li>
-<li>Quam sulphure dominaeque tamen</li>
-<li>Aede nunc florentis dum dixit</li>
+<li>
+<p>identical to json and pickle modules.</p>
+<p><code>&gt;&gt;&gt; data = [1, "hello", 2, ["world"], {3: "!"}]</code><br />
+<code>&gt;&gt;&gt; encoded = pyben.dumps(data)</code><br />
+<code>&gt;&gt;&gt; encoded</code><br />
+<code>b'li1e5:helloi2el5:worldedi3e1:!ee'</code>  </p>
+</li>
 </ul>
-<p>Relictis undae exeat, preces quo me celeri inpositum turris Tyrrhenia redolent
-<strong>sub dato flores</strong> legit. Falsamque suffundit rapto mortis augur aequora, sit
-portus probat meam exstat virtus arbore recingunt silet mundi venimus.</p>
-<h2 id="hunc-sub-verba-et-tibi-an-novis">Hunc sub verba et tibi an novis</h2>
-<p>Ad adverso <strong>retro</strong>. Te obicit: neque: petit nescit ferali paratis anno. Terga
-et videntur aeris ereptas namque spretis ipsae. Ego ubi quantaque confessus
-vexant tumulus metior terris, de flentem, postquam bello posito multorum priores
-minor. Nocuisse diu retinente agnosse quam armo flumina pectus tactis: petit.</p>
-<p>Pulcherrimus vulnera mihi sinuatoque radice; pampineae arbor pro, adapertaque
-mihi increpat! <em>Et</em> fallaci <em>pugnae</em>: una <strong>cibus sit</strong> senex <em>canescunt</em> magni:
-obstantis corpus, sic domum.</p>
-<p>Convivia <strong>terram et</strong> illius tutela latos. Cereris si hostem faciebat
-horruerant amari, fallat, <a href="http://maris-ore.org/nocendi.php">collem arcana</a> nec
-Iliaden tanti qui per dominatur!</p>
-<p>Causam facta experiar freta. Stillanti maiora o quoque revelli quae, equi esse
-longum rettulit, omnes loca. Tantoque in atque silentum, Peleus tertia ripis
-infringere instantem. Is pes caelamina; sed sinat quaerit cum toros poterat,
-solvit cantu tibi Aphidas <a href="http://cursus.com/">aspera falsam</a>; aura. Si sceleri,
-summae animosos vocat?</p>
+<h2 id="example-2">Example 2</h2>
+<blockquote>
+<p>Encode builtin python data types and write to a file</p>
+</blockquote>
+<ul>
+<li>
+<p>Unlike the json and pickle modules, pyben accepts a str or PathLike object as
+    the second argument and automatically open the path in bytes, write mode(<code>'wb'</code>), or you can
+    open supply an opened ioStream yourself just like json and pickle.</p>
+<p><code>&gt;&gt;&gt; pyben.dump(data, "path/to/save/filename")</code><br />
+or<br />
+<code>&gt;&gt;&gt; with open('path/to/save/filename','wb') as binfile:</code><br />
+<code>&gt;&gt;&gt;     pyben.dump(data, binfile)</code>  </p>
+</li>
+</ul>
+<h2 id="example-3">Example 3</h2>
+<blockquote>
+<p>Decode a bencoded byte-like object</p>
+</blockquote>
+<ul>
+<li>
+<p>Identical to json and pickle modules.</p>
+<p><code>&gt;&gt;&gt; decoded = pyben.loads(encoded)</code><br />
+<code>&gt;&gt;&gt; decoded</code><br />
+<code>[1, 'hello', 2, ['world'], {3: '!'}]</code>  </p>
+</li>
+</ul>
+<h2 id="example-4">Example 4</h2>
+<blockquote>
+<p>Decode the bencoded contents of a file.</p>
+</blockquote>
+<ul>
+<li>
+<p>Just like the dump function, load will accept str or PathLike object as an argument as well as an io stream.</p>
+<p><code>&gt;&gt;&gt; decoded_contents = pyben.load('path/to/save/filename')</code><br />
+or<br />
+<code>&gt;&gt;&gt; decoded_contents = pyben.load(open('path/to/save/filename', 'rb'))</code><br />
+<code>&gt;&gt;&gt; decoded_contents</code><br />
+<code>[1, 'hello', 2, ['world'], {3: '!'}]</code>  </p>
+</li>
+</ul>
                 
               
               

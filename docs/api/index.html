@@ -227,8 +227,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../about/" class="md-nav__link">
-        About
+      <a href="../examples/" class="md-nav__link">
+        Examples
       </a>
     </li>
   
@@ -470,33 +470,6 @@
         
           <li class="md-nav__item">
   <a href="#pyben.api.loads--returns" class="md-nav__link">
-    Returns
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.api.tojson" class="md-nav__link">
-    tojson()
-  </a>
-  
-    <nav class="md-nav" aria-label="tojson()">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.api.tojson--parameters" class="md-nav__link">
-    Parameters
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.api.tojson--returns" class="md-nav__link">
     Returns
   </a>
   
@@ -1291,33 +1264,6 @@
         
           <li class="md-nav__item">
   <a href="#pyben.api.loads--returns" class="md-nav__link">
-    Returns
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pyben.api.tojson" class="md-nav__link">
-    tojson()
-  </a>
-  
-    <nav class="md-nav" aria-label="tojson()">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.api.tojson--parameters" class="md-nav__link">
-    Parameters
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.api.tojson--returns" class="md-nav__link">
     Returns
   </a>
   
@@ -2179,33 +2125,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#pyben.api.tojson" class="md-nav__link">
-    tojson()
-  </a>
-  
-    <nav class="md-nav" aria-label="tojson()">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.api.tojson--parameters" class="md-nav__link">
-    Parameters
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.api.tojson--returns" class="md-nav__link">
-    Returns
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -2990,33 +2909,6 @@
         
           <li class="md-nav__item">
   <a href="#pyben.api.loads--returns" class="md-nav__link">
-    Returns
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pyben.api.tojson" class="md-nav__link">
-    tojson()
-  </a>
-  
-    <nav class="md-nav" aria-label="tojson()">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.api.tojson--parameters" class="md-nav__link">
-    Parameters
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.api.tojson--returns" class="md-nav__link">
     Returns
   </a>
   
@@ -3875,7 +3767,7 @@ buffer : <code>str</code> or <code>BytesIO</code>
 <span class="sd">        Encoded data.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">benencode</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">bytes</span><span class="p">(</span><span class="n">benencode</span><span class="p">(</span><span class="n">obj</span><span class="p">))</span>
 </code></pre></div>
         </details>
     </div>
@@ -3981,88 +3873,6 @@ buffer : <code>str</code> or <code>BytesIO</code>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">decoded</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">bendecode</span><span class="p">(</span><span class="n">encoded</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">decoded</span>
-</code></pre></div>
-        </details>
-    </div>
-
-  </div>
-
-
-
-  <div class="doc doc-object doc-function">
-
-
-
-<h3 id="pyben.api.tojson" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">tojson</span><span class="p">(</span><span class="n">meta</span><span class="p">)</span></code>
-
-
-</h3>
-
-    <div class="doc doc-contents ">
-
-      <p>Create json searializable data from bencode.</p>
-<h5 id="pyben.api.tojson--parameters">Parameters</h5>
-<p>meta : <code>bytes</code> or <code>dict</code>
-    encoded or decoded bencode data.</p>
-<h5 id="pyben.api.tojson--returns">Returns</h5>
-<p>json : <code>dict</code>
-    bencode data as json serializable object dictionary.</p>
-
-        <details class="quote">
-          <summary>Source code in <code>pyben\api.py</code></summary>
-          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">tojson</span><span class="p">(</span><span class="n">meta</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Create json searializable data from bencode.</span>
-
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    meta : `bytes` or `dict`</span>
-<span class="sd">        encoded or decoded bencode data.</span>
-
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    json : `dict`</span>
-<span class="sd">        bencode data as json serializable object dictionary.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">meta</span><span class="p">,</span> <span class="p">(</span><span class="nb">bytes</span><span class="p">,</span> <span class="nb">bytearray</span><span class="p">)):</span>
-        <span class="n">meta</span> <span class="o">=</span> <span class="n">loads</span><span class="p">(</span><span class="n">meta</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">check_instance</span><span class="p">(</span><span class="n">item</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Check and format item according to it&#39;s type.</span>
-
-<span class="sd">        Parameters</span>
-<span class="sd">        ----------</span>
-<span class="sd">        item : `any`</span>
-<span class="sd">            data that needs to be checked.</span>
-
-<span class="sd">        Returns</span>
-<span class="sd">        -------</span>
-<span class="sd">        item : `any`</span>
-<span class="sd">            formatted data cast to type.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">)):</span>
-            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">):</span>
-                <span class="k">try</span><span class="p">:</span>
-                    <span class="k">return</span> <span class="n">item</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
-                <span class="k">except</span> <span class="ne">UnicodeDecodeError</span><span class="p">:</span>
-                    <span class="k">return</span> <span class="n">item</span><span class="o">.</span><span class="n">hex</span><span class="p">()</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="k">return</span> <span class="n">item</span>
-        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">Mapping</span><span class="p">):</span>
-            <span class="k">return</span> <span class="n">tojson</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
-        <span class="k">return</span> <span class="p">[</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">val</span><span class="p">)</span> <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">item</span><span class="p">]</span>
-
-    <span class="n">json</span> <span class="o">=</span> <span class="p">{}</span>
-    <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">meta</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="p">(</span><span class="nb">bytes</span><span class="p">,</span> <span class="nb">bytearray</span><span class="p">)):</span>
-            <span class="k">try</span><span class="p">:</span>
-                <span class="n">key</span> <span class="o">=</span> <span class="n">k</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
-            <span class="k">except</span> <span class="ne">UnicodeDecodeError</span><span class="p">:</span>
-                <span class="n">key</span> <span class="o">=</span> <span class="n">k</span><span class="o">.</span><span class="n">hex</span><span class="p">()</span>
-            <span class="n">json</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">check_instance</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">json</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">check_instance</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">json</span>
 </code></pre></div>
         </details>
     </div>
@@ -4856,7 +4666,7 @@ Bendecoder        </code>
 <p>bits : <code>bytes</code>
     bencoded data for decoding.</p>
 <h6 id="pyben.classes.Bendecoder.decode--returns">Returns</h6>
-<p>any :
+<p><code>any</code> :
     the decoded data.</p>
 
         <details class="quote">
@@ -4872,7 +4682,7 @@ Bendecoder        </code>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-<span class="sd">    any :</span>
+<span class="sd">    `any` :</span>
 <span class="sd">        the decoded data.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -4910,7 +4720,7 @@ Bendecoder        </code>
 <p><code>FilePathError</code>:
     Incorrect path or IOBuffer doesnt exist.</p>
 <h6 id="pyben.classes.Bendecoder.load--returns">Returns</h6>
-<p>any
+<p><code>any</code>
     Decoded contents of file, Usually a dictionary.</p>
 
         <details class="quote">
@@ -4932,7 +4742,7 @@ Bendecoder        </code>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-<span class="sd">    any</span>
+<span class="sd">    `any`</span>
 <span class="sd">        Decoded contents of file, Usually a dictionary.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -4972,7 +4782,7 @@ Bendecoder        </code>
 <p>data : <code>bytes</code> or <code>bytearray</code>
     Bendencoded <code>bytes</code>.</p>
 <h6 id="pyben.classes.Bendecoder.loads--returns">Returns</h6>
-<p>any
+<p><code>any</code>
     Decoded data usually a dictionary.</p>
 
         <details class="quote">
@@ -4989,7 +4799,7 @@ Bendecoder        </code>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-<span class="sd">    any</span>
+<span class="sd">    `any`</span>
 <span class="sd">        Decoded data usually a dictionary.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -5059,7 +4869,7 @@ Benencoder        </code>
 
       <p>Initialize Benencoder insance with optional pre compiled data.</p>
       <hr />
-<p>data : any
+<p>data : <code>any</code>
     (Optional) Target data for encoding. Defaults to None.</p>
 
         <details class="quote">
@@ -5070,7 +4880,7 @@ Benencoder        </code>
 
 <span class="sd">    Args:</span>
 <span class="sd">    ----</span>
-<span class="sd">    data : any</span>
+<span class="sd">    data : `any`</span>
 <span class="sd">        (Optional) Target data for encoding. Defaults to None.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -5101,7 +4911,7 @@ Benencoder        </code>
 
       <p>Shortcut Classmethod for encoding data and writing to file.</p>
 <h6 id="pyben.classes.Benencoder.dump--args">Args</h6>
-<p>data : any
+<p>data : <code>any</code>
     Raw data to be encoded, usually dict.txt
 path : path-like or <code>BytesIO</code>
     Where encoded data should be written to.py</p>
@@ -5117,7 +4927,7 @@ path : path-like or <code>BytesIO</code>
 
 <span class="sd">    Args</span>
 <span class="sd">    ----</span>
-<span class="sd">    data : any</span>
+<span class="sd">    data : `any`</span>
 <span class="sd">        Raw data to be encoded, usually dict.txt</span>
 <span class="sd">    path : path-like or `BytesIO`</span>
 <span class="sd">        Where encoded data should be written to.py</span>
@@ -5159,7 +4969,7 @@ path : path-like or <code>BytesIO</code>
 
       <p>Shortcut method for encoding data and immediately returning it.</p>
 <h6 id="pyben.classes.Benencoder.dumps--args">Args</h6>
-<p>data : any
+<p>data : <code>any</code>
     Raw data to be encoded usually a dictionary.</p>
 <h6 id="pyben.classes.Benencoder.dumps--returns">Returns</h6>
 <p><code>bytes</code>: Encoded data.</p>
@@ -5173,7 +4983,7 @@ path : path-like or <code>BytesIO</code>
 
 <span class="sd">    Args</span>
 <span class="sd">    ----</span>
-<span class="sd">    data : any</span>
+<span class="sd">    data : `any`</span>
 <span class="sd">        Raw data to be encoded usually a dictionary.</span>
 
 <span class="sd">    Returns</span>
@@ -5684,7 +5494,7 @@ buffer : <code>str</code> or <code>BytesIO</code>
 <span class="sd">        Encoded data.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">benencode</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">bytes</span><span class="p">(</span><span class="n">benencode</span><span class="p">(</span><span class="n">obj</span><span class="p">))</span>
 </code></pre></div>
         </details>
     </div>
@@ -5790,88 +5600,6 @@ buffer : <code>str</code> or <code>BytesIO</code>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">decoded</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">bendecode</span><span class="p">(</span><span class="n">encoded</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">decoded</span>
-</code></pre></div>
-        </details>
-    </div>
-
-  </div>
-
-
-
-  <div class="doc doc-object doc-function">
-
-
-
-<h2 id="pyben.api.tojson" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">tojson</span><span class="p">(</span><span class="n">meta</span><span class="p">)</span></code>
-
-
-</h2>
-
-    <div class="doc doc-contents ">
-
-      <p>Create json searializable data from bencode.</p>
-<h4 id="pyben.api.tojson--parameters">Parameters</h4>
-<p>meta : <code>bytes</code> or <code>dict</code>
-    encoded or decoded bencode data.</p>
-<h4 id="pyben.api.tojson--returns">Returns</h4>
-<p>json : <code>dict</code>
-    bencode data as json serializable object dictionary.</p>
-
-        <details class="quote">
-          <summary>Source code in <code>pyben\api.py</code></summary>
-          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">tojson</span><span class="p">(</span><span class="n">meta</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Create json searializable data from bencode.</span>
-
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    meta : `bytes` or `dict`</span>
-<span class="sd">        encoded or decoded bencode data.</span>
-
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    json : `dict`</span>
-<span class="sd">        bencode data as json serializable object dictionary.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">meta</span><span class="p">,</span> <span class="p">(</span><span class="nb">bytes</span><span class="p">,</span> <span class="nb">bytearray</span><span class="p">)):</span>
-        <span class="n">meta</span> <span class="o">=</span> <span class="n">loads</span><span class="p">(</span><span class="n">meta</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">check_instance</span><span class="p">(</span><span class="n">item</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Check and format item according to it&#39;s type.</span>
-
-<span class="sd">        Parameters</span>
-<span class="sd">        ----------</span>
-<span class="sd">        item : `any`</span>
-<span class="sd">            data that needs to be checked.</span>
-
-<span class="sd">        Returns</span>
-<span class="sd">        -------</span>
-<span class="sd">        item : `any`</span>
-<span class="sd">            formatted data cast to type.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">)):</span>
-            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">):</span>
-                <span class="k">try</span><span class="p">:</span>
-                    <span class="k">return</span> <span class="n">item</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
-                <span class="k">except</span> <span class="ne">UnicodeDecodeError</span><span class="p">:</span>
-                    <span class="k">return</span> <span class="n">item</span><span class="o">.</span><span class="n">hex</span><span class="p">()</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="k">return</span> <span class="n">item</span>
-        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">Mapping</span><span class="p">):</span>
-            <span class="k">return</span> <span class="n">tojson</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
-        <span class="k">return</span> <span class="p">[</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">val</span><span class="p">)</span> <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">item</span><span class="p">]</span>
-
-    <span class="n">json</span> <span class="o">=</span> <span class="p">{}</span>
-    <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">meta</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="p">(</span><span class="nb">bytes</span><span class="p">,</span> <span class="nb">bytearray</span><span class="p">)):</span>
-            <span class="k">try</span><span class="p">:</span>
-                <span class="n">key</span> <span class="o">=</span> <span class="n">k</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
-            <span class="k">except</span> <span class="ne">UnicodeDecodeError</span><span class="p">:</span>
-                <span class="n">key</span> <span class="o">=</span> <span class="n">k</span><span class="o">.</span><span class="n">hex</span><span class="p">()</span>
-            <span class="n">json</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">check_instance</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">json</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">check_instance</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">json</span>
 </code></pre></div>
         </details>
     </div>
@@ -6003,7 +5731,7 @@ Bendecoder        </code>
 <p>bits : <code>bytes</code>
     bencoded data for decoding.</p>
 <h5 id="pyben.classes.Bendecoder.decode--returns">Returns</h5>
-<p>any :
+<p><code>any</code> :
     the decoded data.</p>
 
         <details class="quote">
@@ -6019,7 +5747,7 @@ Bendecoder        </code>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-<span class="sd">    any :</span>
+<span class="sd">    `any` :</span>
 <span class="sd">        the decoded data.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -6057,7 +5785,7 @@ Bendecoder        </code>
 <p><code>FilePathError</code>:
     Incorrect path or IOBuffer doesnt exist.</p>
 <h5 id="pyben.classes.Bendecoder.load--returns">Returns</h5>
-<p>any
+<p><code>any</code>
     Decoded contents of file, Usually a dictionary.</p>
 
         <details class="quote">
@@ -6079,7 +5807,7 @@ Bendecoder        </code>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-<span class="sd">    any</span>
+<span class="sd">    `any`</span>
 <span class="sd">        Decoded contents of file, Usually a dictionary.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -6119,7 +5847,7 @@ Bendecoder        </code>
 <p>data : <code>bytes</code> or <code>bytearray</code>
     Bendencoded <code>bytes</code>.</p>
 <h5 id="pyben.classes.Bendecoder.loads--returns">Returns</h5>
-<p>any
+<p><code>any</code>
     Decoded data usually a dictionary.</p>
 
         <details class="quote">
@@ -6136,7 +5864,7 @@ Bendecoder        </code>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-<span class="sd">    any</span>
+<span class="sd">    `any`</span>
 <span class="sd">        Decoded data usually a dictionary.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -6206,7 +5934,7 @@ Benencoder        </code>
 
       <p>Initialize Benencoder insance with optional pre compiled data.</p>
       <hr />
-<p>data : any
+<p>data : <code>any</code>
     (Optional) Target data for encoding. Defaults to None.</p>
 
         <details class="quote">
@@ -6217,7 +5945,7 @@ Benencoder        </code>
 
 <span class="sd">    Args:</span>
 <span class="sd">    ----</span>
-<span class="sd">    data : any</span>
+<span class="sd">    data : `any`</span>
 <span class="sd">        (Optional) Target data for encoding. Defaults to None.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -6248,7 +5976,7 @@ Benencoder        </code>
 
       <p>Shortcut Classmethod for encoding data and writing to file.</p>
 <h5 id="pyben.classes.Benencoder.dump--args">Args</h5>
-<p>data : any
+<p>data : <code>any</code>
     Raw data to be encoded, usually dict.txt
 path : path-like or <code>BytesIO</code>
     Where encoded data should be written to.py</p>
@@ -6264,7 +5992,7 @@ path : path-like or <code>BytesIO</code>
 
 <span class="sd">    Args</span>
 <span class="sd">    ----</span>
-<span class="sd">    data : any</span>
+<span class="sd">    data : `any`</span>
 <span class="sd">        Raw data to be encoded, usually dict.txt</span>
 <span class="sd">    path : path-like or `BytesIO`</span>
 <span class="sd">        Where encoded data should be written to.py</span>
@@ -6306,7 +6034,7 @@ path : path-like or <code>BytesIO</code>
 
       <p>Shortcut method for encoding data and immediately returning it.</p>
 <h5 id="pyben.classes.Benencoder.dumps--args">Args</h5>
-<p>data : any
+<p>data : <code>any</code>
     Raw data to be encoded usually a dictionary.</p>
 <h5 id="pyben.classes.Benencoder.dumps--returns">Returns</h5>
 <p><code>bytes</code>: Encoded data.</p>
@@ -6320,7 +6048,7 @@ path : path-like or <code>BytesIO</code>
 
 <span class="sd">    Args</span>
 <span class="sd">    ----</span>
-<span class="sd">    data : any</span>
+<span class="sd">    data : `any`</span>
 <span class="sd">        Raw data to be encoded usually a dictionary.</span>
 
 <span class="sd">    Returns</span>

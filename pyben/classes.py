@@ -62,7 +62,7 @@ class Bendecoder:
 
         Returns
         -------
-        any
+        `any`
             Decoded contents of file, Usually a dictionary.
 
         """
@@ -87,7 +87,7 @@ class Bendecoder:
 
         Returns
         -------
-        any
+        `any`
             Decoded data usually a dictionary.
 
         """
@@ -105,7 +105,7 @@ class Bendecoder:
 
         Returns
         -------
-        any :
+        `any` :
             the decoded data.
 
         """
@@ -124,7 +124,7 @@ class Bendecoder:
 
         Returns
         -------
-        any :
+        `any` :
             The decoded data.
 
         """
@@ -255,7 +255,7 @@ class Benencoder:
 
         Args:
         ----
-        data : any
+        data : `any`
             (Optional) Target data for encoding. Defaults to None.
 
         """
@@ -269,7 +269,7 @@ class Benencoder:
 
         Args
         ----
-        data : any
+        data : `any`
             Raw data to be encoded, usually dict.txt
         path : path-like or `BytesIO`
             Where encoded data should be written to.py
@@ -294,7 +294,7 @@ class Benencoder:
 
         Args
         ----
-        data : any
+        data : `any`
             Raw data to be encoded usually a dictionary.
 
         Returns

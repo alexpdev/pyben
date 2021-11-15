@@ -5,7 +5,7 @@ site_description: "Python Bencode Library API."
 copyright: alexpdev 2021
 nav:
   - Home: index.md
-  - About: about.md
+  - Examples: examples.md
   - License: LICENSE.md
   - API: api.md
 

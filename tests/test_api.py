@@ -13,7 +13,6 @@
 #####################################################################
 """Testing functions for Pyben API module."""
 
-import json
 import os
 
 import pytest
@@ -160,37 +159,3 @@ def test_api_param_none():
         pyben.load(None)
     except pyben.exceptions.FilePathError:
         assert True  # nosec
-
-
-@pytest.mark.parametrize(
-    "key, value",
-    [
-        ("announce", "http://ubuntu.com/announce"),
-        ("name", "ubuntu.iso"),
-        ("length", 12845738),
-        ("private", 1),
-        ("source", "ubuntu"),
-        ("created by", "mktorrent"),
-    ],
-)
-def test_api_tojson(tempmeta, key, value):
-    """Test the tojson function in api module."""
-    tmeta, _ = tempmeta
-    meta = pyben.dumps(tmeta)
-    jsn = pyben.tojson(meta)
-    if key in jsn:
-        assert jsn[key] == value  # nosec
-    else:
-        assert jsn["info"][key] == value  # nosec
-
-
-def test_api_tojson_file(tempmeta):
-    """Test the tojson function by writing to json file."""
-    tmeta, tfile = tempmeta
-    meta = pyben.dumps(tmeta)
-    jsn = pyben.tojson(meta)
-    jfile = os.path.join(os.path.dirname(tfile), "jfile.json")
-    with open(jfile, "wt") as fd:
-        json.dump(jsn, fd)
-    assert os.path.exists(jfile)  # nosec
-    context.rmpath(jfile)
