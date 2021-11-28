@@ -150,8 +150,8 @@ def loads(encoded):
 
     Returns
     -------
-    `any` :
-        (commonly `dict`), Decoded data.
+    any :
+        (any), Decoded data.
 
     """
     decoded, _ = bendecode(encoded)

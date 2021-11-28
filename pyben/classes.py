@@ -255,7 +255,7 @@ class Benencoder:
 
         Args:
         ----
-        data : `any`
+        data : any
             (Optional) Target data for encoding. Defaults to None.
 
         """
@@ -265,18 +265,19 @@ class Benencoder:
     @classmethod
     def dump(cls, data, path):
         """
-        Shortcut Classmethod for encoding data and writing to file.
+        Shortcut class method for encoding data and writing to file.
 
         Args
         ----
-        data : `any`
+        data : any
             Raw data to be encoded, usually dict.txt
-        path : path-like or `BytesIO`
+        path : `str` or `os.PathLike` or `BytesIO`
             Where encoded data should be written to.py
 
         Returns
         -------
-        `bool` : Return True if success.txt
+        `bool` :
+            Return True if success.txt
 
         """
         encoded = cls(data).encode()
@@ -294,7 +295,7 @@ class Benencoder:
 
         Args
         ----
-        data : `any`
+        data : any
             Raw data to be encoded usually a dictionary.
 
         Returns
