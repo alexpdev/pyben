@@ -14,7 +14,7 @@
         <link rel="canonical" href="https://alexpdev.github.io/pyben/api/">
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.3.2">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-7.3.6">
     
     
       
@@ -22,7 +22,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.24c991ad.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.a57b2b03.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.3f5d1f46.min.css">
@@ -276,6 +276,8 @@
       </a>
       
         
+
+
 <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
   
@@ -1115,6 +1117,13 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pyben.version" class="md-nav__link">
+    version
+  </a>
   
 </li>
       
@@ -1921,6 +1930,8 @@
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
+
+
 <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
   
@@ -2760,6 +2771,13 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pyben.version" class="md-nav__link">
+    version
+  </a>
   
 </li>
       
@@ -3851,8 +3869,8 @@ buffer : <code>str</code> or <code>BytesIO</code>
 <p>encoded : <code>bytes</code>
     Bencoded data.</p>
 <h5 id="pyben.api.loads--returns">Returns</h5>
-<p><code>any</code> :
-    (commonly <code>dict</code>), Decoded data.</p>
+<p>any :
+    (any), Decoded data.</p>
 
         <details class="quote">
           <summary>Source code in <code>pyben\api.py</code></summary>
@@ -3867,8 +3885,8 @@ buffer : <code>str</code> or <code>BytesIO</code>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-<span class="sd">    `any` :</span>
-<span class="sd">        (commonly `dict`), Decoded data.</span>
+<span class="sd">    any :</span>
+<span class="sd">        (any), Decoded data.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">decoded</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">bendecode</span><span class="p">(</span><span class="n">encoded</span><span class="p">)</span>
@@ -4869,7 +4887,7 @@ Benencoder        </code>
 
       <p>Initialize Benencoder insance with optional pre compiled data.</p>
       <hr />
-<p>data : <code>any</code>
+<p>data : any
     (Optional) Target data for encoding. Defaults to None.</p>
 
         <details class="quote">
@@ -4880,7 +4898,7 @@ Benencoder        </code>
 
 <span class="sd">    Args:</span>
 <span class="sd">    ----</span>
-<span class="sd">    data : `any`</span>
+<span class="sd">    data : any</span>
 <span class="sd">        (Optional) Target data for encoding. Defaults to None.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -4909,32 +4927,34 @@ Benencoder        </code>
 
     <div class="doc doc-contents ">
 
-      <p>Shortcut Classmethod for encoding data and writing to file.</p>
+      <p>Shortcut class method for encoding data and writing to file.</p>
 <h6 id="pyben.classes.Benencoder.dump--args">Args</h6>
-<p>data : <code>any</code>
+<p>data : any
     Raw data to be encoded, usually dict.txt
-path : path-like or <code>BytesIO</code>
+path : <code>str</code> or <code>os.PathLike</code> or <code>BytesIO</code>
     Where encoded data should be written to.py</p>
 <h6 id="pyben.classes.Benencoder.dump--returns">Returns</h6>
-<p><code>bool</code> : Return True if success.txt</p>
+<p><code>bool</code> :
+    Return True if success.txt</p>
 
         <details class="quote">
           <summary>Source code in <code>pyben\classes.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="nd">@classmethod</span>
 <span class="k">def</span> <span class="nf">dump</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Shortcut Classmethod for encoding data and writing to file.</span>
+<span class="sd">    Shortcut class method for encoding data and writing to file.</span>
 
 <span class="sd">    Args</span>
 <span class="sd">    ----</span>
-<span class="sd">    data : `any`</span>
+<span class="sd">    data : any</span>
 <span class="sd">        Raw data to be encoded, usually dict.txt</span>
-<span class="sd">    path : path-like or `BytesIO`</span>
+<span class="sd">    path : `str` or `os.PathLike` or `BytesIO`</span>
 <span class="sd">        Where encoded data should be written to.py</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-<span class="sd">    `bool` : Return True if success.txt</span>
+<span class="sd">    `bool` :</span>
+<span class="sd">        Return True if success.txt</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">encoded</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">()</span>
@@ -4969,7 +4989,7 @@ path : path-like or <code>BytesIO</code>
 
       <p>Shortcut method for encoding data and immediately returning it.</p>
 <h6 id="pyben.classes.Benencoder.dumps--args">Args</h6>
-<p>data : <code>any</code>
+<p>data : any
     Raw data to be encoded usually a dictionary.</p>
 <h6 id="pyben.classes.Benencoder.dumps--returns">Returns</h6>
 <p><code>bytes</code>: Encoded data.</p>
@@ -4983,7 +5003,7 @@ path : path-like or <code>BytesIO</code>
 
 <span class="sd">    Args</span>
 <span class="sd">    ----</span>
-<span class="sd">    data : `any`</span>
+<span class="sd">    data : any</span>
 <span class="sd">        Raw data to be encoded usually a dictionary.</span>
 
 <span class="sd">    Returns</span>
@@ -5336,6 +5356,44 @@ does not exist.</p>
 
 
 
+  <div class="doc doc-object doc-module">
+
+
+
+<h2 id="pyben.version" class="doc doc-heading">
+        <code>version</code>
+
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Module containing the current version.</p>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
 
   </div>
 
@@ -5578,8 +5636,8 @@ buffer : <code>str</code> or <code>BytesIO</code>
 <p>encoded : <code>bytes</code>
     Bencoded data.</p>
 <h4 id="pyben.api.loads--returns">Returns</h4>
-<p><code>any</code> :
-    (commonly <code>dict</code>), Decoded data.</p>
+<p>any :
+    (any), Decoded data.</p>
 
         <details class="quote">
           <summary>Source code in <code>pyben\api.py</code></summary>
@@ -5594,8 +5652,8 @@ buffer : <code>str</code> or <code>BytesIO</code>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-<span class="sd">    `any` :</span>
-<span class="sd">        (commonly `dict`), Decoded data.</span>
+<span class="sd">    any :</span>
+<span class="sd">        (any), Decoded data.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">decoded</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">bendecode</span><span class="p">(</span><span class="n">encoded</span><span class="p">)</span>
@@ -5934,7 +5992,7 @@ Benencoder        </code>
 
       <p>Initialize Benencoder insance with optional pre compiled data.</p>
       <hr />
-<p>data : <code>any</code>
+<p>data : any
     (Optional) Target data for encoding. Defaults to None.</p>
 
         <details class="quote">
@@ -5945,7 +6003,7 @@ Benencoder        </code>
 
 <span class="sd">    Args:</span>
 <span class="sd">    ----</span>
-<span class="sd">    data : `any`</span>
+<span class="sd">    data : any</span>
 <span class="sd">        (Optional) Target data for encoding. Defaults to None.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -5974,32 +6032,34 @@ Benencoder        </code>
 
     <div class="doc doc-contents ">
 
-      <p>Shortcut Classmethod for encoding data and writing to file.</p>
+      <p>Shortcut class method for encoding data and writing to file.</p>
 <h5 id="pyben.classes.Benencoder.dump--args">Args</h5>
-<p>data : <code>any</code>
+<p>data : any
     Raw data to be encoded, usually dict.txt
-path : path-like or <code>BytesIO</code>
+path : <code>str</code> or <code>os.PathLike</code> or <code>BytesIO</code>
     Where encoded data should be written to.py</p>
 <h5 id="pyben.classes.Benencoder.dump--returns">Returns</h5>
-<p><code>bool</code> : Return True if success.txt</p>
+<p><code>bool</code> :
+    Return True if success.txt</p>
 
         <details class="quote">
           <summary>Source code in <code>pyben\classes.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="nd">@classmethod</span>
 <span class="k">def</span> <span class="nf">dump</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Shortcut Classmethod for encoding data and writing to file.</span>
+<span class="sd">    Shortcut class method for encoding data and writing to file.</span>
 
 <span class="sd">    Args</span>
 <span class="sd">    ----</span>
-<span class="sd">    data : `any`</span>
+<span class="sd">    data : any</span>
 <span class="sd">        Raw data to be encoded, usually dict.txt</span>
-<span class="sd">    path : path-like or `BytesIO`</span>
+<span class="sd">    path : `str` or `os.PathLike` or `BytesIO`</span>
 <span class="sd">        Where encoded data should be written to.py</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-<span class="sd">    `bool` : Return True if success.txt</span>
+<span class="sd">    `bool` :</span>
+<span class="sd">        Return True if success.txt</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">encoded</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">()</span>
@@ -6034,7 +6094,7 @@ path : path-like or <code>BytesIO</code>
 
       <p>Shortcut method for encoding data and immediately returning it.</p>
 <h5 id="pyben.classes.Benencoder.dumps--args">Args</h5>
-<p>data : <code>any</code>
+<p>data : any
     Raw data to be encoded usually a dictionary.</p>
 <h5 id="pyben.classes.Benencoder.dumps--returns">Returns</h5>
 <p><code>bytes</code>: Encoded data.</p>
@@ -6048,7 +6108,7 @@ path : path-like or <code>BytesIO</code>
 
 <span class="sd">    Args</span>
 <span class="sd">    ----</span>
-<span class="sd">    data : `any`</span>
+<span class="sd">    data : any</span>
 <span class="sd">        Raw data to be encoded usually a dictionary.</span>
 
 <span class="sd">    Returns</span>
@@ -7097,10 +7157,10 @@ does not exist.</p>
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.e99e714c.min.js", "version": null}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.fcfe8b6d.min.js", "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.bc35569b.min.js"></script>
+      <script src="../assets/javascripts/bundle.b1047164.min.js"></script>
       
     
   </body>

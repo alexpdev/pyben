@@ -62,16 +62,14 @@ lint: ## check style with flake8
 test: ## run tests quickly with the default Python
 	pytest tests --cov=tests --cov=pyben --pylint
 
-
-coverage: ## check code coverage quickly with the default Python
-	coverage run --source pyben -m pytest tests
-	coverage xml -o coverage.xml
-
-push: lint docs clean test coverage
+push: lint docs clean test
 	git add .
 	git commit -m "$m"
 	git push -u origin dev
+	coverage run --source pyben -m pytest tests
+	coverage xml -o coverage.xml
 	bash codacy.sh report -r coverage.xml
+	rm coverage.xml
 
 docs: ## generate Sphinx HTML documentation, including API docs
 	rm -rf docs

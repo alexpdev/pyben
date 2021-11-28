@@ -42,8 +42,9 @@ from pyben import api, bencode, classes
 from pyben.api import dump, dumps, load, loads
 from pyben.bencode import bendecode, benencode
 from pyben.classes import Bendecoder, Benencoder
+from pyben.version import version
 
-__version__ = "0.2.6"
+__version__ = version
 __author__ = "alexpdev"
 
 __all__ = [
