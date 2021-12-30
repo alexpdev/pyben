@@ -35,6 +35,7 @@ def testmeta():
     pieces_val = sha256("aeiou".encode("utf-8")).digest()
     meta = {
         "announce": "http://ubuntu.com/announce",
+        "announce list": [["http://ubuntu.com/announce", "url2", "url3"]],
         "info": {
             "name": "ubuntu.iso",
             "length": 12845738,

@@ -109,7 +109,7 @@ def dumps(obj):
     return bytes(benencode(obj))
 
 
-def load(buffer, json=False):
+def load(buffer, to_json=False):
     """
     Load bencoded data from a file of path object and decodes it.
 
@@ -135,14 +135,16 @@ def load(buffer, json=False):
                 decoded, _ = bendecode(_fd.read())
         except FileNotFoundError as excp:
             raise FilePathError(buffer) from excp
-     
-    if json:
+
+    if to_json:
+        import json
+
         decoded = _to_json(decoded)
         decoded = json.dumps(decoded)
     return decoded
 
 
-def loads(encoded, json=False):
+def loads(encoded, to_json=False):
     """
     Shortcut function for decoding encoded data.
 
@@ -158,30 +160,29 @@ def loads(encoded, json=False):
 
     """
     decoded, _ = bendecode(encoded)
-    if json:
+    if to_json:
         import json
+
         decoded = _to_json(decoded)
         decoded = json.dumps(decoded)
-        
+
     return decoded
-                
+
 
 def _to_json(decoded):
     """Convert bencode decoded output into json serializable object."""
-    if isinstance(decoded, dict):
-        pairs = {}
-        for key, val in decoded.items():
-            pairs[key] = _to_json(val)
-        return pairs
-    elif isinstance(decoded, (bytes, bytearray)):
+    if isinstance(decoded, (bytes, bytearray)):
         return decoded.hex()
-    elif isinstance(decoded, (str, int, float)):
+    if isinstance(decoded, (str, int, float)):
         return decoded
-    elif isinstance(decoded, (list, tuple)):
+    if isinstance(decoded, (list, tuple)):
         seq = []
         for item in decoded:
             seq.append(_to_json(item))
         return seq
-    else:
-        return decoded
-        
+    pairs = {}
+    if isinstance(decoded, dict):
+        for key, val in decoded.items():
+            dekey = _to_json(key)
+            pairs[dekey] = _to_json(val)
+    return pairs

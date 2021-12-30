@@ -13,6 +13,7 @@
 #####################################################################
 """Testing functions for Pyben API module."""
 
+import json
 import os
 
 import pytest
@@ -159,3 +160,17 @@ def test_api_param_none():
         pyben.load(None)
     except pyben.exceptions.FilePathError:
         assert True  # nosec
+
+
+def test_api_load_json(tempfile):
+    """Test api load function with optional json option set True."""
+    jsonmeta = pyben.load(tempfile, to_json=True)
+    assert json.loads(jsonmeta)  # nosec
+
+
+def test_api_loads_json(tempfile):
+    """Test api loads function with json parameter active."""
+    with open(tempfile, "rb") as binfile:
+        data = binfile.read()
+    jsonmeta = pyben.loads(data, to_json=True)
+    assert json.loads(jsonmeta)  # nosec
