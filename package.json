@@ -1,10 +1,11 @@
 {
   "name": "pyben",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "description": "Small library for encoding/decoding bencode data. Pyben Enables fast and easy encoding and decoding of bencoded data.",
   "directories": {
     "doc": "docs",
-    "test": "tests"
+    "test": "tests",
+    "pyben": "pyben"
   },
   "scripts": {
     "test": "make test"
@@ -14,7 +15,7 @@
     "url": "git+https://github.com/alexpdev/pyben.git"
   },
   "url": "https://github.com/alexpdev/pyben",
-  "keywords": ["library", "bencode", "bittorrent", "encodings"],
+  "keywords": ["library", "bencode"],
   "author": "alexpdev",
   "license": "GNU LGPL V3",
   "email": "alexpdev@protonmail.com",

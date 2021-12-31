@@ -32,6 +32,7 @@ clean-build: ## remove build artifacts
 	rm -fr build/
 	rm -fr dist/
 	rm -fr .eggs/
+	rm -fr **/.pytest_cache
 	rm -fr *.egg-info
 	rm -fr *.egg
 	rm -f **.pyc
@@ -51,11 +52,6 @@ lint: ## check style with flake8
 	black tests
 	isort pyben
 	isort tests
-	pylint pyben tests
-	pycodestyle pyben tests
-	pydocstyle pyben tests
-	pyroma .
-	bandit pyben/*
 	prospector pyben
 	prospector tests
 

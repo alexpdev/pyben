@@ -51,50 +51,50 @@ def test_rmpath():
     with open(file_path2, "wt") as test_file:
         test_file.write("Testing rmpath function in tests module.")
     context.rmpath(path)
-    assert not os.path.exists("rmpath_test_file")  # nosec
+    assert not os.path.exists("rmpath_test_file")
 
 
 def test_api_tuple_to_list():
     """Test encoding tuple to list."""
     lst = (130, "foobar", "foo:bar")
-    assert pyben.dumps(lst) == b"li130e6:foobar7:foo:bare"  # nosec
+    assert pyben.dumps(lst) == b"li130e6:foobar7:foo:bare"
 
 
 @pytest.mark.parametrize("decoded, encoded", context.data())
 def test_api_loads(decoded, encoded):
     """Test decoding inline."""
-    assert pyben.loads(encoded) == decoded  # nosec
+    assert pyben.loads(encoded) == decoded
 
 
 @pytest.mark.parametrize("decoded, encoded", context.data())
 def test_api_dumps(decoded, encoded):
     """Test encoding inline."""
-    assert pyben.dumps(decoded) == encoded  # nosec
+    assert pyben.dumps(decoded) == encoded
 
 
 def test_api_loads_exists(tempfile):
     """Test decoding from file."""
     fd = tempfile
-    assert os.path.exists(fd)  # nosec
+    assert os.path.exists(fd)
 
 
 def test_api_loads_type(tempfile):
     """Test inline encoding type."""
     decoded = pyben.load(tempfile)
-    assert isinstance(decoded, dict)  # nosec
+    assert isinstance(decoded, dict)
 
 
 def test_api_loads_containes(tempfile):
     """Test inline decoding containers."""
     decoded = pyben.load(tempfile)
-    assert "ubuntu.com" in decoded["announce"].lower()  # nosec
+    assert "ubuntu.com" in decoded["announce"].lower()
 
 
 def test_api_dump_string(tempmeta):
     """Test encoding to file."""
     meta, path = tempmeta
     pyben.dump(meta, path)
-    assert os.path.exists(path)  # nosec
+    assert os.path.exists(path)
     context.rmpath(path)
 
 
@@ -102,7 +102,7 @@ def test_api_with_file_load(tempfile):
     """Test load function with opened BytesIO."""
     with open(tempfile, "rb") as _fd:
         data = pyben.load(_fd)
-    assert data is not None  # nosec
+    assert data is not None
 
 
 def test_api_dump_iobuffer(tempmeta):
@@ -110,7 +110,7 @@ def test_api_dump_iobuffer(tempmeta):
     meta, path = tempmeta
     with open(path, "wb") as _fd:
         pyben.dump(meta, _fd)
-    assert os.path.exists(path)  # nosec
+    assert os.path.exists(path)
     context.rmpath(path)
 
 
@@ -118,7 +118,7 @@ def test_dump_eq_load(tempmeta):
     """Test encoding inline then decoding."""
     meta, path = tempmeta
     pyben.dump(meta, path)
-    assert meta["info"] == pyben.load(path)["info"]  # nosec
+    assert meta["info"] == pyben.load(path)["info"]
     context.rmpath(path)
 
 
@@ -127,7 +127,7 @@ def test_pyben_excp3():
     try:
         raise pyben.exceptions.DecodeError(b"000000|`")
     except pyben.exceptions.DecodeError:
-        assert True  # nosec
+        assert True
 
 
 def test_pyben_excp2():
@@ -135,7 +135,7 @@ def test_pyben_excp2():
     try:
         raise pyben.exceptions.EncodeError("000000|`")
     except pyben.exceptions.EncodeError:
-        assert True  # nosec
+        assert True
 
 
 def test_pyben_excp1():
@@ -143,7 +143,7 @@ def test_pyben_excp1():
     try:
         raise pyben.exceptions.FilePathError("somefile.torrent")
     except pyben.exceptions.FilePathError:
-        assert True  # nosec
+        assert True
 
 
 def test_api_param_doesnt_exist():
@@ -151,7 +151,7 @@ def test_api_param_doesnt_exist():
     try:
         pyben.load("loremipsumunimjohnny")
     except pyben.exceptions.FilePathError:
-        assert True  # nosec
+        assert True
 
 
 def test_api_param_none():
@@ -159,13 +159,13 @@ def test_api_param_none():
     try:
         pyben.load(None)
     except pyben.exceptions.FilePathError:
-        assert True  # nosec
+        assert True
 
 
 def test_api_load_json(tempfile):
     """Test api load function with optional json option set True."""
     jsonmeta = pyben.load(tempfile, to_json=True)
-    assert json.loads(jsonmeta)  # nosec
+    assert json.dumps(jsonmeta) is not None
 
 
 def test_api_loads_json(tempfile):
@@ -173,4 +173,47 @@ def test_api_loads_json(tempfile):
     with open(tempfile, "rb") as binfile:
         data = binfile.read()
     jsonmeta = pyben.loads(data, to_json=True)
-    assert json.loads(jsonmeta)  # nosec
+    assert json.dumps(jsonmeta) is not None
+
+
+def test_api_show_dict(tempmeta):
+    """Test show function with dictionary as input."""
+    meta, _ = tempmeta
+    assert pyben.show(meta)
+
+
+def test_api_show_iobuffer(tempmeta):
+    """Test show function with opened file buffer as input."""
+    meta, path = tempmeta
+    pyben.dump(meta, path)
+    with open(path, "rb") as binfile:
+        output = pyben.show(binfile)
+    assert output
+    context.rmpath(path)
+
+
+def test_api_show_path(tempmeta):
+    """Test show function with PathLike as input."""
+    meta, path = tempmeta
+    pyben.dump(meta, path)
+    from pathlib import Path
+
+    path = Path(path)
+    assert pyben.show(path)
+    context.rmpath(path)
+
+
+def test_api_show_str():
+    """Test show function with a string as input."""
+    meta = "A Duck, quacked!"
+    assert pyben.show(meta)
+
+
+def test_api_show_bytes(tempmeta):
+    """Test show function with bytes or bytearray as input."""
+    meta, path = tempmeta
+    pyben.dump(meta, path)
+    with open(path, "rb") as binfile:
+        meta = binfile.read()
+    assert pyben.show(meta)
+    context.rmpath(path)

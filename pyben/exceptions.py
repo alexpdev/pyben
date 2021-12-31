@@ -22,8 +22,8 @@ class DecodeError(Exception):
     Mostly it indicates the object is a hash digest and should remian
     as a bytes object.
 
-    Args:
-    ----
+    Parameters
+    ----------
     val : any
         Value that cause the exception
 
@@ -43,8 +43,8 @@ class EncodeError(Exception):
     data type into bencode format. Bencode accepts lists, dicts,
     strings, integers, and bytes.
 
-    Args:
-    ----
+    Parameters
+    ----------
     val : any
         Value that cause the exception
 
@@ -62,8 +62,8 @@ class FilePathError(Exception):
     Generally raised when the file at the path specified
     does not exist.
 
-    Args:
-    ----
+    Parameters
+    ----------
     val : any
         Value that cause the exception
 

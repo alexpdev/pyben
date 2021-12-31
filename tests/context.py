@@ -46,7 +46,7 @@ def testmeta():
         "pieces root": {pieces_key: pieces_val},
         "created by": "mktorrent",
     }
-    assert isinstance(meta, dict)  # nosec
+    assert isinstance(meta, dict)
     return meta
 
 
@@ -57,7 +57,7 @@ def testfile():
     meta = testmeta()
     with open(tfile, "wb") as fd:
         pyben.dump(meta, fd)
-    assert os.path.exists(tfile)  # nosec
+    assert os.path.exists(tfile)
     return tfile
 
 

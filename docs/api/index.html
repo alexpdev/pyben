@@ -1,3587 +1,47 @@
 
-<!doctype html>
-<html lang="en" class="no-js">
-  <head>
-    
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width,initial-scale=1">
-      
-        <meta name="description" content="Python Bencode Library API.">
-      
-      
-      
-      
-        <link rel="canonical" href="https://alexpdev.github.io/pyben/api/">
-      
-      <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-7.3.6">
-    
-    
-      
-        <title>API - My Docs</title>
-      
-    
-    
-      <link rel="stylesheet" href="../assets/stylesheets/main.a57b2b03.min.css">
-      
-        
-        <link rel="stylesheet" href="../assets/stylesheets/palette.3f5d1f46.min.css">
-        
-      
-    
-    
-    
-      
-        
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
-        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
-      
-    
-    
-    
-      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
-    
-    
-      
+<!DOCTYPE html>
+<html>
+<head>
+  
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
+    <title>API &mdash; My Docs</title>
+
+    <link rel="shortcut icon" href="../img/favicon.ico">
+    <link rel="stylesheet" href="../css/alabaster.css" type="text/css">
+    <link rel="stylesheet" href="../css/alabaster-overrides.css" type="text/css">
 
     
+      <link href="//use.fontawesome.com/releases/v5.8.1/css/all.css" rel="stylesheet">
     
-  </head>
-  
-  
+      <link href="//use.fontawesome.com/releases/v5.8.1/css/v4-shims.css" rel="stylesheet">
     
+      <link href="../css/mkapi-common.css" rel="stylesheet">
     
+      <link href="../assets/_mkdocstrings.css" rel="stylesheet">
     
-    
-    
-    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
-  
-    
-    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
-    
-    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
-    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
-    <label class="md-overlay" for="__drawer"></label>
-    <div data-md-component="skip">
-      
-        
-        <a href="#api-reference" class="md-skip">
-          Skip to content
-        </a>
-      
-    </div>
-    <div data-md-component="announce">
-      
-    </div>
-    
-      
 
-<header class="md-header" data-md-component="header">
-  <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="My Docs" class="md-header__button md-logo" aria-label="My Docs" data-md-component="logo">
-      
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+    
+      <script src="../js/mkapi.js"></script>
+    
+      <script src="../search/main.js"></script>
+    
 
-    </a>
-    <label class="md-header__button md-icon" for="__drawer">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
-    </label>
-    <div class="md-header__title" data-md-component="header-title">
-      <div class="md-header__ellipsis">
-        <div class="md-header__topic">
-          <span class="md-ellipsis">
-            My Docs
-          </span>
-        </div>
-        <div class="md-header__topic" data-md-component="header-topic">
-          <span class="md-ellipsis">
-            
-              API
-            
-          </span>
-        </div>
-      </div>
-    </div>
     
+
+    <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
     
-    
-      <label class="md-header__button md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
-      </label>
-      
-<div class="md-search" data-md-component="search" role="dialog">
-  <label class="md-search__overlay" for="__search"></label>
-  <div class="md-search__inner" role="search">
-    <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
-      <label class="md-search__icon md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
-      </label>
-      <nav class="md-search__options" aria-label="Search">
-        
-        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
-        </button>
-      </nav>
-      
-    </form>
-    <div class="md-search__output">
-      <div class="md-search__scrollwrap" data-md-scrollfix>
-        <div class="md-search-result" data-md-component="search-result">
-          <div class="md-search-result__meta">
-            Initializing search
-          </div>
-          <ol class="md-search-result__list"></ol>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-    
-    
-      <div class="md-header__source">
-        
-<a href="https://github.com/alexpdev/pyben/" title="Go to repository" class="md-source" data-md-component="source">
-  <div class="md-source__icon md-icon">
-    
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
-  </div>
-  <div class="md-source__repository">
-    GitHub
-  </div>
-</a>
-      </div>
-    
-  </nav>
   
-</header>
-    
-    <div class="md-container" data-md-component="container">
-      
-      
-        
+</head>
+<body>
+
+  <div class="document">
+    <div class="documentwrapper">
+      <div class="bodywrapper">
+        <div class="body" role="main">
           
-        
-      
-      <main class="md-main" data-md-component="main">
-        <div class="md-main__inner md-grid">
-          
-            
-              
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-
-
-<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
-  <label class="md-nav__title" for="__drawer">
-    <a href=".." title="My Docs" class="md-nav__button md-logo" aria-label="My Docs" data-md-component="logo">
-      
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
-
-    </a>
-    My Docs
-  </label>
-  
-    <div class="md-nav__source">
-      
-<a href="https://github.com/alexpdev/pyben/" title="Go to repository" class="md-source" data-md-component="source">
-  <div class="md-source__icon md-icon">
-    
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
-  </div>
-  <div class="md-source__repository">
-    GitHub
-  </div>
-</a>
-    </div>
-  
-  <ul class="md-nav__list" data-md-scrollfix>
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
-        Home
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../examples/" class="md-nav__link">
-        Examples
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../LICENSE/" class="md-nav__link">
-        License
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-    
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          API
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        API
-      </a>
-      
-        
-
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#pyben" class="md-nav__link">
-    pyben
-  </a>
-  
-    <nav class="md-nav" aria-label="pyben">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben--modules" class="md-nav__link">
-    Modules
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben--classes" class="md-nav__link">
-    Classes
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben--functions" class="md-nav__link">
-    Functions
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pyben.api" class="md-nav__link">
-    api
-  </a>
-  
-    <nav class="md-nav" aria-label="api">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.api--bencode-utility-library" class="md-nav__link">
-    Bencode utility library.
-  </a>
-  
-    <nav class="md-nav" aria-label="Bencode utility library.">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.api--functions" class="md-nav__link">
-    Functions
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.api--usage-examples" class="md-nav__link">
-    Usage Examples
-  </a>
-  
-    <nav class="md-nav" aria-label="Usage Examples">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.api--encode-inline-code" class="md-nav__link">
-    Encode inline code:
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.api--encode-to-file" class="md-nav__link">
-    Encode to file:
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.api--decode-inline-code" class="md-nav__link">
-    Decode inline code:
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.api--decode-from-file" class="md-nav__link">
-    Decode from file:
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.api.dump" class="md-nav__link">
-    dump()
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.api.dumps" class="md-nav__link">
-    dumps()
-  </a>
-  
-    <nav class="md-nav" aria-label="dumps()">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.api.dumps--args" class="md-nav__link">
-    Args
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.api.dumps--returns" class="md-nav__link">
-    Returns
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.api.load" class="md-nav__link">
-    load()
-  </a>
-  
-    <nav class="md-nav" aria-label="load()">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.api.load--args" class="md-nav__link">
-    Args
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.api.load--returns" class="md-nav__link">
-    Returns
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.api.loads" class="md-nav__link">
-    loads()
-  </a>
-  
-    <nav class="md-nav" aria-label="loads()">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.api.loads--args" class="md-nav__link">
-    Args
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.api.loads--returns" class="md-nav__link">
-    Returns
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pyben.bencode" class="md-nav__link">
-    bencode
-  </a>
-  
-    <nav class="md-nav" aria-label="bencode">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode--functions" class="md-nav__link">
-    Functions
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bencode_bytes" class="md-nav__link">
-    bencode_bytes()
-  </a>
-  
-    <nav class="md-nav" aria-label="bencode_bytes()">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bencode_bytes--args" class="md-nav__link">
-    Args
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bencode_bytes--returns" class="md-nav__link">
-    Returns
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bencode_dict" class="md-nav__link">
-    bencode_dict()
-  </a>
-  
-    <nav class="md-nav" aria-label="bencode_dict()">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bencode_dict--args" class="md-nav__link">
-    Args
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bencode_dict--returns" class="md-nav__link">
-    Returns
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bencode_int" class="md-nav__link">
-    bencode_int()
-  </a>
-  
-    <nav class="md-nav" aria-label="bencode_int()">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bencode_int--args" class="md-nav__link">
-    Args
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bencode_int--returns" class="md-nav__link">
-    Returns
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bencode_list" class="md-nav__link">
-    bencode_list()
-  </a>
-  
-    <nav class="md-nav" aria-label="bencode_list()">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bencode_list--args" class="md-nav__link">
-    Args
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bencode_list--returns" class="md-nav__link">
-    Returns
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bencode_str" class="md-nav__link">
-    bencode_str()
-  </a>
-  
-    <nav class="md-nav" aria-label="bencode_str()">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bencode_str--args" class="md-nav__link">
-    Args
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bencode_str--returns" class="md-nav__link">
-    Returns
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bendecode" class="md-nav__link">
-    bendecode()
-  </a>
-  
-    <nav class="md-nav" aria-label="bendecode()">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bendecode--args" class="md-nav__link">
-    Args
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bendecode--raises" class="md-nav__link">
-    Raises
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bendecode--returns" class="md-nav__link">
-    Returns
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bendecode_dict" class="md-nav__link">
-    bendecode_dict()
-  </a>
-  
-    <nav class="md-nav" aria-label="bendecode_dict()">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bendecode_dict--args" class="md-nav__link">
-    Args
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bendecode_dict--returns" class="md-nav__link">
-    Returns
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bendecode_int" class="md-nav__link">
-    bendecode_int()
-  </a>
-  
-    <nav class="md-nav" aria-label="bendecode_int()">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bendecode_int--args" class="md-nav__link">
-    Args
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bendecode_int--returns" class="md-nav__link">
-    Returns
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bendecode_list" class="md-nav__link">
-    bendecode_list()
-  </a>
-  
-    <nav class="md-nav" aria-label="bendecode_list()">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bendecode_list--args" class="md-nav__link">
-    Args
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bendecode_list--returns" class="md-nav__link">
-    Returns
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bendecode_str" class="md-nav__link">
-    bendecode_str()
-  </a>
-  
-    <nav class="md-nav" aria-label="bendecode_str()">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bendecode_str--args" class="md-nav__link">
-    Args
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bendecode_str--returns" class="md-nav__link">
-    Returns
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.benencode" class="md-nav__link">
-    benencode()
-  </a>
-  
-    <nav class="md-nav" aria-label="benencode()">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.benencode--args" class="md-nav__link">
-    Args
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.benencode--raises" class="md-nav__link">
-    Raises
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.benencode--returns" class="md-nav__link">
-    Returns
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pyben.classes" class="md-nav__link">
-    classes
-  </a>
-  
-    <nav class="md-nav" aria-label="classes">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.classes--classes" class="md-nav__link">
-    Classes
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.classes.Bendecoder" class="md-nav__link">
-    Bendecoder
-  </a>
-  
-    <nav class="md-nav" aria-label="Bendecoder">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.classes.Bendecoder.__init__" class="md-nav__link">
-    __init__()
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.classes.Bendecoder.decode" class="md-nav__link">
-    decode()
-  </a>
-  
-    <nav class="md-nav" aria-label="decode()">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.classes.Bendecoder.decode--args" class="md-nav__link">
-    Args
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.classes.Bendecoder.decode--returns" class="md-nav__link">
-    Returns
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.classes.Bendecoder.load" class="md-nav__link">
-    load()
-  </a>
-  
-    <nav class="md-nav" aria-label="load()">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.classes.Bendecoder.load--args" class="md-nav__link">
-    Args
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.classes.Bendecoder.load--raises" class="md-nav__link">
-    Raises
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.classes.Bendecoder.load--returns" class="md-nav__link">
-    Returns
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.classes.Bendecoder.loads" class="md-nav__link">
-    loads()
-  </a>
-  
-    <nav class="md-nav" aria-label="loads()">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.classes.Bendecoder.loads--args" class="md-nav__link">
-    Args
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.classes.Bendecoder.loads--returns" class="md-nav__link">
-    Returns
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.classes.Benencoder" class="md-nav__link">
-    Benencoder
-  </a>
-  
-    <nav class="md-nav" aria-label="Benencoder">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.classes.Benencoder.__init__" class="md-nav__link">
-    __init__()
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.classes.Benencoder.dump" class="md-nav__link">
-    dump()
-  </a>
-  
-    <nav class="md-nav" aria-label="dump()">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.classes.Benencoder.dump--args" class="md-nav__link">
-    Args
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.classes.Benencoder.dump--returns" class="md-nav__link">
-    Returns
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.classes.Benencoder.dumps" class="md-nav__link">
-    dumps()
-  </a>
-  
-    <nav class="md-nav" aria-label="dumps()">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.classes.Benencoder.dumps--args" class="md-nav__link">
-    Args
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.classes.Benencoder.dumps--returns" class="md-nav__link">
-    Returns
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.classes.Benencoder.encode" class="md-nav__link">
-    encode()
-  </a>
-  
-    <nav class="md-nav" aria-label="encode()">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.classes.Benencoder.encode--args" class="md-nav__link">
-    Args
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.classes.Benencoder.encode--returns" class="md-nav__link">
-    Returns
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pyben.exceptions" class="md-nav__link">
-    exceptions
-  </a>
-  
-    <nav class="md-nav" aria-label="exceptions">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.exceptions.DecodeError" class="md-nav__link">
-    DecodeError
-  </a>
-  
-    <nav class="md-nav" aria-label="DecodeError">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.exceptions.DecodeError.__init__" class="md-nav__link">
-    __init__()
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.exceptions.EncodeError" class="md-nav__link">
-    EncodeError
-  </a>
-  
-    <nav class="md-nav" aria-label="EncodeError">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.exceptions.EncodeError.__init__" class="md-nav__link">
-    __init__()
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.exceptions.FilePathError" class="md-nav__link">
-    FilePathError
-  </a>
-  
-    <nav class="md-nav" aria-label="FilePathError">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.exceptions.FilePathError.__init__" class="md-nav__link">
-    __init__()
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pyben.version" class="md-nav__link">
-    version
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pyben.api" class="md-nav__link">
-    pyben.api
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pyben.api--bencode-utility-library" class="md-nav__link">
-    Bencode utility library.
-  </a>
-  
-    <nav class="md-nav" aria-label="Bencode utility library.">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.api--functions" class="md-nav__link">
-    Functions
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.api--usage-examples" class="md-nav__link">
-    Usage Examples
-  </a>
-  
-    <nav class="md-nav" aria-label="Usage Examples">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.api--encode-inline-code" class="md-nav__link">
-    Encode inline code:
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.api--encode-to-file" class="md-nav__link">
-    Encode to file:
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.api--decode-inline-code" class="md-nav__link">
-    Decode inline code:
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.api--decode-from-file" class="md-nav__link">
-    Decode from file:
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pyben.api.dump" class="md-nav__link">
-    dump()
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pyben.api.dumps" class="md-nav__link">
-    dumps()
-  </a>
-  
-    <nav class="md-nav" aria-label="dumps()">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.api.dumps--args" class="md-nav__link">
-    Args
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.api.dumps--returns" class="md-nav__link">
-    Returns
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pyben.api.load" class="md-nav__link">
-    load()
-  </a>
-  
-    <nav class="md-nav" aria-label="load()">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.api.load--args" class="md-nav__link">
-    Args
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.api.load--returns" class="md-nav__link">
-    Returns
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pyben.api.loads" class="md-nav__link">
-    loads()
-  </a>
-  
-    <nav class="md-nav" aria-label="loads()">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.api.loads--args" class="md-nav__link">
-    Args
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.api.loads--returns" class="md-nav__link">
-    Returns
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pyben.classes" class="md-nav__link">
-    pyben.classes
-  </a>
-  
-    <nav class="md-nav" aria-label="pyben.classes">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.classes--classes" class="md-nav__link">
-    Classes
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pyben.classes.Bendecoder" class="md-nav__link">
-    Bendecoder
-  </a>
-  
-    <nav class="md-nav" aria-label="Bendecoder">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.classes.Bendecoder.__init__" class="md-nav__link">
-    __init__()
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.classes.Bendecoder.decode" class="md-nav__link">
-    decode()
-  </a>
-  
-    <nav class="md-nav" aria-label="decode()">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.classes.Bendecoder.decode--args" class="md-nav__link">
-    Args
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.classes.Bendecoder.decode--returns" class="md-nav__link">
-    Returns
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.classes.Bendecoder.load" class="md-nav__link">
-    load()
-  </a>
-  
-    <nav class="md-nav" aria-label="load()">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.classes.Bendecoder.load--args" class="md-nav__link">
-    Args
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.classes.Bendecoder.load--raises" class="md-nav__link">
-    Raises
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.classes.Bendecoder.load--returns" class="md-nav__link">
-    Returns
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.classes.Bendecoder.loads" class="md-nav__link">
-    loads()
-  </a>
-  
-    <nav class="md-nav" aria-label="loads()">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.classes.Bendecoder.loads--args" class="md-nav__link">
-    Args
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.classes.Bendecoder.loads--returns" class="md-nav__link">
-    Returns
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pyben.classes.Benencoder" class="md-nav__link">
-    Benencoder
-  </a>
-  
-    <nav class="md-nav" aria-label="Benencoder">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.classes.Benencoder.__init__" class="md-nav__link">
-    __init__()
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.classes.Benencoder.dump" class="md-nav__link">
-    dump()
-  </a>
-  
-    <nav class="md-nav" aria-label="dump()">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.classes.Benencoder.dump--args" class="md-nav__link">
-    Args
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.classes.Benencoder.dump--returns" class="md-nav__link">
-    Returns
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.classes.Benencoder.dumps" class="md-nav__link">
-    dumps()
-  </a>
-  
-    <nav class="md-nav" aria-label="dumps()">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.classes.Benencoder.dumps--args" class="md-nav__link">
-    Args
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.classes.Benencoder.dumps--returns" class="md-nav__link">
-    Returns
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.classes.Benencoder.encode" class="md-nav__link">
-    encode()
-  </a>
-  
-    <nav class="md-nav" aria-label="encode()">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.classes.Benencoder.encode--args" class="md-nav__link">
-    Args
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.classes.Benencoder.encode--returns" class="md-nav__link">
-    Returns
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pyben.bencode" class="md-nav__link">
-    pyben.bencode
-  </a>
-  
-    <nav class="md-nav" aria-label="pyben.bencode">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode--functions" class="md-nav__link">
-    Functions
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pyben.bencode.bencode_bytes" class="md-nav__link">
-    bencode_bytes()
-  </a>
-  
-    <nav class="md-nav" aria-label="bencode_bytes()">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bencode_bytes--args" class="md-nav__link">
-    Args
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bencode_bytes--returns" class="md-nav__link">
-    Returns
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pyben.bencode.bencode_dict" class="md-nav__link">
-    bencode_dict()
-  </a>
-  
-    <nav class="md-nav" aria-label="bencode_dict()">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bencode_dict--args" class="md-nav__link">
-    Args
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bencode_dict--returns" class="md-nav__link">
-    Returns
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pyben.bencode.bencode_int" class="md-nav__link">
-    bencode_int()
-  </a>
-  
-    <nav class="md-nav" aria-label="bencode_int()">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bencode_int--args" class="md-nav__link">
-    Args
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bencode_int--returns" class="md-nav__link">
-    Returns
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pyben.bencode.bencode_list" class="md-nav__link">
-    bencode_list()
-  </a>
-  
-    <nav class="md-nav" aria-label="bencode_list()">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bencode_list--args" class="md-nav__link">
-    Args
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bencode_list--returns" class="md-nav__link">
-    Returns
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pyben.bencode.bencode_str" class="md-nav__link">
-    bencode_str()
-  </a>
-  
-    <nav class="md-nav" aria-label="bencode_str()">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bencode_str--args" class="md-nav__link">
-    Args
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bencode_str--returns" class="md-nav__link">
-    Returns
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pyben.bencode.bendecode" class="md-nav__link">
-    bendecode()
-  </a>
-  
-    <nav class="md-nav" aria-label="bendecode()">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bendecode--args" class="md-nav__link">
-    Args
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bendecode--raises" class="md-nav__link">
-    Raises
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bendecode--returns" class="md-nav__link">
-    Returns
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pyben.bencode.bendecode_dict" class="md-nav__link">
-    bendecode_dict()
-  </a>
-  
-    <nav class="md-nav" aria-label="bendecode_dict()">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bendecode_dict--args" class="md-nav__link">
-    Args
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bendecode_dict--returns" class="md-nav__link">
-    Returns
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pyben.bencode.bendecode_int" class="md-nav__link">
-    bendecode_int()
-  </a>
-  
-    <nav class="md-nav" aria-label="bendecode_int()">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bendecode_int--args" class="md-nav__link">
-    Args
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bendecode_int--returns" class="md-nav__link">
-    Returns
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pyben.bencode.bendecode_list" class="md-nav__link">
-    bendecode_list()
-  </a>
-  
-    <nav class="md-nav" aria-label="bendecode_list()">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bendecode_list--args" class="md-nav__link">
-    Args
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bendecode_list--returns" class="md-nav__link">
-    Returns
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pyben.bencode.bendecode_str" class="md-nav__link">
-    bendecode_str()
-  </a>
-  
-    <nav class="md-nav" aria-label="bendecode_str()">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bendecode_str--args" class="md-nav__link">
-    Args
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bendecode_str--returns" class="md-nav__link">
-    Returns
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pyben.bencode.benencode" class="md-nav__link">
-    benencode()
-  </a>
-  
-    <nav class="md-nav" aria-label="benencode()">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.benencode--args" class="md-nav__link">
-    Args
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.benencode--raises" class="md-nav__link">
-    Raises
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.benencode--returns" class="md-nav__link">
-    Returns
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pyben.exceptions" class="md-nav__link">
-    pyben.exceptions
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pyben.exceptions.DecodeError" class="md-nav__link">
-    DecodeError
-  </a>
-  
-    <nav class="md-nav" aria-label="DecodeError">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.exceptions.DecodeError.__init__" class="md-nav__link">
-    __init__()
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pyben.exceptions.EncodeError" class="md-nav__link">
-    EncodeError
-  </a>
-  
-    <nav class="md-nav" aria-label="EncodeError">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.exceptions.EncodeError.__init__" class="md-nav__link">
-    __init__()
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pyben.exceptions.FilePathError" class="md-nav__link">
-    FilePathError
-  </a>
-  
-    <nav class="md-nav" aria-label="FilePathError">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.exceptions.FilePathError.__init__" class="md-nav__link">
-    __init__()
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
-
-    
-  </ul>
-</nav>
-                  </div>
-                </div>
-              </div>
-            
-            
-              
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#pyben" class="md-nav__link">
-    pyben
-  </a>
-  
-    <nav class="md-nav" aria-label="pyben">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben--modules" class="md-nav__link">
-    Modules
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben--classes" class="md-nav__link">
-    Classes
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben--functions" class="md-nav__link">
-    Functions
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pyben.api" class="md-nav__link">
-    api
-  </a>
-  
-    <nav class="md-nav" aria-label="api">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.api--bencode-utility-library" class="md-nav__link">
-    Bencode utility library.
-  </a>
-  
-    <nav class="md-nav" aria-label="Bencode utility library.">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.api--functions" class="md-nav__link">
-    Functions
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.api--usage-examples" class="md-nav__link">
-    Usage Examples
-  </a>
-  
-    <nav class="md-nav" aria-label="Usage Examples">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.api--encode-inline-code" class="md-nav__link">
-    Encode inline code:
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.api--encode-to-file" class="md-nav__link">
-    Encode to file:
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.api--decode-inline-code" class="md-nav__link">
-    Decode inline code:
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.api--decode-from-file" class="md-nav__link">
-    Decode from file:
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.api.dump" class="md-nav__link">
-    dump()
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.api.dumps" class="md-nav__link">
-    dumps()
-  </a>
-  
-    <nav class="md-nav" aria-label="dumps()">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.api.dumps--args" class="md-nav__link">
-    Args
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.api.dumps--returns" class="md-nav__link">
-    Returns
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.api.load" class="md-nav__link">
-    load()
-  </a>
-  
-    <nav class="md-nav" aria-label="load()">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.api.load--args" class="md-nav__link">
-    Args
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.api.load--returns" class="md-nav__link">
-    Returns
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.api.loads" class="md-nav__link">
-    loads()
-  </a>
-  
-    <nav class="md-nav" aria-label="loads()">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.api.loads--args" class="md-nav__link">
-    Args
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.api.loads--returns" class="md-nav__link">
-    Returns
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pyben.bencode" class="md-nav__link">
-    bencode
-  </a>
-  
-    <nav class="md-nav" aria-label="bencode">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode--functions" class="md-nav__link">
-    Functions
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bencode_bytes" class="md-nav__link">
-    bencode_bytes()
-  </a>
-  
-    <nav class="md-nav" aria-label="bencode_bytes()">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bencode_bytes--args" class="md-nav__link">
-    Args
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bencode_bytes--returns" class="md-nav__link">
-    Returns
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bencode_dict" class="md-nav__link">
-    bencode_dict()
-  </a>
-  
-    <nav class="md-nav" aria-label="bencode_dict()">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bencode_dict--args" class="md-nav__link">
-    Args
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bencode_dict--returns" class="md-nav__link">
-    Returns
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bencode_int" class="md-nav__link">
-    bencode_int()
-  </a>
-  
-    <nav class="md-nav" aria-label="bencode_int()">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bencode_int--args" class="md-nav__link">
-    Args
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bencode_int--returns" class="md-nav__link">
-    Returns
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bencode_list" class="md-nav__link">
-    bencode_list()
-  </a>
-  
-    <nav class="md-nav" aria-label="bencode_list()">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bencode_list--args" class="md-nav__link">
-    Args
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bencode_list--returns" class="md-nav__link">
-    Returns
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bencode_str" class="md-nav__link">
-    bencode_str()
-  </a>
-  
-    <nav class="md-nav" aria-label="bencode_str()">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bencode_str--args" class="md-nav__link">
-    Args
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bencode_str--returns" class="md-nav__link">
-    Returns
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bendecode" class="md-nav__link">
-    bendecode()
-  </a>
-  
-    <nav class="md-nav" aria-label="bendecode()">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bendecode--args" class="md-nav__link">
-    Args
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bendecode--raises" class="md-nav__link">
-    Raises
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bendecode--returns" class="md-nav__link">
-    Returns
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bendecode_dict" class="md-nav__link">
-    bendecode_dict()
-  </a>
-  
-    <nav class="md-nav" aria-label="bendecode_dict()">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bendecode_dict--args" class="md-nav__link">
-    Args
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bendecode_dict--returns" class="md-nav__link">
-    Returns
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bendecode_int" class="md-nav__link">
-    bendecode_int()
-  </a>
-  
-    <nav class="md-nav" aria-label="bendecode_int()">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bendecode_int--args" class="md-nav__link">
-    Args
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bendecode_int--returns" class="md-nav__link">
-    Returns
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bendecode_list" class="md-nav__link">
-    bendecode_list()
-  </a>
-  
-    <nav class="md-nav" aria-label="bendecode_list()">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bendecode_list--args" class="md-nav__link">
-    Args
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bendecode_list--returns" class="md-nav__link">
-    Returns
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bendecode_str" class="md-nav__link">
-    bendecode_str()
-  </a>
-  
-    <nav class="md-nav" aria-label="bendecode_str()">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bendecode_str--args" class="md-nav__link">
-    Args
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bendecode_str--returns" class="md-nav__link">
-    Returns
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.benencode" class="md-nav__link">
-    benencode()
-  </a>
-  
-    <nav class="md-nav" aria-label="benencode()">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.benencode--args" class="md-nav__link">
-    Args
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.benencode--raises" class="md-nav__link">
-    Raises
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.benencode--returns" class="md-nav__link">
-    Returns
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pyben.classes" class="md-nav__link">
-    classes
-  </a>
-  
-    <nav class="md-nav" aria-label="classes">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.classes--classes" class="md-nav__link">
-    Classes
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.classes.Bendecoder" class="md-nav__link">
-    Bendecoder
-  </a>
-  
-    <nav class="md-nav" aria-label="Bendecoder">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.classes.Bendecoder.__init__" class="md-nav__link">
-    __init__()
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.classes.Bendecoder.decode" class="md-nav__link">
-    decode()
-  </a>
-  
-    <nav class="md-nav" aria-label="decode()">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.classes.Bendecoder.decode--args" class="md-nav__link">
-    Args
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.classes.Bendecoder.decode--returns" class="md-nav__link">
-    Returns
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.classes.Bendecoder.load" class="md-nav__link">
-    load()
-  </a>
-  
-    <nav class="md-nav" aria-label="load()">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.classes.Bendecoder.load--args" class="md-nav__link">
-    Args
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.classes.Bendecoder.load--raises" class="md-nav__link">
-    Raises
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.classes.Bendecoder.load--returns" class="md-nav__link">
-    Returns
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.classes.Bendecoder.loads" class="md-nav__link">
-    loads()
-  </a>
-  
-    <nav class="md-nav" aria-label="loads()">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.classes.Bendecoder.loads--args" class="md-nav__link">
-    Args
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.classes.Bendecoder.loads--returns" class="md-nav__link">
-    Returns
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.classes.Benencoder" class="md-nav__link">
-    Benencoder
-  </a>
-  
-    <nav class="md-nav" aria-label="Benencoder">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.classes.Benencoder.__init__" class="md-nav__link">
-    __init__()
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.classes.Benencoder.dump" class="md-nav__link">
-    dump()
-  </a>
-  
-    <nav class="md-nav" aria-label="dump()">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.classes.Benencoder.dump--args" class="md-nav__link">
-    Args
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.classes.Benencoder.dump--returns" class="md-nav__link">
-    Returns
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.classes.Benencoder.dumps" class="md-nav__link">
-    dumps()
-  </a>
-  
-    <nav class="md-nav" aria-label="dumps()">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.classes.Benencoder.dumps--args" class="md-nav__link">
-    Args
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.classes.Benencoder.dumps--returns" class="md-nav__link">
-    Returns
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.classes.Benencoder.encode" class="md-nav__link">
-    encode()
-  </a>
-  
-    <nav class="md-nav" aria-label="encode()">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.classes.Benencoder.encode--args" class="md-nav__link">
-    Args
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.classes.Benencoder.encode--returns" class="md-nav__link">
-    Returns
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pyben.exceptions" class="md-nav__link">
-    exceptions
-  </a>
-  
-    <nav class="md-nav" aria-label="exceptions">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.exceptions.DecodeError" class="md-nav__link">
-    DecodeError
-  </a>
-  
-    <nav class="md-nav" aria-label="DecodeError">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.exceptions.DecodeError.__init__" class="md-nav__link">
-    __init__()
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.exceptions.EncodeError" class="md-nav__link">
-    EncodeError
-  </a>
-  
-    <nav class="md-nav" aria-label="EncodeError">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.exceptions.EncodeError.__init__" class="md-nav__link">
-    __init__()
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.exceptions.FilePathError" class="md-nav__link">
-    FilePathError
-  </a>
-  
-    <nav class="md-nav" aria-label="FilePathError">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.exceptions.FilePathError.__init__" class="md-nav__link">
-    __init__()
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pyben.version" class="md-nav__link">
-    version
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pyben.api" class="md-nav__link">
-    pyben.api
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pyben.api--bencode-utility-library" class="md-nav__link">
-    Bencode utility library.
-  </a>
-  
-    <nav class="md-nav" aria-label="Bencode utility library.">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.api--functions" class="md-nav__link">
-    Functions
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.api--usage-examples" class="md-nav__link">
-    Usage Examples
-  </a>
-  
-    <nav class="md-nav" aria-label="Usage Examples">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.api--encode-inline-code" class="md-nav__link">
-    Encode inline code:
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.api--encode-to-file" class="md-nav__link">
-    Encode to file:
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.api--decode-inline-code" class="md-nav__link">
-    Decode inline code:
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.api--decode-from-file" class="md-nav__link">
-    Decode from file:
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pyben.api.dump" class="md-nav__link">
-    dump()
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pyben.api.dumps" class="md-nav__link">
-    dumps()
-  </a>
-  
-    <nav class="md-nav" aria-label="dumps()">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.api.dumps--args" class="md-nav__link">
-    Args
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.api.dumps--returns" class="md-nav__link">
-    Returns
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pyben.api.load" class="md-nav__link">
-    load()
-  </a>
-  
-    <nav class="md-nav" aria-label="load()">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.api.load--args" class="md-nav__link">
-    Args
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.api.load--returns" class="md-nav__link">
-    Returns
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pyben.api.loads" class="md-nav__link">
-    loads()
-  </a>
-  
-    <nav class="md-nav" aria-label="loads()">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.api.loads--args" class="md-nav__link">
-    Args
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.api.loads--returns" class="md-nav__link">
-    Returns
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pyben.classes" class="md-nav__link">
-    pyben.classes
-  </a>
-  
-    <nav class="md-nav" aria-label="pyben.classes">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.classes--classes" class="md-nav__link">
-    Classes
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pyben.classes.Bendecoder" class="md-nav__link">
-    Bendecoder
-  </a>
-  
-    <nav class="md-nav" aria-label="Bendecoder">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.classes.Bendecoder.__init__" class="md-nav__link">
-    __init__()
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.classes.Bendecoder.decode" class="md-nav__link">
-    decode()
-  </a>
-  
-    <nav class="md-nav" aria-label="decode()">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.classes.Bendecoder.decode--args" class="md-nav__link">
-    Args
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.classes.Bendecoder.decode--returns" class="md-nav__link">
-    Returns
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.classes.Bendecoder.load" class="md-nav__link">
-    load()
-  </a>
-  
-    <nav class="md-nav" aria-label="load()">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.classes.Bendecoder.load--args" class="md-nav__link">
-    Args
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.classes.Bendecoder.load--raises" class="md-nav__link">
-    Raises
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.classes.Bendecoder.load--returns" class="md-nav__link">
-    Returns
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.classes.Bendecoder.loads" class="md-nav__link">
-    loads()
-  </a>
-  
-    <nav class="md-nav" aria-label="loads()">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.classes.Bendecoder.loads--args" class="md-nav__link">
-    Args
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.classes.Bendecoder.loads--returns" class="md-nav__link">
-    Returns
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pyben.classes.Benencoder" class="md-nav__link">
-    Benencoder
-  </a>
-  
-    <nav class="md-nav" aria-label="Benencoder">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.classes.Benencoder.__init__" class="md-nav__link">
-    __init__()
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.classes.Benencoder.dump" class="md-nav__link">
-    dump()
-  </a>
-  
-    <nav class="md-nav" aria-label="dump()">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.classes.Benencoder.dump--args" class="md-nav__link">
-    Args
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.classes.Benencoder.dump--returns" class="md-nav__link">
-    Returns
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.classes.Benencoder.dumps" class="md-nav__link">
-    dumps()
-  </a>
-  
-    <nav class="md-nav" aria-label="dumps()">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.classes.Benencoder.dumps--args" class="md-nav__link">
-    Args
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.classes.Benencoder.dumps--returns" class="md-nav__link">
-    Returns
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.classes.Benencoder.encode" class="md-nav__link">
-    encode()
-  </a>
-  
-    <nav class="md-nav" aria-label="encode()">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.classes.Benencoder.encode--args" class="md-nav__link">
-    Args
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.classes.Benencoder.encode--returns" class="md-nav__link">
-    Returns
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pyben.bencode" class="md-nav__link">
-    pyben.bencode
-  </a>
-  
-    <nav class="md-nav" aria-label="pyben.bencode">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode--functions" class="md-nav__link">
-    Functions
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pyben.bencode.bencode_bytes" class="md-nav__link">
-    bencode_bytes()
-  </a>
-  
-    <nav class="md-nav" aria-label="bencode_bytes()">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bencode_bytes--args" class="md-nav__link">
-    Args
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bencode_bytes--returns" class="md-nav__link">
-    Returns
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pyben.bencode.bencode_dict" class="md-nav__link">
-    bencode_dict()
-  </a>
-  
-    <nav class="md-nav" aria-label="bencode_dict()">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bencode_dict--args" class="md-nav__link">
-    Args
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bencode_dict--returns" class="md-nav__link">
-    Returns
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pyben.bencode.bencode_int" class="md-nav__link">
-    bencode_int()
-  </a>
-  
-    <nav class="md-nav" aria-label="bencode_int()">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bencode_int--args" class="md-nav__link">
-    Args
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bencode_int--returns" class="md-nav__link">
-    Returns
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pyben.bencode.bencode_list" class="md-nav__link">
-    bencode_list()
-  </a>
-  
-    <nav class="md-nav" aria-label="bencode_list()">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bencode_list--args" class="md-nav__link">
-    Args
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bencode_list--returns" class="md-nav__link">
-    Returns
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pyben.bencode.bencode_str" class="md-nav__link">
-    bencode_str()
-  </a>
-  
-    <nav class="md-nav" aria-label="bencode_str()">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bencode_str--args" class="md-nav__link">
-    Args
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bencode_str--returns" class="md-nav__link">
-    Returns
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pyben.bencode.bendecode" class="md-nav__link">
-    bendecode()
-  </a>
-  
-    <nav class="md-nav" aria-label="bendecode()">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bendecode--args" class="md-nav__link">
-    Args
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bendecode--raises" class="md-nav__link">
-    Raises
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bendecode--returns" class="md-nav__link">
-    Returns
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pyben.bencode.bendecode_dict" class="md-nav__link">
-    bendecode_dict()
-  </a>
-  
-    <nav class="md-nav" aria-label="bendecode_dict()">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bendecode_dict--args" class="md-nav__link">
-    Args
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bendecode_dict--returns" class="md-nav__link">
-    Returns
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pyben.bencode.bendecode_int" class="md-nav__link">
-    bendecode_int()
-  </a>
-  
-    <nav class="md-nav" aria-label="bendecode_int()">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bendecode_int--args" class="md-nav__link">
-    Args
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bendecode_int--returns" class="md-nav__link">
-    Returns
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pyben.bencode.bendecode_list" class="md-nav__link">
-    bendecode_list()
-  </a>
-  
-    <nav class="md-nav" aria-label="bendecode_list()">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bendecode_list--args" class="md-nav__link">
-    Args
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bendecode_list--returns" class="md-nav__link">
-    Returns
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pyben.bencode.bendecode_str" class="md-nav__link">
-    bendecode_str()
-  </a>
-  
-    <nav class="md-nav" aria-label="bendecode_str()">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bendecode_str--args" class="md-nav__link">
-    Args
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.bendecode_str--returns" class="md-nav__link">
-    Returns
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pyben.bencode.benencode" class="md-nav__link">
-    benencode()
-  </a>
-  
-    <nav class="md-nav" aria-label="benencode()">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.benencode--args" class="md-nav__link">
-    Args
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.benencode--raises" class="md-nav__link">
-    Raises
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyben.bencode.benencode--returns" class="md-nav__link">
-    Returns
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pyben.exceptions" class="md-nav__link">
-    pyben.exceptions
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pyben.exceptions.DecodeError" class="md-nav__link">
-    DecodeError
-  </a>
-  
-    <nav class="md-nav" aria-label="DecodeError">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.exceptions.DecodeError.__init__" class="md-nav__link">
-    __init__()
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pyben.exceptions.EncodeError" class="md-nav__link">
-    EncodeError
-  </a>
-  
-    <nav class="md-nav" aria-label="EncodeError">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.exceptions.EncodeError.__init__" class="md-nav__link">
-    __init__()
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pyben.exceptions.FilePathError" class="md-nav__link">
-    FilePathError
-  </a>
-  
-    <nav class="md-nav" aria-label="FilePathError">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pyben.exceptions.FilePathError.__init__" class="md-nav__link">
-    __init__()
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-                  </div>
-                </div>
-              </div>
-            
-          
-          <div class="md-content" data-md-component="content">
-            <article class="md-content__inner md-typeset">
-              
-                
-                  <a href="https://github.com/alexpdev/pyben/edit/master/docs/api.md" title="Edit this page" class="md-content__button md-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
-                  </a>
-                
-                
-                <h1 id="api-reference">API Reference</h1>
+            <h1 id="pyben-api-reference">PyBen API Reference</h1>
 
 
   <div class="doc doc-object doc-module">
@@ -3710,7 +170,7 @@
       <p>Shortcut function for bencode encode data and write to file.</p>
 <p>Works effectively the same as it's json equivelant except also
 accepts a path as well as an open fileIO.</p>
-      <hr />
+<h5 id="pyben.api.dump--parameters">Parameters</h5>
 <p>obj : any
     Data to be encoded.
 buffer : <code>str</code> or <code>BytesIO</code>
@@ -3725,8 +185,8 @@ buffer : <code>str</code> or <code>BytesIO</code>
 <span class="sd">    Works effectively the same as it&#39;s json equivelant except also</span>
 <span class="sd">    accepts a path as well as an open fileIO.</span>
 
-<span class="sd">    Args:</span>
-<span class="sd">    ----</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
 <span class="sd">    obj : any</span>
 <span class="sd">        Data to be encoded.</span>
 <span class="sd">    buffer : `str` or `BytesIO`</span>
@@ -3761,7 +221,7 @@ buffer : <code>str</code> or <code>BytesIO</code>
     <div class="doc doc-contents ">
 
       <p>Shortuct function to encoding given obj to bencode encoding.</p>
-<h5 id="pyben.api.dumps--args">Args</h5>
+<h5 id="pyben.api.dumps--parameters">Parameters</h5>
 <p>obj : <code>any</code>
     Object to be encoded.py.</p>
 <h5 id="pyben.api.dumps--returns">Returns</h5>
@@ -3774,8 +234,8 @@ buffer : <code>str</code> or <code>BytesIO</code>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Shortuct function to encoding given obj to bencode encoding.</span>
 
-<span class="sd">    Args</span>
-<span class="sd">    ----</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
 <span class="sd">    obj : `any`</span>
 <span class="sd">        Object to be encoded.py.</span>
 
@@ -3807,9 +267,11 @@ buffer : <code>str</code> or <code>BytesIO</code>
     <div class="doc doc-contents ">
 
       <p>Load bencoded data from a file of path object and decodes it.</p>
-<h5 id="pyben.api.load--args">Args</h5>
+<h5 id="pyben.api.load--parameters">Parameters</h5>
 <p>buffer : <code>str</code> or <code>BytesIO</code>
-    Open and/or read data from file to be decoded.</p>
+    Open and/or read data from file to be decoded.
+to_json : <code>bool</code>
+    convert to json serializable metadata if True else leave it alone.</p>
 <h5 id="pyben.api.load--returns">Returns</h5>
 <p><code>any</code> :
     (commonly <code>dict</code>), Decoded contents of file.</p>
@@ -3820,10 +282,12 @@ buffer : <code>str</code> or <code>BytesIO</code>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Load bencoded data from a file of path object and decodes it.</span>
 
-<span class="sd">    Args</span>
-<span class="sd">    ----</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
 <span class="sd">    buffer : `str` or `BytesIO`</span>
 <span class="sd">        Open and/or read data from file to be decoded.</span>
+<span class="sd">    to_json : `bool`</span>
+<span class="sd">        convert to json serializable metadata if True else leave it alone.</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
@@ -3844,10 +308,7 @@ buffer : <code>str</code> or <code>BytesIO</code>
             <span class="k">raise</span> <span class="n">FilePathError</span><span class="p">(</span><span class="n">buffer</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">excp</span>
 
     <span class="k">if</span> <span class="n">to_json</span><span class="p">:</span>
-        <span class="kn">import</span> <span class="nn">json</span>
-
         <span class="n">decoded</span> <span class="o">=</span> <span class="n">_to_json</span><span class="p">(</span><span class="n">decoded</span><span class="p">)</span>
-        <span class="n">decoded</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">decoded</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">decoded</span>
 </code></pre></div>
         </details>
@@ -3870,9 +331,11 @@ buffer : <code>str</code> or <code>BytesIO</code>
     <div class="doc doc-contents ">
 
       <p>Shortcut function for decoding encoded data.</p>
-<h5 id="pyben.api.loads--args">Args</h5>
+<h5 id="pyben.api.loads--parameters">Parameters</h5>
 <p>encoded : <code>bytes</code>
-    Bencoded data.</p>
+    Bencoded data.
+to_json : <code>bool</code>
+    Convert to json serializable if true otherwise leave it alone.</p>
 <h5 id="pyben.api.loads--returns">Returns</h5>
 <p>any :
     (any), Decoded data.</p>
@@ -3883,10 +346,12 @@ buffer : <code>str</code> or <code>BytesIO</code>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Shortcut function for decoding encoded data.</span>
 
-<span class="sd">    Args</span>
-<span class="sd">    ----</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
 <span class="sd">    encoded : `bytes`</span>
 <span class="sd">        Bencoded data.</span>
+<span class="sd">    to_json : `bool`</span>
+<span class="sd">        Convert to json serializable if true otherwise leave it alone.</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
@@ -3896,12 +361,71 @@ buffer : <code>str</code> or <code>BytesIO</code>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">decoded</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">bendecode</span><span class="p">(</span><span class="n">encoded</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">to_json</span><span class="p">:</span>
-        <span class="kn">import</span> <span class="nn">json</span>
-
         <span class="n">decoded</span> <span class="o">=</span> <span class="n">_to_json</span><span class="p">(</span><span class="n">decoded</span><span class="p">)</span>
-        <span class="n">decoded</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">decoded</span><span class="p">)</span>
-
     <span class="k">return</span> <span class="n">decoded</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h3 id="pyben.api.show" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">show</span><span class="p">(</span><span class="n">inp</span><span class="p">)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Ouptut readable metadata.</p>
+<h5 id="pyben.api.show--parameters">Parameters</h5>
+<p>inp : any
+    Pre-formatted input type.</p>
+<h5 id="pyben.api.show--returns">Returns</h5>
+<p>bool :
+    Returns True if completed successfully.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>pyben\api.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">show</span><span class="p">(</span><span class="n">inp</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Ouptut readable metadata.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    inp : any</span>
+<span class="sd">        Pre-formatted input type.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    bool :</span>
+<span class="sd">        Returns True if completed successfully.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">import</span> <span class="nn">json</span>
+    <span class="kn">import</span> <span class="nn">os</span>
+    <span class="kn">import</span> <span class="nn">sys</span>
+
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">inp</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+        <span class="n">meta</span> <span class="o">=</span> <span class="n">_to_json</span><span class="p">(</span><span class="n">inp</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">inp</span><span class="p">,</span> <span class="s2">&quot;read&quot;</span><span class="p">):</span>
+        <span class="n">meta</span> <span class="o">=</span> <span class="n">load</span><span class="p">(</span><span class="n">inp</span><span class="p">,</span> <span class="n">to_json</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">inp</span><span class="p">,</span> <span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">)):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">meta</span> <span class="o">=</span> <span class="n">load</span><span class="p">(</span><span class="n">inp</span><span class="p">,</span> <span class="n">to_json</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">FilePathError</span><span class="p">:</span>
+            <span class="n">meta</span> <span class="o">=</span> <span class="n">inp</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">inp</span><span class="p">,</span> <span class="p">(</span><span class="nb">bytes</span><span class="p">,</span> <span class="nb">bytearray</span><span class="p">)):</span>
+        <span class="n">meta</span> <span class="o">=</span> <span class="n">loads</span><span class="p">(</span><span class="n">inp</span><span class="p">,</span> <span class="n">to_json</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">meta</span><span class="p">,</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+    <span class="k">return</span> <span class="kc">True</span>
 </code></pre></div>
         </details>
     </div>
@@ -3978,7 +502,7 @@ buffer : <code>str</code> or <code>BytesIO</code>
     <div class="doc doc-contents ">
 
       <p>Encode bytes.</p>
-<h5 id="pyben.bencode.bencode_bytes--args">Args</h5>
+<h5 id="pyben.bencode.bencode_bytes--parameters">Parameters</h5>
 <p>bits : <code>bytes</code>
     Bytes treated as a byte-string literal.</p>
 <h5 id="pyben.bencode.bencode_bytes--returns">Returns</h5>
@@ -3991,8 +515,8 @@ buffer : <code>str</code> or <code>BytesIO</code>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Encode bytes.</span>
 
-<span class="sd">    Args</span>
-<span class="sd">    ----</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
 <span class="sd">    bits : `bytes`</span>
 <span class="sd">        Bytes treated as a byte-string literal.</span>
 
@@ -4025,7 +549,7 @@ buffer : <code>str</code> or <code>BytesIO</code>
     <div class="doc doc-contents ">
 
       <p>Encode dictionary and contents.</p>
-<h5 id="pyben.bencode.bencode_dict--args">Args</h5>
+<h5 id="pyben.bencode.bencode_dict--parameters">Parameters</h5>
 <p>dic : <code>dict</code>
     Any dictionary containing items that can be bencoded.</p>
 <h5 id="pyben.bencode.bencode_dict--returns">Returns</h5>
@@ -4038,8 +562,8 @@ buffer : <code>str</code> or <code>BytesIO</code>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Encode dictionary and contents.</span>
 
-<span class="sd">    Args</span>
-<span class="sd">    ----</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
 <span class="sd">    dic : `dict`</span>
 <span class="sd">        Any dictionary containing items that can be bencoded.</span>
 
@@ -4075,7 +599,7 @@ buffer : <code>str</code> or <code>BytesIO</code>
     <div class="doc doc-contents ">
 
       <p>Encode integer type.</p>
-<h5 id="pyben.bencode.bencode_int--args">Args</h5>
+<h5 id="pyben.bencode.bencode_int--parameters">Parameters</h5>
 <p>i : <code>int</code>
     Number that needs encoding.</p>
 <h5 id="pyben.bencode.bencode_int--returns">Returns</h5>
@@ -4088,8 +612,8 @@ buffer : <code>str</code> or <code>BytesIO</code>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Encode integer type.</span>
 
-<span class="sd">    Args</span>
-<span class="sd">    ----</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
 <span class="sd">    i : `int`</span>
 <span class="sd">        Number that needs encoding.</span>
 
@@ -4121,7 +645,7 @@ buffer : <code>str</code> or <code>BytesIO</code>
     <div class="doc doc-contents ">
 
       <p>Encode list and contents.</p>
-<h5 id="pyben.bencode.bencode_list--args">Args</h5>
+<h5 id="pyben.bencode.bencode_list--parameters">Parameters</h5>
 <p>elems : <code>list</code>
     List of items for bencoding.</p>
 <h5 id="pyben.bencode.bencode_list--returns">Returns</h5>
@@ -4134,8 +658,8 @@ buffer : <code>str</code> or <code>BytesIO</code>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Encode list and contents.</span>
 
-<span class="sd">    Args</span>
-<span class="sd">    ----</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
 <span class="sd">    elems : `list`</span>
 <span class="sd">        List of items for bencoding.</span>
 
@@ -4174,7 +698,7 @@ buffer : <code>str</code> or <code>BytesIO</code>
     <div class="doc doc-contents ">
 
       <p>Encode string literals.</p>
-<h5 id="pyben.bencode.bencode_str--args">Args</h5>
+<h5 id="pyben.bencode.bencode_str--parameters">Parameters</h5>
 <p>txt : <code>str</code>
     Any text string.</p>
 <h5 id="pyben.bencode.bencode_str--returns">Returns</h5>
@@ -4187,8 +711,8 @@ buffer : <code>str</code> or <code>BytesIO</code>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Encode string literals.</span>
 
-<span class="sd">    Args</span>
-<span class="sd">    ----</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
 <span class="sd">    txt : `str`</span>
 <span class="sd">        Any text string.</span>
 
@@ -4221,7 +745,7 @@ buffer : <code>str</code> or <code>BytesIO</code>
     <div class="doc doc-contents ">
 
       <p>Decode bencoded data.</p>
-<h5 id="pyben.bencode.bendecode--args">Args</h5>
+<h5 id="pyben.bencode.bendecode--parameters">Parameters</h5>
 <p>bits : <code>bytes</code>
     Bencode encoded data.</p>
 <h5 id="pyben.bencode.bendecode--raises">Raises</h5>
@@ -4237,8 +761,8 @@ buffer : <code>str</code> or <code>BytesIO</code>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Decode bencoded data.</span>
 
-<span class="sd">    Args</span>
-<span class="sd">    ----</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
 <span class="sd">    bits : `bytes`</span>
 <span class="sd">        Bencode encoded data.</span>
 
@@ -4291,7 +815,7 @@ buffer : <code>str</code> or <code>BytesIO</code>
     <div class="doc doc-contents ">
 
       <p>Decode dictionary and it's contents.</p>
-<h5 id="pyben.bencode.bendecode_dict--args">Args</h5>
+<h5 id="pyben.bencode.bendecode_dict--parameters">Parameters</h5>
 <p>bits : <code>bytes</code>
     Bencoded dictionary.</p>
 <h5 id="pyben.bencode.bendecode_dict--returns">Returns</h5>
@@ -4304,8 +828,8 @@ buffer : <code>str</code> or <code>BytesIO</code>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Decode dictionary and it&#39;s contents.</span>
 
-<span class="sd">    Args</span>
-<span class="sd">    ----</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
 <span class="sd">    bits : `bytes`</span>
 <span class="sd">        Bencoded dictionary.</span>
 
@@ -4347,7 +871,7 @@ buffer : <code>str</code> or <code>BytesIO</code>
     <div class="doc doc-contents ">
 
       <p>Decode digits.</p>
-<h5 id="pyben.bencode.bendecode_int--args">Args</h5>
+<h5 id="pyben.bencode.bendecode_int--parameters">Parameters</h5>
 <p>bits : <code>bytes</code>
     Bencoded intiger bytes</p>
 <h5 id="pyben.bencode.bendecode_int--returns">Returns</h5>
@@ -4360,8 +884,8 @@ buffer : <code>str</code> or <code>BytesIO</code>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Decode digits.</span>
 
-<span class="sd">    Args</span>
-<span class="sd">    ----</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
 <span class="sd">    bits : `bytes`</span>
 <span class="sd">        Bencoded intiger bytes</span>
 
@@ -4394,7 +918,7 @@ buffer : <code>str</code> or <code>BytesIO</code>
     <div class="doc doc-contents ">
 
       <p>Decode list and list contents.</p>
-<h5 id="pyben.bencode.bendecode_list--args">Args</h5>
+<h5 id="pyben.bencode.bendecode_list--parameters">Parameters</h5>
 <p>bits : <code>bytes</code>
     Bencoded list.</p>
 <h5 id="pyben.bencode.bendecode_list--returns">Returns</h5>
@@ -4407,8 +931,8 @@ buffer : <code>str</code> or <code>BytesIO</code>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Decode list and list contents.</span>
 
-<span class="sd">    Args</span>
-<span class="sd">    ----</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
 <span class="sd">    bits : `bytes`</span>
 <span class="sd">        Bencoded list.</span>
 
@@ -4448,8 +972,8 @@ buffer : <code>str</code> or <code>BytesIO</code>
     <div class="doc doc-contents ">
 
       <p>Bendecode string types.</p>
-<h5 id="pyben.bencode.bendecode_str--args">Args</h5>
-<p>bits : <code>bytes</code>
+<h5 id="pyben.bencode.bendecode_str--parameters">Parameters</h5>
+<p>units : <code>bytes</code>
     Bencoded string.</p>
 <h5 id="pyben.bencode.bendecode_str--returns">Returns</h5>
 <p><code>str</code> :
@@ -4461,9 +985,9 @@ buffer : <code>str</code> or <code>BytesIO</code>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Bendecode string types.</span>
 
-<span class="sd">    Args</span>
-<span class="sd">    ----</span>
-<span class="sd">    bits : `bytes`</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    units : `bytes`</span>
 <span class="sd">        Bencoded string.</span>
 
 <span class="sd">    Returns</span>
@@ -4505,7 +1029,7 @@ buffer : <code>str</code> or <code>BytesIO</code>
     <div class="doc doc-contents ">
 
       <p>Encode data with bencoding.</p>
-<h5 id="pyben.bencode.benencode--args">Args</h5>
+<h5 id="pyben.bencode.benencode--parameters">Parameters</h5>
 <p>val : any
     Data for encoding.</p>
 <h5 id="pyben.bencode.benencode--raises">Raises</h5>
@@ -4521,8 +1045,8 @@ buffer : <code>str</code> or <code>BytesIO</code>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Encode data with bencoding.</span>
 
-<span class="sd">    Args</span>
-<span class="sd">    ----</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
 <span class="sd">    val : any</span>
 <span class="sd">        Data for encoding.</span>
 
@@ -4652,7 +1176,7 @@ Bendecoder        </code>
     <div class="doc doc-contents ">
 
       <p>Initialize instance with optional pre compiled data.</p>
-      <hr />
+<h6 id="pyben.classes.Bendecoder.__init__--parameters">Parameters</h6>
 <p>data : <code>bytes</code> or <code>bytearray</code>
     (Optional) (default=None) Target data for decoding.</p>
 
@@ -4662,8 +1186,8 @@ Bendecoder        </code>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Initialize instance with optional pre compiled data.</span>
 
-<span class="sd">    Args:</span>
-<span class="sd">    ----</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
 <span class="sd">    data : `bytes` or `bytearray`</span>
 <span class="sd">        (Optional) (default=None) Target data for decoding.</span>
 
@@ -4691,8 +1215,8 @@ Bendecoder        </code>
     <div class="doc doc-contents ">
 
       <p>Decode bencoded data.</p>
-<h6 id="pyben.classes.Bendecoder.decode--args">Args</h6>
-<p>bits : <code>bytes</code>
+<h6 id="pyben.classes.Bendecoder.decode--parameters">Parameters</h6>
+<p>data : <code>bytes</code>
     bencoded data for decoding.</p>
 <h6 id="pyben.classes.Bendecoder.decode--returns">Returns</h6>
 <p><code>any</code> :
@@ -4704,9 +1228,9 @@ Bendecoder        </code>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Decode bencoded data.</span>
 
-<span class="sd">    Args</span>
-<span class="sd">    ----</span>
-<span class="sd">    bits : ``bytes``</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    data : ``bytes``</span>
 <span class="sd">        bencoded data for decoding.</span>
 
 <span class="sd">    Returns</span>
@@ -4742,8 +1266,8 @@ Bendecoder        </code>
     <div class="doc doc-contents ">
 
       <p>Extract contents from path/path-like and return Decoded data.</p>
-<h6 id="pyben.classes.Bendecoder.load--args">Args</h6>
-<p>path : <code>str</code> or <code>path-like</code>
+<h6 id="pyben.classes.Bendecoder.load--parameters">Parameters</h6>
+<p>item : <code>str</code> or <code>path-like</code>
     Path containing bencoded data.</p>
 <h6 id="pyben.classes.Bendecoder.load--raises">Raises</h6>
 <p><code>FilePathError</code>:
@@ -4759,9 +1283,9 @@ Bendecoder        </code>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Extract contents from path/path-like and return Decoded data.</span>
 
-<span class="sd">    Args</span>
-<span class="sd">    ----</span>
-<span class="sd">    path : `str` or `path-like`</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    item : `str` or `path-like`</span>
 <span class="sd">        Path containing bencoded data.</span>
 
 <span class="sd">    Raises</span>
@@ -4807,7 +1331,7 @@ Bendecoder        </code>
     <div class="doc doc-contents ">
 
       <p>Shortcut to Decode raw bencoded data.</p>
-<h6 id="pyben.classes.Bendecoder.loads--args">Args</h6>
+<h6 id="pyben.classes.Bendecoder.loads--parameters">Parameters</h6>
 <p>data : <code>bytes</code> or <code>bytearray</code>
     Bendencoded <code>bytes</code>.</p>
 <h6 id="pyben.classes.Bendecoder.loads--returns">Returns</h6>
@@ -4821,8 +1345,8 @@ Bendecoder        </code>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Shortcut to Decode raw bencoded data.</span>
 
-<span class="sd">    Args</span>
-<span class="sd">    ----</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
 <span class="sd">    data : ``bytes`` or `bytearray`</span>
 <span class="sd">        Bendencoded `bytes`.</span>
 
@@ -4897,7 +1421,7 @@ Benencoder        </code>
     <div class="doc doc-contents ">
 
       <p>Initialize Benencoder insance with optional pre compiled data.</p>
-      <hr />
+<h6 id="pyben.classes.Benencoder.__init__--parameters">Parameters</h6>
 <p>data : any
     (Optional) Target data for encoding. Defaults to None.</p>
 
@@ -4907,8 +1431,8 @@ Benencoder        </code>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Initialize Benencoder insance with optional pre compiled data.</span>
 
-<span class="sd">    Args:</span>
-<span class="sd">    ----</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
 <span class="sd">    data : any</span>
 <span class="sd">        (Optional) Target data for encoding. Defaults to None.</span>
 
@@ -4939,7 +1463,7 @@ Benencoder        </code>
     <div class="doc doc-contents ">
 
       <p>Shortcut class method for encoding data and writing to file.</p>
-<h6 id="pyben.classes.Benencoder.dump--args">Args</h6>
+<h6 id="pyben.classes.Benencoder.dump--parameters">Parameters</h6>
 <p>data : any
     Raw data to be encoded, usually dict.txt
 path : <code>str</code> or <code>os.PathLike</code> or <code>BytesIO</code>
@@ -4955,8 +1479,8 @@ path : <code>str</code> or <code>os.PathLike</code> or <code>BytesIO</code>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Shortcut class method for encoding data and writing to file.</span>
 
-<span class="sd">    Args</span>
-<span class="sd">    ----</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
 <span class="sd">    data : any</span>
 <span class="sd">        Raw data to be encoded, usually dict.txt</span>
 <span class="sd">    path : `str` or `os.PathLike` or `BytesIO`</span>
@@ -4999,7 +1523,7 @@ path : <code>str</code> or <code>os.PathLike</code> or <code>BytesIO</code>
     <div class="doc doc-contents ">
 
       <p>Shortcut method for encoding data and immediately returning it.</p>
-<h6 id="pyben.classes.Benencoder.dumps--args">Args</h6>
+<h6 id="pyben.classes.Benencoder.dumps--parameters">Parameters</h6>
 <p>data : any
     Raw data to be encoded usually a dictionary.</p>
 <h6 id="pyben.classes.Benencoder.dumps--returns">Returns</h6>
@@ -5012,8 +1536,8 @@ path : <code>str</code> or <code>os.PathLike</code> or <code>BytesIO</code>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Shortcut method for encoding data and immediately returning it.</span>
 
-<span class="sd">    Args</span>
-<span class="sd">    ----</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
 <span class="sd">    data : any</span>
 <span class="sd">        Raw data to be encoded usually a dictionary.</span>
 
@@ -5044,11 +1568,12 @@ path : <code>str</code> or <code>os.PathLike</code> or <code>BytesIO</code>
     <div class="doc doc-contents ">
 
       <p>Encode data provided as an arguement or provided at initialization.</p>
-<h6 id="pyben.classes.Benencoder.encode--args">Args</h6>
+<h6 id="pyben.classes.Benencoder.encode--parameters">Parameters</h6>
 <p>val : any, optional
     Data for encoding. Defaults to None.</p>
 <h6 id="pyben.classes.Benencoder.encode--returns">Returns</h6>
-<p><code>bytes</code> : encoded data</p>
+<p><code>bytes</code> :
+    encoded data</p>
 
         <details class="quote">
           <summary>Source code in <code>pyben\classes.py</code></summary>
@@ -5056,15 +1581,15 @@ path : <code>str</code> or <code>os.PathLike</code> or <code>BytesIO</code>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Encode data provided as an arguement or provided at initialization.</span>
 
-<span class="sd">    Args</span>
-<span class="sd">    ----</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
 <span class="sd">    val : any, optional</span>
 <span class="sd">        Data for encoding. Defaults to None.</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-<span class="sd">    `bytes` : encoded data</span>
-
+<span class="sd">    `bytes` :</span>
+<span class="sd">        encoded data</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">val</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">val</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span>
@@ -5144,7 +1669,7 @@ DecodeError            (<span title="Exception">Exception</span>)
 <p>Raised when attempting to decode an incompatible bytearray.
 Mostly it indicates the object is a hash digest and should remian
 as a bytes object.</p>
-      <hr />
+<h5 id="pyben.exceptions.DecodeError--parameters">Parameters</h5>
 <p>val : any
     Value that cause the exception</p>
 
@@ -5221,7 +1746,7 @@ EncodeError            (<span title="Exception">Exception</span>)
 <p>Raised when attempting to bencode encode an incompatible
 data type into bencode format. Bencode accepts lists, dicts,
 strings, integers, and bytes.</p>
-      <hr />
+<h5 id="pyben.exceptions.EncodeError--parameters">Parameters</h5>
 <p>val : any
     Value that cause the exception</p>
 
@@ -5297,7 +1822,7 @@ FilePathError            (<span title="Exception">Exception</span>)
       <p>Bad path error.</p>
 <p>Generally raised when the file at the path specified
 does not exist.</p>
-      <hr />
+<h5 id="pyben.exceptions.FilePathError--parameters">Parameters</h5>
 <p>val : any
     Value that cause the exception</p>
 
@@ -5412,6 +1937,91 @@ does not exist.</p>
 
   </div>
 
+<div class="mkapi-node" id="pyben.api">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object module code top">
+    <div class="mkapi-object-kind module top">module</div>
+    <div class="mkapi-object-body module top"><code class="mkapi-object-prefix">pyben.</code><code class="mkapi-object-name">api</code></div>
+  </div>
+  
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section">
+      <div class="mkapi-section-body"><h1 id="bencode-utility-library">Bencode utility library.</h1>
+<p>Features simple API inspired by json and pickle modules in stdlib.</p>
+<h2 id="functions">Functions</h2>
+<ul>
+<li>dump</li>
+<li>dumps</li>
+<li>load</li>
+<li>loads</li>
+<li>tojson</li>
+</ul>
+<h2 id="usage-examples">Usage Examples</h2>
+<h3 id="encode-inline-code">Encode inline code:</h3>
+<pre><code class="language-python">&gt;&gt;&gt; import os
+&gt;&gt;&gt; import pyben
+&gt;&gt;&gt; data = {&quot;item1&quot;: [&quot;item2&quot;, 3, [4], {5: &quot;item6&quot;}]}
+&gt;&gt;&gt; encoded = pyben.dumps(data)
+&gt;&gt;&gt; encoded
+... b'd5:item1l5:item2i3eli4eedi5e5:item6eee'
+</code></pre>
+<h3 id="encode-to-file">Encode to file:</h3>
+<pre><code class="language-python">&gt;&gt;&gt; fd = &quot;path/to/file&quot;
+&gt;&gt;&gt; pyben.dump(data, fd)
+&gt;&gt;&gt; os.path.exists(fd)
+... True
+&gt;&gt;&gt; encoded_file = open(fd, &quot;rb&quot;).read()
+&gt;&gt;&gt; encoded_file == encoded
+... True
+</code></pre>
+<h3 id="decode-inline-code">Decode inline code:</h3>
+<pre><code class="language-python">&gt;&gt;&gt; decoded = pybem.loads(encoded)
+&gt;&gt;&gt; decoded
+... {'item1': ['item2', 3, [4], {5: 'item6'}]}
+&gt;&gt;&gt; decoded == data
+... True
+</code></pre>
+<h3 id="decode-from-file">Decode from file:</h3>
+<pre><code class="language-python">&gt;&gt;&gt; decoded_file = pyben.load(fd)
+&gt;&gt;&gt; decoded_file
+... {'item1': ['item2', 3, [4], {5: 'item6'}]}
+&gt;&gt;&gt; decoded_file == data
+... True
+</code></pre></div>
+    </div>
+  <div class="mkapi-section functions">
+      <div class="mkapi-section-name functions">
+          <span class="mkapi-section-name-body functions">Functions</span> 
+        </div>
+      <div class="mkapi-section-body functions"><ul class="mkapi-items">
+<li class="function"><code class="mkapi-item-name">dump</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">obj</code>, <code class="mkapi-object-signature">buffer</code><code class="mkapi-object-parenthesis">)</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Shortcut function for bencode encode data and write to file.</span></li>
+
+<li class="function"><code class="mkapi-item-name">dumps</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">obj</code><code class="mkapi-object-parenthesis">)</code>
+<span class="mkapi-item-type">(`bytes` :)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Shortuct function to encoding given obj to bencode encoding.</span></li>
+
+<li class="function"><code class="mkapi-item-name">load</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">buffer</code>, <code class="mkapi-object-signature">to_json</code><code class="mkapi-object-parenthesis">)</code>
+<span class="mkapi-item-type">(`any` :)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Load bencoded data from a file of path object and decodes it.</span></li>
+
+<li class="function"><code class="mkapi-item-name">loads</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">encoded</code>, <code class="mkapi-object-signature">to_json</code><code class="mkapi-object-parenthesis">)</code>
+<span class="mkapi-item-type">(any :)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Shortcut function for decoding encoded data.</span></li>
+
+<li class="function"><code class="mkapi-item-name">show</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">inp</code><code class="mkapi-object-parenthesis">)</code>
+<span class="mkapi-item-type">(bool :)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Ouptut readable metadata.</span></li>
+
+
+</ul></div>
+    </div>
+  </div>
+
+</div>
+
 
 
   <div class="doc doc-object doc-module">
@@ -5488,7 +2098,7 @@ does not exist.</p>
       <p>Shortcut function for bencode encode data and write to file.</p>
 <p>Works effectively the same as it's json equivelant except also
 accepts a path as well as an open fileIO.</p>
-      <hr />
+<h4 id="pyben.api.dump--parameters">Parameters</h4>
 <p>obj : any
     Data to be encoded.
 buffer : <code>str</code> or <code>BytesIO</code>
@@ -5503,8 +2113,8 @@ buffer : <code>str</code> or <code>BytesIO</code>
 <span class="sd">    Works effectively the same as it&#39;s json equivelant except also</span>
 <span class="sd">    accepts a path as well as an open fileIO.</span>
 
-<span class="sd">    Args:</span>
-<span class="sd">    ----</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
 <span class="sd">    obj : any</span>
 <span class="sd">        Data to be encoded.</span>
 <span class="sd">    buffer : `str` or `BytesIO`</span>
@@ -5539,7 +2149,7 @@ buffer : <code>str</code> or <code>BytesIO</code>
     <div class="doc doc-contents ">
 
       <p>Shortuct function to encoding given obj to bencode encoding.</p>
-<h4 id="pyben.api.dumps--args">Args</h4>
+<h4 id="pyben.api.dumps--parameters">Parameters</h4>
 <p>obj : <code>any</code>
     Object to be encoded.py.</p>
 <h4 id="pyben.api.dumps--returns">Returns</h4>
@@ -5552,8 +2162,8 @@ buffer : <code>str</code> or <code>BytesIO</code>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Shortuct function to encoding given obj to bencode encoding.</span>
 
-<span class="sd">    Args</span>
-<span class="sd">    ----</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
 <span class="sd">    obj : `any`</span>
 <span class="sd">        Object to be encoded.py.</span>
 
@@ -5585,9 +2195,11 @@ buffer : <code>str</code> or <code>BytesIO</code>
     <div class="doc doc-contents ">
 
       <p>Load bencoded data from a file of path object and decodes it.</p>
-<h4 id="pyben.api.load--args">Args</h4>
+<h4 id="pyben.api.load--parameters">Parameters</h4>
 <p>buffer : <code>str</code> or <code>BytesIO</code>
-    Open and/or read data from file to be decoded.</p>
+    Open and/or read data from file to be decoded.
+to_json : <code>bool</code>
+    convert to json serializable metadata if True else leave it alone.</p>
 <h4 id="pyben.api.load--returns">Returns</h4>
 <p><code>any</code> :
     (commonly <code>dict</code>), Decoded contents of file.</p>
@@ -5598,10 +2210,12 @@ buffer : <code>str</code> or <code>BytesIO</code>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Load bencoded data from a file of path object and decodes it.</span>
 
-<span class="sd">    Args</span>
-<span class="sd">    ----</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
 <span class="sd">    buffer : `str` or `BytesIO`</span>
 <span class="sd">        Open and/or read data from file to be decoded.</span>
+<span class="sd">    to_json : `bool`</span>
+<span class="sd">        convert to json serializable metadata if True else leave it alone.</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
@@ -5622,10 +2236,7 @@ buffer : <code>str</code> or <code>BytesIO</code>
             <span class="k">raise</span> <span class="n">FilePathError</span><span class="p">(</span><span class="n">buffer</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">excp</span>
 
     <span class="k">if</span> <span class="n">to_json</span><span class="p">:</span>
-        <span class="kn">import</span> <span class="nn">json</span>
-
         <span class="n">decoded</span> <span class="o">=</span> <span class="n">_to_json</span><span class="p">(</span><span class="n">decoded</span><span class="p">)</span>
-        <span class="n">decoded</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">decoded</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">decoded</span>
 </code></pre></div>
         </details>
@@ -5648,9 +2259,11 @@ buffer : <code>str</code> or <code>BytesIO</code>
     <div class="doc doc-contents ">
 
       <p>Shortcut function for decoding encoded data.</p>
-<h4 id="pyben.api.loads--args">Args</h4>
+<h4 id="pyben.api.loads--parameters">Parameters</h4>
 <p>encoded : <code>bytes</code>
-    Bencoded data.</p>
+    Bencoded data.
+to_json : <code>bool</code>
+    Convert to json serializable if true otherwise leave it alone.</p>
 <h4 id="pyben.api.loads--returns">Returns</h4>
 <p>any :
     (any), Decoded data.</p>
@@ -5661,10 +2274,12 @@ buffer : <code>str</code> or <code>BytesIO</code>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Shortcut function for decoding encoded data.</span>
 
-<span class="sd">    Args</span>
-<span class="sd">    ----</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
 <span class="sd">    encoded : `bytes`</span>
 <span class="sd">        Bencoded data.</span>
+<span class="sd">    to_json : `bool`</span>
+<span class="sd">        Convert to json serializable if true otherwise leave it alone.</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
@@ -5674,12 +2289,71 @@ buffer : <code>str</code> or <code>BytesIO</code>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">decoded</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">bendecode</span><span class="p">(</span><span class="n">encoded</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">to_json</span><span class="p">:</span>
-        <span class="kn">import</span> <span class="nn">json</span>
-
         <span class="n">decoded</span> <span class="o">=</span> <span class="n">_to_json</span><span class="p">(</span><span class="n">decoded</span><span class="p">)</span>
-        <span class="n">decoded</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">decoded</span><span class="p">)</span>
-
     <span class="k">return</span> <span class="n">decoded</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="pyben.api.show" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">show</span><span class="p">(</span><span class="n">inp</span><span class="p">)</span></code>
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Ouptut readable metadata.</p>
+<h4 id="pyben.api.show--parameters">Parameters</h4>
+<p>inp : any
+    Pre-formatted input type.</p>
+<h4 id="pyben.api.show--returns">Returns</h4>
+<p>bool :
+    Returns True if completed successfully.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>pyben\api.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">show</span><span class="p">(</span><span class="n">inp</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Ouptut readable metadata.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    inp : any</span>
+<span class="sd">        Pre-formatted input type.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    bool :</span>
+<span class="sd">        Returns True if completed successfully.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">import</span> <span class="nn">json</span>
+    <span class="kn">import</span> <span class="nn">os</span>
+    <span class="kn">import</span> <span class="nn">sys</span>
+
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">inp</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+        <span class="n">meta</span> <span class="o">=</span> <span class="n">_to_json</span><span class="p">(</span><span class="n">inp</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">inp</span><span class="p">,</span> <span class="s2">&quot;read&quot;</span><span class="p">):</span>
+        <span class="n">meta</span> <span class="o">=</span> <span class="n">load</span><span class="p">(</span><span class="n">inp</span><span class="p">,</span> <span class="n">to_json</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">inp</span><span class="p">,</span> <span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">)):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">meta</span> <span class="o">=</span> <span class="n">load</span><span class="p">(</span><span class="n">inp</span><span class="p">,</span> <span class="n">to_json</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">FilePathError</span><span class="p">:</span>
+            <span class="n">meta</span> <span class="o">=</span> <span class="n">inp</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">inp</span><span class="p">,</span> <span class="p">(</span><span class="nb">bytes</span><span class="p">,</span> <span class="nb">bytearray</span><span class="p">)):</span>
+        <span class="n">meta</span> <span class="o">=</span> <span class="n">loads</span><span class="p">(</span><span class="n">inp</span><span class="p">,</span> <span class="n">to_json</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">meta</span><span class="p">,</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+    <span class="k">return</span> <span class="kc">True</span>
 </code></pre></div>
         </details>
     </div>
@@ -5696,6 +2370,45 @@ buffer : <code>str</code> or <code>BytesIO</code>
     </div>
 
   </div>
+
+<div class="mkapi-node" id="pyben.classes">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object module code top">
+    <div class="mkapi-object-kind module top">module</div>
+    <div class="mkapi-object-body module top"><code class="mkapi-object-prefix">pyben.</code><code class="mkapi-object-name">classes</code></div>
+  </div>
+  
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section">
+      <div class="mkapi-section-body"><p>OOP implementation of bencode decoders and encoders.</p>
+<p>This style is not recommended as it can get bulky. The json-like api
+from the bencode.py module is much easier to use.</p>
+<h2 id="classes">Classes</h2>
+<ul>
+<li>Bendecoder</li>
+<li>Benencoder</li>
+</ul></div>
+    </div>
+  <div class="mkapi-section classes">
+      <div class="mkapi-section-name classes">
+          <span class="mkapi-section-name-body classes">Classes</span> 
+        </div>
+      <div class="mkapi-section-body classes"><ul class="mkapi-items">
+<li class="class"><code class="mkapi-item-name">Bendecoder</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Decode class contains all decode methods.</span></li>
+
+<li class="class"><code class="mkapi-item-name">Benencoder</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Encoder for bencode encoding used for Bittorrent meta-files.</span></li>
+
+
+</ul></div>
+    </div>
+  </div>
+
+</div>
 
 
 
@@ -5768,7 +2481,7 @@ Bendecoder        </code>
     <div class="doc doc-contents ">
 
       <p>Initialize instance with optional pre compiled data.</p>
-      <hr />
+<h5 id="pyben.classes.Bendecoder.__init__--parameters">Parameters</h5>
 <p>data : <code>bytes</code> or <code>bytearray</code>
     (Optional) (default=None) Target data for decoding.</p>
 
@@ -5778,8 +2491,8 @@ Bendecoder        </code>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Initialize instance with optional pre compiled data.</span>
 
-<span class="sd">    Args:</span>
-<span class="sd">    ----</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
 <span class="sd">    data : `bytes` or `bytearray`</span>
 <span class="sd">        (Optional) (default=None) Target data for decoding.</span>
 
@@ -5807,8 +2520,8 @@ Bendecoder        </code>
     <div class="doc doc-contents ">
 
       <p>Decode bencoded data.</p>
-<h5 id="pyben.classes.Bendecoder.decode--args">Args</h5>
-<p>bits : <code>bytes</code>
+<h5 id="pyben.classes.Bendecoder.decode--parameters">Parameters</h5>
+<p>data : <code>bytes</code>
     bencoded data for decoding.</p>
 <h5 id="pyben.classes.Bendecoder.decode--returns">Returns</h5>
 <p><code>any</code> :
@@ -5820,9 +2533,9 @@ Bendecoder        </code>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Decode bencoded data.</span>
 
-<span class="sd">    Args</span>
-<span class="sd">    ----</span>
-<span class="sd">    bits : ``bytes``</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    data : ``bytes``</span>
 <span class="sd">        bencoded data for decoding.</span>
 
 <span class="sd">    Returns</span>
@@ -5858,8 +2571,8 @@ Bendecoder        </code>
     <div class="doc doc-contents ">
 
       <p>Extract contents from path/path-like and return Decoded data.</p>
-<h5 id="pyben.classes.Bendecoder.load--args">Args</h5>
-<p>path : <code>str</code> or <code>path-like</code>
+<h5 id="pyben.classes.Bendecoder.load--parameters">Parameters</h5>
+<p>item : <code>str</code> or <code>path-like</code>
     Path containing bencoded data.</p>
 <h5 id="pyben.classes.Bendecoder.load--raises">Raises</h5>
 <p><code>FilePathError</code>:
@@ -5875,9 +2588,9 @@ Bendecoder        </code>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Extract contents from path/path-like and return Decoded data.</span>
 
-<span class="sd">    Args</span>
-<span class="sd">    ----</span>
-<span class="sd">    path : `str` or `path-like`</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    item : `str` or `path-like`</span>
 <span class="sd">        Path containing bencoded data.</span>
 
 <span class="sd">    Raises</span>
@@ -5923,7 +2636,7 @@ Bendecoder        </code>
     <div class="doc doc-contents ">
 
       <p>Shortcut to Decode raw bencoded data.</p>
-<h5 id="pyben.classes.Bendecoder.loads--args">Args</h5>
+<h5 id="pyben.classes.Bendecoder.loads--parameters">Parameters</h5>
 <p>data : <code>bytes</code> or <code>bytearray</code>
     Bendencoded <code>bytes</code>.</p>
 <h5 id="pyben.classes.Bendecoder.loads--returns">Returns</h5>
@@ -5937,8 +2650,8 @@ Bendecoder        </code>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Shortcut to Decode raw bencoded data.</span>
 
-<span class="sd">    Args</span>
-<span class="sd">    ----</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
 <span class="sd">    data : ``bytes`` or `bytearray`</span>
 <span class="sd">        Bendencoded `bytes`.</span>
 
@@ -6013,7 +2726,7 @@ Benencoder        </code>
     <div class="doc doc-contents ">
 
       <p>Initialize Benencoder insance with optional pre compiled data.</p>
-      <hr />
+<h5 id="pyben.classes.Benencoder.__init__--parameters">Parameters</h5>
 <p>data : any
     (Optional) Target data for encoding. Defaults to None.</p>
 
@@ -6023,8 +2736,8 @@ Benencoder        </code>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Initialize Benencoder insance with optional pre compiled data.</span>
 
-<span class="sd">    Args:</span>
-<span class="sd">    ----</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
 <span class="sd">    data : any</span>
 <span class="sd">        (Optional) Target data for encoding. Defaults to None.</span>
 
@@ -6055,7 +2768,7 @@ Benencoder        </code>
     <div class="doc doc-contents ">
 
       <p>Shortcut class method for encoding data and writing to file.</p>
-<h5 id="pyben.classes.Benencoder.dump--args">Args</h5>
+<h5 id="pyben.classes.Benencoder.dump--parameters">Parameters</h5>
 <p>data : any
     Raw data to be encoded, usually dict.txt
 path : <code>str</code> or <code>os.PathLike</code> or <code>BytesIO</code>
@@ -6071,8 +2784,8 @@ path : <code>str</code> or <code>os.PathLike</code> or <code>BytesIO</code>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Shortcut class method for encoding data and writing to file.</span>
 
-<span class="sd">    Args</span>
-<span class="sd">    ----</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
 <span class="sd">    data : any</span>
 <span class="sd">        Raw data to be encoded, usually dict.txt</span>
 <span class="sd">    path : `str` or `os.PathLike` or `BytesIO`</span>
@@ -6115,7 +2828,7 @@ path : <code>str</code> or <code>os.PathLike</code> or <code>BytesIO</code>
     <div class="doc doc-contents ">
 
       <p>Shortcut method for encoding data and immediately returning it.</p>
-<h5 id="pyben.classes.Benencoder.dumps--args">Args</h5>
+<h5 id="pyben.classes.Benencoder.dumps--parameters">Parameters</h5>
 <p>data : any
     Raw data to be encoded usually a dictionary.</p>
 <h5 id="pyben.classes.Benencoder.dumps--returns">Returns</h5>
@@ -6128,8 +2841,8 @@ path : <code>str</code> or <code>os.PathLike</code> or <code>BytesIO</code>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Shortcut method for encoding data and immediately returning it.</span>
 
-<span class="sd">    Args</span>
-<span class="sd">    ----</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
 <span class="sd">    data : any</span>
 <span class="sd">        Raw data to be encoded usually a dictionary.</span>
 
@@ -6160,11 +2873,12 @@ path : <code>str</code> or <code>os.PathLike</code> or <code>BytesIO</code>
     <div class="doc doc-contents ">
 
       <p>Encode data provided as an arguement or provided at initialization.</p>
-<h5 id="pyben.classes.Benencoder.encode--args">Args</h5>
+<h5 id="pyben.classes.Benencoder.encode--parameters">Parameters</h5>
 <p>val : any, optional
     Data for encoding. Defaults to None.</p>
 <h5 id="pyben.classes.Benencoder.encode--returns">Returns</h5>
-<p><code>bytes</code> : encoded data</p>
+<p><code>bytes</code> :
+    encoded data</p>
 
         <details class="quote">
           <summary>Source code in <code>pyben\classes.py</code></summary>
@@ -6172,15 +2886,15 @@ path : <code>str</code> or <code>os.PathLike</code> or <code>BytesIO</code>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Encode data provided as an arguement or provided at initialization.</span>
 
-<span class="sd">    Args</span>
-<span class="sd">    ----</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
 <span class="sd">    val : any, optional</span>
 <span class="sd">        Data for encoding. Defaults to None.</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-<span class="sd">    `bytes` : encoded data</span>
-
+<span class="sd">    `bytes` :</span>
+<span class="sd">        encoded data</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">val</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">val</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span>
@@ -6213,6 +2927,92 @@ path : <code>str</code> or <code>os.PathLike</code> or <code>BytesIO</code>
     </div>
 
   </div>
+
+<div class="mkapi-node" id="pyben.bencode">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object module code top">
+    <div class="mkapi-object-kind module top">module</div>
+    <div class="mkapi-object-body module top"><code class="mkapi-object-prefix">pyben.</code><code class="mkapi-object-name">bencode</code></div>
+  </div>
+  
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section">
+      <div class="mkapi-section-body"><p>API helper functions for decoding and encoding data with bencode format.</p>
+<h2 id="functions_1">Functions</h2>
+<ul>
+<li>bendecode</li>
+<li>bendecode_dict</li>
+<li>bendecode_int</li>
+<li>bendecode_list</li>
+<li>
+<p>bendecode_str</p>
+</li>
+<li>
+<p>benencode</p>
+</li>
+<li>bencode_bytes</li>
+<li>bencode_dict</li>
+<li>bencode_int</li>
+<li>bencode_list</li>
+<li>bencode_str</li>
+</ul></div>
+    </div>
+  <div class="mkapi-section functions">
+      <div class="mkapi-section-name functions">
+          <span class="mkapi-section-name-body functions">Functions</span> 
+        </div>
+      <div class="mkapi-section-body functions"><ul class="mkapi-items">
+<li class="function"><code class="mkapi-item-name">bencode_bytes</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">bits</code><code class="mkapi-object-parenthesis">)</code>
+<span class="mkapi-item-type">(`bytes`:)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Encode bytes.</span></li>
+
+<li class="function"><code class="mkapi-item-name">bencode_dict</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">dic</code><code class="mkapi-object-parenthesis">)</code>
+<span class="mkapi-item-type">(`bytes` :)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Encode dictionary and contents.</span></li>
+
+<li class="function"><code class="mkapi-item-name">bencode_int</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">i</code><code class="mkapi-object-parenthesis">)</code>
+<span class="mkapi-item-type">(`bytes` :)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Encode integer type.</span></li>
+
+<li class="function"><code class="mkapi-item-name">bencode_list</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">elems</code><code class="mkapi-object-parenthesis">)</code>
+<span class="mkapi-item-type">(`bytes` :)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Encode list and contents.</span></li>
+
+<li class="function"><code class="mkapi-item-name">bencode_str</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">txt</code><code class="mkapi-object-parenthesis">)</code>
+<span class="mkapi-item-type">(`bytes` :)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Encode string literals.</span></li>
+
+<li class="function"><code class="mkapi-item-name">bendecode</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">bits</code><code class="mkapi-object-parenthesis">)</code>
+<span class="mkapi-item-type">(any :)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Decode bencoded data.</span></li>
+
+<li class="function"><code class="mkapi-item-name">bendecode_dict</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">bits</code><code class="mkapi-object-parenthesis">)</code>
+<span class="mkapi-item-type">(`dict`)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Decode dictionary and it's contents.</span></li>
+
+<li class="function"><code class="mkapi-item-name">bendecode_int</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">bits</code><code class="mkapi-object-parenthesis">)</code>
+<span class="mkapi-item-type">(`int` :)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Decode digits.</span></li>
+
+<li class="function"><code class="mkapi-item-name">bendecode_list</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">bits</code><code class="mkapi-object-parenthesis">)</code>
+<span class="mkapi-item-type">(`list` :)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Decode list and list contents.</span></li>
+
+<li class="function"><code class="mkapi-item-name">bendecode_str</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">units</code><code class="mkapi-object-parenthesis">)</code>
+<span class="mkapi-item-type">(`str` :)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Bendecode string types.</span></li>
+
+<li class="function"><code class="mkapi-item-name">benencode</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">val</code><code class="mkapi-object-parenthesis">)</code>
+<span class="mkapi-item-type">(`bytes` :)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Encode data with bencoding.</span></li>
+
+
+</ul></div>
+    </div>
+  </div>
+
+</div>
 
 
 
@@ -6265,7 +3065,7 @@ path : <code>str</code> or <code>os.PathLike</code> or <code>BytesIO</code>
     <div class="doc doc-contents ">
 
       <p>Encode bytes.</p>
-<h4 id="pyben.bencode.bencode_bytes--args">Args</h4>
+<h4 id="pyben.bencode.bencode_bytes--parameters">Parameters</h4>
 <p>bits : <code>bytes</code>
     Bytes treated as a byte-string literal.</p>
 <h4 id="pyben.bencode.bencode_bytes--returns">Returns</h4>
@@ -6278,8 +3078,8 @@ path : <code>str</code> or <code>os.PathLike</code> or <code>BytesIO</code>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Encode bytes.</span>
 
-<span class="sd">    Args</span>
-<span class="sd">    ----</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
 <span class="sd">    bits : `bytes`</span>
 <span class="sd">        Bytes treated as a byte-string literal.</span>
 
@@ -6312,7 +3112,7 @@ path : <code>str</code> or <code>os.PathLike</code> or <code>BytesIO</code>
     <div class="doc doc-contents ">
 
       <p>Encode dictionary and contents.</p>
-<h4 id="pyben.bencode.bencode_dict--args">Args</h4>
+<h4 id="pyben.bencode.bencode_dict--parameters">Parameters</h4>
 <p>dic : <code>dict</code>
     Any dictionary containing items that can be bencoded.</p>
 <h4 id="pyben.bencode.bencode_dict--returns">Returns</h4>
@@ -6325,8 +3125,8 @@ path : <code>str</code> or <code>os.PathLike</code> or <code>BytesIO</code>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Encode dictionary and contents.</span>
 
-<span class="sd">    Args</span>
-<span class="sd">    ----</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
 <span class="sd">    dic : `dict`</span>
 <span class="sd">        Any dictionary containing items that can be bencoded.</span>
 
@@ -6362,7 +3162,7 @@ path : <code>str</code> or <code>os.PathLike</code> or <code>BytesIO</code>
     <div class="doc doc-contents ">
 
       <p>Encode integer type.</p>
-<h4 id="pyben.bencode.bencode_int--args">Args</h4>
+<h4 id="pyben.bencode.bencode_int--parameters">Parameters</h4>
 <p>i : <code>int</code>
     Number that needs encoding.</p>
 <h4 id="pyben.bencode.bencode_int--returns">Returns</h4>
@@ -6375,8 +3175,8 @@ path : <code>str</code> or <code>os.PathLike</code> or <code>BytesIO</code>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Encode integer type.</span>
 
-<span class="sd">    Args</span>
-<span class="sd">    ----</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
 <span class="sd">    i : `int`</span>
 <span class="sd">        Number that needs encoding.</span>
 
@@ -6408,7 +3208,7 @@ path : <code>str</code> or <code>os.PathLike</code> or <code>BytesIO</code>
     <div class="doc doc-contents ">
 
       <p>Encode list and contents.</p>
-<h4 id="pyben.bencode.bencode_list--args">Args</h4>
+<h4 id="pyben.bencode.bencode_list--parameters">Parameters</h4>
 <p>elems : <code>list</code>
     List of items for bencoding.</p>
 <h4 id="pyben.bencode.bencode_list--returns">Returns</h4>
@@ -6421,8 +3221,8 @@ path : <code>str</code> or <code>os.PathLike</code> or <code>BytesIO</code>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Encode list and contents.</span>
 
-<span class="sd">    Args</span>
-<span class="sd">    ----</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
 <span class="sd">    elems : `list`</span>
 <span class="sd">        List of items for bencoding.</span>
 
@@ -6461,7 +3261,7 @@ path : <code>str</code> or <code>os.PathLike</code> or <code>BytesIO</code>
     <div class="doc doc-contents ">
 
       <p>Encode string literals.</p>
-<h4 id="pyben.bencode.bencode_str--args">Args</h4>
+<h4 id="pyben.bencode.bencode_str--parameters">Parameters</h4>
 <p>txt : <code>str</code>
     Any text string.</p>
 <h4 id="pyben.bencode.bencode_str--returns">Returns</h4>
@@ -6474,8 +3274,8 @@ path : <code>str</code> or <code>os.PathLike</code> or <code>BytesIO</code>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Encode string literals.</span>
 
-<span class="sd">    Args</span>
-<span class="sd">    ----</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
 <span class="sd">    txt : `str`</span>
 <span class="sd">        Any text string.</span>
 
@@ -6508,7 +3308,7 @@ path : <code>str</code> or <code>os.PathLike</code> or <code>BytesIO</code>
     <div class="doc doc-contents ">
 
       <p>Decode bencoded data.</p>
-<h4 id="pyben.bencode.bendecode--args">Args</h4>
+<h4 id="pyben.bencode.bendecode--parameters">Parameters</h4>
 <p>bits : <code>bytes</code>
     Bencode encoded data.</p>
 <h4 id="pyben.bencode.bendecode--raises">Raises</h4>
@@ -6524,8 +3324,8 @@ path : <code>str</code> or <code>os.PathLike</code> or <code>BytesIO</code>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Decode bencoded data.</span>
 
-<span class="sd">    Args</span>
-<span class="sd">    ----</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
 <span class="sd">    bits : `bytes`</span>
 <span class="sd">        Bencode encoded data.</span>
 
@@ -6578,7 +3378,7 @@ path : <code>str</code> or <code>os.PathLike</code> or <code>BytesIO</code>
     <div class="doc doc-contents ">
 
       <p>Decode dictionary and it's contents.</p>
-<h4 id="pyben.bencode.bendecode_dict--args">Args</h4>
+<h4 id="pyben.bencode.bendecode_dict--parameters">Parameters</h4>
 <p>bits : <code>bytes</code>
     Bencoded dictionary.</p>
 <h4 id="pyben.bencode.bendecode_dict--returns">Returns</h4>
@@ -6591,8 +3391,8 @@ path : <code>str</code> or <code>os.PathLike</code> or <code>BytesIO</code>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Decode dictionary and it&#39;s contents.</span>
 
-<span class="sd">    Args</span>
-<span class="sd">    ----</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
 <span class="sd">    bits : `bytes`</span>
 <span class="sd">        Bencoded dictionary.</span>
 
@@ -6634,7 +3434,7 @@ path : <code>str</code> or <code>os.PathLike</code> or <code>BytesIO</code>
     <div class="doc doc-contents ">
 
       <p>Decode digits.</p>
-<h4 id="pyben.bencode.bendecode_int--args">Args</h4>
+<h4 id="pyben.bencode.bendecode_int--parameters">Parameters</h4>
 <p>bits : <code>bytes</code>
     Bencoded intiger bytes</p>
 <h4 id="pyben.bencode.bendecode_int--returns">Returns</h4>
@@ -6647,8 +3447,8 @@ path : <code>str</code> or <code>os.PathLike</code> or <code>BytesIO</code>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Decode digits.</span>
 
-<span class="sd">    Args</span>
-<span class="sd">    ----</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
 <span class="sd">    bits : `bytes`</span>
 <span class="sd">        Bencoded intiger bytes</span>
 
@@ -6681,7 +3481,7 @@ path : <code>str</code> or <code>os.PathLike</code> or <code>BytesIO</code>
     <div class="doc doc-contents ">
 
       <p>Decode list and list contents.</p>
-<h4 id="pyben.bencode.bendecode_list--args">Args</h4>
+<h4 id="pyben.bencode.bendecode_list--parameters">Parameters</h4>
 <p>bits : <code>bytes</code>
     Bencoded list.</p>
 <h4 id="pyben.bencode.bendecode_list--returns">Returns</h4>
@@ -6694,8 +3494,8 @@ path : <code>str</code> or <code>os.PathLike</code> or <code>BytesIO</code>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Decode list and list contents.</span>
 
-<span class="sd">    Args</span>
-<span class="sd">    ----</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
 <span class="sd">    bits : `bytes`</span>
 <span class="sd">        Bencoded list.</span>
 
@@ -6735,8 +3535,8 @@ path : <code>str</code> or <code>os.PathLike</code> or <code>BytesIO</code>
     <div class="doc doc-contents ">
 
       <p>Bendecode string types.</p>
-<h4 id="pyben.bencode.bendecode_str--args">Args</h4>
-<p>bits : <code>bytes</code>
+<h4 id="pyben.bencode.bendecode_str--parameters">Parameters</h4>
+<p>units : <code>bytes</code>
     Bencoded string.</p>
 <h4 id="pyben.bencode.bendecode_str--returns">Returns</h4>
 <p><code>str</code> :
@@ -6748,9 +3548,9 @@ path : <code>str</code> or <code>os.PathLike</code> or <code>BytesIO</code>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Bendecode string types.</span>
 
-<span class="sd">    Args</span>
-<span class="sd">    ----</span>
-<span class="sd">    bits : `bytes`</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    units : `bytes`</span>
 <span class="sd">        Bencoded string.</span>
 
 <span class="sd">    Returns</span>
@@ -6792,7 +3592,7 @@ path : <code>str</code> or <code>os.PathLike</code> or <code>BytesIO</code>
     <div class="doc doc-contents ">
 
       <p>Encode data with bencoding.</p>
-<h4 id="pyben.bencode.benencode--args">Args</h4>
+<h4 id="pyben.bencode.benencode--parameters">Parameters</h4>
 <p>val : any
     Data for encoding.</p>
 <h4 id="pyben.bencode.benencode--raises">Raises</h4>
@@ -6808,8 +3608,8 @@ path : <code>str</code> or <code>os.PathLike</code> or <code>BytesIO</code>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Encode data with bencoding.</span>
 
-<span class="sd">    Args</span>
-<span class="sd">    ----</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
 <span class="sd">    val : any</span>
 <span class="sd">        Data for encoding.</span>
 
@@ -6860,6 +3660,42 @@ path : <code>str</code> or <code>os.PathLike</code> or <code>BytesIO</code>
 
   </div>
 
+<div class="mkapi-node" id="pyben.exceptions">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object module code top">
+    <div class="mkapi-object-kind module top">module</div>
+    <div class="mkapi-object-body module top"><code class="mkapi-object-prefix">pyben.</code><code class="mkapi-object-name">exceptions</code></div>
+  </div>
+  
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section">
+      <div class="mkapi-section-body"><p>Exceptions used throughout the PyBen Package/Library.</p></div>
+    </div>
+  <div class="mkapi-section classes">
+      <div class="mkapi-section-name classes">
+          <span class="mkapi-section-name-body classes">Classes</span> 
+        </div>
+      <div class="mkapi-section-body classes"><ul class="mkapi-items">
+<li class="class"><code class="mkapi-item-name">DecodeError</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Error occured during decode process.</span></li>
+
+<li class="class"><code class="mkapi-item-name">EncodeError</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Error occured during encoding process.</span></li>
+
+<li class="class"><code class="mkapi-item-name">FilePathError</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Bad path error.</span></li>
+
+
+</ul></div>
+    </div>
+  </div>
+
+</div>
+
 
 
   <div class="doc doc-object doc-module">
@@ -6898,7 +3734,7 @@ DecodeError            (<span title="Exception">Exception</span>)
 <p>Raised when attempting to decode an incompatible bytearray.
 Mostly it indicates the object is a hash digest and should remian
 as a bytes object.</p>
-      <hr />
+<h4 id="pyben.exceptions.DecodeError--parameters">Parameters</h4>
 <p>val : any
     Value that cause the exception</p>
 
@@ -6975,7 +3811,7 @@ EncodeError            (<span title="Exception">Exception</span>)
 <p>Raised when attempting to bencode encode an incompatible
 data type into bencode format. Bencode accepts lists, dicts,
 strings, integers, and bytes.</p>
-      <hr />
+<h4 id="pyben.exceptions.EncodeError--parameters">Parameters</h4>
 <p>val : any
     Value that cause the exception</p>
 
@@ -7051,7 +3887,7 @@ FilePathError            (<span title="Exception">Exception</span>)
       <p>Bad path error.</p>
 <p>Generally raised when the file at the path specified
 does not exist.</p>
-      <hr />
+<h4 id="pyben.exceptions.FilePathError--parameters">Parameters</h4>
 <p>val : any
     Value that cause the exception</p>
 
@@ -7118,72 +3954,1117 @@ does not exist.</p>
     </div>
 
   </div>
-                
-              
-              
-                
-
-
-              
-            </article>
-          </div>
+            
+          
         </div>
+      </div>
+    </div>
+    <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+      <div class="sphinxsidebarwrapper">
         
-      </main>
-      
-        
-<footer class="md-footer">
+          
+            
+  <h1 class="logo"><a href="..">My Docs</a></h1>
+
+
+
+  <p class="blurb">Python Bencode Library API.</p>
+
+          
+            
+
+
+
+<h3>Table Of Contents</h3>
+
+<nav>
   
-    <nav class="md-footer__inner md-grid" aria-label="Footer">
-      
-        
-        <a href="../LICENSE/" class="md-footer__link md-footer__link--prev" aria-label="Previous: License" rel="prev">
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
-          </div>
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Previous
-              </span>
-              License
-            </div>
-          </div>
-        </a>
-      
-      
-    </nav>
   
-  <div class="md-footer-meta md-typeset">
-    <div class="md-footer-meta__inner md-grid">
-      <div class="md-footer-copyright">
-        
-          <div class="md-footer-copyright__highlight">
-            alexpdev 2021
-          </div>
-        
-        
-          Made with
-          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
-            Material for MkDocs
-          </a>
-        
+    <ul>
+    
+      <li><a href="#pyben">pyben</a></li>
+      <ul>
+    
+      <li><a href="#pyben--modules">Modules</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#pyben--classes">Classes</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#pyben--functions">Functions</a></li>
+      <ul>
+    
+  </ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.api">api</a></li>
+      <ul>
+    
+      <li><a href="#pyben.api--bencode-utility-library">Bencode utility library.</a></li>
+      <ul>
+    
+      <li><a href="#pyben.api--functions">Functions</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.api--usage-examples">Usage Examples</a></li>
+      <ul>
+    
+      <li><a href="#pyben.api--encode-inline-code">Encode inline code:</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.api--encode-to-file">Encode to file:</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.api--decode-inline-code">Decode inline code:</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.api--decode-from-file">Decode from file:</a></li>
+      <ul>
+    
+  </ul>
+    
+  </ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.api.dump">dump()</a></li>
+      <ul>
+    
+      <li><a href="#pyben.api.dump--parameters">Parameters</a></li>
+      <ul>
+    
+  </ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.api.dumps">dumps()</a></li>
+      <ul>
+    
+      <li><a href="#pyben.api.dumps--parameters">Parameters</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.api.dumps--returns">Returns</a></li>
+      <ul>
+    
+  </ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.api.load">load()</a></li>
+      <ul>
+    
+      <li><a href="#pyben.api.load--parameters">Parameters</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.api.load--returns">Returns</a></li>
+      <ul>
+    
+  </ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.api.loads">loads()</a></li>
+      <ul>
+    
+      <li><a href="#pyben.api.loads--parameters">Parameters</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.api.loads--returns">Returns</a></li>
+      <ul>
+    
+  </ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.api.show">show()</a></li>
+      <ul>
+    
+      <li><a href="#pyben.api.show--parameters">Parameters</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.api.show--returns">Returns</a></li>
+      <ul>
+    
+  </ul>
+    
+  </ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.bencode">bencode</a></li>
+      <ul>
+    
+      <li><a href="#pyben.bencode--functions">Functions</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.bencode.bencode_bytes">bencode_bytes()</a></li>
+      <ul>
+    
+      <li><a href="#pyben.bencode.bencode_bytes--parameters">Parameters</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.bencode.bencode_bytes--returns">Returns</a></li>
+      <ul>
+    
+  </ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.bencode.bencode_dict">bencode_dict()</a></li>
+      <ul>
+    
+      <li><a href="#pyben.bencode.bencode_dict--parameters">Parameters</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.bencode.bencode_dict--returns">Returns</a></li>
+      <ul>
+    
+  </ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.bencode.bencode_int">bencode_int()</a></li>
+      <ul>
+    
+      <li><a href="#pyben.bencode.bencode_int--parameters">Parameters</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.bencode.bencode_int--returns">Returns</a></li>
+      <ul>
+    
+  </ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.bencode.bencode_list">bencode_list()</a></li>
+      <ul>
+    
+      <li><a href="#pyben.bencode.bencode_list--parameters">Parameters</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.bencode.bencode_list--returns">Returns</a></li>
+      <ul>
+    
+  </ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.bencode.bencode_str">bencode_str()</a></li>
+      <ul>
+    
+      <li><a href="#pyben.bencode.bencode_str--parameters">Parameters</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.bencode.bencode_str--returns">Returns</a></li>
+      <ul>
+    
+  </ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.bencode.bendecode">bendecode()</a></li>
+      <ul>
+    
+      <li><a href="#pyben.bencode.bendecode--parameters">Parameters</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.bencode.bendecode--raises">Raises</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.bencode.bendecode--returns">Returns</a></li>
+      <ul>
+    
+  </ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.bencode.bendecode_dict">bendecode_dict()</a></li>
+      <ul>
+    
+      <li><a href="#pyben.bencode.bendecode_dict--parameters">Parameters</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.bencode.bendecode_dict--returns">Returns</a></li>
+      <ul>
+    
+  </ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.bencode.bendecode_int">bendecode_int()</a></li>
+      <ul>
+    
+      <li><a href="#pyben.bencode.bendecode_int--parameters">Parameters</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.bencode.bendecode_int--returns">Returns</a></li>
+      <ul>
+    
+  </ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.bencode.bendecode_list">bendecode_list()</a></li>
+      <ul>
+    
+      <li><a href="#pyben.bencode.bendecode_list--parameters">Parameters</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.bencode.bendecode_list--returns">Returns</a></li>
+      <ul>
+    
+  </ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.bencode.bendecode_str">bendecode_str()</a></li>
+      <ul>
+    
+      <li><a href="#pyben.bencode.bendecode_str--parameters">Parameters</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.bencode.bendecode_str--returns">Returns</a></li>
+      <ul>
+    
+  </ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.bencode.benencode">benencode()</a></li>
+      <ul>
+    
+      <li><a href="#pyben.bencode.benencode--parameters">Parameters</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.bencode.benencode--raises">Raises</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.bencode.benencode--returns">Returns</a></li>
+      <ul>
+    
+  </ul>
+    
+  </ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.classes">classes</a></li>
+      <ul>
+    
+      <li><a href="#pyben.classes--classes">Classes</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.classes.Bendecoder">Bendecoder</a></li>
+      <ul>
+    
+      <li><a href="#pyben.classes.Bendecoder.__init__">__init__()</a></li>
+      <ul>
+    
+      <li><a href="#pyben.classes.Bendecoder.__init__--parameters">Parameters</a></li>
+      <ul>
+    
+  </ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.classes.Bendecoder.decode">decode()</a></li>
+      <ul>
+    
+      <li><a href="#pyben.classes.Bendecoder.decode--parameters">Parameters</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.classes.Bendecoder.decode--returns">Returns</a></li>
+      <ul>
+    
+  </ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.classes.Bendecoder.load">load()</a></li>
+      <ul>
+    
+      <li><a href="#pyben.classes.Bendecoder.load--parameters">Parameters</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.classes.Bendecoder.load--raises">Raises</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.classes.Bendecoder.load--returns">Returns</a></li>
+      <ul>
+    
+  </ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.classes.Bendecoder.loads">loads()</a></li>
+      <ul>
+    
+      <li><a href="#pyben.classes.Bendecoder.loads--parameters">Parameters</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.classes.Bendecoder.loads--returns">Returns</a></li>
+      <ul>
+    
+  </ul>
+    
+  </ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.classes.Benencoder">Benencoder</a></li>
+      <ul>
+    
+      <li><a href="#pyben.classes.Benencoder.__init__">__init__()</a></li>
+      <ul>
+    
+      <li><a href="#pyben.classes.Benencoder.__init__--parameters">Parameters</a></li>
+      <ul>
+    
+  </ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.classes.Benencoder.dump">dump()</a></li>
+      <ul>
+    
+      <li><a href="#pyben.classes.Benencoder.dump--parameters">Parameters</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.classes.Benencoder.dump--returns">Returns</a></li>
+      <ul>
+    
+  </ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.classes.Benencoder.dumps">dumps()</a></li>
+      <ul>
+    
+      <li><a href="#pyben.classes.Benencoder.dumps--parameters">Parameters</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.classes.Benencoder.dumps--returns">Returns</a></li>
+      <ul>
+    
+  </ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.classes.Benencoder.encode">encode()</a></li>
+      <ul>
+    
+      <li><a href="#pyben.classes.Benencoder.encode--parameters">Parameters</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.classes.Benencoder.encode--returns">Returns</a></li>
+      <ul>
+    
+  </ul>
+    
+  </ul>
+    
+  </ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.exceptions">exceptions</a></li>
+      <ul>
+    
+      <li><a href="#pyben.exceptions.DecodeError">DecodeError</a></li>
+      <ul>
+    
+      <li><a href="#pyben.exceptions.DecodeError--parameters">Parameters</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.exceptions.DecodeError.__init__">__init__()</a></li>
+      <ul>
+    
+  </ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.exceptions.EncodeError">EncodeError</a></li>
+      <ul>
+    
+      <li><a href="#pyben.exceptions.EncodeError--parameters">Parameters</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.exceptions.EncodeError.__init__">__init__()</a></li>
+      <ul>
+    
+  </ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.exceptions.FilePathError">FilePathError</a></li>
+      <ul>
+    
+      <li><a href="#pyben.exceptions.FilePathError--parameters">Parameters</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.exceptions.FilePathError.__init__">__init__()</a></li>
+      <ul>
+    
+  </ul>
+    
+  </ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.version">version</a></li>
+      <ul>
+    
+  </ul>
+    
+  </ul>
+  
+    <ul>
+    
+      <li><a href="#functions">Functions</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#usage-examples">Usage Examples</a></li>
+      <ul>
+    
+      <li><a href="#encode-inline-code">Encode inline code:</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#encode-to-file">Encode to file:</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#decode-inline-code">Decode inline code:</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#decode-from-file">Decode from file:</a></li>
+      <ul>
+    
+  </ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.api">pyben.api</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.api--bencode-utility-library">Bencode utility library.</a></li>
+      <ul>
+    
+      <li><a href="#pyben.api--functions">Functions</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.api--usage-examples">Usage Examples</a></li>
+      <ul>
+    
+      <li><a href="#pyben.api--encode-inline-code">Encode inline code:</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.api--encode-to-file">Encode to file:</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.api--decode-inline-code">Decode inline code:</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.api--decode-from-file">Decode from file:</a></li>
+      <ul>
+    
+  </ul>
+    
+  </ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.api.dump">dump()</a></li>
+      <ul>
+    
+      <li><a href="#pyben.api.dump--parameters">Parameters</a></li>
+      <ul>
+    
+  </ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.api.dumps">dumps()</a></li>
+      <ul>
+    
+      <li><a href="#pyben.api.dumps--parameters">Parameters</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.api.dumps--returns">Returns</a></li>
+      <ul>
+    
+  </ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.api.load">load()</a></li>
+      <ul>
+    
+      <li><a href="#pyben.api.load--parameters">Parameters</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.api.load--returns">Returns</a></li>
+      <ul>
+    
+  </ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.api.loads">loads()</a></li>
+      <ul>
+    
+      <li><a href="#pyben.api.loads--parameters">Parameters</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.api.loads--returns">Returns</a></li>
+      <ul>
+    
+  </ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.api.show">show()</a></li>
+      <ul>
+    
+      <li><a href="#pyben.api.show--parameters">Parameters</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.api.show--returns">Returns</a></li>
+      <ul>
+    
+  </ul>
+    
+  </ul>
+    
+      <li><a href="#classes">Classes</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.classes">pyben.classes</a></li>
+      <ul>
+    
+      <li><a href="#pyben.classes--classes">Classes</a></li>
+      <ul>
+    
+  </ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.classes.Bendecoder">Bendecoder</a></li>
+      <ul>
+    
+      <li><a href="#pyben.classes.Bendecoder.__init__">__init__()</a></li>
+      <ul>
+    
+      <li><a href="#pyben.classes.Bendecoder.__init__--parameters">Parameters</a></li>
+      <ul>
+    
+  </ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.classes.Bendecoder.decode">decode()</a></li>
+      <ul>
+    
+      <li><a href="#pyben.classes.Bendecoder.decode--parameters">Parameters</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.classes.Bendecoder.decode--returns">Returns</a></li>
+      <ul>
+    
+  </ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.classes.Bendecoder.load">load()</a></li>
+      <ul>
+    
+      <li><a href="#pyben.classes.Bendecoder.load--parameters">Parameters</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.classes.Bendecoder.load--raises">Raises</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.classes.Bendecoder.load--returns">Returns</a></li>
+      <ul>
+    
+  </ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.classes.Bendecoder.loads">loads()</a></li>
+      <ul>
+    
+      <li><a href="#pyben.classes.Bendecoder.loads--parameters">Parameters</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.classes.Bendecoder.loads--returns">Returns</a></li>
+      <ul>
+    
+  </ul>
+    
+  </ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.classes.Benencoder">Benencoder</a></li>
+      <ul>
+    
+      <li><a href="#pyben.classes.Benencoder.__init__">__init__()</a></li>
+      <ul>
+    
+      <li><a href="#pyben.classes.Benencoder.__init__--parameters">Parameters</a></li>
+      <ul>
+    
+  </ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.classes.Benencoder.dump">dump()</a></li>
+      <ul>
+    
+      <li><a href="#pyben.classes.Benencoder.dump--parameters">Parameters</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.classes.Benencoder.dump--returns">Returns</a></li>
+      <ul>
+    
+  </ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.classes.Benencoder.dumps">dumps()</a></li>
+      <ul>
+    
+      <li><a href="#pyben.classes.Benencoder.dumps--parameters">Parameters</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.classes.Benencoder.dumps--returns">Returns</a></li>
+      <ul>
+    
+  </ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.classes.Benencoder.encode">encode()</a></li>
+      <ul>
+    
+      <li><a href="#pyben.classes.Benencoder.encode--parameters">Parameters</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.classes.Benencoder.encode--returns">Returns</a></li>
+      <ul>
+    
+  </ul>
+    
+  </ul>
+    
+  </ul>
+    
+      <li><a href="#functions_1">Functions</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.bencode">pyben.bencode</a></li>
+      <ul>
+    
+      <li><a href="#pyben.bencode--functions">Functions</a></li>
+      <ul>
+    
+  </ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.bencode.bencode_bytes">bencode_bytes()</a></li>
+      <ul>
+    
+      <li><a href="#pyben.bencode.bencode_bytes--parameters">Parameters</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.bencode.bencode_bytes--returns">Returns</a></li>
+      <ul>
+    
+  </ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.bencode.bencode_dict">bencode_dict()</a></li>
+      <ul>
+    
+      <li><a href="#pyben.bencode.bencode_dict--parameters">Parameters</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.bencode.bencode_dict--returns">Returns</a></li>
+      <ul>
+    
+  </ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.bencode.bencode_int">bencode_int()</a></li>
+      <ul>
+    
+      <li><a href="#pyben.bencode.bencode_int--parameters">Parameters</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.bencode.bencode_int--returns">Returns</a></li>
+      <ul>
+    
+  </ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.bencode.bencode_list">bencode_list()</a></li>
+      <ul>
+    
+      <li><a href="#pyben.bencode.bencode_list--parameters">Parameters</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.bencode.bencode_list--returns">Returns</a></li>
+      <ul>
+    
+  </ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.bencode.bencode_str">bencode_str()</a></li>
+      <ul>
+    
+      <li><a href="#pyben.bencode.bencode_str--parameters">Parameters</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.bencode.bencode_str--returns">Returns</a></li>
+      <ul>
+    
+  </ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.bencode.bendecode">bendecode()</a></li>
+      <ul>
+    
+      <li><a href="#pyben.bencode.bendecode--parameters">Parameters</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.bencode.bendecode--raises">Raises</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.bencode.bendecode--returns">Returns</a></li>
+      <ul>
+    
+  </ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.bencode.bendecode_dict">bendecode_dict()</a></li>
+      <ul>
+    
+      <li><a href="#pyben.bencode.bendecode_dict--parameters">Parameters</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.bencode.bendecode_dict--returns">Returns</a></li>
+      <ul>
+    
+  </ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.bencode.bendecode_int">bendecode_int()</a></li>
+      <ul>
+    
+      <li><a href="#pyben.bencode.bendecode_int--parameters">Parameters</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.bencode.bendecode_int--returns">Returns</a></li>
+      <ul>
+    
+  </ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.bencode.bendecode_list">bendecode_list()</a></li>
+      <ul>
+    
+      <li><a href="#pyben.bencode.bendecode_list--parameters">Parameters</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.bencode.bendecode_list--returns">Returns</a></li>
+      <ul>
+    
+  </ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.bencode.bendecode_str">bendecode_str()</a></li>
+      <ul>
+    
+      <li><a href="#pyben.bencode.bendecode_str--parameters">Parameters</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.bencode.bendecode_str--returns">Returns</a></li>
+      <ul>
+    
+  </ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.bencode.benencode">benencode()</a></li>
+      <ul>
+    
+      <li><a href="#pyben.bencode.benencode--parameters">Parameters</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.bencode.benencode--raises">Raises</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.bencode.benencode--returns">Returns</a></li>
+      <ul>
+    
+  </ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.exceptions">pyben.exceptions</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.exceptions.DecodeError">DecodeError</a></li>
+      <ul>
+    
+      <li><a href="#pyben.exceptions.DecodeError--parameters">Parameters</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.exceptions.DecodeError.__init__">__init__()</a></li>
+      <ul>
+    
+  </ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.exceptions.EncodeError">EncodeError</a></li>
+      <ul>
+    
+      <li><a href="#pyben.exceptions.EncodeError--parameters">Parameters</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.exceptions.EncodeError.__init__">__init__()</a></li>
+      <ul>
+    
+  </ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.exceptions.FilePathError">FilePathError</a></li>
+      <ul>
+    
+      <li><a href="#pyben.exceptions.FilePathError--parameters">Parameters</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.exceptions.FilePathError.__init__">__init__()</a></li>
+      <ul>
+    
+  </ul>
+    
+  </ul>
+    
+  </ul>
+  
+
+  
+</nav>
+          
+            
+  <h3>Related Topics</h3>
+  <ul>
+    
+      <li>Previous: <a href="../LICENSE/" title="previous chapter">
+        License
+      </a></li>
+    
+    
+  </ul>
+
+          
+            <div id="searchbox" style="display: none;" role="search">
+  <h3>Quick search</h3>
+  <form class="search" action="../search.html" method="get">
+    <input name="q" type="text">
+    <input value="Go" type="submit">
+  </form>
+  <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+  </p>
+</div>
+<script type="text/javascript">
+  document.getElementById("searchbox").style.display = "block";
+</script>
+          
         
       </div>
-      
     </div>
+    <div class="clearer"></div>
   </div>
-</footer>
+
+  
+    <div class="footer">
+      
+        &copy; alexpdev 2021
+      
+      
+        |
+        Powered by <a href="http://www.mkdocs.org">mkdocs 1.2.3</a>
+        &amp; <a href="https://github.com/iamale/mkdocs-alabaster">mkdocs-alabaster</a>
       
     </div>
-    <div class="md-dialog" data-md-component="dialog">
-      <div class="md-dialog__inner md-typeset"></div>
-    </div>
-    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.fcfe8b6d.min.js", "version": null}</script>
-    
-    
-      <script src="../assets/javascripts/bundle.b1047164.min.js"></script>
-      
-    
-  </body>
+  
+
+  <!--
+  MkDocs version      : 1.2.3
+  Docs Build Date UTC : 2021-12-31 00:23:27.239623+00:00
+  -->
+</body>
 </html>

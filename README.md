@@ -5,9 +5,11 @@ Pyben Enables fast and easy encoding and decoding of bencoded data.
 
 ![PyBen](./assets/pyben.png)
 
-![GitHub repo size](https://img.shields.io/github/repo-size/alexpdev/pyben)
+---------
+
+![GitHub repo size](https://img.shields.io/github/repo-size/alexpdev/pyben&style=flat-square)
 ![GitHub contributors](https://img.shields.io/github/license/alexpdev/pyben)
-![GitHub stars](https://img.shields.io/badge/rating-99-green)
+![PyPI - Downloads](https://img.shields.io/pypi/dm/pyben?color=%23CC3919&label=PyPi%20Downloads&logo=PyPi&logoColor=cyan&style=flat-square)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/af86338dcf0a4a899228df470d20e894)](https://www.codacy.com/gh/alexpdev/pyben/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=alexpdev/pyben&amp;utm_campaign=Badge_Grade)
 [![Codacy Badge](https://app.codacy.com/project/badge/Coverage/af86338dcf0a4a899228df470d20e894)](https://www.codacy.com/gh/alexpdev/pyben/dashboard?utm_source=github.com&utm_medium=referral&utm_content=alexpdev/pyben&utm_campaign=Badge_Coverage)
 [![codecov](https://codecov.io/gh/alexpdev/pyben/branch/master/graph/badge.svg?token=N6TCUUQ6CJ)](https://codecov.io/gh/alexpdev/pyben)

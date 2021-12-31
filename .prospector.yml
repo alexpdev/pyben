@@ -4,6 +4,11 @@ doc-warnings: true
 test-warnings: true
 member-warnings: true
 
+bandit:
+  run: true
+  options:
+    config: pyproject.toml
+
 pep257:
   run: true
   disable:
@@ -18,9 +23,6 @@ pep8:
 pylint:
   run: true
 
-bandit:
-  run: true
-
 pyroma:
   run: true
 
@@ -28,6 +30,6 @@ pyflakes:
   run: true
 
 mccabe:
-  run: false
+  run: true
   disable:
-    -MC0001
+    - MC0001

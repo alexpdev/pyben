@@ -1,8 +1,10 @@
-# Usage Examples
+# PyBen Usage Examples
 
-PyBen is designed to mimic the pickle and json modules in the python standard library.
+PyBen is small bencode encode/decode library, designed to mimic the python standard lib's pickle/json modules.
 
-## Import pyben
+-----
+
+## Importing pyben
 
 > importing the library
 
@@ -21,7 +23,7 @@ PyBen is designed to mimic the pickle and json modules in the python standard li
 
 ## Example 2
 
-> Encode builtin python data types and write to a file
+> Write Bencoded python builtin data types to file.
 
 - Unlike the json and pickle modules, pyben accepts a str or PathLike object as
     the second argument and automatically open the path in bytes, write mode(`'wb'`), or you can
@@ -34,7 +36,7 @@ PyBen is designed to mimic the pickle and json modules in the python standard li
 
 ## Example 3
 
-> Decode a bencoded byte-like object
+> Decode a Bencoded bytes-like object
 
 - Identical to json and pickle modules.
 
@@ -46,7 +48,8 @@ PyBen is designed to mimic the pickle and json modules in the python standard li
 
 > Decode the bencoded contents of a file.
 
-- Just like the dump function, load will accept str or PathLike object as an argument as well as an io stream.
+- Mimics the behaviour of the json/pickle library's `load` method.
+- Pyben accepts Path-Like and path strings as input arguement as well as an opened file buffer.
 
     `>>> decoded_contents = pyben.load('path/to/save/filename')`  
     or  
