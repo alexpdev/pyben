@@ -46,23 +46,34 @@
 
   <div class="doc doc-object doc-module">
 
-<a id="pyben"></a>
+
+
+<h2 id="pyben" class="doc doc-heading">
+        <code>pyben</code>
+
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-special"><code>special</code></small>
+  </span>
+
+</h2>
+
     <div class="doc doc-contents first">
 
       <p>PyBen is a library for decoding/encoding data, with the bencode specification.</p>
 <p>Bencode is commonly used for encoding Bittorrent Protocol Metafiles (.torrent).</p>
-<h3 id="pyben--modules">Modules</h3>
+<h4 id="pyben--modules">Modules</h4>
 <ul>
 <li>api</li>
 <li>classes</li>
 <li>bencode</li>
 </ul>
-<h3 id="pyben--classes">Classes</h3>
+<h4 id="pyben--classes">Classes</h4>
 <ul>
 <li>Bendecoder</li>
 <li>Benencoder</li>
 </ul>
-<h3 id="pyben--functions">Functions</h3>
+<h4 id="pyben--functions">Functions</h4>
 <ul>
 <li>bendecode</li>
 <li>benencode</li>
@@ -92,18 +103,18 @@
 
 
 
-<h2 id="pyben.api" class="doc doc-heading">
+<h3 id="pyben.api" class="doc doc-heading">
         <code>api</code>
 
 
 
-</h2>
+</h3>
 
     <div class="doc doc-contents ">
 
-      <h3 id="pyben.api--bencode-utility-library">Bencode utility library.</h3>
+      <h4 id="pyben.api--bencode-utility-library">Bencode utility library.</h4>
 <p>Features simple API inspired by json and pickle modules in stdlib.</p>
-<h4 id="pyben.api--functions">Functions</h4>
+<h5 id="pyben.api--functions">Functions</h5>
 <ul>
 <li>dump</li>
 <li>dumps</li>
@@ -111,8 +122,8 @@
 <li>loads</li>
 <li>tojson</li>
 </ul>
-<h4 id="pyben.api--usage-examples">Usage Examples</h4>
-<h5 id="pyben.api--encode-inline-code">Encode inline code:</h5>
+<h5 id="pyben.api--usage-examples">Usage Examples</h5>
+<h6 id="pyben.api--encode-inline-code">Encode inline code:</h6>
 <pre><code>&gt;&gt;&gt; import os
 &gt;&gt;&gt; import pyben
 &gt;&gt;&gt; data = {"item1": ["item2", 3, [4], {5: "item6"}]}
@@ -120,7 +131,7 @@
 &gt;&gt;&gt; encoded
 ... b'd5:item1l5:item2i3eli4eedi5e5:item6eee'
 </code></pre>
-<h5 id="pyben.api--encode-to-file">Encode to file:</h5>
+<h6 id="pyben.api--encode-to-file">Encode to file:</h6>
 <pre><code>&gt;&gt;&gt; fd = "path/to/file"
 &gt;&gt;&gt; pyben.dump(data, fd)
 &gt;&gt;&gt; os.path.exists(fd)
@@ -129,14 +140,14 @@
 &gt;&gt;&gt; encoded_file == encoded
 ... True
 </code></pre>
-<h5 id="pyben.api--decode-inline-code">Decode inline code:</h5>
+<h6 id="pyben.api--decode-inline-code">Decode inline code:</h6>
 <pre><code>&gt;&gt;&gt; decoded = pybem.loads(encoded)
 &gt;&gt;&gt; decoded
 ... {'item1': ['item2', 3, [4], {5: 'item6'}]}
 &gt;&gt;&gt; decoded == data
 ... True
 </code></pre>
-<h5 id="pyben.api--decode-from-file">Decode from file:</h5>
+<h6 id="pyben.api--decode-from-file">Decode from file:</h6>
 <pre><code>&gt;&gt;&gt; decoded_file = pyben.load(fd)
 &gt;&gt;&gt; decoded_file
 ... {'item1': ['item2', 3, [4], {5: 'item6'}]}
@@ -159,23 +170,43 @@
 
 
 
-<h3 id="pyben.api.dump" class="doc doc-heading">
+<h4 id="pyben.api.dump" class="doc doc-heading">
 <code class="highlight language-python"><span class="n">dump</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">buffer</span><span class="p">)</span></code>
 
 
-</h3>
+</h4>
 
     <div class="doc doc-contents ">
 
       <p>Shortcut function for bencode encode data and write to file.</p>
 <p>Works effectively the same as it's json equivelant except also
 accepts a path as well as an open fileIO.</p>
-<h5 id="pyben.api.dump--parameters">Parameters</h5>
-<p>obj : any
-    Data to be encoded.
-buffer : <code>str</code> or <code>BytesIO</code>
-    File of path-like to write the data to.</p>
 
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>obj</code></td>
+        <td><code>any</code></td>
+        <td><p>Data to be encoded.</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>buffer</code></td>
+        <td><code>`str` or `BytesIO`</code></td>
+        <td><p>File of path-like to write the data to.</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
         <details class="quote">
           <summary>Source code in <code>pyben\api.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">dump</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">buffer</span><span class="p">):</span>
@@ -212,22 +243,35 @@ buffer : <code>str</code> or <code>BytesIO</code>
 
 
 
-<h3 id="pyben.api.dumps" class="doc doc-heading">
+<h4 id="pyben.api.dumps" class="doc doc-heading">
 <code class="highlight language-python"><span class="n">dumps</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span></code>
 
 
-</h3>
+</h4>
 
     <div class="doc doc-contents ">
 
       <p>Shortuct function to encoding given obj to bencode encoding.</p>
-<h5 id="pyben.api.dumps--parameters">Parameters</h5>
-<p>obj : <code>any</code>
-    Object to be encoded.py.</p>
-<h5 id="pyben.api.dumps--returns">Returns</h5>
-<p><code>bytes</code> :
-    Encoded data.</p>
 
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>obj</code></td>
+        <td><code>`any`</code></td>
+        <td><p>Object to be encoded.py.</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
         <details class="quote">
           <summary>Source code in <code>pyben\api.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">dumps</span><span class="p">(</span><span class="n">obj</span><span class="p">):</span>
@@ -258,24 +302,41 @@ buffer : <code>str</code> or <code>BytesIO</code>
 
 
 
-<h3 id="pyben.api.load" class="doc doc-heading">
+<h4 id="pyben.api.load" class="doc doc-heading">
 <code class="highlight language-python"><span class="n">load</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="n">to_json</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
 
 
-</h3>
+</h4>
 
     <div class="doc doc-contents ">
 
       <p>Load bencoded data from a file of path object and decodes it.</p>
-<h5 id="pyben.api.load--parameters">Parameters</h5>
-<p>buffer : <code>str</code> or <code>BytesIO</code>
-    Open and/or read data from file to be decoded.
-to_json : <code>bool</code>
-    convert to json serializable metadata if True else leave it alone.</p>
-<h5 id="pyben.api.load--returns">Returns</h5>
-<p><code>any</code> :
-    (commonly <code>dict</code>), Decoded contents of file.</p>
 
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>buffer</code></td>
+        <td><code>`str` or `BytesIO`</code></td>
+        <td><p>Open and/or read data from file to be decoded.</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>to_json</code></td>
+        <td><code>`bool`</code></td>
+        <td><p>convert to json serializable metadata if True else leave it alone.</p></td>
+        <td><code>False</code></td>
+      </tr>
+  </tbody>
+</table>
         <details class="quote">
           <summary>Source code in <code>pyben\api.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="n">to_json</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
@@ -322,24 +383,41 @@ to_json : <code>bool</code>
 
 
 
-<h3 id="pyben.api.loads" class="doc doc-heading">
+<h4 id="pyben.api.loads" class="doc doc-heading">
 <code class="highlight language-python"><span class="n">loads</span><span class="p">(</span><span class="n">encoded</span><span class="p">,</span> <span class="n">to_json</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
 
 
-</h3>
+</h4>
 
     <div class="doc doc-contents ">
 
       <p>Shortcut function for decoding encoded data.</p>
-<h5 id="pyben.api.loads--parameters">Parameters</h5>
-<p>encoded : <code>bytes</code>
-    Bencoded data.
-to_json : <code>bool</code>
-    Convert to json serializable if true otherwise leave it alone.</p>
-<h5 id="pyben.api.loads--returns">Returns</h5>
-<p>any :
-    (any), Decoded data.</p>
 
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>encoded</code></td>
+        <td><code>`bytes`</code></td>
+        <td><p>Bencoded data.</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>to_json</code></td>
+        <td><code>`bool`</code></td>
+        <td><p>Convert to json serializable if true otherwise leave it alone.</p></td>
+        <td><code>False</code></td>
+      </tr>
+  </tbody>
+</table>
         <details class="quote">
           <summary>Source code in <code>pyben\api.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">loads</span><span class="p">(</span><span class="n">encoded</span><span class="p">,</span> <span class="n">to_json</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
@@ -375,22 +453,35 @@ to_json : <code>bool</code>
 
 
 
-<h3 id="pyben.api.show" class="doc doc-heading">
+<h4 id="pyben.api.show" class="doc doc-heading">
 <code class="highlight language-python"><span class="n">show</span><span class="p">(</span><span class="n">inp</span><span class="p">)</span></code>
 
 
-</h3>
+</h4>
 
     <div class="doc doc-contents ">
 
       <p>Ouptut readable metadata.</p>
-<h5 id="pyben.api.show--parameters">Parameters</h5>
-<p>inp : any
-    Pre-formatted input type.</p>
-<h5 id="pyben.api.show--returns">Returns</h5>
-<p>bool :
-    Returns True if completed successfully.</p>
 
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>inp</code></td>
+        <td><code>any</code></td>
+        <td><p>Pre-formatted input type.</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
         <details class="quote">
           <summary>Source code in <code>pyben\api.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">show</span><span class="p">(</span><span class="n">inp</span><span class="p">):</span>
@@ -449,17 +540,17 @@ to_json : <code>bool</code>
 
 
 
-<h2 id="pyben.bencode" class="doc doc-heading">
+<h3 id="pyben.bencode" class="doc doc-heading">
         <code>bencode</code>
 
 
 
-</h2>
+</h3>
 
     <div class="doc doc-contents ">
 
       <p>API helper functions for decoding and encoding data with bencode format.</p>
-<h4 id="pyben.bencode--functions">Functions</h4>
+<h5 id="pyben.bencode--functions">Functions</h5>
 <ul>
 <li>bendecode</li>
 <li>bendecode_dict</li>
@@ -493,22 +584,35 @@ to_json : <code>bool</code>
 
 
 
-<h3 id="pyben.bencode.bencode_bytes" class="doc doc-heading">
+<h4 id="pyben.bencode.bencode_bytes" class="doc doc-heading">
 <code class="highlight language-python"><span class="n">bencode_bytes</span><span class="p">(</span><span class="n">bits</span><span class="p">)</span></code>
 
 
-</h3>
+</h4>
 
     <div class="doc doc-contents ">
 
       <p>Encode bytes.</p>
-<h5 id="pyben.bencode.bencode_bytes--parameters">Parameters</h5>
-<p>bits : <code>bytes</code>
-    Bytes treated as a byte-string literal.</p>
-<h5 id="pyben.bencode.bencode_bytes--returns">Returns</h5>
-<p><code>bytes</code>:
-    Bencode encoded byte string literal.</p>
 
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>bits</code></td>
+        <td><code>`bytes`</code></td>
+        <td><p>Bytes treated as a byte-string literal.</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
         <details class="quote">
           <summary>Source code in <code>pyben\bencode.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">bencode_bytes</span><span class="p">(</span><span class="n">bits</span><span class="p">):</span>
@@ -540,22 +644,35 @@ to_json : <code>bool</code>
 
 
 
-<h3 id="pyben.bencode.bencode_dict" class="doc doc-heading">
+<h4 id="pyben.bencode.bencode_dict" class="doc doc-heading">
 <code class="highlight language-python"><span class="n">bencode_dict</span><span class="p">(</span><span class="n">dic</span><span class="p">)</span></code>
 
 
-</h3>
+</h4>
 
     <div class="doc doc-contents ">
 
       <p>Encode dictionary and contents.</p>
-<h5 id="pyben.bencode.bencode_dict--parameters">Parameters</h5>
-<p>dic : <code>dict</code>
-    Any dictionary containing items that can be bencoded.</p>
-<h5 id="pyben.bencode.bencode_dict--returns">Returns</h5>
-<p><code>bytes</code> :
-    Bencoded key, value pairs of data.</p>
 
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>dic</code></td>
+        <td><code>`dict`</code></td>
+        <td><p>Any dictionary containing items that can be bencoded.</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
         <details class="quote">
           <summary>Source code in <code>pyben\bencode.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">bencode_dict</span><span class="p">(</span><span class="n">dic</span><span class="p">):</span>
@@ -590,22 +707,35 @@ to_json : <code>bool</code>
 
 
 
-<h3 id="pyben.bencode.bencode_int" class="doc doc-heading">
+<h4 id="pyben.bencode.bencode_int" class="doc doc-heading">
 <code class="highlight language-python"><span class="n">bencode_int</span><span class="p">(</span><span class="n">i</span><span class="p">)</span></code>
 
 
-</h3>
+</h4>
 
     <div class="doc doc-contents ">
 
       <p>Encode integer type.</p>
-<h5 id="pyben.bencode.bencode_int--parameters">Parameters</h5>
-<p>i : <code>int</code>
-    Number that needs encoding.</p>
-<h5 id="pyben.bencode.bencode_int--returns">Returns</h5>
-<p><code>bytes</code> :
-    Bencoded Integer.</p>
 
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>i</code></td>
+        <td><code>`int`</code></td>
+        <td><p>Number that needs encoding.</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
         <details class="quote">
           <summary>Source code in <code>pyben\bencode.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">bencode_int</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
@@ -636,22 +766,35 @@ to_json : <code>bool</code>
 
 
 
-<h3 id="pyben.bencode.bencode_list" class="doc doc-heading">
+<h4 id="pyben.bencode.bencode_list" class="doc doc-heading">
 <code class="highlight language-python"><span class="n">bencode_list</span><span class="p">(</span><span class="n">elems</span><span class="p">)</span></code>
 
 
-</h3>
+</h4>
 
     <div class="doc doc-contents ">
 
       <p>Encode list and contents.</p>
-<h5 id="pyben.bencode.bencode_list--parameters">Parameters</h5>
-<p>elems : <code>list</code>
-    List of items for bencoding.</p>
-<h5 id="pyben.bencode.bencode_list--returns">Returns</h5>
-<p><code>bytes</code> :
-    Bencoded list and contents.</p>
 
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>elems</code></td>
+        <td><code>`list`</code></td>
+        <td><p>List of items for bencoding.</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
         <details class="quote">
           <summary>Source code in <code>pyben\bencode.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">bencode_list</span><span class="p">(</span><span class="n">elems</span><span class="p">):</span>
@@ -689,22 +832,35 @@ to_json : <code>bool</code>
 
 
 
-<h3 id="pyben.bencode.bencode_str" class="doc doc-heading">
+<h4 id="pyben.bencode.bencode_str" class="doc doc-heading">
 <code class="highlight language-python"><span class="n">bencode_str</span><span class="p">(</span><span class="n">txt</span><span class="p">)</span></code>
 
 
-</h3>
+</h4>
 
     <div class="doc doc-contents ">
 
       <p>Encode string literals.</p>
-<h5 id="pyben.bencode.bencode_str--parameters">Parameters</h5>
-<p>txt : <code>str</code>
-    Any text string.</p>
-<h5 id="pyben.bencode.bencode_str--returns">Returns</h5>
-<p><code>bytes</code> :
-    Bencoded string literal.</p>
 
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>txt</code></td>
+        <td><code>`str`</code></td>
+        <td><p>Any text string.</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
         <details class="quote">
           <summary>Source code in <code>pyben\bencode.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">bencode_str</span><span class="p">(</span><span class="n">txt</span><span class="p">):</span>
@@ -736,25 +892,50 @@ to_json : <code>bool</code>
 
 
 
-<h3 id="pyben.bencode.bendecode" class="doc doc-heading">
+<h4 id="pyben.bencode.bendecode" class="doc doc-heading">
 <code class="highlight language-python"><span class="n">bendecode</span><span class="p">(</span><span class="n">bits</span><span class="p">)</span></code>
 
 
-</h3>
+</h4>
 
     <div class="doc doc-contents ">
 
       <p>Decode bencoded data.</p>
-<h5 id="pyben.bencode.bendecode--parameters">Parameters</h5>
-<p>bits : <code>bytes</code>
-    Bencode encoded data.</p>
-<h5 id="pyben.bencode.bendecode--raises">Raises</h5>
-<p><code>DecodeError</code> :
-    Malformed data.</p>
-<h5 id="pyben.bencode.bendecode--returns">Returns</h5>
-<p>any :
-    Bencode decoded data.</p>
 
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>bits</code></td>
+        <td><code>`bytes`</code></td>
+        <td><p>Bencode encoded data.</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Exceptions:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>`DecodeError` :</code></td>
+        <td><p>Malformed data.</p></td>
+      </tr>
+  </tbody>
+</table>
         <details class="quote">
           <summary>Source code in <code>pyben\bencode.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">bendecode</span><span class="p">(</span><span class="n">bits</span><span class="p">):</span>
@@ -806,22 +987,50 @@ to_json : <code>bool</code>
 
 
 
-<h3 id="pyben.bencode.bendecode_dict" class="doc doc-heading">
+<h4 id="pyben.bencode.bendecode_dict" class="doc doc-heading">
 <code class="highlight language-python"><span class="n">bendecode_dict</span><span class="p">(</span><span class="n">bits</span><span class="p">)</span></code>
 
 
-</h3>
+</h4>
 
     <div class="doc doc-contents ">
 
       <p>Decode dictionary and it's contents.</p>
-<h5 id="pyben.bencode.bendecode_dict--parameters">Parameters</h5>
-<p>bits : <code>bytes</code>
-    Bencoded dictionary.</p>
-<h5 id="pyben.bencode.bendecode_dict--returns">Returns</h5>
-<p><code>dict</code>
-    Decoded dictionary and contents</p>
 
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>bits</code></td>
+        <td><code>`bytes`</code></td>
+        <td><p>Bencoded dictionary.</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>`dict`</code></td>
+      <td><p>Decoded dictionary and contents</p></td>
+    </tr>
+  </tbody>
+</table>
         <details class="quote">
           <summary>Source code in <code>pyben\bencode.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">bendecode_dict</span><span class="p">(</span><span class="n">bits</span><span class="p">):</span>
@@ -862,22 +1071,35 @@ to_json : <code>bool</code>
 
 
 
-<h3 id="pyben.bencode.bendecode_int" class="doc doc-heading">
+<h4 id="pyben.bencode.bendecode_int" class="doc doc-heading">
 <code class="highlight language-python"><span class="n">bendecode_int</span><span class="p">(</span><span class="n">bits</span><span class="p">)</span></code>
 
 
-</h3>
+</h4>
 
     <div class="doc doc-contents ">
 
       <p>Decode digits.</p>
-<h5 id="pyben.bencode.bendecode_int--parameters">Parameters</h5>
-<p>bits : <code>bytes</code>
-    Bencoded intiger bytes</p>
-<h5 id="pyben.bencode.bendecode_int--returns">Returns</h5>
-<p><code>int</code> :
-    Decoded int value.</p>
 
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>bits</code></td>
+        <td><code>`bytes`</code></td>
+        <td><p>Bencoded intiger bytes</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
         <details class="quote">
           <summary>Source code in <code>pyben\bencode.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">bendecode_int</span><span class="p">(</span><span class="n">bits</span><span class="p">):</span>
@@ -909,22 +1131,35 @@ to_json : <code>bool</code>
 
 
 
-<h3 id="pyben.bencode.bendecode_list" class="doc doc-heading">
+<h4 id="pyben.bencode.bendecode_list" class="doc doc-heading">
 <code class="highlight language-python"><span class="n">bendecode_list</span><span class="p">(</span><span class="n">bits</span><span class="p">)</span></code>
 
 
-</h3>
+</h4>
 
     <div class="doc doc-contents ">
 
       <p>Decode list and list contents.</p>
-<h5 id="pyben.bencode.bendecode_list--parameters">Parameters</h5>
-<p>bits : <code>bytes</code>
-    Bencoded list.</p>
-<h5 id="pyben.bencode.bendecode_list--returns">Returns</h5>
-<p><code>list</code> :
-    Bencode decoded list and contents.</p>
 
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>bits</code></td>
+        <td><code>`bytes`</code></td>
+        <td><p>Bencoded list.</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
         <details class="quote">
           <summary>Source code in <code>pyben\bencode.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">bendecode_list</span><span class="p">(</span><span class="n">bits</span><span class="p">):</span>
@@ -963,22 +1198,35 @@ to_json : <code>bool</code>
 
 
 
-<h3 id="pyben.bencode.bendecode_str" class="doc doc-heading">
+<h4 id="pyben.bencode.bendecode_str" class="doc doc-heading">
 <code class="highlight language-python"><span class="n">bendecode_str</span><span class="p">(</span><span class="n">units</span><span class="p">)</span></code>
 
 
-</h3>
+</h4>
 
     <div class="doc doc-contents ">
 
       <p>Bendecode string types.</p>
-<h5 id="pyben.bencode.bendecode_str--parameters">Parameters</h5>
-<p>units : <code>bytes</code>
-    Bencoded string.</p>
-<h5 id="pyben.bencode.bendecode_str--returns">Returns</h5>
-<p><code>str</code> :
-    Decoded data string.</p>
 
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>units</code></td>
+        <td><code>`bytes`</code></td>
+        <td><p>Bencoded string.</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
         <details class="quote">
           <summary>Source code in <code>pyben\bencode.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">bendecode_str</span><span class="p">(</span><span class="n">units</span><span class="p">):</span>
@@ -1020,25 +1268,50 @@ to_json : <code>bool</code>
 
 
 
-<h3 id="pyben.bencode.benencode" class="doc doc-heading">
+<h4 id="pyben.bencode.benencode" class="doc doc-heading">
 <code class="highlight language-python"><span class="n">benencode</span><span class="p">(</span><span class="n">val</span><span class="p">)</span></code>
 
 
-</h3>
+</h4>
 
     <div class="doc doc-contents ">
 
       <p>Encode data with bencoding.</p>
-<h5 id="pyben.bencode.benencode--parameters">Parameters</h5>
-<p>val : any
-    Data for encoding.</p>
-<h5 id="pyben.bencode.benencode--raises">Raises</h5>
-<p><code>EncodeError</code> :
-    Cannot interpret data.</p>
-<h5 id="pyben.bencode.benencode--returns">Returns</h5>
-<p><code>bytes</code> :
-    Bencoded data.</p>
 
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>val</code></td>
+        <td><code>any</code></td>
+        <td><p>Data for encoding.</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Exceptions:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>`EncodeError` :</code></td>
+        <td><p>Cannot interpret data.</p></td>
+      </tr>
+  </tbody>
+</table>
         <details class="quote">
           <summary>Source code in <code>pyben\bencode.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">benencode</span><span class="p">(</span><span class="n">val</span><span class="p">):</span>
@@ -1103,19 +1376,19 @@ to_json : <code>bool</code>
 
 
 
-<h2 id="pyben.classes" class="doc doc-heading">
+<h3 id="pyben.classes" class="doc doc-heading">
         <code>classes</code>
 
 
 
-</h2>
+</h3>
 
     <div class="doc doc-contents ">
 
       <p>OOP implementation of bencode decoders and encoders.</p>
 <p>This style is not recommended as it can get bulky. The json-like api
 from the bencode.py module is much easier to use.</p>
-<h4 id="pyben.classes--classes">Classes</h4>
+<h5 id="pyben.classes--classes">Classes</h5>
 <ul>
 <li>Bendecoder</li>
 <li>Benencoder</li>
@@ -1135,13 +1408,13 @@ from the bencode.py module is much easier to use.</p>
 
 
 
-<h3 id="pyben.classes.Bendecoder" class="doc doc-heading">
+<h4 id="pyben.classes.Bendecoder" class="doc doc-heading">
         <code>
 Bendecoder        </code>
 
 
 
-</h3>
+</h4>
 
     <div class="doc doc-contents ">
 
@@ -1164,22 +1437,38 @@ Bendecoder        </code>
 
 
 
-<h4 id="pyben.classes.Bendecoder.__init__" class="doc doc-heading">
+<h5 id="pyben.classes.Bendecoder.__init__" class="doc doc-heading">
 <code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
 
   <span class="doc doc-properties">
       <small class="doc doc-property doc-property-special"><code>special</code></small>
   </span>
 
-</h4>
+</h5>
 
     <div class="doc doc-contents ">
 
       <p>Initialize instance with optional pre compiled data.</p>
-<h6 id="pyben.classes.Bendecoder.__init__--parameters">Parameters</h6>
-<p>data : <code>bytes</code> or <code>bytearray</code>
-    (Optional) (default=None) Target data for decoding.</p>
 
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>data</code></td>
+        <td><code>`bytes` or `bytearray`</code></td>
+        <td><p>(Optional) (default=None) Target data for decoding.</p></td>
+        <td><code>None</code></td>
+      </tr>
+  </tbody>
+</table>
         <details class="quote">
           <summary>Source code in <code>pyben\classes.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -1206,22 +1495,35 @@ Bendecoder        </code>
 
 
 
-<h4 id="pyben.classes.Bendecoder.decode" class="doc doc-heading">
+<h5 id="pyben.classes.Bendecoder.decode" class="doc doc-heading">
 <code class="highlight language-python"><span class="n">decode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
 
 
-</h4>
+</h5>
 
     <div class="doc doc-contents ">
 
       <p>Decode bencoded data.</p>
-<h6 id="pyben.classes.Bendecoder.decode--parameters">Parameters</h6>
-<p>data : <code>bytes</code>
-    bencoded data for decoding.</p>
-<h6 id="pyben.classes.Bendecoder.decode--returns">Returns</h6>
-<p><code>any</code> :
-    the decoded data.</p>
 
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>data</code></td>
+        <td><code>``bytes``</code></td>
+        <td><p>bencoded data for decoding.</p></td>
+        <td><code>None</code></td>
+      </tr>
+  </tbody>
+</table>
         <details class="quote">
           <summary>Source code in <code>pyben\classes.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">decode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -1254,28 +1556,68 @@ Bendecoder        </code>
 
 
 
-<h4 id="pyben.classes.Bendecoder.load" class="doc doc-heading">
+<h5 id="pyben.classes.Bendecoder.load" class="doc doc-heading">
 <code class="highlight language-python"><span class="n">load</span><span class="p">(</span><span class="n">item</span><span class="p">)</span></code>
 
   <span class="doc doc-properties">
       <small class="doc doc-property doc-property-classmethod"><code>classmethod</code></small>
   </span>
 
-</h4>
+</h5>
 
     <div class="doc doc-contents ">
 
       <p>Extract contents from path/path-like and return Decoded data.</p>
-<h6 id="pyben.classes.Bendecoder.load--parameters">Parameters</h6>
-<p>item : <code>str</code> or <code>path-like</code>
-    Path containing bencoded data.</p>
-<h6 id="pyben.classes.Bendecoder.load--raises">Raises</h6>
-<p><code>FilePathError</code>:
-    Incorrect path or IOBuffer doesnt exist.</p>
-<h6 id="pyben.classes.Bendecoder.load--returns">Returns</h6>
-<p><code>any</code>
-    Decoded contents of file, Usually a dictionary.</p>
 
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>item</code></td>
+        <td><code>`str` or `path-like`</code></td>
+        <td><p>Path containing bencoded data.</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Exceptions:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>`FilePathError`:</code></td>
+        <td><p>Incorrect path or IOBuffer doesnt exist.</p></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>`any`</code></td>
+      <td><p>Decoded contents of file, Usually a dictionary.</p></td>
+    </tr>
+  </tbody>
+</table>
         <details class="quote">
           <summary>Source code in <code>pyben\classes.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="nd">@classmethod</span>
@@ -1319,25 +1661,53 @@ Bendecoder        </code>
 
 
 
-<h4 id="pyben.classes.Bendecoder.loads" class="doc doc-heading">
+<h5 id="pyben.classes.Bendecoder.loads" class="doc doc-heading">
 <code class="highlight language-python"><span class="n">loads</span><span class="p">(</span><span class="n">data</span><span class="p">)</span></code>
 
   <span class="doc doc-properties">
       <small class="doc doc-property doc-property-classmethod"><code>classmethod</code></small>
   </span>
 
-</h4>
+</h5>
 
     <div class="doc doc-contents ">
 
       <p>Shortcut to Decode raw bencoded data.</p>
-<h6 id="pyben.classes.Bendecoder.loads--parameters">Parameters</h6>
-<p>data : <code>bytes</code> or <code>bytearray</code>
-    Bendencoded <code>bytes</code>.</p>
-<h6 id="pyben.classes.Bendecoder.loads--returns">Returns</h6>
-<p><code>any</code>
-    Decoded data usually a dictionary.</p>
 
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>data</code></td>
+        <td><code>``bytes`` or `bytearray`</code></td>
+        <td><p>Bendencoded <code>bytes</code>.</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>`any`</code></td>
+      <td><p>Decoded data usually a dictionary.</p></td>
+    </tr>
+  </tbody>
+</table>
         <details class="quote">
           <summary>Source code in <code>pyben\classes.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="nd">@classmethod</span>
@@ -1380,13 +1750,13 @@ Bendecoder        </code>
 
 
 
-<h3 id="pyben.classes.Benencoder" class="doc doc-heading">
+<h4 id="pyben.classes.Benencoder" class="doc doc-heading">
         <code>
 Benencoder        </code>
 
 
 
-</h3>
+</h4>
 
     <div class="doc doc-contents ">
 
@@ -1409,22 +1779,38 @@ Benencoder        </code>
 
 
 
-<h4 id="pyben.classes.Benencoder.__init__" class="doc doc-heading">
+<h5 id="pyben.classes.Benencoder.__init__" class="doc doc-heading">
 <code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
 
   <span class="doc doc-properties">
       <small class="doc doc-property doc-property-special"><code>special</code></small>
   </span>
 
-</h4>
+</h5>
 
     <div class="doc doc-contents ">
 
       <p>Initialize Benencoder insance with optional pre compiled data.</p>
-<h6 id="pyben.classes.Benencoder.__init__--parameters">Parameters</h6>
-<p>data : any
-    (Optional) Target data for encoding. Defaults to None.</p>
 
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>data</code></td>
+        <td><code>any</code></td>
+        <td><p>(Optional) Target data for encoding. Defaults to None.</p></td>
+        <td><code>None</code></td>
+      </tr>
+  </tbody>
+</table>
         <details class="quote">
           <summary>Source code in <code>pyben\classes.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -1451,27 +1837,44 @@ Benencoder        </code>
 
 
 
-<h4 id="pyben.classes.Benencoder.dump" class="doc doc-heading">
+<h5 id="pyben.classes.Benencoder.dump" class="doc doc-heading">
 <code class="highlight language-python"><span class="n">dump</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span></code>
 
   <span class="doc doc-properties">
       <small class="doc doc-property doc-property-classmethod"><code>classmethod</code></small>
   </span>
 
-</h4>
+</h5>
 
     <div class="doc doc-contents ">
 
       <p>Shortcut class method for encoding data and writing to file.</p>
-<h6 id="pyben.classes.Benencoder.dump--parameters">Parameters</h6>
-<p>data : any
-    Raw data to be encoded, usually dict.txt
-path : <code>str</code> or <code>os.PathLike</code> or <code>BytesIO</code>
-    Where encoded data should be written to.py</p>
-<h6 id="pyben.classes.Benencoder.dump--returns">Returns</h6>
-<p><code>bool</code> :
-    Return True if success.txt</p>
 
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>data</code></td>
+        <td><code>any</code></td>
+        <td><p>Raw data to be encoded, usually dict.txt</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>path</code></td>
+        <td><code>`str` or `os.PathLike` or `BytesIO`</code></td>
+        <td><p>Where encoded data should be written to.py</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
         <details class="quote">
           <summary>Source code in <code>pyben\classes.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="nd">@classmethod</span>
@@ -1511,24 +1914,38 @@ path : <code>str</code> or <code>os.PathLike</code> or <code>BytesIO</code>
 
 
 
-<h4 id="pyben.classes.Benencoder.dumps" class="doc doc-heading">
+<h5 id="pyben.classes.Benencoder.dumps" class="doc doc-heading">
 <code class="highlight language-python"><span class="n">dumps</span><span class="p">(</span><span class="n">data</span><span class="p">)</span></code>
 
   <span class="doc doc-properties">
       <small class="doc doc-property doc-property-classmethod"><code>classmethod</code></small>
   </span>
 
-</h4>
+</h5>
 
     <div class="doc doc-contents ">
 
       <p>Shortcut method for encoding data and immediately returning it.</p>
-<h6 id="pyben.classes.Benencoder.dumps--parameters">Parameters</h6>
-<p>data : any
-    Raw data to be encoded usually a dictionary.</p>
-<h6 id="pyben.classes.Benencoder.dumps--returns">Returns</h6>
-<p><code>bytes</code>: Encoded data.</p>
 
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>data</code></td>
+        <td><code>any</code></td>
+        <td><p>Raw data to be encoded usually a dictionary.</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
         <details class="quote">
           <summary>Source code in <code>pyben\classes.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="nd">@classmethod</span>
@@ -1559,22 +1976,35 @@ path : <code>str</code> or <code>os.PathLike</code> or <code>BytesIO</code>
 
 
 
-<h4 id="pyben.classes.Benencoder.encode" class="doc doc-heading">
+<h5 id="pyben.classes.Benencoder.encode" class="doc doc-heading">
 <code class="highlight language-python"><span class="n">encode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
 
 
-</h4>
+</h5>
 
     <div class="doc doc-contents ">
 
       <p>Encode data provided as an arguement or provided at initialization.</p>
-<h6 id="pyben.classes.Benencoder.encode--parameters">Parameters</h6>
-<p>val : any, optional
-    Data for encoding. Defaults to None.</p>
-<h6 id="pyben.classes.Benencoder.encode--returns">Returns</h6>
-<p><code>bytes</code> :
-    encoded data</p>
 
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>val</code></td>
+        <td><code>any</code></td>
+        <td><p>Data for encoding. Defaults to None.</p></td>
+        <td><code>None</code></td>
+      </tr>
+  </tbody>
+</table>
         <details class="quote">
           <summary>Source code in <code>pyben\classes.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">encode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -1629,12 +2059,12 @@ path : <code>str</code> or <code>os.PathLike</code> or <code>BytesIO</code>
 
 
 
-<h2 id="pyben.exceptions" class="doc doc-heading">
+<h3 id="pyben.exceptions" class="doc doc-heading">
         <code>exceptions</code>
 
 
 
-</h2>
+</h3>
 
     <div class="doc doc-contents ">
 
@@ -1654,14 +2084,14 @@ path : <code>str</code> or <code>os.PathLike</code> or <code>BytesIO</code>
 
 
 
-<h3 id="pyben.exceptions.DecodeError" class="doc doc-heading">
+<h4 id="pyben.exceptions.DecodeError" class="doc doc-heading">
         <code>
 DecodeError            (<span title="Exception">Exception</span>)
         </code>
 
 
 
-</h3>
+</h4>
 
     <div class="doc doc-contents ">
 
@@ -1669,10 +2099,26 @@ DecodeError            (<span title="Exception">Exception</span>)
 <p>Raised when attempting to decode an incompatible bytearray.
 Mostly it indicates the object is a hash digest and should remian
 as a bytes object.</p>
-<h5 id="pyben.exceptions.DecodeError--parameters">Parameters</h5>
-<p>val : any
-    Value that cause the exception</p>
 
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>val</code></td>
+        <td><code>any</code></td>
+        <td><p>Value that cause the exception</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
 
 
 
@@ -1690,14 +2136,14 @@ as a bytes object.</p>
 
 
 
-<h4 id="pyben.exceptions.DecodeError.__init__" class="doc doc-heading">
+<h5 id="pyben.exceptions.DecodeError.__init__" class="doc doc-heading">
 <code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
 
   <span class="doc doc-properties">
       <small class="doc doc-property doc-property-special"><code>special</code></small>
   </span>
 
-</h4>
+</h5>
 
     <div class="doc doc-contents ">
 
@@ -1731,14 +2177,14 @@ as a bytes object.</p>
 
 
 
-<h3 id="pyben.exceptions.EncodeError" class="doc doc-heading">
+<h4 id="pyben.exceptions.EncodeError" class="doc doc-heading">
         <code>
 EncodeError            (<span title="Exception">Exception</span>)
         </code>
 
 
 
-</h3>
+</h4>
 
     <div class="doc doc-contents ">
 
@@ -1746,10 +2192,26 @@ EncodeError            (<span title="Exception">Exception</span>)
 <p>Raised when attempting to bencode encode an incompatible
 data type into bencode format. Bencode accepts lists, dicts,
 strings, integers, and bytes.</p>
-<h5 id="pyben.exceptions.EncodeError--parameters">Parameters</h5>
-<p>val : any
-    Value that cause the exception</p>
 
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>val</code></td>
+        <td><code>any</code></td>
+        <td><p>Value that cause the exception</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
 
 
 
@@ -1767,14 +2229,14 @@ strings, integers, and bytes.</p>
 
 
 
-<h4 id="pyben.exceptions.EncodeError.__init__" class="doc doc-heading">
+<h5 id="pyben.exceptions.EncodeError.__init__" class="doc doc-heading">
 <code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
 
   <span class="doc doc-properties">
       <small class="doc doc-property doc-property-special"><code>special</code></small>
   </span>
 
-</h4>
+</h5>
 
     <div class="doc doc-contents ">
 
@@ -1808,24 +2270,40 @@ strings, integers, and bytes.</p>
 
 
 
-<h3 id="pyben.exceptions.FilePathError" class="doc doc-heading">
+<h4 id="pyben.exceptions.FilePathError" class="doc doc-heading">
         <code>
 FilePathError            (<span title="Exception">Exception</span>)
         </code>
 
 
 
-</h3>
+</h4>
 
     <div class="doc doc-contents ">
 
       <p>Bad path error.</p>
 <p>Generally raised when the file at the path specified
 does not exist.</p>
-<h5 id="pyben.exceptions.FilePathError--parameters">Parameters</h5>
-<p>val : any
-    Value that cause the exception</p>
 
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>val</code></td>
+        <td><code>any</code></td>
+        <td><p>Value that cause the exception</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
 
 
 
@@ -1843,14 +2321,14 @@ does not exist.</p>
 
 
 
-<h4 id="pyben.exceptions.FilePathError.__init__" class="doc doc-heading">
+<h5 id="pyben.exceptions.FilePathError.__init__" class="doc doc-heading">
 <code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
 
   <span class="doc doc-properties">
       <small class="doc doc-property doc-property-special"><code>special</code></small>
   </span>
 
-</h4>
+</h5>
 
     <div class="doc doc-contents ">
 
@@ -1896,12 +2374,12 @@ does not exist.</p>
 
 
 
-<h2 id="pyben.version" class="doc doc-heading">
+<h3 id="pyben.version" class="doc doc-heading">
         <code>version</code>
 
 
 
-</h2>
+</h3>
 
     <div class="doc doc-contents ">
 
@@ -2026,12 +2504,20 @@ does not exist.</p>
 
   <div class="doc doc-object doc-module">
 
-<a id="pyben.api"></a>
+
+
+<h2 id="pyben.api" class="doc doc-heading">
+        <code>pyben.api</code>
+
+
+
+</h2>
+
     <div class="doc doc-contents first">
 
-      <h2 id="pyben.api--bencode-utility-library">Bencode utility library.</h2>
+      <h3 id="pyben.api--bencode-utility-library">Bencode utility library.</h3>
 <p>Features simple API inspired by json and pickle modules in stdlib.</p>
-<h3 id="pyben.api--functions">Functions</h3>
+<h4 id="pyben.api--functions">Functions</h4>
 <ul>
 <li>dump</li>
 <li>dumps</li>
@@ -2039,8 +2525,8 @@ does not exist.</p>
 <li>loads</li>
 <li>tojson</li>
 </ul>
-<h3 id="pyben.api--usage-examples">Usage Examples</h3>
-<h4 id="pyben.api--encode-inline-code">Encode inline code:</h4>
+<h4 id="pyben.api--usage-examples">Usage Examples</h4>
+<h5 id="pyben.api--encode-inline-code">Encode inline code:</h5>
 <pre><code>&gt;&gt;&gt; import os
 &gt;&gt;&gt; import pyben
 &gt;&gt;&gt; data = {"item1": ["item2", 3, [4], {5: "item6"}]}
@@ -2048,7 +2534,7 @@ does not exist.</p>
 &gt;&gt;&gt; encoded
 ... b'd5:item1l5:item2i3eli4eedi5e5:item6eee'
 </code></pre>
-<h4 id="pyben.api--encode-to-file">Encode to file:</h4>
+<h5 id="pyben.api--encode-to-file">Encode to file:</h5>
 <pre><code>&gt;&gt;&gt; fd = "path/to/file"
 &gt;&gt;&gt; pyben.dump(data, fd)
 &gt;&gt;&gt; os.path.exists(fd)
@@ -2057,14 +2543,14 @@ does not exist.</p>
 &gt;&gt;&gt; encoded_file == encoded
 ... True
 </code></pre>
-<h4 id="pyben.api--decode-inline-code">Decode inline code:</h4>
+<h5 id="pyben.api--decode-inline-code">Decode inline code:</h5>
 <pre><code>&gt;&gt;&gt; decoded = pybem.loads(encoded)
 &gt;&gt;&gt; decoded
 ... {'item1': ['item2', 3, [4], {5: 'item6'}]}
 &gt;&gt;&gt; decoded == data
 ... True
 </code></pre>
-<h4 id="pyben.api--decode-from-file">Decode from file:</h4>
+<h5 id="pyben.api--decode-from-file">Decode from file:</h5>
 <pre><code>&gt;&gt;&gt; decoded_file = pyben.load(fd)
 &gt;&gt;&gt; decoded_file
 ... {'item1': ['item2', 3, [4], {5: 'item6'}]}
@@ -2087,23 +2573,43 @@ does not exist.</p>
 
 
 
-<h2 id="pyben.api.dump" class="doc doc-heading">
+<h3 id="pyben.api.dump" class="doc doc-heading">
 <code class="highlight language-python"><span class="n">dump</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">buffer</span><span class="p">)</span></code>
 
 
-</h2>
+</h3>
 
     <div class="doc doc-contents ">
 
       <p>Shortcut function for bencode encode data and write to file.</p>
 <p>Works effectively the same as it's json equivelant except also
 accepts a path as well as an open fileIO.</p>
-<h4 id="pyben.api.dump--parameters">Parameters</h4>
-<p>obj : any
-    Data to be encoded.
-buffer : <code>str</code> or <code>BytesIO</code>
-    File of path-like to write the data to.</p>
 
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>obj</code></td>
+        <td><code>any</code></td>
+        <td><p>Data to be encoded.</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>buffer</code></td>
+        <td><code>`str` or `BytesIO`</code></td>
+        <td><p>File of path-like to write the data to.</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
         <details class="quote">
           <summary>Source code in <code>pyben\api.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">dump</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">buffer</span><span class="p">):</span>
@@ -2140,22 +2646,35 @@ buffer : <code>str</code> or <code>BytesIO</code>
 
 
 
-<h2 id="pyben.api.dumps" class="doc doc-heading">
+<h3 id="pyben.api.dumps" class="doc doc-heading">
 <code class="highlight language-python"><span class="n">dumps</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span></code>
 
 
-</h2>
+</h3>
 
     <div class="doc doc-contents ">
 
       <p>Shortuct function to encoding given obj to bencode encoding.</p>
-<h4 id="pyben.api.dumps--parameters">Parameters</h4>
-<p>obj : <code>any</code>
-    Object to be encoded.py.</p>
-<h4 id="pyben.api.dumps--returns">Returns</h4>
-<p><code>bytes</code> :
-    Encoded data.</p>
 
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>obj</code></td>
+        <td><code>`any`</code></td>
+        <td><p>Object to be encoded.py.</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
         <details class="quote">
           <summary>Source code in <code>pyben\api.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">dumps</span><span class="p">(</span><span class="n">obj</span><span class="p">):</span>
@@ -2186,24 +2705,41 @@ buffer : <code>str</code> or <code>BytesIO</code>
 
 
 
-<h2 id="pyben.api.load" class="doc doc-heading">
+<h3 id="pyben.api.load" class="doc doc-heading">
 <code class="highlight language-python"><span class="n">load</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="n">to_json</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
 
 
-</h2>
+</h3>
 
     <div class="doc doc-contents ">
 
       <p>Load bencoded data from a file of path object and decodes it.</p>
-<h4 id="pyben.api.load--parameters">Parameters</h4>
-<p>buffer : <code>str</code> or <code>BytesIO</code>
-    Open and/or read data from file to be decoded.
-to_json : <code>bool</code>
-    convert to json serializable metadata if True else leave it alone.</p>
-<h4 id="pyben.api.load--returns">Returns</h4>
-<p><code>any</code> :
-    (commonly <code>dict</code>), Decoded contents of file.</p>
 
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>buffer</code></td>
+        <td><code>`str` or `BytesIO`</code></td>
+        <td><p>Open and/or read data from file to be decoded.</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>to_json</code></td>
+        <td><code>`bool`</code></td>
+        <td><p>convert to json serializable metadata if True else leave it alone.</p></td>
+        <td><code>False</code></td>
+      </tr>
+  </tbody>
+</table>
         <details class="quote">
           <summary>Source code in <code>pyben\api.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="n">to_json</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
@@ -2250,24 +2786,41 @@ to_json : <code>bool</code>
 
 
 
-<h2 id="pyben.api.loads" class="doc doc-heading">
+<h3 id="pyben.api.loads" class="doc doc-heading">
 <code class="highlight language-python"><span class="n">loads</span><span class="p">(</span><span class="n">encoded</span><span class="p">,</span> <span class="n">to_json</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
 
 
-</h2>
+</h3>
 
     <div class="doc doc-contents ">
 
       <p>Shortcut function for decoding encoded data.</p>
-<h4 id="pyben.api.loads--parameters">Parameters</h4>
-<p>encoded : <code>bytes</code>
-    Bencoded data.
-to_json : <code>bool</code>
-    Convert to json serializable if true otherwise leave it alone.</p>
-<h4 id="pyben.api.loads--returns">Returns</h4>
-<p>any :
-    (any), Decoded data.</p>
 
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>encoded</code></td>
+        <td><code>`bytes`</code></td>
+        <td><p>Bencoded data.</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>to_json</code></td>
+        <td><code>`bool`</code></td>
+        <td><p>Convert to json serializable if true otherwise leave it alone.</p></td>
+        <td><code>False</code></td>
+      </tr>
+  </tbody>
+</table>
         <details class="quote">
           <summary>Source code in <code>pyben\api.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">loads</span><span class="p">(</span><span class="n">encoded</span><span class="p">,</span> <span class="n">to_json</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
@@ -2303,22 +2856,35 @@ to_json : <code>bool</code>
 
 
 
-<h2 id="pyben.api.show" class="doc doc-heading">
+<h3 id="pyben.api.show" class="doc doc-heading">
 <code class="highlight language-python"><span class="n">show</span><span class="p">(</span><span class="n">inp</span><span class="p">)</span></code>
 
 
-</h2>
+</h3>
 
     <div class="doc doc-contents ">
 
       <p>Ouptut readable metadata.</p>
-<h4 id="pyben.api.show--parameters">Parameters</h4>
-<p>inp : any
-    Pre-formatted input type.</p>
-<h4 id="pyben.api.show--returns">Returns</h4>
-<p>bool :
-    Returns True if completed successfully.</p>
 
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>inp</code></td>
+        <td><code>any</code></td>
+        <td><p>Pre-formatted input type.</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
         <details class="quote">
           <summary>Source code in <code>pyben\api.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">show</span><span class="p">(</span><span class="n">inp</span><span class="p">):</span>
@@ -2414,13 +2980,21 @@ from the bencode.py module is much easier to use.</p>
 
   <div class="doc doc-object doc-module">
 
-<a id="pyben.classes"></a>
+
+
+<h2 id="pyben.classes" class="doc doc-heading">
+        <code>pyben.classes</code>
+
+
+
+</h2>
+
     <div class="doc doc-contents first">
 
       <p>OOP implementation of bencode decoders and encoders.</p>
 <p>This style is not recommended as it can get bulky. The json-like api
 from the bencode.py module is much easier to use.</p>
-<h3 id="pyben.classes--classes">Classes</h3>
+<h4 id="pyben.classes--classes">Classes</h4>
 <ul>
 <li>Bendecoder</li>
 <li>Benencoder</li>
@@ -2440,13 +3014,13 @@ from the bencode.py module is much easier to use.</p>
 
 
 
-<h2 id="pyben.classes.Bendecoder" class="doc doc-heading">
+<h3 id="pyben.classes.Bendecoder" class="doc doc-heading">
         <code>
 Bendecoder        </code>
 
 
 
-</h2>
+</h3>
 
     <div class="doc doc-contents ">
 
@@ -2469,22 +3043,38 @@ Bendecoder        </code>
 
 
 
-<h3 id="pyben.classes.Bendecoder.__init__" class="doc doc-heading">
+<h4 id="pyben.classes.Bendecoder.__init__" class="doc doc-heading">
 <code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
 
   <span class="doc doc-properties">
       <small class="doc doc-property doc-property-special"><code>special</code></small>
   </span>
 
-</h3>
+</h4>
 
     <div class="doc doc-contents ">
 
       <p>Initialize instance with optional pre compiled data.</p>
-<h5 id="pyben.classes.Bendecoder.__init__--parameters">Parameters</h5>
-<p>data : <code>bytes</code> or <code>bytearray</code>
-    (Optional) (default=None) Target data for decoding.</p>
 
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>data</code></td>
+        <td><code>`bytes` or `bytearray`</code></td>
+        <td><p>(Optional) (default=None) Target data for decoding.</p></td>
+        <td><code>None</code></td>
+      </tr>
+  </tbody>
+</table>
         <details class="quote">
           <summary>Source code in <code>pyben\classes.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -2511,22 +3101,35 @@ Bendecoder        </code>
 
 
 
-<h3 id="pyben.classes.Bendecoder.decode" class="doc doc-heading">
+<h4 id="pyben.classes.Bendecoder.decode" class="doc doc-heading">
 <code class="highlight language-python"><span class="n">decode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
 
 
-</h3>
+</h4>
 
     <div class="doc doc-contents ">
 
       <p>Decode bencoded data.</p>
-<h5 id="pyben.classes.Bendecoder.decode--parameters">Parameters</h5>
-<p>data : <code>bytes</code>
-    bencoded data for decoding.</p>
-<h5 id="pyben.classes.Bendecoder.decode--returns">Returns</h5>
-<p><code>any</code> :
-    the decoded data.</p>
 
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>data</code></td>
+        <td><code>``bytes``</code></td>
+        <td><p>bencoded data for decoding.</p></td>
+        <td><code>None</code></td>
+      </tr>
+  </tbody>
+</table>
         <details class="quote">
           <summary>Source code in <code>pyben\classes.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">decode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -2559,28 +3162,68 @@ Bendecoder        </code>
 
 
 
-<h3 id="pyben.classes.Bendecoder.load" class="doc doc-heading">
+<h4 id="pyben.classes.Bendecoder.load" class="doc doc-heading">
 <code class="highlight language-python"><span class="n">load</span><span class="p">(</span><span class="n">item</span><span class="p">)</span></code>
 
   <span class="doc doc-properties">
       <small class="doc doc-property doc-property-classmethod"><code>classmethod</code></small>
   </span>
 
-</h3>
+</h4>
 
     <div class="doc doc-contents ">
 
       <p>Extract contents from path/path-like and return Decoded data.</p>
-<h5 id="pyben.classes.Bendecoder.load--parameters">Parameters</h5>
-<p>item : <code>str</code> or <code>path-like</code>
-    Path containing bencoded data.</p>
-<h5 id="pyben.classes.Bendecoder.load--raises">Raises</h5>
-<p><code>FilePathError</code>:
-    Incorrect path or IOBuffer doesnt exist.</p>
-<h5 id="pyben.classes.Bendecoder.load--returns">Returns</h5>
-<p><code>any</code>
-    Decoded contents of file, Usually a dictionary.</p>
 
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>item</code></td>
+        <td><code>`str` or `path-like`</code></td>
+        <td><p>Path containing bencoded data.</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Exceptions:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>`FilePathError`:</code></td>
+        <td><p>Incorrect path or IOBuffer doesnt exist.</p></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>`any`</code></td>
+      <td><p>Decoded contents of file, Usually a dictionary.</p></td>
+    </tr>
+  </tbody>
+</table>
         <details class="quote">
           <summary>Source code in <code>pyben\classes.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="nd">@classmethod</span>
@@ -2624,25 +3267,53 @@ Bendecoder        </code>
 
 
 
-<h3 id="pyben.classes.Bendecoder.loads" class="doc doc-heading">
+<h4 id="pyben.classes.Bendecoder.loads" class="doc doc-heading">
 <code class="highlight language-python"><span class="n">loads</span><span class="p">(</span><span class="n">data</span><span class="p">)</span></code>
 
   <span class="doc doc-properties">
       <small class="doc doc-property doc-property-classmethod"><code>classmethod</code></small>
   </span>
 
-</h3>
+</h4>
 
     <div class="doc doc-contents ">
 
       <p>Shortcut to Decode raw bencoded data.</p>
-<h5 id="pyben.classes.Bendecoder.loads--parameters">Parameters</h5>
-<p>data : <code>bytes</code> or <code>bytearray</code>
-    Bendencoded <code>bytes</code>.</p>
-<h5 id="pyben.classes.Bendecoder.loads--returns">Returns</h5>
-<p><code>any</code>
-    Decoded data usually a dictionary.</p>
 
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>data</code></td>
+        <td><code>``bytes`` or `bytearray`</code></td>
+        <td><p>Bendencoded <code>bytes</code>.</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>`any`</code></td>
+      <td><p>Decoded data usually a dictionary.</p></td>
+    </tr>
+  </tbody>
+</table>
         <details class="quote">
           <summary>Source code in <code>pyben\classes.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="nd">@classmethod</span>
@@ -2685,13 +3356,13 @@ Bendecoder        </code>
 
 
 
-<h2 id="pyben.classes.Benencoder" class="doc doc-heading">
+<h3 id="pyben.classes.Benencoder" class="doc doc-heading">
         <code>
 Benencoder        </code>
 
 
 
-</h2>
+</h3>
 
     <div class="doc doc-contents ">
 
@@ -2714,22 +3385,38 @@ Benencoder        </code>
 
 
 
-<h3 id="pyben.classes.Benencoder.__init__" class="doc doc-heading">
+<h4 id="pyben.classes.Benencoder.__init__" class="doc doc-heading">
 <code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
 
   <span class="doc doc-properties">
       <small class="doc doc-property doc-property-special"><code>special</code></small>
   </span>
 
-</h3>
+</h4>
 
     <div class="doc doc-contents ">
 
       <p>Initialize Benencoder insance with optional pre compiled data.</p>
-<h5 id="pyben.classes.Benencoder.__init__--parameters">Parameters</h5>
-<p>data : any
-    (Optional) Target data for encoding. Defaults to None.</p>
 
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>data</code></td>
+        <td><code>any</code></td>
+        <td><p>(Optional) Target data for encoding. Defaults to None.</p></td>
+        <td><code>None</code></td>
+      </tr>
+  </tbody>
+</table>
         <details class="quote">
           <summary>Source code in <code>pyben\classes.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -2756,27 +3443,44 @@ Benencoder        </code>
 
 
 
-<h3 id="pyben.classes.Benencoder.dump" class="doc doc-heading">
+<h4 id="pyben.classes.Benencoder.dump" class="doc doc-heading">
 <code class="highlight language-python"><span class="n">dump</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span></code>
 
   <span class="doc doc-properties">
       <small class="doc doc-property doc-property-classmethod"><code>classmethod</code></small>
   </span>
 
-</h3>
+</h4>
 
     <div class="doc doc-contents ">
 
       <p>Shortcut class method for encoding data and writing to file.</p>
-<h5 id="pyben.classes.Benencoder.dump--parameters">Parameters</h5>
-<p>data : any
-    Raw data to be encoded, usually dict.txt
-path : <code>str</code> or <code>os.PathLike</code> or <code>BytesIO</code>
-    Where encoded data should be written to.py</p>
-<h5 id="pyben.classes.Benencoder.dump--returns">Returns</h5>
-<p><code>bool</code> :
-    Return True if success.txt</p>
 
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>data</code></td>
+        <td><code>any</code></td>
+        <td><p>Raw data to be encoded, usually dict.txt</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>path</code></td>
+        <td><code>`str` or `os.PathLike` or `BytesIO`</code></td>
+        <td><p>Where encoded data should be written to.py</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
         <details class="quote">
           <summary>Source code in <code>pyben\classes.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="nd">@classmethod</span>
@@ -2816,24 +3520,38 @@ path : <code>str</code> or <code>os.PathLike</code> or <code>BytesIO</code>
 
 
 
-<h3 id="pyben.classes.Benencoder.dumps" class="doc doc-heading">
+<h4 id="pyben.classes.Benencoder.dumps" class="doc doc-heading">
 <code class="highlight language-python"><span class="n">dumps</span><span class="p">(</span><span class="n">data</span><span class="p">)</span></code>
 
   <span class="doc doc-properties">
       <small class="doc doc-property doc-property-classmethod"><code>classmethod</code></small>
   </span>
 
-</h3>
+</h4>
 
     <div class="doc doc-contents ">
 
       <p>Shortcut method for encoding data and immediately returning it.</p>
-<h5 id="pyben.classes.Benencoder.dumps--parameters">Parameters</h5>
-<p>data : any
-    Raw data to be encoded usually a dictionary.</p>
-<h5 id="pyben.classes.Benencoder.dumps--returns">Returns</h5>
-<p><code>bytes</code>: Encoded data.</p>
 
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>data</code></td>
+        <td><code>any</code></td>
+        <td><p>Raw data to be encoded usually a dictionary.</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
         <details class="quote">
           <summary>Source code in <code>pyben\classes.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="nd">@classmethod</span>
@@ -2864,22 +3582,35 @@ path : <code>str</code> or <code>os.PathLike</code> or <code>BytesIO</code>
 
 
 
-<h3 id="pyben.classes.Benencoder.encode" class="doc doc-heading">
+<h4 id="pyben.classes.Benencoder.encode" class="doc doc-heading">
 <code class="highlight language-python"><span class="n">encode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
 
 
-</h3>
+</h4>
 
     <div class="doc doc-contents ">
 
       <p>Encode data provided as an arguement or provided at initialization.</p>
-<h5 id="pyben.classes.Benencoder.encode--parameters">Parameters</h5>
-<p>val : any, optional
-    Data for encoding. Defaults to None.</p>
-<h5 id="pyben.classes.Benencoder.encode--returns">Returns</h5>
-<p><code>bytes</code> :
-    encoded data</p>
 
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>val</code></td>
+        <td><code>any</code></td>
+        <td><p>Data for encoding. Defaults to None.</p></td>
+        <td><code>None</code></td>
+      </tr>
+  </tbody>
+</table>
         <details class="quote">
           <summary>Source code in <code>pyben\classes.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">encode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -3018,11 +3749,19 @@ path : <code>str</code> or <code>os.PathLike</code> or <code>BytesIO</code>
 
   <div class="doc doc-object doc-module">
 
-<a id="pyben.bencode"></a>
+
+
+<h2 id="pyben.bencode" class="doc doc-heading">
+        <code>pyben.bencode</code>
+
+
+
+</h2>
+
     <div class="doc doc-contents first">
 
       <p>API helper functions for decoding and encoding data with bencode format.</p>
-<h3 id="pyben.bencode--functions">Functions</h3>
+<h4 id="pyben.bencode--functions">Functions</h4>
 <ul>
 <li>bendecode</li>
 <li>bendecode_dict</li>
@@ -3056,22 +3795,35 @@ path : <code>str</code> or <code>os.PathLike</code> or <code>BytesIO</code>
 
 
 
-<h2 id="pyben.bencode.bencode_bytes" class="doc doc-heading">
+<h3 id="pyben.bencode.bencode_bytes" class="doc doc-heading">
 <code class="highlight language-python"><span class="n">bencode_bytes</span><span class="p">(</span><span class="n">bits</span><span class="p">)</span></code>
 
 
-</h2>
+</h3>
 
     <div class="doc doc-contents ">
 
       <p>Encode bytes.</p>
-<h4 id="pyben.bencode.bencode_bytes--parameters">Parameters</h4>
-<p>bits : <code>bytes</code>
-    Bytes treated as a byte-string literal.</p>
-<h4 id="pyben.bencode.bencode_bytes--returns">Returns</h4>
-<p><code>bytes</code>:
-    Bencode encoded byte string literal.</p>
 
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>bits</code></td>
+        <td><code>`bytes`</code></td>
+        <td><p>Bytes treated as a byte-string literal.</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
         <details class="quote">
           <summary>Source code in <code>pyben\bencode.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">bencode_bytes</span><span class="p">(</span><span class="n">bits</span><span class="p">):</span>
@@ -3103,22 +3855,35 @@ path : <code>str</code> or <code>os.PathLike</code> or <code>BytesIO</code>
 
 
 
-<h2 id="pyben.bencode.bencode_dict" class="doc doc-heading">
+<h3 id="pyben.bencode.bencode_dict" class="doc doc-heading">
 <code class="highlight language-python"><span class="n">bencode_dict</span><span class="p">(</span><span class="n">dic</span><span class="p">)</span></code>
 
 
-</h2>
+</h3>
 
     <div class="doc doc-contents ">
 
       <p>Encode dictionary and contents.</p>
-<h4 id="pyben.bencode.bencode_dict--parameters">Parameters</h4>
-<p>dic : <code>dict</code>
-    Any dictionary containing items that can be bencoded.</p>
-<h4 id="pyben.bencode.bencode_dict--returns">Returns</h4>
-<p><code>bytes</code> :
-    Bencoded key, value pairs of data.</p>
 
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>dic</code></td>
+        <td><code>`dict`</code></td>
+        <td><p>Any dictionary containing items that can be bencoded.</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
         <details class="quote">
           <summary>Source code in <code>pyben\bencode.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">bencode_dict</span><span class="p">(</span><span class="n">dic</span><span class="p">):</span>
@@ -3153,22 +3918,35 @@ path : <code>str</code> or <code>os.PathLike</code> or <code>BytesIO</code>
 
 
 
-<h2 id="pyben.bencode.bencode_int" class="doc doc-heading">
+<h3 id="pyben.bencode.bencode_int" class="doc doc-heading">
 <code class="highlight language-python"><span class="n">bencode_int</span><span class="p">(</span><span class="n">i</span><span class="p">)</span></code>
 
 
-</h2>
+</h3>
 
     <div class="doc doc-contents ">
 
       <p>Encode integer type.</p>
-<h4 id="pyben.bencode.bencode_int--parameters">Parameters</h4>
-<p>i : <code>int</code>
-    Number that needs encoding.</p>
-<h4 id="pyben.bencode.bencode_int--returns">Returns</h4>
-<p><code>bytes</code> :
-    Bencoded Integer.</p>
 
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>i</code></td>
+        <td><code>`int`</code></td>
+        <td><p>Number that needs encoding.</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
         <details class="quote">
           <summary>Source code in <code>pyben\bencode.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">bencode_int</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
@@ -3199,22 +3977,35 @@ path : <code>str</code> or <code>os.PathLike</code> or <code>BytesIO</code>
 
 
 
-<h2 id="pyben.bencode.bencode_list" class="doc doc-heading">
+<h3 id="pyben.bencode.bencode_list" class="doc doc-heading">
 <code class="highlight language-python"><span class="n">bencode_list</span><span class="p">(</span><span class="n">elems</span><span class="p">)</span></code>
 
 
-</h2>
+</h3>
 
     <div class="doc doc-contents ">
 
       <p>Encode list and contents.</p>
-<h4 id="pyben.bencode.bencode_list--parameters">Parameters</h4>
-<p>elems : <code>list</code>
-    List of items for bencoding.</p>
-<h4 id="pyben.bencode.bencode_list--returns">Returns</h4>
-<p><code>bytes</code> :
-    Bencoded list and contents.</p>
 
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>elems</code></td>
+        <td><code>`list`</code></td>
+        <td><p>List of items for bencoding.</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
         <details class="quote">
           <summary>Source code in <code>pyben\bencode.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">bencode_list</span><span class="p">(</span><span class="n">elems</span><span class="p">):</span>
@@ -3252,22 +4043,35 @@ path : <code>str</code> or <code>os.PathLike</code> or <code>BytesIO</code>
 
 
 
-<h2 id="pyben.bencode.bencode_str" class="doc doc-heading">
+<h3 id="pyben.bencode.bencode_str" class="doc doc-heading">
 <code class="highlight language-python"><span class="n">bencode_str</span><span class="p">(</span><span class="n">txt</span><span class="p">)</span></code>
 
 
-</h2>
+</h3>
 
     <div class="doc doc-contents ">
 
       <p>Encode string literals.</p>
-<h4 id="pyben.bencode.bencode_str--parameters">Parameters</h4>
-<p>txt : <code>str</code>
-    Any text string.</p>
-<h4 id="pyben.bencode.bencode_str--returns">Returns</h4>
-<p><code>bytes</code> :
-    Bencoded string literal.</p>
 
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>txt</code></td>
+        <td><code>`str`</code></td>
+        <td><p>Any text string.</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
         <details class="quote">
           <summary>Source code in <code>pyben\bencode.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">bencode_str</span><span class="p">(</span><span class="n">txt</span><span class="p">):</span>
@@ -3299,25 +4103,50 @@ path : <code>str</code> or <code>os.PathLike</code> or <code>BytesIO</code>
 
 
 
-<h2 id="pyben.bencode.bendecode" class="doc doc-heading">
+<h3 id="pyben.bencode.bendecode" class="doc doc-heading">
 <code class="highlight language-python"><span class="n">bendecode</span><span class="p">(</span><span class="n">bits</span><span class="p">)</span></code>
 
 
-</h2>
+</h3>
 
     <div class="doc doc-contents ">
 
       <p>Decode bencoded data.</p>
-<h4 id="pyben.bencode.bendecode--parameters">Parameters</h4>
-<p>bits : <code>bytes</code>
-    Bencode encoded data.</p>
-<h4 id="pyben.bencode.bendecode--raises">Raises</h4>
-<p><code>DecodeError</code> :
-    Malformed data.</p>
-<h4 id="pyben.bencode.bendecode--returns">Returns</h4>
-<p>any :
-    Bencode decoded data.</p>
 
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>bits</code></td>
+        <td><code>`bytes`</code></td>
+        <td><p>Bencode encoded data.</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Exceptions:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>`DecodeError` :</code></td>
+        <td><p>Malformed data.</p></td>
+      </tr>
+  </tbody>
+</table>
         <details class="quote">
           <summary>Source code in <code>pyben\bencode.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">bendecode</span><span class="p">(</span><span class="n">bits</span><span class="p">):</span>
@@ -3369,22 +4198,50 @@ path : <code>str</code> or <code>os.PathLike</code> or <code>BytesIO</code>
 
 
 
-<h2 id="pyben.bencode.bendecode_dict" class="doc doc-heading">
+<h3 id="pyben.bencode.bendecode_dict" class="doc doc-heading">
 <code class="highlight language-python"><span class="n">bendecode_dict</span><span class="p">(</span><span class="n">bits</span><span class="p">)</span></code>
 
 
-</h2>
+</h3>
 
     <div class="doc doc-contents ">
 
       <p>Decode dictionary and it's contents.</p>
-<h4 id="pyben.bencode.bendecode_dict--parameters">Parameters</h4>
-<p>bits : <code>bytes</code>
-    Bencoded dictionary.</p>
-<h4 id="pyben.bencode.bendecode_dict--returns">Returns</h4>
-<p><code>dict</code>
-    Decoded dictionary and contents</p>
 
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>bits</code></td>
+        <td><code>`bytes`</code></td>
+        <td><p>Bencoded dictionary.</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>`dict`</code></td>
+      <td><p>Decoded dictionary and contents</p></td>
+    </tr>
+  </tbody>
+</table>
         <details class="quote">
           <summary>Source code in <code>pyben\bencode.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">bendecode_dict</span><span class="p">(</span><span class="n">bits</span><span class="p">):</span>
@@ -3425,22 +4282,35 @@ path : <code>str</code> or <code>os.PathLike</code> or <code>BytesIO</code>
 
 
 
-<h2 id="pyben.bencode.bendecode_int" class="doc doc-heading">
+<h3 id="pyben.bencode.bendecode_int" class="doc doc-heading">
 <code class="highlight language-python"><span class="n">bendecode_int</span><span class="p">(</span><span class="n">bits</span><span class="p">)</span></code>
 
 
-</h2>
+</h3>
 
     <div class="doc doc-contents ">
 
       <p>Decode digits.</p>
-<h4 id="pyben.bencode.bendecode_int--parameters">Parameters</h4>
-<p>bits : <code>bytes</code>
-    Bencoded intiger bytes</p>
-<h4 id="pyben.bencode.bendecode_int--returns">Returns</h4>
-<p><code>int</code> :
-    Decoded int value.</p>
 
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>bits</code></td>
+        <td><code>`bytes`</code></td>
+        <td><p>Bencoded intiger bytes</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
         <details class="quote">
           <summary>Source code in <code>pyben\bencode.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">bendecode_int</span><span class="p">(</span><span class="n">bits</span><span class="p">):</span>
@@ -3472,22 +4342,35 @@ path : <code>str</code> or <code>os.PathLike</code> or <code>BytesIO</code>
 
 
 
-<h2 id="pyben.bencode.bendecode_list" class="doc doc-heading">
+<h3 id="pyben.bencode.bendecode_list" class="doc doc-heading">
 <code class="highlight language-python"><span class="n">bendecode_list</span><span class="p">(</span><span class="n">bits</span><span class="p">)</span></code>
 
 
-</h2>
+</h3>
 
     <div class="doc doc-contents ">
 
       <p>Decode list and list contents.</p>
-<h4 id="pyben.bencode.bendecode_list--parameters">Parameters</h4>
-<p>bits : <code>bytes</code>
-    Bencoded list.</p>
-<h4 id="pyben.bencode.bendecode_list--returns">Returns</h4>
-<p><code>list</code> :
-    Bencode decoded list and contents.</p>
 
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>bits</code></td>
+        <td><code>`bytes`</code></td>
+        <td><p>Bencoded list.</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
         <details class="quote">
           <summary>Source code in <code>pyben\bencode.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">bendecode_list</span><span class="p">(</span><span class="n">bits</span><span class="p">):</span>
@@ -3526,22 +4409,35 @@ path : <code>str</code> or <code>os.PathLike</code> or <code>BytesIO</code>
 
 
 
-<h2 id="pyben.bencode.bendecode_str" class="doc doc-heading">
+<h3 id="pyben.bencode.bendecode_str" class="doc doc-heading">
 <code class="highlight language-python"><span class="n">bendecode_str</span><span class="p">(</span><span class="n">units</span><span class="p">)</span></code>
 
 
-</h2>
+</h3>
 
     <div class="doc doc-contents ">
 
       <p>Bendecode string types.</p>
-<h4 id="pyben.bencode.bendecode_str--parameters">Parameters</h4>
-<p>units : <code>bytes</code>
-    Bencoded string.</p>
-<h4 id="pyben.bencode.bendecode_str--returns">Returns</h4>
-<p><code>str</code> :
-    Decoded data string.</p>
 
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>units</code></td>
+        <td><code>`bytes`</code></td>
+        <td><p>Bencoded string.</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
         <details class="quote">
           <summary>Source code in <code>pyben\bencode.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">bendecode_str</span><span class="p">(</span><span class="n">units</span><span class="p">):</span>
@@ -3583,25 +4479,50 @@ path : <code>str</code> or <code>os.PathLike</code> or <code>BytesIO</code>
 
 
 
-<h2 id="pyben.bencode.benencode" class="doc doc-heading">
+<h3 id="pyben.bencode.benencode" class="doc doc-heading">
 <code class="highlight language-python"><span class="n">benencode</span><span class="p">(</span><span class="n">val</span><span class="p">)</span></code>
 
 
-</h2>
+</h3>
 
     <div class="doc doc-contents ">
 
       <p>Encode data with bencoding.</p>
-<h4 id="pyben.bencode.benencode--parameters">Parameters</h4>
-<p>val : any
-    Data for encoding.</p>
-<h4 id="pyben.bencode.benencode--raises">Raises</h4>
-<p><code>EncodeError</code> :
-    Cannot interpret data.</p>
-<h4 id="pyben.bencode.benencode--returns">Returns</h4>
-<p><code>bytes</code> :
-    Bencoded data.</p>
 
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>val</code></td>
+        <td><code>any</code></td>
+        <td><p>Data for encoding.</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Exceptions:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>`EncodeError` :</code></td>
+        <td><p>Cannot interpret data.</p></td>
+      </tr>
+  </tbody>
+</table>
         <details class="quote">
           <summary>Source code in <code>pyben\bencode.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">benencode</span><span class="p">(</span><span class="n">val</span><span class="p">):</span>
@@ -3700,7 +4621,15 @@ path : <code>str</code> or <code>os.PathLike</code> or <code>BytesIO</code>
 
   <div class="doc doc-object doc-module">
 
-<a id="pyben.exceptions"></a>
+
+
+<h2 id="pyben.exceptions" class="doc doc-heading">
+        <code>pyben.exceptions</code>
+
+
+
+</h2>
+
     <div class="doc doc-contents first">
 
       <p>Exceptions used throughout the PyBen Package/Library.</p>
@@ -3719,14 +4648,14 @@ path : <code>str</code> or <code>os.PathLike</code> or <code>BytesIO</code>
 
 
 
-<h2 id="pyben.exceptions.DecodeError" class="doc doc-heading">
+<h3 id="pyben.exceptions.DecodeError" class="doc doc-heading">
         <code>
 DecodeError            (<span title="Exception">Exception</span>)
         </code>
 
 
 
-</h2>
+</h3>
 
     <div class="doc doc-contents ">
 
@@ -3734,10 +4663,26 @@ DecodeError            (<span title="Exception">Exception</span>)
 <p>Raised when attempting to decode an incompatible bytearray.
 Mostly it indicates the object is a hash digest and should remian
 as a bytes object.</p>
-<h4 id="pyben.exceptions.DecodeError--parameters">Parameters</h4>
-<p>val : any
-    Value that cause the exception</p>
 
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>val</code></td>
+        <td><code>any</code></td>
+        <td><p>Value that cause the exception</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
 
 
 
@@ -3755,14 +4700,14 @@ as a bytes object.</p>
 
 
 
-<h3 id="pyben.exceptions.DecodeError.__init__" class="doc doc-heading">
+<h4 id="pyben.exceptions.DecodeError.__init__" class="doc doc-heading">
 <code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
 
   <span class="doc doc-properties">
       <small class="doc doc-property doc-property-special"><code>special</code></small>
   </span>
 
-</h3>
+</h4>
 
     <div class="doc doc-contents ">
 
@@ -3796,14 +4741,14 @@ as a bytes object.</p>
 
 
 
-<h2 id="pyben.exceptions.EncodeError" class="doc doc-heading">
+<h3 id="pyben.exceptions.EncodeError" class="doc doc-heading">
         <code>
 EncodeError            (<span title="Exception">Exception</span>)
         </code>
 
 
 
-</h2>
+</h3>
 
     <div class="doc doc-contents ">
 
@@ -3811,10 +4756,26 @@ EncodeError            (<span title="Exception">Exception</span>)
 <p>Raised when attempting to bencode encode an incompatible
 data type into bencode format. Bencode accepts lists, dicts,
 strings, integers, and bytes.</p>
-<h4 id="pyben.exceptions.EncodeError--parameters">Parameters</h4>
-<p>val : any
-    Value that cause the exception</p>
 
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>val</code></td>
+        <td><code>any</code></td>
+        <td><p>Value that cause the exception</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
 
 
 
@@ -3832,14 +4793,14 @@ strings, integers, and bytes.</p>
 
 
 
-<h3 id="pyben.exceptions.EncodeError.__init__" class="doc doc-heading">
+<h4 id="pyben.exceptions.EncodeError.__init__" class="doc doc-heading">
 <code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
 
   <span class="doc doc-properties">
       <small class="doc doc-property doc-property-special"><code>special</code></small>
   </span>
 
-</h3>
+</h4>
 
     <div class="doc doc-contents ">
 
@@ -3873,24 +4834,40 @@ strings, integers, and bytes.</p>
 
 
 
-<h2 id="pyben.exceptions.FilePathError" class="doc doc-heading">
+<h3 id="pyben.exceptions.FilePathError" class="doc doc-heading">
         <code>
 FilePathError            (<span title="Exception">Exception</span>)
         </code>
 
 
 
-</h2>
+</h3>
 
     <div class="doc doc-contents ">
 
       <p>Bad path error.</p>
 <p>Generally raised when the file at the path specified
 does not exist.</p>
-<h4 id="pyben.exceptions.FilePathError--parameters">Parameters</h4>
-<p>val : any
-    Value that cause the exception</p>
 
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>val</code></td>
+        <td><code>any</code></td>
+        <td><p>Value that cause the exception</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
 
 
 
@@ -3908,14 +4885,14 @@ does not exist.</p>
 
 
 
-<h3 id="pyben.exceptions.FilePathError.__init__" class="doc doc-heading">
+<h4 id="pyben.exceptions.FilePathError.__init__" class="doc doc-heading">
 <code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
 
   <span class="doc doc-properties">
       <small class="doc doc-property doc-property-special"><code>special</code></small>
   </span>
 
-</h3>
+</h4>
 
     <div class="doc doc-contents ">
 
@@ -4000,6 +4977,270 @@ does not exist.</p>
     
   </ul>
     
+      <li><a href="#pyben.api">api</a></li>
+      <ul>
+    
+      <li><a href="#pyben.api--bencode-utility-library">Bencode utility library.</a></li>
+      <ul>
+    
+      <li><a href="#pyben.api--functions">Functions</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.api--usage-examples">Usage Examples</a></li>
+      <ul>
+    
+      <li><a href="#pyben.api--encode-inline-code">Encode inline code:</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.api--encode-to-file">Encode to file:</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.api--decode-inline-code">Decode inline code:</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.api--decode-from-file">Decode from file:</a></li>
+      <ul>
+    
+  </ul>
+    
+  </ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.api.dump">dump()</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.api.dumps">dumps()</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.api.load">load()</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.api.loads">loads()</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.api.show">show()</a></li>
+      <ul>
+    
+  </ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.bencode">bencode</a></li>
+      <ul>
+    
+      <li><a href="#pyben.bencode--functions">Functions</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.bencode.bencode_bytes">bencode_bytes()</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.bencode.bencode_dict">bencode_dict()</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.bencode.bencode_int">bencode_int()</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.bencode.bencode_list">bencode_list()</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.bencode.bencode_str">bencode_str()</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.bencode.bendecode">bendecode()</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.bencode.bendecode_dict">bendecode_dict()</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.bencode.bendecode_int">bendecode_int()</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.bencode.bendecode_list">bendecode_list()</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.bencode.bendecode_str">bendecode_str()</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.bencode.benencode">benencode()</a></li>
+      <ul>
+    
+  </ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.classes">classes</a></li>
+      <ul>
+    
+      <li><a href="#pyben.classes--classes">Classes</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.classes.Bendecoder">Bendecoder</a></li>
+      <ul>
+    
+      <li><a href="#pyben.classes.Bendecoder.__init__">__init__()</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.classes.Bendecoder.decode">decode()</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.classes.Bendecoder.load">load()</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.classes.Bendecoder.loads">loads()</a></li>
+      <ul>
+    
+  </ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.classes.Benencoder">Benencoder</a></li>
+      <ul>
+    
+      <li><a href="#pyben.classes.Benencoder.__init__">__init__()</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.classes.Benencoder.dump">dump()</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.classes.Benencoder.dumps">dumps()</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.classes.Benencoder.encode">encode()</a></li>
+      <ul>
+    
+  </ul>
+    
+  </ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.exceptions">exceptions</a></li>
+      <ul>
+    
+      <li><a href="#pyben.exceptions.DecodeError">DecodeError</a></li>
+      <ul>
+    
+      <li><a href="#pyben.exceptions.DecodeError.__init__">__init__()</a></li>
+      <ul>
+    
+  </ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.exceptions.EncodeError">EncodeError</a></li>
+      <ul>
+    
+      <li><a href="#pyben.exceptions.EncodeError.__init__">__init__()</a></li>
+      <ul>
+    
+  </ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.exceptions.FilePathError">FilePathError</a></li>
+      <ul>
+    
+      <li><a href="#pyben.exceptions.FilePathError.__init__">__init__()</a></li>
+      <ul>
+    
+  </ul>
+    
+  </ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.version">version</a></li>
+      <ul>
+    
+  </ul>
+    
+  </ul>
+    
+  </ul>
+  
+    <ul>
+    
+      <li><a href="#functions">Functions</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#usage-examples">Usage Examples</a></li>
+      <ul>
+    
+      <li><a href="#encode-inline-code">Encode inline code:</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#encode-to-file">Encode to file:</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#decode-inline-code">Decode inline code:</a></li>
+      <ul>
+    
+  </ul>
+    
+      <li><a href="#decode-from-file">Decode from file:</a></li>
+      <ul>
+    
+  </ul>
+    
   </ul>
     
       <li><a href="#pyben.api">api</a></li>
@@ -4043,257 +5284,32 @@ does not exist.</p>
       <li><a href="#pyben.api.dump">dump()</a></li>
       <ul>
     
-      <li><a href="#pyben.api.dump--parameters">Parameters</a></li>
-      <ul>
-    
-  </ul>
-    
   </ul>
     
       <li><a href="#pyben.api.dumps">dumps()</a></li>
       <ul>
-    
-      <li><a href="#pyben.api.dumps--parameters">Parameters</a></li>
-      <ul>
-    
-  </ul>
-    
-      <li><a href="#pyben.api.dumps--returns">Returns</a></li>
-      <ul>
-    
-  </ul>
     
   </ul>
     
       <li><a href="#pyben.api.load">load()</a></li>
       <ul>
     
-      <li><a href="#pyben.api.load--parameters">Parameters</a></li>
-      <ul>
-    
-  </ul>
-    
-      <li><a href="#pyben.api.load--returns">Returns</a></li>
-      <ul>
-    
-  </ul>
-    
   </ul>
     
       <li><a href="#pyben.api.loads">loads()</a></li>
       <ul>
-    
-      <li><a href="#pyben.api.loads--parameters">Parameters</a></li>
-      <ul>
-    
-  </ul>
-    
-      <li><a href="#pyben.api.loads--returns">Returns</a></li>
-      <ul>
-    
-  </ul>
     
   </ul>
     
       <li><a href="#pyben.api.show">show()</a></li>
       <ul>
     
-      <li><a href="#pyben.api.show--parameters">Parameters</a></li>
+  </ul>
+    
+  </ul>
+    
+      <li><a href="#classes">Classes</a></li>
       <ul>
-    
-  </ul>
-    
-      <li><a href="#pyben.api.show--returns">Returns</a></li>
-      <ul>
-    
-  </ul>
-    
-  </ul>
-    
-  </ul>
-    
-      <li><a href="#pyben.bencode">bencode</a></li>
-      <ul>
-    
-      <li><a href="#pyben.bencode--functions">Functions</a></li>
-      <ul>
-    
-  </ul>
-    
-      <li><a href="#pyben.bencode.bencode_bytes">bencode_bytes()</a></li>
-      <ul>
-    
-      <li><a href="#pyben.bencode.bencode_bytes--parameters">Parameters</a></li>
-      <ul>
-    
-  </ul>
-    
-      <li><a href="#pyben.bencode.bencode_bytes--returns">Returns</a></li>
-      <ul>
-    
-  </ul>
-    
-  </ul>
-    
-      <li><a href="#pyben.bencode.bencode_dict">bencode_dict()</a></li>
-      <ul>
-    
-      <li><a href="#pyben.bencode.bencode_dict--parameters">Parameters</a></li>
-      <ul>
-    
-  </ul>
-    
-      <li><a href="#pyben.bencode.bencode_dict--returns">Returns</a></li>
-      <ul>
-    
-  </ul>
-    
-  </ul>
-    
-      <li><a href="#pyben.bencode.bencode_int">bencode_int()</a></li>
-      <ul>
-    
-      <li><a href="#pyben.bencode.bencode_int--parameters">Parameters</a></li>
-      <ul>
-    
-  </ul>
-    
-      <li><a href="#pyben.bencode.bencode_int--returns">Returns</a></li>
-      <ul>
-    
-  </ul>
-    
-  </ul>
-    
-      <li><a href="#pyben.bencode.bencode_list">bencode_list()</a></li>
-      <ul>
-    
-      <li><a href="#pyben.bencode.bencode_list--parameters">Parameters</a></li>
-      <ul>
-    
-  </ul>
-    
-      <li><a href="#pyben.bencode.bencode_list--returns">Returns</a></li>
-      <ul>
-    
-  </ul>
-    
-  </ul>
-    
-      <li><a href="#pyben.bencode.bencode_str">bencode_str()</a></li>
-      <ul>
-    
-      <li><a href="#pyben.bencode.bencode_str--parameters">Parameters</a></li>
-      <ul>
-    
-  </ul>
-    
-      <li><a href="#pyben.bencode.bencode_str--returns">Returns</a></li>
-      <ul>
-    
-  </ul>
-    
-  </ul>
-    
-      <li><a href="#pyben.bencode.bendecode">bendecode()</a></li>
-      <ul>
-    
-      <li><a href="#pyben.bencode.bendecode--parameters">Parameters</a></li>
-      <ul>
-    
-  </ul>
-    
-      <li><a href="#pyben.bencode.bendecode--raises">Raises</a></li>
-      <ul>
-    
-  </ul>
-    
-      <li><a href="#pyben.bencode.bendecode--returns">Returns</a></li>
-      <ul>
-    
-  </ul>
-    
-  </ul>
-    
-      <li><a href="#pyben.bencode.bendecode_dict">bendecode_dict()</a></li>
-      <ul>
-    
-      <li><a href="#pyben.bencode.bendecode_dict--parameters">Parameters</a></li>
-      <ul>
-    
-  </ul>
-    
-      <li><a href="#pyben.bencode.bendecode_dict--returns">Returns</a></li>
-      <ul>
-    
-  </ul>
-    
-  </ul>
-    
-      <li><a href="#pyben.bencode.bendecode_int">bendecode_int()</a></li>
-      <ul>
-    
-      <li><a href="#pyben.bencode.bendecode_int--parameters">Parameters</a></li>
-      <ul>
-    
-  </ul>
-    
-      <li><a href="#pyben.bencode.bendecode_int--returns">Returns</a></li>
-      <ul>
-    
-  </ul>
-    
-  </ul>
-    
-      <li><a href="#pyben.bencode.bendecode_list">bendecode_list()</a></li>
-      <ul>
-    
-      <li><a href="#pyben.bencode.bendecode_list--parameters">Parameters</a></li>
-      <ul>
-    
-  </ul>
-    
-      <li><a href="#pyben.bencode.bendecode_list--returns">Returns</a></li>
-      <ul>
-    
-  </ul>
-    
-  </ul>
-    
-      <li><a href="#pyben.bencode.bendecode_str">bendecode_str()</a></li>
-      <ul>
-    
-      <li><a href="#pyben.bencode.bendecode_str--parameters">Parameters</a></li>
-      <ul>
-    
-  </ul>
-    
-      <li><a href="#pyben.bencode.bendecode_str--returns">Returns</a></li>
-      <ul>
-    
-  </ul>
-    
-  </ul>
-    
-      <li><a href="#pyben.bencode.benencode">benencode()</a></li>
-      <ul>
-    
-      <li><a href="#pyben.bencode.benencode--parameters">Parameters</a></li>
-      <ul>
-    
-  </ul>
-    
-      <li><a href="#pyben.bencode.benencode--raises">Raises</a></li>
-      <ul>
-    
-  </ul>
-    
-      <li><a href="#pyben.bencode.benencode--returns">Returns</a></li>
-      <ul>
-    
-  </ul>
-    
-  </ul>
     
   </ul>
     
@@ -4311,60 +5327,20 @@ does not exist.</p>
       <li><a href="#pyben.classes.Bendecoder.__init__">__init__()</a></li>
       <ul>
     
-      <li><a href="#pyben.classes.Bendecoder.__init__--parameters">Parameters</a></li>
-      <ul>
-    
-  </ul>
-    
   </ul>
     
       <li><a href="#pyben.classes.Bendecoder.decode">decode()</a></li>
       <ul>
-    
-      <li><a href="#pyben.classes.Bendecoder.decode--parameters">Parameters</a></li>
-      <ul>
-    
-  </ul>
-    
-      <li><a href="#pyben.classes.Bendecoder.decode--returns">Returns</a></li>
-      <ul>
-    
-  </ul>
     
   </ul>
     
       <li><a href="#pyben.classes.Bendecoder.load">load()</a></li>
       <ul>
     
-      <li><a href="#pyben.classes.Bendecoder.load--parameters">Parameters</a></li>
-      <ul>
-    
-  </ul>
-    
-      <li><a href="#pyben.classes.Bendecoder.load--raises">Raises</a></li>
-      <ul>
-    
-  </ul>
-    
-      <li><a href="#pyben.classes.Bendecoder.load--returns">Returns</a></li>
-      <ul>
-    
-  </ul>
-    
   </ul>
     
       <li><a href="#pyben.classes.Bendecoder.loads">loads()</a></li>
       <ul>
-    
-      <li><a href="#pyben.classes.Bendecoder.loads--parameters">Parameters</a></li>
-      <ul>
-    
-  </ul>
-    
-      <li><a href="#pyben.classes.Bendecoder.loads--returns">Returns</a></li>
-      <ul>
-    
-  </ul>
     
   </ul>
     
@@ -4376,393 +5352,19 @@ does not exist.</p>
       <li><a href="#pyben.classes.Benencoder.__init__">__init__()</a></li>
       <ul>
     
-      <li><a href="#pyben.classes.Benencoder.__init__--parameters">Parameters</a></li>
-      <ul>
-    
-  </ul>
-    
   </ul>
     
       <li><a href="#pyben.classes.Benencoder.dump">dump()</a></li>
       <ul>
-    
-      <li><a href="#pyben.classes.Benencoder.dump--parameters">Parameters</a></li>
-      <ul>
-    
-  </ul>
-    
-      <li><a href="#pyben.classes.Benencoder.dump--returns">Returns</a></li>
-      <ul>
-    
-  </ul>
     
   </ul>
     
       <li><a href="#pyben.classes.Benencoder.dumps">dumps()</a></li>
       <ul>
     
-      <li><a href="#pyben.classes.Benencoder.dumps--parameters">Parameters</a></li>
-      <ul>
-    
-  </ul>
-    
-      <li><a href="#pyben.classes.Benencoder.dumps--returns">Returns</a></li>
-      <ul>
-    
-  </ul>
-    
   </ul>
     
       <li><a href="#pyben.classes.Benencoder.encode">encode()</a></li>
-      <ul>
-    
-      <li><a href="#pyben.classes.Benencoder.encode--parameters">Parameters</a></li>
-      <ul>
-    
-  </ul>
-    
-      <li><a href="#pyben.classes.Benencoder.encode--returns">Returns</a></li>
-      <ul>
-    
-  </ul>
-    
-  </ul>
-    
-  </ul>
-    
-  </ul>
-    
-      <li><a href="#pyben.exceptions">exceptions</a></li>
-      <ul>
-    
-      <li><a href="#pyben.exceptions.DecodeError">DecodeError</a></li>
-      <ul>
-    
-      <li><a href="#pyben.exceptions.DecodeError--parameters">Parameters</a></li>
-      <ul>
-    
-  </ul>
-    
-      <li><a href="#pyben.exceptions.DecodeError.__init__">__init__()</a></li>
-      <ul>
-    
-  </ul>
-    
-  </ul>
-    
-      <li><a href="#pyben.exceptions.EncodeError">EncodeError</a></li>
-      <ul>
-    
-      <li><a href="#pyben.exceptions.EncodeError--parameters">Parameters</a></li>
-      <ul>
-    
-  </ul>
-    
-      <li><a href="#pyben.exceptions.EncodeError.__init__">__init__()</a></li>
-      <ul>
-    
-  </ul>
-    
-  </ul>
-    
-      <li><a href="#pyben.exceptions.FilePathError">FilePathError</a></li>
-      <ul>
-    
-      <li><a href="#pyben.exceptions.FilePathError--parameters">Parameters</a></li>
-      <ul>
-    
-  </ul>
-    
-      <li><a href="#pyben.exceptions.FilePathError.__init__">__init__()</a></li>
-      <ul>
-    
-  </ul>
-    
-  </ul>
-    
-  </ul>
-    
-      <li><a href="#pyben.version">version</a></li>
-      <ul>
-    
-  </ul>
-    
-  </ul>
-  
-    <ul>
-    
-      <li><a href="#functions">Functions</a></li>
-      <ul>
-    
-  </ul>
-    
-      <li><a href="#usage-examples">Usage Examples</a></li>
-      <ul>
-    
-      <li><a href="#encode-inline-code">Encode inline code:</a></li>
-      <ul>
-    
-  </ul>
-    
-      <li><a href="#encode-to-file">Encode to file:</a></li>
-      <ul>
-    
-  </ul>
-    
-      <li><a href="#decode-inline-code">Decode inline code:</a></li>
-      <ul>
-    
-  </ul>
-    
-      <li><a href="#decode-from-file">Decode from file:</a></li>
-      <ul>
-    
-  </ul>
-    
-  </ul>
-    
-      <li><a href="#pyben.api">pyben.api</a></li>
-      <ul>
-    
-  </ul>
-    
-      <li><a href="#pyben.api--bencode-utility-library">Bencode utility library.</a></li>
-      <ul>
-    
-      <li><a href="#pyben.api--functions">Functions</a></li>
-      <ul>
-    
-  </ul>
-    
-      <li><a href="#pyben.api--usage-examples">Usage Examples</a></li>
-      <ul>
-    
-      <li><a href="#pyben.api--encode-inline-code">Encode inline code:</a></li>
-      <ul>
-    
-  </ul>
-    
-      <li><a href="#pyben.api--encode-to-file">Encode to file:</a></li>
-      <ul>
-    
-  </ul>
-    
-      <li><a href="#pyben.api--decode-inline-code">Decode inline code:</a></li>
-      <ul>
-    
-  </ul>
-    
-      <li><a href="#pyben.api--decode-from-file">Decode from file:</a></li>
-      <ul>
-    
-  </ul>
-    
-  </ul>
-    
-  </ul>
-    
-      <li><a href="#pyben.api.dump">dump()</a></li>
-      <ul>
-    
-      <li><a href="#pyben.api.dump--parameters">Parameters</a></li>
-      <ul>
-    
-  </ul>
-    
-  </ul>
-    
-      <li><a href="#pyben.api.dumps">dumps()</a></li>
-      <ul>
-    
-      <li><a href="#pyben.api.dumps--parameters">Parameters</a></li>
-      <ul>
-    
-  </ul>
-    
-      <li><a href="#pyben.api.dumps--returns">Returns</a></li>
-      <ul>
-    
-  </ul>
-    
-  </ul>
-    
-      <li><a href="#pyben.api.load">load()</a></li>
-      <ul>
-    
-      <li><a href="#pyben.api.load--parameters">Parameters</a></li>
-      <ul>
-    
-  </ul>
-    
-      <li><a href="#pyben.api.load--returns">Returns</a></li>
-      <ul>
-    
-  </ul>
-    
-  </ul>
-    
-      <li><a href="#pyben.api.loads">loads()</a></li>
-      <ul>
-    
-      <li><a href="#pyben.api.loads--parameters">Parameters</a></li>
-      <ul>
-    
-  </ul>
-    
-      <li><a href="#pyben.api.loads--returns">Returns</a></li>
-      <ul>
-    
-  </ul>
-    
-  </ul>
-    
-      <li><a href="#pyben.api.show">show()</a></li>
-      <ul>
-    
-      <li><a href="#pyben.api.show--parameters">Parameters</a></li>
-      <ul>
-    
-  </ul>
-    
-      <li><a href="#pyben.api.show--returns">Returns</a></li>
-      <ul>
-    
-  </ul>
-    
-  </ul>
-    
-      <li><a href="#classes">Classes</a></li>
-      <ul>
-    
-  </ul>
-    
-      <li><a href="#pyben.classes">pyben.classes</a></li>
-      <ul>
-    
-      <li><a href="#pyben.classes--classes">Classes</a></li>
-      <ul>
-    
-  </ul>
-    
-  </ul>
-    
-      <li><a href="#pyben.classes.Bendecoder">Bendecoder</a></li>
-      <ul>
-    
-      <li><a href="#pyben.classes.Bendecoder.__init__">__init__()</a></li>
-      <ul>
-    
-      <li><a href="#pyben.classes.Bendecoder.__init__--parameters">Parameters</a></li>
-      <ul>
-    
-  </ul>
-    
-  </ul>
-    
-      <li><a href="#pyben.classes.Bendecoder.decode">decode()</a></li>
-      <ul>
-    
-      <li><a href="#pyben.classes.Bendecoder.decode--parameters">Parameters</a></li>
-      <ul>
-    
-  </ul>
-    
-      <li><a href="#pyben.classes.Bendecoder.decode--returns">Returns</a></li>
-      <ul>
-    
-  </ul>
-    
-  </ul>
-    
-      <li><a href="#pyben.classes.Bendecoder.load">load()</a></li>
-      <ul>
-    
-      <li><a href="#pyben.classes.Bendecoder.load--parameters">Parameters</a></li>
-      <ul>
-    
-  </ul>
-    
-      <li><a href="#pyben.classes.Bendecoder.load--raises">Raises</a></li>
-      <ul>
-    
-  </ul>
-    
-      <li><a href="#pyben.classes.Bendecoder.load--returns">Returns</a></li>
-      <ul>
-    
-  </ul>
-    
-  </ul>
-    
-      <li><a href="#pyben.classes.Bendecoder.loads">loads()</a></li>
-      <ul>
-    
-      <li><a href="#pyben.classes.Bendecoder.loads--parameters">Parameters</a></li>
-      <ul>
-    
-  </ul>
-    
-      <li><a href="#pyben.classes.Bendecoder.loads--returns">Returns</a></li>
-      <ul>
-    
-  </ul>
-    
-  </ul>
-    
-  </ul>
-    
-      <li><a href="#pyben.classes.Benencoder">Benencoder</a></li>
-      <ul>
-    
-      <li><a href="#pyben.classes.Benencoder.__init__">__init__()</a></li>
-      <ul>
-    
-      <li><a href="#pyben.classes.Benencoder.__init__--parameters">Parameters</a></li>
-      <ul>
-    
-  </ul>
-    
-  </ul>
-    
-      <li><a href="#pyben.classes.Benencoder.dump">dump()</a></li>
-      <ul>
-    
-      <li><a href="#pyben.classes.Benencoder.dump--parameters">Parameters</a></li>
-      <ul>
-    
-  </ul>
-    
-      <li><a href="#pyben.classes.Benencoder.dump--returns">Returns</a></li>
-      <ul>
-    
-  </ul>
-    
-  </ul>
-    
-      <li><a href="#pyben.classes.Benencoder.dumps">dumps()</a></li>
-      <ul>
-    
-      <li><a href="#pyben.classes.Benencoder.dumps--parameters">Parameters</a></li>
-      <ul>
-    
-  </ul>
-    
-      <li><a href="#pyben.classes.Benencoder.dumps--returns">Returns</a></li>
-      <ul>
-    
-  </ul>
-    
-  </ul>
-    
-      <li><a href="#pyben.classes.Benencoder.encode">encode()</a></li>
-      <ul>
-    
-      <li><a href="#pyben.classes.Benencoder.encode--parameters">Parameters</a></li>
-      <ul>
-    
-  </ul>
-    
-      <li><a href="#pyben.classes.Benencoder.encode--returns">Returns</a></li>
       <ul>
     
   </ul>
@@ -4776,7 +5378,7 @@ does not exist.</p>
     
   </ul>
     
-      <li><a href="#pyben.bencode">pyben.bencode</a></li>
+      <li><a href="#pyben.bencode">bencode</a></li>
       <ul>
     
       <li><a href="#pyben.bencode--functions">Functions</a></li>
@@ -4784,195 +5386,68 @@ does not exist.</p>
     
   </ul>
     
-  </ul>
-    
       <li><a href="#pyben.bencode.bencode_bytes">bencode_bytes()</a></li>
       <ul>
-    
-      <li><a href="#pyben.bencode.bencode_bytes--parameters">Parameters</a></li>
-      <ul>
-    
-  </ul>
-    
-      <li><a href="#pyben.bencode.bencode_bytes--returns">Returns</a></li>
-      <ul>
-    
-  </ul>
     
   </ul>
     
       <li><a href="#pyben.bencode.bencode_dict">bencode_dict()</a></li>
       <ul>
     
-      <li><a href="#pyben.bencode.bencode_dict--parameters">Parameters</a></li>
-      <ul>
-    
-  </ul>
-    
-      <li><a href="#pyben.bencode.bencode_dict--returns">Returns</a></li>
-      <ul>
-    
-  </ul>
-    
   </ul>
     
       <li><a href="#pyben.bencode.bencode_int">bencode_int()</a></li>
       <ul>
-    
-      <li><a href="#pyben.bencode.bencode_int--parameters">Parameters</a></li>
-      <ul>
-    
-  </ul>
-    
-      <li><a href="#pyben.bencode.bencode_int--returns">Returns</a></li>
-      <ul>
-    
-  </ul>
     
   </ul>
     
       <li><a href="#pyben.bencode.bencode_list">bencode_list()</a></li>
       <ul>
     
-      <li><a href="#pyben.bencode.bencode_list--parameters">Parameters</a></li>
-      <ul>
-    
-  </ul>
-    
-      <li><a href="#pyben.bencode.bencode_list--returns">Returns</a></li>
-      <ul>
-    
-  </ul>
-    
   </ul>
     
       <li><a href="#pyben.bencode.bencode_str">bencode_str()</a></li>
       <ul>
-    
-      <li><a href="#pyben.bencode.bencode_str--parameters">Parameters</a></li>
-      <ul>
-    
-  </ul>
-    
-      <li><a href="#pyben.bencode.bencode_str--returns">Returns</a></li>
-      <ul>
-    
-  </ul>
     
   </ul>
     
       <li><a href="#pyben.bencode.bendecode">bendecode()</a></li>
       <ul>
     
-      <li><a href="#pyben.bencode.bendecode--parameters">Parameters</a></li>
-      <ul>
-    
-  </ul>
-    
-      <li><a href="#pyben.bencode.bendecode--raises">Raises</a></li>
-      <ul>
-    
-  </ul>
-    
-      <li><a href="#pyben.bencode.bendecode--returns">Returns</a></li>
-      <ul>
-    
-  </ul>
-    
   </ul>
     
       <li><a href="#pyben.bencode.bendecode_dict">bendecode_dict()</a></li>
       <ul>
-    
-      <li><a href="#pyben.bencode.bendecode_dict--parameters">Parameters</a></li>
-      <ul>
-    
-  </ul>
-    
-      <li><a href="#pyben.bencode.bendecode_dict--returns">Returns</a></li>
-      <ul>
-    
-  </ul>
     
   </ul>
     
       <li><a href="#pyben.bencode.bendecode_int">bendecode_int()</a></li>
       <ul>
     
-      <li><a href="#pyben.bencode.bendecode_int--parameters">Parameters</a></li>
-      <ul>
-    
-  </ul>
-    
-      <li><a href="#pyben.bencode.bendecode_int--returns">Returns</a></li>
-      <ul>
-    
-  </ul>
-    
   </ul>
     
       <li><a href="#pyben.bencode.bendecode_list">bendecode_list()</a></li>
       <ul>
-    
-      <li><a href="#pyben.bencode.bendecode_list--parameters">Parameters</a></li>
-      <ul>
-    
-  </ul>
-    
-      <li><a href="#pyben.bencode.bendecode_list--returns">Returns</a></li>
-      <ul>
-    
-  </ul>
     
   </ul>
     
       <li><a href="#pyben.bencode.bendecode_str">bendecode_str()</a></li>
       <ul>
     
-      <li><a href="#pyben.bencode.bendecode_str--parameters">Parameters</a></li>
-      <ul>
-    
-  </ul>
-    
-      <li><a href="#pyben.bencode.bendecode_str--returns">Returns</a></li>
-      <ul>
-    
-  </ul>
-    
   </ul>
     
       <li><a href="#pyben.bencode.benencode">benencode()</a></li>
       <ul>
     
-      <li><a href="#pyben.bencode.benencode--parameters">Parameters</a></li>
+  </ul>
+    
+  </ul>
+    
+      <li><a href="#pyben.exceptions">exceptions</a></li>
       <ul>
-    
-  </ul>
-    
-      <li><a href="#pyben.bencode.benencode--raises">Raises</a></li>
-      <ul>
-    
-  </ul>
-    
-      <li><a href="#pyben.bencode.benencode--returns">Returns</a></li>
-      <ul>
-    
-  </ul>
-    
-  </ul>
-    
-      <li><a href="#pyben.exceptions">pyben.exceptions</a></li>
-      <ul>
-    
-  </ul>
     
       <li><a href="#pyben.exceptions.DecodeError">DecodeError</a></li>
       <ul>
-    
-      <li><a href="#pyben.exceptions.DecodeError--parameters">Parameters</a></li>
-      <ul>
-    
-  </ul>
     
       <li><a href="#pyben.exceptions.DecodeError.__init__">__init__()</a></li>
       <ul>
@@ -4984,11 +5459,6 @@ does not exist.</p>
       <li><a href="#pyben.exceptions.EncodeError">EncodeError</a></li>
       <ul>
     
-      <li><a href="#pyben.exceptions.EncodeError--parameters">Parameters</a></li>
-      <ul>
-    
-  </ul>
-    
       <li><a href="#pyben.exceptions.EncodeError.__init__">__init__()</a></li>
       <ul>
     
@@ -4999,13 +5469,10 @@ does not exist.</p>
       <li><a href="#pyben.exceptions.FilePathError">FilePathError</a></li>
       <ul>
     
-      <li><a href="#pyben.exceptions.FilePathError--parameters">Parameters</a></li>
+      <li><a href="#pyben.exceptions.FilePathError.__init__">__init__()</a></li>
       <ul>
     
   </ul>
-    
-      <li><a href="#pyben.exceptions.FilePathError.__init__">__init__()</a></li>
-      <ul>
     
   </ul>
     
@@ -5064,7 +5531,7 @@ does not exist.</p>
 
   <!--
   MkDocs version      : 1.2.3
-  Docs Build Date UTC : 2021-12-31 01:34:04.107303+00:00
+  Docs Build Date UTC : 2021-12-31 01:38:23.879199+00:00
   -->
 </body>
 </html>

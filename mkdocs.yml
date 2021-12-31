@@ -3,6 +3,7 @@ site_url: https://alexpdev.github.io/pyben/
 repo_url: https://github.com/alexpdev/pyben/
 site_description: "Python Bencode Library API."
 copyright: alexpdev 2021
+
 nav:
   - Home: index.md
   - Examples: examples.md
@@ -10,12 +11,20 @@ nav:
   - API: api.md
 
 theme: alabaster
+logo: img/pyben.png
+favicon: img/pyben.ico
 
 plugins:
   - search
   - autorefs
   - mkapi
-  - mkdocstrings
+  - mkdocstrings:
+      handlers:
+        python:
+          selection:
+            docstring_style: numpy
+          rendering:
+            show_root_heading: yes
 
 docs_dir: site/
 site_dir: docs/
