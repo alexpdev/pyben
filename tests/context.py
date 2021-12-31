@@ -204,7 +204,7 @@ def lists():
 def tuples():
     """Return list tests."""
     return [
-        (tuple(), b"le"),
+        ((), b"le"),
         ((130, "foobar", "foo:bar"), b"li130e6:foobar7:foo:bare"),
         (
             ("Television", "Hello World", "Foo", 249, "[foobar]baz"),
