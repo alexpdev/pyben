@@ -15,4 +15,4 @@ recursive-exclude * *.py[cod]
 recursive-exclude docs *
 recursive-include site *
 
-recursive-include Makefile make.bat *.jpg *.png *.gif *.json *.md *.ico
+recursive-include *.jpg *.png *.gif *.json *.md *.ico
