@@ -61,7 +61,7 @@ test: ## run tests quickly with the default Python
 push: lint docs clean test
 	git add .
 	git commit -m "$m"
-	git push -u origin dev
+	git push
 	coverage run --source pyben -m pytest tests
 	coverage xml -o coverage.xml
 	bash codacy.sh report -r coverage.xml
