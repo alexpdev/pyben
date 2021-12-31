@@ -74,8 +74,8 @@ def dump(obj, buffer):
     Works effectively the same as it's json equivelant except also
     accepts a path as well as an open fileIO.
 
-    Args:
-    ----
+    Parameters
+    ----------
     obj : any
         Data to be encoded.
     buffer : `str` or `BytesIO`
@@ -95,8 +95,8 @@ def dumps(obj):
     """
     Shortuct function to encoding given obj to bencode encoding.
 
-    Args
-    ----
+    Parameters
+    ----------
     obj : `any`
         Object to be encoded.py.
 
@@ -109,14 +109,16 @@ def dumps(obj):
     return bytes(benencode(obj))
 
 
-def load(buffer, json=False):
+def load(buffer, to_json=False):
     """
     Load bencoded data from a file of path object and decodes it.
 
-    Args
-    ----
+    Parameters
+    ----------
     buffer : `str` or `BytesIO`
         Open and/or read data from file to be decoded.
+    to_json : `bool`
+        convert to json serializable metadata if True else leave it alone.
 
     Returns
     -------
@@ -135,21 +137,22 @@ def load(buffer, json=False):
                 decoded, _ = bendecode(_fd.read())
         except FileNotFoundError as excp:
             raise FilePathError(buffer) from excp
-     
-    if json:
+
+    if to_json:
         decoded = _to_json(decoded)
-        decoded = json.dumps(decoded)
     return decoded
 
 
-def loads(encoded, json=False):
+def loads(encoded, to_json=False):
     """
     Shortcut function for decoding encoded data.
 
-    Args
-    ----
+    Parameters
+    ----------
     encoded : `bytes`
         Bencoded data.
+    to_json : `bool`
+        Convert to json serializable if true otherwise leave it alone.
 
     Returns
     -------
@@ -158,30 +161,72 @@ def loads(encoded, json=False):
 
     """
     decoded, _ = bendecode(encoded)
-    if json:
-        import json
+    if to_json:
         decoded = _to_json(decoded)
-        decoded = json.dumps(decoded)
-        
     return decoded
-                
+
 
 def _to_json(decoded):
-    """Convert bencode decoded output into json serializable object."""
-    if isinstance(decoded, dict):
-        pairs = {}
-        for key, val in decoded.items():
-            pairs[key] = _to_json(val)
-        return pairs
-    elif isinstance(decoded, (bytes, bytearray)):
+    """
+    Convert bencode decoded output into json serializable object.
+
+    Parameters
+    ----------
+    decoded : `any`
+        decoded input data with unknown data type.
+
+    Returns
+    -------
+    `dict` :
+        json serializable dictionary.
+    """
+    if isinstance(decoded, (bytes, bytearray)):
         return decoded.hex()
-    elif isinstance(decoded, (str, int, float)):
+    if isinstance(decoded, (str, int, float)):
         return decoded
-    elif isinstance(decoded, (list, tuple)):
+    if isinstance(decoded, (list, tuple)):
         seq = []
         for item in decoded:
             seq.append(_to_json(item))
         return seq
-    else:
-        return decoded
-        
+    pairs = {}
+    if isinstance(decoded, dict):
+        for key, val in decoded.items():
+            dekey = _to_json(key)
+            pairs[dekey] = _to_json(val)
+    return pairs
+
+
+def show(inp):
+    """
+    Ouptut readable metadata.
+
+    Parameters
+    ----------
+    inp : any
+        Pre-formatted input type.
+
+    Returns
+    -------
+    bool :
+        Returns True if completed successfully.
+    """
+    import json
+    import os
+    import sys
+
+    if isinstance(inp, dict):
+        meta = _to_json(inp)
+    elif hasattr(inp, "read"):
+        meta = load(inp, to_json=True)
+
+    elif isinstance(inp, (str, os.PathLike)):
+        try:
+            meta = load(inp, to_json=True)
+        except FilePathError:
+            meta = inp
+    elif isinstance(inp, (bytes, bytearray)):
+        meta = loads(inp, to_json=True)
+
+    json.dump(meta, sys.stdout, indent=4)
+    return True

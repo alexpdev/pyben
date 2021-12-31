@@ -9,10 +9,12 @@ nav:
   - License: LICENSE.md
   - API: api.md
 
-theme: material
+theme: alabaster
 
 plugins:
   - search
+  - autorefs
+  - mkapi
   - mkdocstrings
 
 docs_dir: site/

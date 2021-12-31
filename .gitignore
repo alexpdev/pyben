@@ -4,7 +4,6 @@ autorun.bat
 __pycache__/
 *.py[cod]
 *$py.class
-site/
 # Prerequisites
 *.d
 
@@ -155,9 +154,6 @@ venv.bak/
 
 # Rope project settings
 .ropeproject
-
-# mkdocs documentation
-/site
 
 # mypy
 .mypy_cache/

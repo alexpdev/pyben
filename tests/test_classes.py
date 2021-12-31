@@ -61,7 +61,7 @@ def test_decoder_constructor(decoded, encoded):
     """Test Bendecoder constructor."""
     decoder = Bendecoder(encoded)
     decode = decoder.decode()
-    assert decode == decoded  # nosec
+    assert decode == decoded
 
 
 def test_malformed_data():
@@ -71,7 +71,7 @@ def test_malformed_data():
     try:
         _ = decoder.decode()
     except DecodeError:
-        assert True  # nosec
+        assert True
 
 
 def test_improper_type():
@@ -82,19 +82,19 @@ def test_improper_type():
     try:
         _ = encoder.encode()
     except EncodeError:
-        assert True  # nosec
+        assert True
 
 
 def test_encode_tuple_to_list():
     """Test encoding tuple to list."""
     data = ((130, "foobar", "foo:bar"), b"li130e6:foobar7:foo:bare")
-    assert Benencoder()._encode_list(data[0]) == data[1]  # nosec
+    assert Benencoder()._encode_list(data[0]) == data[1]
 
 
 def test_encode_tuple_cast():
     """Test encoding tuple to list main method."""
     data = ((130, "foobar", "foo:bar"), b"li130e6:foobar7:foo:bare")
-    assert Benencoder().encode(data[0]) == data[1]  # nosec
+    assert Benencoder().encode(data[0]) == data[1]
 
 
 @pytest.mark.parametrize("decoded, encoded", strings())
@@ -102,7 +102,7 @@ def test_decode_str(decoded, encoded):
     """Test string decoding."""
     decoder = Bendecoder()
     text, _ = decoder._decode_str(encoded)
-    assert decoded == text  # nosec
+    assert decoded == text
 
 
 @pytest.mark.parametrize("decoded, encoded", ints())
@@ -110,7 +110,7 @@ def test_decode_int_class(decoded, encoded):
     """Test integer decoding."""
     decoder = Bendecoder()
     real, _ = decoder._decode_int(encoded)
-    assert real == decoded  # nosec
+    assert real == decoded
 
 
 @pytest.mark.parametrize("decoded, encoded", lists())
@@ -118,7 +118,7 @@ def test_decode_list_class(decoded, encoded):
     """Test list decoding."""
     decoder = Bendecoder()
     decode, _ = decoder._decode_list(encoded)
-    assert decode == decoded  # nosec
+    assert decode == decoded
 
 
 @pytest.mark.parametrize("decoded, encoded", dicts())
@@ -126,7 +126,7 @@ def test_decode_dict_class(decoded, encoded):
     """Test dictionary decoding."""
     decoder = Bendecoder()
     decode, _ = decoder._decode_dict(encoded)
-    assert decoded == decode  # nosec
+    assert decoded == decode
 
 
 @pytest.mark.parametrize("decoded, encoded", data())
@@ -134,14 +134,14 @@ def test_decode_class(decoded, encoded):
     """Test decoding."""
     decoder = Bendecoder()
     item = decoder.decode(encoded)
-    assert decoded == item  # nosec
+    assert decoded == item
 
 
 def test_decode_load(tfile):
     """Test inline decoding."""
     decoder = Bendecoder()
     output = decoder.load(tfile)
-    assert isinstance(output, dict)  # nosec
+    assert isinstance(output, dict)
 
 
 def test_decode_loads(tfile):
@@ -150,7 +150,7 @@ def test_decode_loads(tfile):
         inp = _fd.read()
     decoder = Bendecoder()
     out = decoder.loads(inp)
-    assert out["info"]["length"] == 12845738  # nosec
+    assert out["info"]["length"] == 12845738
 
 
 @pytest.mark.parametrize("decoded, encoded", strings())
@@ -158,7 +158,7 @@ def test_bencode_str(decoded, encoded):
     """Test string encoding."""
     encoder = Benencoder()
     text = encoder._encode_str(decoded)
-    assert encoded == text  # nosec
+    assert encoded == text
 
 
 @pytest.mark.parametrize("decoded, encoded", ints())
@@ -166,7 +166,7 @@ def test_bencode_int(decoded, encoded):
     """Test integer encoding."""
     encoder = Benencoder()
     real = encoder._encode_int(decoded)
-    assert real == encoded  # nosec
+    assert real == encoded
 
 
 @pytest.mark.parametrize("decoded, encoded", lists())
@@ -174,14 +174,14 @@ def test_bencode_list(decoded, encoded):
     """Test list encoding."""
     encoder = Benencoder()
     benlist = encoder._encode_list(decoded)
-    assert encoded == benlist  # nosec
+    assert encoded == benlist
 
 
 def test_bencode_dump(tmeta, tfile):
     """Test to file encoding with path string."""
     encoder = Benencoder()
     encoder.dump(tmeta, tfile)
-    assert os.path.exists(tfile)  # nosec
+    assert os.path.exists(tfile)
 
 
 def test_bencode_dump1(tmeta, tfile):
@@ -189,14 +189,14 @@ def test_bencode_dump1(tmeta, tfile):
     encoder = Benencoder()
     with open(tfile, "wb") as a:
         encoder.dump(tmeta, a)
-    assert os.path.exists(tfile)  # nosec
+    assert os.path.exists(tfile)
 
 
 def test_bencode_dumps(tmeta):
     """Test inline encoding."""
     encoder = Benencoder()
     reg = encoder.dumps(tmeta)
-    assert isinstance(reg, bytes)  # nosec
+    assert isinstance(reg, bytes)
 
 
 @pytest.mark.parametrize("decoded, encoded", dicts())
@@ -204,7 +204,7 @@ def test_encode_dict(decoded, encoded):
     """Test dictionary encoding."""
     encoder = Benencoder()
     bendict = encoder._encode_dict(decoded)
-    assert bendict == encoded  # nosec
+    assert bendict == encoded
 
 
 @pytest.mark.parametrize("decoded, encoded", data())
@@ -212,7 +212,7 @@ def test_encode(decoded, encoded):
     """Test encoding."""
     encoder = Benencoder()
     benitem = encoder.encode(decoded)
-    assert encoded == benitem  # nosec
+    assert encoded == benitem
 
 
 def test_bendecoder_load(tfile):
@@ -220,7 +220,7 @@ def test_bendecoder_load(tfile):
     decoder = Bendecoder()
     with open(tfile, "rb") as _fd:
         data = decoder.load(_fd)
-    assert data is not None  # nosec
+    assert data is not None
 
 
 @pytest.mark.parametrize("decoded, encoded", lists())
@@ -228,4 +228,4 @@ def test_decoder_bits(decoded, encoded):
     """Test inline decoding with classes."""
     decoder = Bendecoder(encoded)
     lst = decoder.decode()
-    assert decoded == lst  # nosec
+    assert decoded == lst

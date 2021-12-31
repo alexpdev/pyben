@@ -35,6 +35,7 @@ def testmeta():
     pieces_val = sha256("aeiou".encode("utf-8")).digest()
     meta = {
         "announce": "http://ubuntu.com/announce",
+        "announce list": [["http://ubuntu.com/announce", "url2", "url3"]],
         "info": {
             "name": "ubuntu.iso",
             "length": 12845738,
@@ -45,7 +46,7 @@ def testmeta():
         "pieces root": {pieces_key: pieces_val},
         "created by": "mktorrent",
     }
-    assert isinstance(meta, dict)  # nosec
+    assert isinstance(meta, dict)
     return meta
 
 
@@ -56,7 +57,7 @@ def testfile():
     meta = testmeta()
     with open(tfile, "wb") as fd:
         pyben.dump(meta, fd)
-    assert os.path.exists(tfile)  # nosec
+    assert os.path.exists(tfile)
     return tfile
 
 

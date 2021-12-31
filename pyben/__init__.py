@@ -39,7 +39,7 @@ Functions
 """
 
 from pyben import api, bencode, classes
-from pyben.api import dump, dumps, load, loads
+from pyben.api import dump, dumps, load, loads, show
 from pyben.bencode import bendecode, benencode
 from pyben.classes import Bendecoder, Benencoder
 from pyben.version import version
@@ -59,4 +59,5 @@ __all__ = [
     "dumps",
     "load",
     "loads",
+    "show",
 ]

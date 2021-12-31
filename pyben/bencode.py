@@ -39,8 +39,8 @@ def bendecode(bits):
     """
     Decode bencoded data.
 
-    Args
-    ----
+    Parameters
+    ----------
     bits : `bytes`
         Bencode encoded data.
 
@@ -78,9 +78,9 @@ def bendecode_str(units):
     """
     Bendecode string types.
 
-    Args
-    ----
-    bits : `bytes`
+    Parameters
+    ----------
+    units : `bytes`
         Bencoded string.
 
     Returns
@@ -107,8 +107,8 @@ def bendecode_int(bits):
     """
     Decode digits.
 
-    Args
-    ----
+    Parameters
+    ----------
     bits : `bytes`
         Bencoded intiger bytes
 
@@ -126,8 +126,8 @@ def bendecode_dict(bits):
     """
     Decode dictionary and it's contents.
 
-    Args
-    ----
+    Parameters
+    ----------
     bits : `bytes`
         Bencoded dictionary.
 
@@ -154,8 +154,8 @@ def bendecode_list(bits):
     """
     Decode list and list contents.
 
-    Args
-    ----
+    Parameters
+    ----------
     bits : `bytes`
         Bencoded list.
 
@@ -180,8 +180,8 @@ def benencode(val):
     """
     Encode data with bencoding.
 
-    Args
-    ----
+    Parameters
+    ----------
     val : any
         Data for encoding.
 
@@ -221,8 +221,8 @@ def bencode_bytes(bits):
     """
     Encode bytes.
 
-    Args
-    ----
+    Parameters
+    ----------
     bits : `bytes`
         Bytes treated as a byte-string literal.
 
@@ -240,8 +240,8 @@ def bencode_str(txt):
     """
     Encode string literals.
 
-    Args
-    ----
+    Parameters
+    ----------
     txt : `str`
         Any text string.
 
@@ -259,8 +259,8 @@ def bencode_int(i):
     """
     Encode integer type.
 
-    Args
-    ----
+    Parameters
+    ----------
     i : `int`
         Number that needs encoding.
 
@@ -277,8 +277,8 @@ def bencode_list(elems):
     """
     Encode list and contents.
 
-    Args
-    ----
+    Parameters
+    ----------
     elems : `list`
         List of items for bencoding.
 
@@ -302,8 +302,8 @@ def bencode_dict(dic):
     """
     Encode dictionary and contents.
 
-    Args
-    ----
+    Parameters
+    ----------
     dic : `dict`
         Any dictionary containing items that can be bencoded.
 

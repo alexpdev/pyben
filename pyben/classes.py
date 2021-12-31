@@ -36,8 +36,8 @@ class Bendecoder:
         """
         Initialize instance with optional pre compiled data.
 
-        Args:
-        ----
+        Parameters
+        ----------
         data : `bytes` or `bytearray`
             (Optional) (default=None) Target data for decoding.
 
@@ -50,9 +50,9 @@ class Bendecoder:
         """
         Extract contents from path/path-like and return Decoded data.
 
-        Args
-        ----
-        path : `str` or `path-like`
+        Parameters
+        ----------
+        item : `str` or `path-like`
             Path containing bencoded data.
 
         Raises
@@ -80,8 +80,8 @@ class Bendecoder:
         """
         Shortcut to Decode raw bencoded data.
 
-        Args
-        ----
+        Parameters
+        ----------
         data : ``bytes`` or `bytearray`
             Bendencoded `bytes`.
 
@@ -98,9 +98,9 @@ class Bendecoder:
         """
         Decode bencoded data.
 
-        Args
-        ----
-        bits : ``bytes``
+        Parameters
+        ----------
+        data : ``bytes``
             bencoded data for decoding.
 
         Returns
@@ -117,8 +117,8 @@ class Bendecoder:
         """
         Decode bencoded data.
 
-        Args
-        ----
+        Parameters
+        ----------
         bits : ``bytes``
             Bencoded data for decoding.
 
@@ -153,8 +153,8 @@ class Bendecoder:
         """
         Decode keys and values in dictionary.
 
-        Args
-        ----
+        Parameters
+        ----------
         bits : ``bytes`` or `bytearray`
             `Bytes` of data for decoding.
 
@@ -178,9 +178,9 @@ class Bendecoder:
         """
         Decode list and its contents.
 
-        Args
-        ----
-        bits : `bytearray`
+        Parameters
+        ----------
+        data : `bytearray`
             Bencoded data.
 
         Returns
@@ -202,8 +202,8 @@ class Bendecoder:
         """
         Decode string.
 
-        Args
-        ----
+        Parameters
+        ----------
         bits : ``bytes`` or `bytearray`
             Bencoded string.
 
@@ -231,8 +231,8 @@ class Bendecoder:
         """
         Decode integer type.
 
-        Args
-        ----
+        Parameters
+        ----------
         bits : ``bytes`` or `bytearray`
             Bencoded intiger.
 
@@ -253,8 +253,8 @@ class Benencoder:
         """
         Initialize Benencoder insance with optional pre compiled data.
 
-        Args:
-        ----
+        Parameters
+        ----------
         data : any
             (Optional) Target data for encoding. Defaults to None.
 
@@ -267,8 +267,8 @@ class Benencoder:
         """
         Shortcut class method for encoding data and writing to file.
 
-        Args
-        ----
+        Parameters
+        ----------
         data : any
             Raw data to be encoded, usually dict.txt
         path : `str` or `os.PathLike` or `BytesIO`
@@ -293,8 +293,8 @@ class Benencoder:
         """
         Shortcut method for encoding data and immediately returning it.
 
-        Args
-        ----
+        Parameters
+        ----------
         data : any
             Raw data to be encoded usually a dictionary.
 
@@ -309,15 +309,15 @@ class Benencoder:
         """
         Encode data provided as an arguement or provided at initialization.
 
-        Args
-        ----
+        Parameters
+        ----------
         val : any, optional
             Data for encoding. Defaults to None.
 
         Returns
         -------
-        `bytes` : encoded data
-
+        `bytes` :
+            encoded data
         """
         if val is None:
             val = self.data
@@ -328,15 +328,15 @@ class Benencoder:
         """
         Encode data with bencode protocol.
 
-        Args
-        ----
-        bits : `bytes`
+        Parameters
+        ----------
+        val : `bytes`
             Bencoded data for decoding.
 
         Returns
         -------
-        any : the decoded data.
-
+        any :
+            the decoded data.
         """
         if isinstance(val, str):
             return self._encode_str(val)
@@ -369,15 +369,15 @@ class Benencoder:
         """
         Decode string.
 
-        Args
-        ----
+        Parameters
+        ----------
         txt : `str`
             Any string literal.
 
         Returns
         -------
-        `bytes` : Bencoded string.
-
+        `bytes` :
+            Bencoded string.
         """
         size = str(len(txt)).encode("utf-8")
         return size + b":" + txt.encode("utf-8")
@@ -387,15 +387,15 @@ class Benencoder:
         """
         Encode intiger.
 
-        Args
-        ----
+        Parameters
+        ----------
         num : `int`
             Integer for encoding.
 
         Returns
         -------
-        `bytes` : Bencoded intiger.
-
+        `bytes` :
+            Bencoded intiger.
         """
         return b"i" + str(num).encode("utf-8") + b"e"
 
@@ -403,15 +403,15 @@ class Benencoder:
         """
         Encode list and its contents.
 
-        Args
-        ----
+        Parameters
+        ----------
         elems : `list`
             List of content to be encoded.
 
         Returns
         -------
-        `bytes` : Bencoded data
-
+        `bytes` :
+            Bencoded data
         """
         lst = [b"l"]
         for elem in elems:
@@ -425,15 +425,15 @@ class Benencoder:
         """
         Encode keys and values in dictionary.
 
-        Args
-        ----
+        Parameters
+        ----------
         dic : `dict`
             Dictionary of data for encoding.
 
         Returns
         -------
-        `bytes` : Bencoded data.
-
+        `bytes` :
+            Bencoded data.
         """
         result = b"d"
         for key, val in dic.items():

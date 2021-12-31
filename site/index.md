@@ -1,4 +1,4 @@
-# Pyben v0.2.4
+# Pyben
 
 Small library for encoding/decoding bencode data.
 Pyben Enables fast and easy encoding and decoding of bencoded data.
