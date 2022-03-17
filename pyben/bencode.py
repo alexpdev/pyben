@@ -251,8 +251,9 @@ def bencode_str(txt):
         Bencoded string literal.
 
     """
-    size = str(len(txt)) + ":"
-    return size.encode("utf-8") + txt.encode("utf-8")
+    text = txt.encode("utf-8")
+    size = str(len(text)) + ":"
+    return size.encode("utf-8") + text
 
 
 def bencode_int(i):

@@ -85,7 +85,7 @@ def dump(obj, buffer):
     encoded = benencode(obj)
 
     if not hasattr(buffer, "write"):
-        if hasattr(buffer, "decode"):
+        if hasattr(buffer, "decode"):  # pragma: nocover
             txt = buffer.decode("utf-8")
         else:
             txt = buffer
@@ -136,7 +136,7 @@ def load(buffer, to_json=False):
     if hasattr(buffer, "read"):
         decoded, _ = bendecode(buffer.read())
     else:
-        if hasattr(buffer, "decode"):
+        if hasattr(buffer, "decode"):  # pragma: nocover
             path = buffer.decode("utf-8")
         else:
             path = buffer
