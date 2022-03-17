@@ -20,8 +20,7 @@ from pyben.bencode import (bencode_dict, bencode_int, bencode_list,
                            bendecode_int, bendecode_list, bendecode_str,
                            benencode)
 from pyben.exceptions import DecodeError, EncodeError
-
-from . import context
+from tests import context
 
 
 def test_malformed_bytes():
@@ -163,3 +162,20 @@ def test_bendecode_all(encoded, decoded):
     """Test decoding all types."""
     item, _ = bendecode(encoded)
     assert item == decoded
+
+
+def test_bencode_unicode():
+    """Test encoding unicode string literals."""
+    text = "丂七丆万丈三上下丌不与丑丒专且丕世丗丘丙业丛东丝丠両丢丣两严丨丩个丫丬中丮丯"
+    benunit = benencode(text)
+    out = text.encode("utf-8")
+    out = (str(len(out)) + ":").encode("utf-8") + out
+    assert benunit == out
+
+
+def test_decode_unicode():
+    """Test decoding unicode strings."""
+    text = "丂七丆万丈三上下丌不与丑丒专且丕世丗丘丙业丛东丝丠両丢丣两严丨丩个丫丬中丮丯"
+    data = benencode(text)
+    result, _ = bendecode(data)
+    assert result == text

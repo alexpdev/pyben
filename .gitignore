@@ -6,6 +6,7 @@ __pycache__/
 *$py.class
 # Prerequisites
 *.d
+coverage.xml
 
 # Compiled Object files
 *.slo

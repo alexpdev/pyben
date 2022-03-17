@@ -1,6 +1,7 @@
 # Pyben v0.2.4
 
 Small library for encoding/decoding bencode data.
+Supports Unicode pathnames as of PyBen 3.0.
 Pyben Enables fast and easy encoding and decoding of bencoded data.
 
 ![PyBen](./assets/pyben.png)

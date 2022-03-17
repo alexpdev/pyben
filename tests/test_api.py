@@ -19,8 +19,7 @@ import os
 import pytest
 
 import pyben
-
-from . import context
+from tests import context
 
 
 @pytest.fixture
@@ -38,6 +37,26 @@ def tempmeta():
     tfile = os.path.join(parent, "tempfile.pyben")
     meta = context.testmeta()
     return meta, tfile
+
+
+def test_writing_unicode(tempmeta):
+    """Test Unicode support for writing bencode."""
+    meta, tfile = tempmeta
+    parent = os.path.dirname(tfile)
+    txt = "测试测试测试测试.pyben"
+    path = os.path.join(parent, txt)
+    pyben.dump(meta, path)
+    assert os.path.exists(path)
+    context.rmpath(path)
+
+
+def test_reading_unicode(tempmeta):
+    """Test Unicode support for reading bencode."""
+    path = os.path.join(os.path.dirname(tempmeta[1]), "测试测试测试测试.pyben")
+    pyben.dump(tempmeta[0], path)
+    meta = pyben.load(path)
+    assert isinstance(meta, dict)
+    context.rmpath(path)
 
 
 def test_rmpath():

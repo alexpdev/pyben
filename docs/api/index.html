@@ -227,7 +227,11 @@ accepts a path as well as an open fileIO.</p>
     <span class="n">encoded</span> <span class="o">=</span> <span class="n">benencode</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="s2">&quot;write&quot;</span><span class="p">):</span>
-        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">_fd</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="s2">&quot;decode&quot;</span><span class="p">):</span>  <span class="c1"># pragma: nocover</span>
+            <span class="n">txt</span> <span class="o">=</span> <span class="n">buffer</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">txt</span> <span class="o">=</span> <span class="n">buffer</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">txt</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">_fd</span><span class="p">:</span>
             <span class="n">_fd</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">encoded</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">buffer</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">encoded</span><span class="p">)</span>
@@ -270,6 +274,21 @@ accepts a path as well as an open fileIO.</p>
         <td><p>Object to be encoded.py.</p></td>
         <td><em>required</em></td>
       </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td><p>Encoded data.</p></td>
+    </tr>
   </tbody>
 </table>
         <details class="quote">
@@ -337,6 +356,21 @@ accepts a path as well as an open fileIO.</p>
       </tr>
   </tbody>
 </table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td><p>(commonly <code>dict</code>), Decoded contents of file.</p></td>
+    </tr>
+  </tbody>
+</table>
         <details class="quote">
           <summary>Source code in <code>pyben\api.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="n">to_json</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
@@ -362,12 +396,15 @@ accepts a path as well as an open fileIO.</p>
     <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="s2">&quot;read&quot;</span><span class="p">):</span>
         <span class="n">decoded</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">bendecode</span><span class="p">(</span><span class="n">buffer</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
     <span class="k">else</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="s2">&quot;decode&quot;</span><span class="p">):</span>  <span class="c1"># pragma: nocover</span>
+            <span class="n">path</span> <span class="o">=</span> <span class="n">buffer</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">path</span> <span class="o">=</span> <span class="n">buffer</span>
         <span class="k">try</span><span class="p">:</span>
-            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">_fd</span><span class="p">:</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">_fd</span><span class="p">:</span>
                 <span class="n">decoded</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">bendecode</span><span class="p">(</span><span class="n">_fd</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
-        <span class="k">except</span> <span class="ne">FileNotFoundError</span> <span class="k">as</span> <span class="n">excp</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="n">FilePathError</span><span class="p">(</span><span class="n">buffer</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">excp</span>
-
+        <span class="k">except</span> <span class="ne">FileNotFoundError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">FilePathError</span><span class="p">(</span><span class="n">buffer</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">e</span>
     <span class="k">if</span> <span class="n">to_json</span><span class="p">:</span>
         <span class="n">decoded</span> <span class="o">=</span> <span class="n">_to_json</span><span class="p">(</span><span class="n">decoded</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">decoded</span>
@@ -416,6 +453,21 @@ accepts a path as well as an open fileIO.</p>
         <td><p>Convert to json serializable if true otherwise leave it alone.</p></td>
         <td><code>False</code></td>
       </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td><p>(any), Decoded data.</p></td>
+    </tr>
   </tbody>
 </table>
         <details class="quote">
@@ -480,6 +532,21 @@ accepts a path as well as an open fileIO.</p>
         <td><p>Pre-formatted input type.</p></td>
         <td><em>required</em></td>
       </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td><p>Returns True if completed successfully.</p></td>
+    </tr>
   </tbody>
 </table>
         <details class="quote">
@@ -613,6 +680,21 @@ accepts a path as well as an open fileIO.</p>
       </tr>
   </tbody>
 </table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td><p>Bencode encoded byte string literal.</p></td>
+    </tr>
+  </tbody>
+</table>
         <details class="quote">
           <summary>Source code in <code>pyben\bencode.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">bencode_bytes</span><span class="p">(</span><span class="n">bits</span><span class="p">):</span>
@@ -671,6 +753,21 @@ accepts a path as well as an open fileIO.</p>
         <td><p>Any dictionary containing items that can be bencoded.</p></td>
         <td><em>required</em></td>
       </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td><p>Bencoded key, value pairs of data.</p></td>
+    </tr>
   </tbody>
 </table>
         <details class="quote">
@@ -736,6 +833,21 @@ accepts a path as well as an open fileIO.</p>
       </tr>
   </tbody>
 </table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td><p>Bencoded Integer.</p></td>
+    </tr>
+  </tbody>
+</table>
         <details class="quote">
           <summary>Source code in <code>pyben\bencode.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">bencode_int</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
@@ -793,6 +905,21 @@ accepts a path as well as an open fileIO.</p>
         <td><p>List of items for bencoding.</p></td>
         <td><em>required</em></td>
       </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td><p>Bencoded list and contents.</p></td>
+    </tr>
   </tbody>
 </table>
         <details class="quote">
@@ -861,6 +988,21 @@ accepts a path as well as an open fileIO.</p>
       </tr>
   </tbody>
 </table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td><p>Bencoded string literal.</p></td>
+    </tr>
+  </tbody>
+</table>
         <details class="quote">
           <summary>Source code in <code>pyben\bencode.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">bencode_str</span><span class="p">(</span><span class="n">txt</span><span class="p">):</span>
@@ -878,8 +1020,9 @@ accepts a path as well as an open fileIO.</p>
 <span class="sd">        Bencoded string literal.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">size</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">txt</span><span class="p">))</span> <span class="o">+</span> <span class="s2">&quot;:&quot;</span>
-    <span class="k">return</span> <span class="n">size</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="n">txt</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">txt</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+    <span class="n">size</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">text</span><span class="p">))</span> <span class="o">+</span> <span class="s2">&quot;:&quot;</span>
+    <span class="k">return</span> <span class="n">size</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="n">text</span>
 </code></pre></div>
         </details>
     </div>
@@ -934,6 +1077,21 @@ accepts a path as well as an open fileIO.</p>
         <td><code>`DecodeError` :</code></td>
         <td><p>Malformed data.</p></td>
       </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td><p>Bencode decoded data.</p></td>
+    </tr>
   </tbody>
 </table>
         <details class="quote">
@@ -1100,6 +1258,21 @@ accepts a path as well as an open fileIO.</p>
       </tr>
   </tbody>
 </table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td><p>Decoded int value.</p></td>
+    </tr>
+  </tbody>
+</table>
         <details class="quote">
           <summary>Source code in <code>pyben\bencode.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">bendecode_int</span><span class="p">(</span><span class="n">bits</span><span class="p">):</span>
@@ -1117,7 +1290,7 @@ accepts a path as well as an open fileIO.</p>
 <span class="sd">        Decoded int value.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">obj</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">br</span><span class="s2">&quot;i(-?\d+)e&quot;</span><span class="p">,</span> <span class="n">bits</span><span class="p">)</span>
+    <span class="n">obj</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">rb</span><span class="s2">&quot;i(-?\d+)e&quot;</span><span class="p">,</span> <span class="n">bits</span><span class="p">)</span>
     <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)),</span> <span class="n">obj</span><span class="o">.</span><span class="n">end</span><span class="p">()</span>
 </code></pre></div>
         </details>
@@ -1158,6 +1331,21 @@ accepts a path as well as an open fileIO.</p>
         <td><p>Bencoded list.</p></td>
         <td><em>required</em></td>
       </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td><p>Bencode decoded list and contents.</p></td>
+    </tr>
   </tbody>
 </table>
         <details class="quote">
@@ -1227,6 +1415,21 @@ accepts a path as well as an open fileIO.</p>
       </tr>
   </tbody>
 </table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td><p>Decoded data string.</p></td>
+    </tr>
+  </tbody>
+</table>
         <details class="quote">
           <summary>Source code in <code>pyben\bencode.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">bendecode_str</span><span class="p">(</span><span class="n">units</span><span class="p">):</span>
@@ -1244,7 +1447,7 @@ accepts a path as well as an open fileIO.</p>
 <span class="sd">        Decoded data string.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">match</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">br</span><span class="s2">&quot;(\d+):&quot;</span><span class="p">,</span> <span class="n">units</span><span class="p">)</span>
+    <span class="n">match</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">rb</span><span class="s2">&quot;(\d+):&quot;</span><span class="p">,</span> <span class="n">units</span><span class="p">)</span>
     <span class="n">word_len</span><span class="p">,</span> <span class="n">start</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">match</span><span class="o">.</span><span class="n">groups</span><span class="p">()[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">match</span><span class="o">.</span><span class="n">span</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span>
     <span class="n">end</span> <span class="o">=</span> <span class="n">start</span> <span class="o">+</span> <span class="n">word_len</span>
     <span class="n">text</span> <span class="o">=</span> <span class="n">units</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">end</span><span class="p">]</span>
@@ -1310,6 +1513,21 @@ accepts a path as well as an open fileIO.</p>
         <td><code>`EncodeError` :</code></td>
         <td><p>Cannot interpret data.</p></td>
       </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td><p>Bencoded data.</p></td>
+    </tr>
   </tbody>
 </table>
         <details class="quote">
@@ -1420,6 +1638,225 @@ Bendecoder        </code>
 
       <p>Decode class contains all decode methods.</p>
 
+        <details class="quote">
+          <summary>Source code in <code>pyben\classes.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Bendecoder</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Decode class contains all decode methods.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialize instance with optional pre compiled data.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        data : `bytes` or `bytearray`</span>
+<span class="sd">            (Optional) (default=None) Target data for decoding.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">decoded</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Extract contents from path/path-like and return Decoded data.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        item : `str` or `path-like`</span>
+<span class="sd">            Path containing bencoded data.</span>
+
+<span class="sd">        Raises</span>
+<span class="sd">        ------</span>
+<span class="sd">        `FilePathError`:</span>
+<span class="sd">            Incorrect path or IOBuffer doesnt exist.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        `any`</span>
+<span class="sd">            Decoded contents of file, Usually a dictionary.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">decoder</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">()</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="s2">&quot;read&quot;</span><span class="p">):</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+        <span class="k">elif</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">item</span><span class="p">)</span> <span class="ow">and</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">item</span><span class="p">):</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">_fd</span><span class="p">:</span>
+                <span class="n">data</span> <span class="o">=</span> <span class="n">_fd</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">decoder</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">loads</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Shortcut to Decode raw bencoded data.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        data : ``bytes`` or `bytearray`</span>
+<span class="sd">            Bendencoded `bytes`.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        `any`</span>
+<span class="sd">            Decoded data usually a dictionary.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">decoder</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">decoder</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">decode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Decode bencoded data.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        data : ``bytes``</span>
+<span class="sd">            bencoded data for decoding.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        `any` :</span>
+<span class="sd">            the decoded data.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">data</span> <span class="k">else</span> <span class="n">data</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">decoded</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_decode</span><span class="p">(</span><span class="n">bits</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">decoded</span>
+
+    <span class="k">def</span> <span class="nf">_decode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bits</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Decode bencoded data.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        bits : ``bytes``</span>
+<span class="sd">            Bencoded data for decoding.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        `any` :</span>
+<span class="sd">            The decoded data.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">bits</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;i&quot;</span><span class="p">):</span>
+            <span class="n">match</span><span class="p">,</span> <span class="n">feed</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_decode_int</span><span class="p">(</span><span class="n">bits</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">match</span><span class="p">,</span> <span class="n">feed</span>
+
+        <span class="c1"># decode string</span>
+        <span class="k">if</span> <span class="nb">chr</span><span class="p">(</span><span class="n">bits</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">isdigit</span><span class="p">():</span>
+            <span class="n">num</span><span class="p">,</span> <span class="n">feed</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_decode_str</span><span class="p">(</span><span class="n">bits</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">num</span><span class="p">,</span> <span class="n">feed</span>
+
+        <span class="c1"># decode list and contents</span>
+        <span class="k">if</span> <span class="n">bits</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;l&quot;</span><span class="p">):</span>
+            <span class="n">lst</span><span class="p">,</span> <span class="n">feed</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_decode_list</span><span class="p">(</span><span class="n">bits</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">lst</span><span class="p">,</span> <span class="n">feed</span>
+
+        <span class="c1"># decode dictionary and contents</span>
+        <span class="k">if</span> <span class="n">bits</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;d&quot;</span><span class="p">):</span>
+            <span class="n">dic</span><span class="p">,</span> <span class="n">feed</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_decode_dict</span><span class="p">(</span><span class="n">bits</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">dic</span><span class="p">,</span> <span class="n">feed</span>
+
+        <span class="k">raise</span> <span class="n">DecodeError</span><span class="p">(</span><span class="n">bits</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_decode_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bits</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Decode keys and values in dictionary.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        bits : ``bytes`` or `bytearray`</span>
+<span class="sd">            `Bytes` of data for decoding.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        `dict` :</span>
+<span class="sd">            Dictionary and contents.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">dct</span><span class="p">,</span> <span class="n">feed</span> <span class="o">=</span> <span class="p">{},</span> <span class="mi">1</span>
+        <span class="k">while</span> <span class="ow">not</span> <span class="n">bits</span><span class="p">[</span><span class="n">feed</span><span class="p">:]</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;e&quot;</span><span class="p">):</span>
+            <span class="n">match1</span><span class="p">,</span> <span class="n">rest</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_decode</span><span class="p">(</span><span class="n">bits</span><span class="p">[</span><span class="n">feed</span><span class="p">:])</span>
+            <span class="n">feed</span> <span class="o">+=</span> <span class="n">rest</span>
+            <span class="n">match2</span><span class="p">,</span> <span class="n">rest</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_decode</span><span class="p">(</span><span class="n">bits</span><span class="p">[</span><span class="n">feed</span><span class="p">:])</span>
+            <span class="n">feed</span> <span class="o">+=</span> <span class="n">rest</span>
+            <span class="n">dct</span><span class="p">[</span><span class="n">match1</span><span class="p">]</span> <span class="o">=</span> <span class="n">match2</span>
+        <span class="n">feed</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="n">dct</span><span class="p">,</span> <span class="n">feed</span>
+
+    <span class="k">def</span> <span class="nf">_decode_list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Decode list and its contents.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        data : `bytearray`</span>
+<span class="sd">            Bencoded data.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        `list`:</span>
+<span class="sd">            decoded list and contents</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">seq</span><span class="p">,</span> <span class="n">feed</span> <span class="o">=</span> <span class="p">[],</span> <span class="mi">1</span>
+        <span class="k">while</span> <span class="ow">not</span> <span class="n">data</span><span class="p">[</span><span class="n">feed</span><span class="p">:]</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;e&quot;</span><span class="p">):</span>
+            <span class="n">match</span><span class="p">,</span> <span class="n">rest</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_decode</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">feed</span><span class="p">:])</span>
+            <span class="n">seq</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">match</span><span class="p">)</span>
+            <span class="n">feed</span> <span class="o">+=</span> <span class="n">rest</span>
+        <span class="n">feed</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="n">seq</span><span class="p">,</span> <span class="n">feed</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_decode_str</span><span class="p">(</span><span class="n">bits</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Decode string.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        bits : ``bytes`` or `bytearray`</span>
+<span class="sd">            Bencoded string.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        `str`:</span>
+<span class="sd">            Decoded string.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">match</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">rb</span><span class="s2">&quot;(\d+):&quot;</span><span class="p">,</span> <span class="n">bits</span><span class="p">)</span>
+        <span class="n">word_size</span><span class="p">,</span> <span class="n">start</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">match</span><span class="o">.</span><span class="n">groups</span><span class="p">()[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">match</span><span class="o">.</span><span class="n">span</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">finish</span> <span class="o">=</span> <span class="n">start</span> <span class="o">+</span> <span class="n">word_size</span>
+        <span class="n">word</span> <span class="o">=</span> <span class="n">bits</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">finish</span><span class="p">]</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">word</span> <span class="o">=</span> <span class="n">word</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+
+        <span class="k">except</span> <span class="ne">UnicodeDecodeError</span><span class="p">:</span>
+            <span class="k">pass</span>
+
+        <span class="k">return</span> <span class="n">word</span><span class="p">,</span> <span class="n">finish</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_decode_int</span><span class="p">(</span><span class="n">bits</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Decode integer type.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        bits : ``bytes`` or `bytearray`</span>
+<span class="sd">            Bencoded intiger.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        `int`:</span>
+<span class="sd">            Decoded intiger.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">obj</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">rb</span><span class="s2">&quot;i(-?\d+)e&quot;</span><span class="p">,</span> <span class="n">bits</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)),</span> <span class="n">obj</span><span class="o">.</span><span class="n">end</span><span class="p">()</span>
+</code></pre></div>
+        </details>
 
 
 
@@ -1522,6 +1959,21 @@ Bendecoder        </code>
         <td><p>bencoded data for decoding.</p></td>
         <td><code>None</code></td>
       </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td><p>the decoded data.</p></td>
+    </tr>
   </tbody>
 </table>
         <details class="quote">
@@ -1762,6 +2214,203 @@ Benencoder        </code>
 
       <p>Encoder for bencode encoding used for Bittorrent meta-files.</p>
 
+        <details class="quote">
+          <summary>Source code in <code>pyben\classes.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Benencoder</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Encoder for bencode encoding used for Bittorrent meta-files.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialize Benencoder insance with optional pre compiled data.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        data : any</span>
+<span class="sd">            (Optional) Target data for encoding. Defaults to None.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">encoded</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">dump</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Shortcut class method for encoding data and writing to file.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        data : any</span>
+<span class="sd">            Raw data to be encoded, usually dict.txt</span>
+<span class="sd">        path : `str` or `os.PathLike` or `BytesIO`</span>
+<span class="sd">            Where encoded data should be written to.py</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        `bool` :</span>
+<span class="sd">            Return True if success.txt</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">encoded</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">()</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s2">&quot;write&quot;</span><span class="p">):</span>
+            <span class="n">path</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">encoded</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">_fd</span><span class="p">:</span>
+                <span class="n">_fd</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">encoded</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">True</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">dumps</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Shortcut method for encoding data and immediately returning it.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        data : any</span>
+<span class="sd">            Raw data to be encoded usually a dictionary.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        `bytes`: Encoded data.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">encode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Encode data provided as an arguement or provided at initialization.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        val : any, optional</span>
+<span class="sd">            Data for encoding. Defaults to None.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        `bytes` :</span>
+<span class="sd">            encoded data</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">val</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">val</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">encoded</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_encode</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">encoded</span>
+
+    <span class="k">def</span> <span class="nf">_encode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Encode data with bencode protocol.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        val : `bytes`</span>
+<span class="sd">            Bencoded data for decoding.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        any :</span>
+<span class="sd">            the decoded data.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_encode_str</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="s2">&quot;hex&quot;</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_encode_bytes</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_encode_int</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_encode_list</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_encode_dict</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_encode_list</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">val</span><span class="p">))</span>
+
+        <span class="k">raise</span> <span class="n">EncodeError</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_encode_bytes</span><span class="p">(</span><span class="n">val</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Bencode encoding bytes as string literal.&quot;&quot;&quot;</span>
+        <span class="n">size</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">val</span><span class="p">))</span> <span class="o">+</span> <span class="s2">&quot;:&quot;</span>
+        <span class="k">return</span> <span class="n">size</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="n">val</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_encode_str</span><span class="p">(</span><span class="n">txt</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Decode string.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        txt : `str`</span>
+<span class="sd">            Any string literal.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        `bytes` :</span>
+<span class="sd">            Bencoded string.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">size</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">txt</span><span class="p">))</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">size</span> <span class="o">+</span> <span class="sa">b</span><span class="s2">&quot;:&quot;</span> <span class="o">+</span> <span class="n">txt</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_encode_int</span><span class="p">(</span><span class="n">num</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Encode intiger.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        num : `int`</span>
+<span class="sd">            Integer for encoding.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        `bytes` :</span>
+<span class="sd">            Bencoded intiger.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="sa">b</span><span class="s2">&quot;i&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">num</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="sa">b</span><span class="s2">&quot;e&quot;</span>
+
+    <span class="k">def</span> <span class="nf">_encode_list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">elems</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Encode list and its contents.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        elems : `list`</span>
+<span class="sd">            List of content to be encoded.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        `bytes` :</span>
+<span class="sd">            Bencoded data</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">lst</span> <span class="o">=</span> <span class="p">[</span><span class="sa">b</span><span class="s2">&quot;l&quot;</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">elems</span><span class="p">:</span>
+            <span class="n">encoded</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_encode</span><span class="p">(</span><span class="n">elem</span><span class="p">)</span>
+            <span class="n">lst</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">encoded</span><span class="p">)</span>
+        <span class="n">lst</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;e&quot;</span><span class="p">)</span>
+        <span class="n">bit_lst</span> <span class="o">=</span> <span class="sa">b</span><span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">lst</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">bit_lst</span>
+
+    <span class="k">def</span> <span class="nf">_encode_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dic</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Encode keys and values in dictionary.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        dic : `dict`</span>
+<span class="sd">            Dictionary of data for encoding.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        `bytes` :</span>
+<span class="sd">            Bencoded data.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="sa">b</span><span class="s2">&quot;d&quot;</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">dic</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">result</span> <span class="o">+=</span> <span class="sa">b</span><span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">_encode</span><span class="p">(</span><span class="n">key</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_encode</span><span class="p">(</span><span class="n">val</span><span class="p">)])</span>
+        <span class="k">return</span> <span class="n">result</span> <span class="o">+</span> <span class="sa">b</span><span class="s2">&quot;e&quot;</span>
+</code></pre></div>
+        </details>
 
 
 
@@ -1875,6 +2524,21 @@ Benencoder        </code>
       </tr>
   </tbody>
 </table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td><p>Return True if success.txt</p></td>
+    </tr>
+  </tbody>
+</table>
         <details class="quote">
           <summary>Source code in <code>pyben\classes.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="nd">@classmethod</span>
@@ -1946,6 +2610,21 @@ Benencoder        </code>
       </tr>
   </tbody>
 </table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>Encoded data.</code></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
         <details class="quote">
           <summary>Source code in <code>pyben\classes.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="nd">@classmethod</span>
@@ -2003,6 +2682,21 @@ Benencoder        </code>
         <td><p>Data for encoding. Defaults to None.</p></td>
         <td><code>None</code></td>
       </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td><p>encoded data</p></td>
+    </tr>
   </tbody>
 </table>
         <details class="quote">
@@ -2115,10 +2809,33 @@ as a bytes object.</p>
         <td><code>val</code></td>
         <td><code>any</code></td>
         <td><p>Value that cause the exception</p></td>
-        <td><em>required</em></td>
+        <td><code>None</code></td>
       </tr>
   </tbody>
 </table>
+        <details class="quote">
+          <summary>Source code in <code>pyben\exceptions.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">DecodeError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Error occured during decode process.</span>
+
+<span class="sd">    Raised when attempting to decode an incompatible bytearray.</span>
+<span class="sd">    Mostly it indicates the object is a hash digest and should remian</span>
+<span class="sd">    as a bytes object.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    val : any</span>
+<span class="sd">        Value that cause the exception</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Construct Exception DecodeError.&quot;&quot;&quot;</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Decoder is unable to interpret </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">val</span><span class="p">)</span><span class="si">}</span><span class="s2"> type = </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">val</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+</code></pre></div>
+        </details>
 
 
 
@@ -2208,10 +2925,33 @@ strings, integers, and bytes.</p>
         <td><code>val</code></td>
         <td><code>any</code></td>
         <td><p>Value that cause the exception</p></td>
-        <td><em>required</em></td>
+        <td><code>None</code></td>
       </tr>
   </tbody>
 </table>
+        <details class="quote">
+          <summary>Source code in <code>pyben\exceptions.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">EncodeError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Error occured during encoding process.</span>
+
+<span class="sd">    Raised when attempting to bencode encode an incompatible</span>
+<span class="sd">    data type into bencode format. Bencode accepts lists, dicts,</span>
+<span class="sd">    strings, integers, and bytes.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    val : any</span>
+<span class="sd">        Value that cause the exception</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Construct Exception EncodeError.&quot;&quot;&quot;</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Encoder is unable to interpret </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">val</span><span class="p">)</span><span class="si">}</span><span class="s2"> type = </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">val</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+</code></pre></div>
+        </details>
 
 
 
@@ -2304,6 +3044,27 @@ does not exist.</p>
       </tr>
   </tbody>
 </table>
+        <details class="quote">
+          <summary>Source code in <code>pyben\exceptions.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">FilePathError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Bad path error.</span>
+
+<span class="sd">    Generally raised when the file at the path specified</span>
+<span class="sd">    does not exist.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    val : any</span>
+<span class="sd">        Value that cause the exception</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Construct Exception Subclass FilePathError.&quot;&quot;&quot;</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span><span class="si">}</span><span class="s2"> doesn&#39;t exist or is unavailable.&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+</code></pre></div>
+        </details>
 
 
 
@@ -2630,7 +3391,11 @@ accepts a path as well as an open fileIO.</p>
     <span class="n">encoded</span> <span class="o">=</span> <span class="n">benencode</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="s2">&quot;write&quot;</span><span class="p">):</span>
-        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">_fd</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="s2">&quot;decode&quot;</span><span class="p">):</span>  <span class="c1"># pragma: nocover</span>
+            <span class="n">txt</span> <span class="o">=</span> <span class="n">buffer</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">txt</span> <span class="o">=</span> <span class="n">buffer</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">txt</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">_fd</span><span class="p">:</span>
             <span class="n">_fd</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">encoded</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">buffer</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">encoded</span><span class="p">)</span>
@@ -2673,6 +3438,21 @@ accepts a path as well as an open fileIO.</p>
         <td><p>Object to be encoded.py.</p></td>
         <td><em>required</em></td>
       </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td><p>Encoded data.</p></td>
+    </tr>
   </tbody>
 </table>
         <details class="quote">
@@ -2740,6 +3520,21 @@ accepts a path as well as an open fileIO.</p>
       </tr>
   </tbody>
 </table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td><p>(commonly <code>dict</code>), Decoded contents of file.</p></td>
+    </tr>
+  </tbody>
+</table>
         <details class="quote">
           <summary>Source code in <code>pyben\api.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="n">to_json</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
@@ -2765,12 +3560,15 @@ accepts a path as well as an open fileIO.</p>
     <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="s2">&quot;read&quot;</span><span class="p">):</span>
         <span class="n">decoded</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">bendecode</span><span class="p">(</span><span class="n">buffer</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
     <span class="k">else</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="s2">&quot;decode&quot;</span><span class="p">):</span>  <span class="c1"># pragma: nocover</span>
+            <span class="n">path</span> <span class="o">=</span> <span class="n">buffer</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">path</span> <span class="o">=</span> <span class="n">buffer</span>
         <span class="k">try</span><span class="p">:</span>
-            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">_fd</span><span class="p">:</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">_fd</span><span class="p">:</span>
                 <span class="n">decoded</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">bendecode</span><span class="p">(</span><span class="n">_fd</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
-        <span class="k">except</span> <span class="ne">FileNotFoundError</span> <span class="k">as</span> <span class="n">excp</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="n">FilePathError</span><span class="p">(</span><span class="n">buffer</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">excp</span>
-
+        <span class="k">except</span> <span class="ne">FileNotFoundError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">FilePathError</span><span class="p">(</span><span class="n">buffer</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">e</span>
     <span class="k">if</span> <span class="n">to_json</span><span class="p">:</span>
         <span class="n">decoded</span> <span class="o">=</span> <span class="n">_to_json</span><span class="p">(</span><span class="n">decoded</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">decoded</span>
@@ -2819,6 +3617,21 @@ accepts a path as well as an open fileIO.</p>
         <td><p>Convert to json serializable if true otherwise leave it alone.</p></td>
         <td><code>False</code></td>
       </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td><p>(any), Decoded data.</p></td>
+    </tr>
   </tbody>
 </table>
         <details class="quote">
@@ -2883,6 +3696,21 @@ accepts a path as well as an open fileIO.</p>
         <td><p>Pre-formatted input type.</p></td>
         <td><em>required</em></td>
       </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td><p>Returns True if completed successfully.</p></td>
+    </tr>
   </tbody>
 </table>
         <details class="quote">
@@ -3026,6 +3854,225 @@ Bendecoder        </code>
 
       <p>Decode class contains all decode methods.</p>
 
+        <details class="quote">
+          <summary>Source code in <code>pyben\classes.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Bendecoder</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Decode class contains all decode methods.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialize instance with optional pre compiled data.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        data : `bytes` or `bytearray`</span>
+<span class="sd">            (Optional) (default=None) Target data for decoding.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">decoded</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Extract contents from path/path-like and return Decoded data.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        item : `str` or `path-like`</span>
+<span class="sd">            Path containing bencoded data.</span>
+
+<span class="sd">        Raises</span>
+<span class="sd">        ------</span>
+<span class="sd">        `FilePathError`:</span>
+<span class="sd">            Incorrect path or IOBuffer doesnt exist.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        `any`</span>
+<span class="sd">            Decoded contents of file, Usually a dictionary.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">decoder</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">()</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="s2">&quot;read&quot;</span><span class="p">):</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+        <span class="k">elif</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">item</span><span class="p">)</span> <span class="ow">and</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">item</span><span class="p">):</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">_fd</span><span class="p">:</span>
+                <span class="n">data</span> <span class="o">=</span> <span class="n">_fd</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">decoder</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">loads</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Shortcut to Decode raw bencoded data.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        data : ``bytes`` or `bytearray`</span>
+<span class="sd">            Bendencoded `bytes`.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        `any`</span>
+<span class="sd">            Decoded data usually a dictionary.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">decoder</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">decoder</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">decode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Decode bencoded data.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        data : ``bytes``</span>
+<span class="sd">            bencoded data for decoding.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        `any` :</span>
+<span class="sd">            the decoded data.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">data</span> <span class="k">else</span> <span class="n">data</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">decoded</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_decode</span><span class="p">(</span><span class="n">bits</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">decoded</span>
+
+    <span class="k">def</span> <span class="nf">_decode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bits</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Decode bencoded data.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        bits : ``bytes``</span>
+<span class="sd">            Bencoded data for decoding.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        `any` :</span>
+<span class="sd">            The decoded data.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">bits</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;i&quot;</span><span class="p">):</span>
+            <span class="n">match</span><span class="p">,</span> <span class="n">feed</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_decode_int</span><span class="p">(</span><span class="n">bits</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">match</span><span class="p">,</span> <span class="n">feed</span>
+
+        <span class="c1"># decode string</span>
+        <span class="k">if</span> <span class="nb">chr</span><span class="p">(</span><span class="n">bits</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">isdigit</span><span class="p">():</span>
+            <span class="n">num</span><span class="p">,</span> <span class="n">feed</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_decode_str</span><span class="p">(</span><span class="n">bits</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">num</span><span class="p">,</span> <span class="n">feed</span>
+
+        <span class="c1"># decode list and contents</span>
+        <span class="k">if</span> <span class="n">bits</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;l&quot;</span><span class="p">):</span>
+            <span class="n">lst</span><span class="p">,</span> <span class="n">feed</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_decode_list</span><span class="p">(</span><span class="n">bits</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">lst</span><span class="p">,</span> <span class="n">feed</span>
+
+        <span class="c1"># decode dictionary and contents</span>
+        <span class="k">if</span> <span class="n">bits</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;d&quot;</span><span class="p">):</span>
+            <span class="n">dic</span><span class="p">,</span> <span class="n">feed</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_decode_dict</span><span class="p">(</span><span class="n">bits</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">dic</span><span class="p">,</span> <span class="n">feed</span>
+
+        <span class="k">raise</span> <span class="n">DecodeError</span><span class="p">(</span><span class="n">bits</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_decode_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bits</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Decode keys and values in dictionary.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        bits : ``bytes`` or `bytearray`</span>
+<span class="sd">            `Bytes` of data for decoding.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        `dict` :</span>
+<span class="sd">            Dictionary and contents.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">dct</span><span class="p">,</span> <span class="n">feed</span> <span class="o">=</span> <span class="p">{},</span> <span class="mi">1</span>
+        <span class="k">while</span> <span class="ow">not</span> <span class="n">bits</span><span class="p">[</span><span class="n">feed</span><span class="p">:]</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;e&quot;</span><span class="p">):</span>
+            <span class="n">match1</span><span class="p">,</span> <span class="n">rest</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_decode</span><span class="p">(</span><span class="n">bits</span><span class="p">[</span><span class="n">feed</span><span class="p">:])</span>
+            <span class="n">feed</span> <span class="o">+=</span> <span class="n">rest</span>
+            <span class="n">match2</span><span class="p">,</span> <span class="n">rest</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_decode</span><span class="p">(</span><span class="n">bits</span><span class="p">[</span><span class="n">feed</span><span class="p">:])</span>
+            <span class="n">feed</span> <span class="o">+=</span> <span class="n">rest</span>
+            <span class="n">dct</span><span class="p">[</span><span class="n">match1</span><span class="p">]</span> <span class="o">=</span> <span class="n">match2</span>
+        <span class="n">feed</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="n">dct</span><span class="p">,</span> <span class="n">feed</span>
+
+    <span class="k">def</span> <span class="nf">_decode_list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Decode list and its contents.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        data : `bytearray`</span>
+<span class="sd">            Bencoded data.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        `list`:</span>
+<span class="sd">            decoded list and contents</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">seq</span><span class="p">,</span> <span class="n">feed</span> <span class="o">=</span> <span class="p">[],</span> <span class="mi">1</span>
+        <span class="k">while</span> <span class="ow">not</span> <span class="n">data</span><span class="p">[</span><span class="n">feed</span><span class="p">:]</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;e&quot;</span><span class="p">):</span>
+            <span class="n">match</span><span class="p">,</span> <span class="n">rest</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_decode</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">feed</span><span class="p">:])</span>
+            <span class="n">seq</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">match</span><span class="p">)</span>
+            <span class="n">feed</span> <span class="o">+=</span> <span class="n">rest</span>
+        <span class="n">feed</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="n">seq</span><span class="p">,</span> <span class="n">feed</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_decode_str</span><span class="p">(</span><span class="n">bits</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Decode string.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        bits : ``bytes`` or `bytearray`</span>
+<span class="sd">            Bencoded string.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        `str`:</span>
+<span class="sd">            Decoded string.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">match</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">rb</span><span class="s2">&quot;(\d+):&quot;</span><span class="p">,</span> <span class="n">bits</span><span class="p">)</span>
+        <span class="n">word_size</span><span class="p">,</span> <span class="n">start</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">match</span><span class="o">.</span><span class="n">groups</span><span class="p">()[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">match</span><span class="o">.</span><span class="n">span</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">finish</span> <span class="o">=</span> <span class="n">start</span> <span class="o">+</span> <span class="n">word_size</span>
+        <span class="n">word</span> <span class="o">=</span> <span class="n">bits</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">finish</span><span class="p">]</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">word</span> <span class="o">=</span> <span class="n">word</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+
+        <span class="k">except</span> <span class="ne">UnicodeDecodeError</span><span class="p">:</span>
+            <span class="k">pass</span>
+
+        <span class="k">return</span> <span class="n">word</span><span class="p">,</span> <span class="n">finish</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_decode_int</span><span class="p">(</span><span class="n">bits</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Decode integer type.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        bits : ``bytes`` or `bytearray`</span>
+<span class="sd">            Bencoded intiger.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        `int`:</span>
+<span class="sd">            Decoded intiger.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">obj</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">rb</span><span class="s2">&quot;i(-?\d+)e&quot;</span><span class="p">,</span> <span class="n">bits</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)),</span> <span class="n">obj</span><span class="o">.</span><span class="n">end</span><span class="p">()</span>
+</code></pre></div>
+        </details>
 
 
 
@@ -3128,6 +4175,21 @@ Bendecoder        </code>
         <td><p>bencoded data for decoding.</p></td>
         <td><code>None</code></td>
       </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td><p>the decoded data.</p></td>
+    </tr>
   </tbody>
 </table>
         <details class="quote">
@@ -3368,6 +4430,203 @@ Benencoder        </code>
 
       <p>Encoder for bencode encoding used for Bittorrent meta-files.</p>
 
+        <details class="quote">
+          <summary>Source code in <code>pyben\classes.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Benencoder</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Encoder for bencode encoding used for Bittorrent meta-files.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialize Benencoder insance with optional pre compiled data.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        data : any</span>
+<span class="sd">            (Optional) Target data for encoding. Defaults to None.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">encoded</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">dump</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Shortcut class method for encoding data and writing to file.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        data : any</span>
+<span class="sd">            Raw data to be encoded, usually dict.txt</span>
+<span class="sd">        path : `str` or `os.PathLike` or `BytesIO`</span>
+<span class="sd">            Where encoded data should be written to.py</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        `bool` :</span>
+<span class="sd">            Return True if success.txt</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">encoded</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">()</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s2">&quot;write&quot;</span><span class="p">):</span>
+            <span class="n">path</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">encoded</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">_fd</span><span class="p">:</span>
+                <span class="n">_fd</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">encoded</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">True</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">dumps</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Shortcut method for encoding data and immediately returning it.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        data : any</span>
+<span class="sd">            Raw data to be encoded usually a dictionary.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        `bytes`: Encoded data.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">encode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Encode data provided as an arguement or provided at initialization.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        val : any, optional</span>
+<span class="sd">            Data for encoding. Defaults to None.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        `bytes` :</span>
+<span class="sd">            encoded data</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">val</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">val</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">encoded</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_encode</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">encoded</span>
+
+    <span class="k">def</span> <span class="nf">_encode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Encode data with bencode protocol.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        val : `bytes`</span>
+<span class="sd">            Bencoded data for decoding.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        any :</span>
+<span class="sd">            the decoded data.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_encode_str</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="s2">&quot;hex&quot;</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_encode_bytes</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_encode_int</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_encode_list</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_encode_dict</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_encode_list</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">val</span><span class="p">))</span>
+
+        <span class="k">raise</span> <span class="n">EncodeError</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_encode_bytes</span><span class="p">(</span><span class="n">val</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Bencode encoding bytes as string literal.&quot;&quot;&quot;</span>
+        <span class="n">size</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">val</span><span class="p">))</span> <span class="o">+</span> <span class="s2">&quot;:&quot;</span>
+        <span class="k">return</span> <span class="n">size</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="n">val</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_encode_str</span><span class="p">(</span><span class="n">txt</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Decode string.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        txt : `str`</span>
+<span class="sd">            Any string literal.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        `bytes` :</span>
+<span class="sd">            Bencoded string.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">size</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">txt</span><span class="p">))</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">size</span> <span class="o">+</span> <span class="sa">b</span><span class="s2">&quot;:&quot;</span> <span class="o">+</span> <span class="n">txt</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_encode_int</span><span class="p">(</span><span class="n">num</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Encode intiger.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        num : `int`</span>
+<span class="sd">            Integer for encoding.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        `bytes` :</span>
+<span class="sd">            Bencoded intiger.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="sa">b</span><span class="s2">&quot;i&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">num</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="sa">b</span><span class="s2">&quot;e&quot;</span>
+
+    <span class="k">def</span> <span class="nf">_encode_list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">elems</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Encode list and its contents.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        elems : `list`</span>
+<span class="sd">            List of content to be encoded.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        `bytes` :</span>
+<span class="sd">            Bencoded data</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">lst</span> <span class="o">=</span> <span class="p">[</span><span class="sa">b</span><span class="s2">&quot;l&quot;</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">elems</span><span class="p">:</span>
+            <span class="n">encoded</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_encode</span><span class="p">(</span><span class="n">elem</span><span class="p">)</span>
+            <span class="n">lst</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">encoded</span><span class="p">)</span>
+        <span class="n">lst</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;e&quot;</span><span class="p">)</span>
+        <span class="n">bit_lst</span> <span class="o">=</span> <span class="sa">b</span><span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">lst</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">bit_lst</span>
+
+    <span class="k">def</span> <span class="nf">_encode_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dic</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Encode keys and values in dictionary.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        dic : `dict`</span>
+<span class="sd">            Dictionary of data for encoding.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        `bytes` :</span>
+<span class="sd">            Bencoded data.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="sa">b</span><span class="s2">&quot;d&quot;</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">dic</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">result</span> <span class="o">+=</span> <span class="sa">b</span><span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">_encode</span><span class="p">(</span><span class="n">key</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_encode</span><span class="p">(</span><span class="n">val</span><span class="p">)])</span>
+        <span class="k">return</span> <span class="n">result</span> <span class="o">+</span> <span class="sa">b</span><span class="s2">&quot;e&quot;</span>
+</code></pre></div>
+        </details>
 
 
 
@@ -3481,6 +4740,21 @@ Benencoder        </code>
       </tr>
   </tbody>
 </table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td><p>Return True if success.txt</p></td>
+    </tr>
+  </tbody>
+</table>
         <details class="quote">
           <summary>Source code in <code>pyben\classes.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="nd">@classmethod</span>
@@ -3552,6 +4826,21 @@ Benencoder        </code>
       </tr>
   </tbody>
 </table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>Encoded data.</code></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
         <details class="quote">
           <summary>Source code in <code>pyben\classes.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="nd">@classmethod</span>
@@ -3609,6 +4898,21 @@ Benencoder        </code>
         <td><p>Data for encoding. Defaults to None.</p></td>
         <td><code>None</code></td>
       </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td><p>encoded data</p></td>
+    </tr>
   </tbody>
 </table>
         <details class="quote">
@@ -3824,6 +5128,21 @@ Benencoder        </code>
       </tr>
   </tbody>
 </table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td><p>Bencode encoded byte string literal.</p></td>
+    </tr>
+  </tbody>
+</table>
         <details class="quote">
           <summary>Source code in <code>pyben\bencode.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">bencode_bytes</span><span class="p">(</span><span class="n">bits</span><span class="p">):</span>
@@ -3882,6 +5201,21 @@ Benencoder        </code>
         <td><p>Any dictionary containing items that can be bencoded.</p></td>
         <td><em>required</em></td>
       </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td><p>Bencoded key, value pairs of data.</p></td>
+    </tr>
   </tbody>
 </table>
         <details class="quote">
@@ -3947,6 +5281,21 @@ Benencoder        </code>
       </tr>
   </tbody>
 </table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td><p>Bencoded Integer.</p></td>
+    </tr>
+  </tbody>
+</table>
         <details class="quote">
           <summary>Source code in <code>pyben\bencode.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">bencode_int</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
@@ -4004,6 +5353,21 @@ Benencoder        </code>
         <td><p>List of items for bencoding.</p></td>
         <td><em>required</em></td>
       </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td><p>Bencoded list and contents.</p></td>
+    </tr>
   </tbody>
 </table>
         <details class="quote">
@@ -4072,6 +5436,21 @@ Benencoder        </code>
       </tr>
   </tbody>
 </table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td><p>Bencoded string literal.</p></td>
+    </tr>
+  </tbody>
+</table>
         <details class="quote">
           <summary>Source code in <code>pyben\bencode.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">bencode_str</span><span class="p">(</span><span class="n">txt</span><span class="p">):</span>
@@ -4089,8 +5468,9 @@ Benencoder        </code>
 <span class="sd">        Bencoded string literal.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">size</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">txt</span><span class="p">))</span> <span class="o">+</span> <span class="s2">&quot;:&quot;</span>
-    <span class="k">return</span> <span class="n">size</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="n">txt</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">txt</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+    <span class="n">size</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">text</span><span class="p">))</span> <span class="o">+</span> <span class="s2">&quot;:&quot;</span>
+    <span class="k">return</span> <span class="n">size</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="n">text</span>
 </code></pre></div>
         </details>
     </div>
@@ -4145,6 +5525,21 @@ Benencoder        </code>
         <td><code>`DecodeError` :</code></td>
         <td><p>Malformed data.</p></td>
       </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td><p>Bencode decoded data.</p></td>
+    </tr>
   </tbody>
 </table>
         <details class="quote">
@@ -4311,6 +5706,21 @@ Benencoder        </code>
       </tr>
   </tbody>
 </table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td><p>Decoded int value.</p></td>
+    </tr>
+  </tbody>
+</table>
         <details class="quote">
           <summary>Source code in <code>pyben\bencode.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">bendecode_int</span><span class="p">(</span><span class="n">bits</span><span class="p">):</span>
@@ -4328,7 +5738,7 @@ Benencoder        </code>
 <span class="sd">        Decoded int value.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">obj</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">br</span><span class="s2">&quot;i(-?\d+)e&quot;</span><span class="p">,</span> <span class="n">bits</span><span class="p">)</span>
+    <span class="n">obj</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">rb</span><span class="s2">&quot;i(-?\d+)e&quot;</span><span class="p">,</span> <span class="n">bits</span><span class="p">)</span>
     <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)),</span> <span class="n">obj</span><span class="o">.</span><span class="n">end</span><span class="p">()</span>
 </code></pre></div>
         </details>
@@ -4369,6 +5779,21 @@ Benencoder        </code>
         <td><p>Bencoded list.</p></td>
         <td><em>required</em></td>
       </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td><p>Bencode decoded list and contents.</p></td>
+    </tr>
   </tbody>
 </table>
         <details class="quote">
@@ -4438,6 +5863,21 @@ Benencoder        </code>
       </tr>
   </tbody>
 </table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td><p>Decoded data string.</p></td>
+    </tr>
+  </tbody>
+</table>
         <details class="quote">
           <summary>Source code in <code>pyben\bencode.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">bendecode_str</span><span class="p">(</span><span class="n">units</span><span class="p">):</span>
@@ -4455,7 +5895,7 @@ Benencoder        </code>
 <span class="sd">        Decoded data string.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">match</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">br</span><span class="s2">&quot;(\d+):&quot;</span><span class="p">,</span> <span class="n">units</span><span class="p">)</span>
+    <span class="n">match</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">rb</span><span class="s2">&quot;(\d+):&quot;</span><span class="p">,</span> <span class="n">units</span><span class="p">)</span>
     <span class="n">word_len</span><span class="p">,</span> <span class="n">start</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">match</span><span class="o">.</span><span class="n">groups</span><span class="p">()[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">match</span><span class="o">.</span><span class="n">span</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span>
     <span class="n">end</span> <span class="o">=</span> <span class="n">start</span> <span class="o">+</span> <span class="n">word_len</span>
     <span class="n">text</span> <span class="o">=</span> <span class="n">units</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">end</span><span class="p">]</span>
@@ -4521,6 +5961,21 @@ Benencoder        </code>
         <td><code>`EncodeError` :</code></td>
         <td><p>Cannot interpret data.</p></td>
       </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td><p>Bencoded data.</p></td>
+    </tr>
   </tbody>
 </table>
         <details class="quote">
@@ -4679,10 +6134,33 @@ as a bytes object.</p>
         <td><code>val</code></td>
         <td><code>any</code></td>
         <td><p>Value that cause the exception</p></td>
-        <td><em>required</em></td>
+        <td><code>None</code></td>
       </tr>
   </tbody>
 </table>
+        <details class="quote">
+          <summary>Source code in <code>pyben\exceptions.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">DecodeError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Error occured during decode process.</span>
+
+<span class="sd">    Raised when attempting to decode an incompatible bytearray.</span>
+<span class="sd">    Mostly it indicates the object is a hash digest and should remian</span>
+<span class="sd">    as a bytes object.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    val : any</span>
+<span class="sd">        Value that cause the exception</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Construct Exception DecodeError.&quot;&quot;&quot;</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Decoder is unable to interpret </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">val</span><span class="p">)</span><span class="si">}</span><span class="s2"> type = </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">val</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+</code></pre></div>
+        </details>
 
 
 
@@ -4772,10 +6250,33 @@ strings, integers, and bytes.</p>
         <td><code>val</code></td>
         <td><code>any</code></td>
         <td><p>Value that cause the exception</p></td>
-        <td><em>required</em></td>
+        <td><code>None</code></td>
       </tr>
   </tbody>
 </table>
+        <details class="quote">
+          <summary>Source code in <code>pyben\exceptions.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">EncodeError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Error occured during encoding process.</span>
+
+<span class="sd">    Raised when attempting to bencode encode an incompatible</span>
+<span class="sd">    data type into bencode format. Bencode accepts lists, dicts,</span>
+<span class="sd">    strings, integers, and bytes.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    val : any</span>
+<span class="sd">        Value that cause the exception</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Construct Exception EncodeError.&quot;&quot;&quot;</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Encoder is unable to interpret </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">val</span><span class="p">)</span><span class="si">}</span><span class="s2"> type = </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">val</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+</code></pre></div>
+        </details>
 
 
 
@@ -4868,6 +6369,27 @@ does not exist.</p>
       </tr>
   </tbody>
 </table>
+        <details class="quote">
+          <summary>Source code in <code>pyben\exceptions.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">FilePathError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Bad path error.</span>
+
+<span class="sd">    Generally raised when the file at the path specified</span>
+<span class="sd">    does not exist.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    val : any</span>
+<span class="sd">        Value that cause the exception</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Construct Exception Subclass FilePathError.&quot;&quot;&quot;</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span><span class="si">}</span><span class="s2"> doesn&#39;t exist or is unavailable.&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+</code></pre></div>
+        </details>
 
 
 
@@ -5531,7 +7053,7 @@ does not exist.</p>
 
   <!--
   MkDocs version      : 1.2.3
-  Docs Build Date UTC : 2021-12-31 01:38:23.879199+00:00
+  Docs Build Date UTC : 2022-03-17 20:02:24.397004+00:00
   -->
 </body>
 </html>

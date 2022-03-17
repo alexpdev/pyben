@@ -1,6 +1,6 @@
 {
   "name": "pyben",
-  "version": "0.2.7",
+  "version": "0.3.0",
   "description": "Small library for encoding/decoding bencode data. Pyben Enables fast and easy encoding and decoding of bencoded data.",
   "directories": {
     "doc": "docs",

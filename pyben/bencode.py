@@ -89,7 +89,7 @@ def bendecode_str(units):
         Decoded data string.
 
     """
-    match = re.match(br"(\d+):", units)
+    match = re.match(rb"(\d+):", units)
     word_len, start = int(match.groups()[0]), match.span()[1]
     end = start + word_len
     text = units[start:end]
@@ -118,7 +118,7 @@ def bendecode_int(bits):
         Decoded int value.
 
     """
-    obj = re.match(br"i(-?\d+)e", bits)
+    obj = re.match(rb"i(-?\d+)e", bits)
     return int(obj.group(1)), obj.end()
 
 
@@ -251,8 +251,9 @@ def bencode_str(txt):
         Bencoded string literal.
 
     """
-    size = str(len(txt)) + ":"
-    return size.encode("utf-8") + txt.encode("utf-8")
+    text = txt.encode("utf-8")
+    size = str(len(text)) + ":"
+    return size.encode("utf-8") + text
 
 
 def bencode_int(i):
