@@ -63,8 +63,8 @@ Functions
 
 """
 
-from .bencode import bendecode, benencode
-from .exceptions import FilePathError
+from pyben.bencode import bendecode, benencode
+from pyben.exceptions import FilePathError
 
 
 def dump(obj, buffer):
@@ -85,7 +85,11 @@ def dump(obj, buffer):
     encoded = benencode(obj)
 
     if not hasattr(buffer, "write"):
-        with open(buffer, "wb") as _fd:
+        if hasattr(buffer, "decode"):
+            txt = buffer.decode("utf-8")
+        else:
+            txt = buffer
+        with open(txt, "wb") as _fd:
             _fd.write(encoded)
     else:
         buffer.write(encoded)
@@ -132,12 +136,15 @@ def load(buffer, to_json=False):
     if hasattr(buffer, "read"):
         decoded, _ = bendecode(buffer.read())
     else:
+        if hasattr(buffer, "decode"):
+            path = buffer.decode("utf-8")
+        else:
+            path = buffer
         try:
-            with open(buffer, "rb") as _fd:
+            with open(path, "rb") as _fd:
                 decoded, _ = bendecode(_fd.read())
-        except FileNotFoundError as excp:
-            raise FilePathError(buffer) from excp
-
+        except FileNotFoundError as e:
+            raise FilePathError(buffer) from e
     if to_json:
         decoded = _to_json(decoded)
     return decoded

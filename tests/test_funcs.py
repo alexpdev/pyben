@@ -20,8 +20,7 @@ from pyben.bencode import (bencode_dict, bencode_int, bencode_list,
                            bendecode_int, bendecode_list, bendecode_str,
                            benencode)
 from pyben.exceptions import DecodeError, EncodeError
-
-from . import context
+from tests import context
 
 
 def test_malformed_bytes():

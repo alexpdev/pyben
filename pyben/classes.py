@@ -213,7 +213,7 @@ class Bendecoder:
             Decoded string.
 
         """
-        match = re.match(br"(\d+):", bits)
+        match = re.match(rb"(\d+):", bits)
         word_size, start = int(match.groups()[0]), match.span()[1]
         finish = start + word_size
         word = bits[start:finish]
@@ -242,7 +242,7 @@ class Bendecoder:
             Decoded intiger.
 
         """
-        obj = re.match(br"i(-?\d+)e", bits)
+        obj = re.match(rb"i(-?\d+)e", bits)
         return int(obj.group(1)), obj.end()
 
 

@@ -36,9 +36,8 @@ import pytest
 
 from pyben.classes import Bendecoder, Benencoder
 from pyben.exceptions import DecodeError, EncodeError
-
-from .context import (data, dicts, ints, lists, rmpath, strings, testfile,
-                      testmeta)
+from tests.context import (data, dicts, ints, lists, rmpath, strings, testfile,
+                           testmeta)
 
 
 @pytest.fixture
