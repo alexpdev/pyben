@@ -81,6 +81,7 @@
 <li>dumps</li>
 <li>load</li>
 <li>loads</li>
+<li>readinto</li>
 </ul>
 
 
@@ -408,6 +409,92 @@ accepts a path as well as an open fileIO.</p>
     <span class="k">if</span> <span class="n">to_json</span><span class="p">:</span>
         <span class="n">decoded</span> <span class="o">=</span> <span class="n">_to_json</span><span class="p">(</span><span class="n">decoded</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">decoded</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h4 id="pyben.api.loadinto" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">loadinto</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="n">lst</span><span class="p">)</span></code>
+
+
+</h4>
+
+    <div class="doc doc-contents ">
+
+      <p>Shortcut function to load becoded data from file and store it in list.</p>
+<p>This function is most useful for multithreading purposes.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>buffer</code></td>
+        <td><code>str</code></td>
+        <td><p>string or open file buffer.</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>lst</code></td>
+        <td><code>list</code></td>
+        <td><p>variable to store output into</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td><p>the list containing the output.</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>pyben\api.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">loadinto</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="n">lst</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Shortcut function to load becoded data from file and store it in list.</span>
+
+<span class="sd">    This function is most useful for multithreading purposes.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    buffer : str</span>
+<span class="sd">        string or open file buffer.</span>
+<span class="sd">    lst : list</span>
+<span class="sd">        variable to store output into</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    list :</span>
+<span class="sd">        the list containing the output.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">output</span> <span class="o">=</span> <span class="n">load</span><span class="p">(</span><span class="n">buffer</span><span class="p">)</span>
+    <span class="n">lst</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">lst</span>
 </code></pre></div>
         </details>
     </div>
@@ -3246,6 +3333,10 @@ does not exist.</p>
 <span class="mkapi-item-type">(`any` :)</span>
 <span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Load bencoded data from a file of path object and decodes it.</span></li>
 
+<li class="function"><code class="mkapi-item-name">loadinto</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">buffer</code>, <code class="mkapi-object-signature">lst</code><code class="mkapi-object-parenthesis">)</code>
+<span class="mkapi-item-type">(list :)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Shortcut function to load becoded data from file and store it in list.</span></li>
+
 <li class="function"><code class="mkapi-item-name">loads</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">encoded</code>, <code class="mkapi-object-signature">to_json</code><code class="mkapi-object-parenthesis">)</code>
 <span class="mkapi-item-type">(any :)</span>
 <span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Shortcut function for decoding encoded data.</span></li>
@@ -3572,6 +3663,92 @@ accepts a path as well as an open fileIO.</p>
     <span class="k">if</span> <span class="n">to_json</span><span class="p">:</span>
         <span class="n">decoded</span> <span class="o">=</span> <span class="n">_to_json</span><span class="p">(</span><span class="n">decoded</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">decoded</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h3 id="pyben.api.loadinto" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">loadinto</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="n">lst</span><span class="p">)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Shortcut function to load becoded data from file and store it in list.</p>
+<p>This function is most useful for multithreading purposes.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>buffer</code></td>
+        <td><code>str</code></td>
+        <td><p>string or open file buffer.</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>lst</code></td>
+        <td><code>list</code></td>
+        <td><p>variable to store output into</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td><p>the list containing the output.</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>pyben\api.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">loadinto</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="n">lst</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Shortcut function to load becoded data from file and store it in list.</span>
+
+<span class="sd">    This function is most useful for multithreading purposes.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    buffer : str</span>
+<span class="sd">        string or open file buffer.</span>
+<span class="sd">    lst : list</span>
+<span class="sd">        variable to store output into</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    list :</span>
+<span class="sd">        the list containing the output.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">output</span> <span class="o">=</span> <span class="n">load</span><span class="p">(</span><span class="n">buffer</span><span class="p">)</span>
+    <span class="n">lst</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">lst</span>
 </code></pre></div>
         </details>
     </div>
@@ -6552,6 +6729,11 @@ does not exist.</p>
     
   </ul>
     
+      <li><a href="#pyben.api.loadinto">loadinto()</a></li>
+      <ul>
+    
+  </ul>
+    
       <li><a href="#pyben.api.loads">loads()</a></li>
       <ul>
     
@@ -6818,6 +7000,11 @@ does not exist.</p>
     
   </ul>
     
+      <li><a href="#pyben.api.loadinto">loadinto()</a></li>
+      <ul>
+    
+  </ul>
+    
       <li><a href="#pyben.api.loads">loads()</a></li>
       <ul>
     
@@ -7053,7 +7240,7 @@ does not exist.</p>
 
   <!--
   MkDocs version      : 1.2.3
-  Docs Build Date UTC : 2022-03-17 20:14:29.968283+00:00
+  Docs Build Date UTC : 2022-04-24 00:10:52.574919+00:00
   -->
 </body>
 </html>

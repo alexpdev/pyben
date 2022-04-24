@@ -35,11 +35,11 @@ Functions
 * dumps
 * load
 * loads
-
+* readinto
 """
 
 from pyben import api, bencode, classes
-from pyben.api import dump, dumps, load, loads, show
+from pyben.api import dump, dumps, load, loadinto, loads, show
 from pyben.bencode import bendecode, benencode
 from pyben.classes import Bendecoder, Benencoder
 from pyben.version import version
@@ -60,4 +60,5 @@ __all__ = [
     "load",
     "loads",
     "show",
+    "loadinto",
 ]
