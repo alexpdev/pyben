@@ -83,3 +83,8 @@ dist: clean ## builds source and wheel package
 
 install: clean ## install the package to the active Python's site-packages
 	python setup.py install
+
+build: lint test docs clean ## Build project library
+	python setup.py sdist
+	python setup.py bdist_wheel
+	python setup.py bdist_egg

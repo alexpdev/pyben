@@ -237,3 +237,26 @@ def show(inp):
 
     json.dump(meta, sys.stdout, indent=4)
     return True
+
+
+def loadinto(buffer, lst):
+    """
+    Shortcut function to load becoded data from file and store it in list.
+
+    This function is most useful for multithreading purposes.
+
+    Parameters
+    ----------
+    buffer : str
+        string or open file buffer.
+    lst : list
+        variable to store output into
+
+    Returns
+    -------
+    list :
+        the list containing the output.
+    """
+    output = load(buffer)
+    lst.append(output)
+    return lst

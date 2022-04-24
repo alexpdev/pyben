@@ -236,3 +236,11 @@ def test_api_show_bytes(tempmeta):
         meta = binfile.read()
     assert pyben.show(meta)
     context.rmpath(path)
+
+
+def test_loadinto(tempfile):
+    """Test readinto function."""
+    lst = []
+    meta = pyben.load(tempfile)
+    pyben.loadinto(tempfile, lst)
+    assert meta == lst[0]
