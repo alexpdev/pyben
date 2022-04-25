@@ -119,14 +119,14 @@ def load(buffer, to_json=False):
 
     Parameters
     ----------
-    buffer : `str` or `BytesIO`
+    buffer : str
         Open and/or read data from file to be decoded.
-    to_json : `bool`
+    to_json : bool
         convert to json serializable metadata if True else leave it alone.
 
     Returns
     -------
-    `any` :
+    any :
         (commonly `dict`), Decoded contents of file.
 
     """
