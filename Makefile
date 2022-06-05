@@ -56,10 +56,13 @@ lint: ## check style with flake8
 
 test: ## run tests quickly with the default Python
 	pytest tests --cov=tests --cov=pyben --pylint
-
-push: lint docs clean test
-	coverage run --source pyben -m pytest tests
 	coverage xml -o coverage.xml
+
+coverage: ## run and get coverage report
+	coverage xml -o coverage.xml
+	coverage run --source pyben -m pytest tests
+
+push: clean lint docs test coverage
 	git add .
 	git commit -m "$m"
 	git push

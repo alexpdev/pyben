@@ -143,9 +143,7 @@ def load(buffer, to_json=False):
         try:
             with open(path, "rb") as _fd:
                 decoded, _ = bendecode(_fd.read())
-        except FileNotFoundError as err:
-            raise FilePathError(buffer) from err
-        except IsADirectoryError as err:
+        except (FileNotFoundError, IsADirectoryError, PermissionError) as err:
             raise FilePathError(buffer) from err
     if to_json:
         decoded = _to_json(decoded)
@@ -262,7 +260,7 @@ def loadinto(buffer, lst):
     try:
         output = load(buffer)
         lst.append(output)
-    except PermissionError as err:
+    except FilePathError as err:
         lst.append(False)
-        raise PermissionError from err
+        raise FilePathError from err
     return lst

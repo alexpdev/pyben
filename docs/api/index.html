@@ -404,9 +404,7 @@ accepts a path as well as an open fileIO.</p>
         <span class="k">try</span><span class="p">:</span>
             <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">_fd</span><span class="p">:</span>
                 <span class="n">decoded</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">bendecode</span><span class="p">(</span><span class="n">_fd</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
-        <span class="k">except</span> <span class="ne">FileNotFoundError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="n">FilePathError</span><span class="p">(</span><span class="n">buffer</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">err</span>
-        <span class="k">except</span> <span class="ne">IsADirectoryError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+        <span class="k">except</span> <span class="p">(</span><span class="ne">FileNotFoundError</span><span class="p">,</span> <span class="ne">IsADirectoryError</span><span class="p">,</span> <span class="ne">PermissionError</span><span class="p">)</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">FilePathError</span><span class="p">(</span><span class="n">buffer</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">err</span>
     <span class="k">if</span> <span class="n">to_json</span><span class="p">:</span>
         <span class="n">decoded</span> <span class="o">=</span> <span class="n">_to_json</span><span class="p">(</span><span class="n">decoded</span><span class="p">)</span>
@@ -497,9 +495,9 @@ accepts a path as well as an open fileIO.</p>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">output</span> <span class="o">=</span> <span class="n">load</span><span class="p">(</span><span class="n">buffer</span><span class="p">)</span>
         <span class="n">lst</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
-    <span class="k">except</span> <span class="ne">PermissionError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+    <span class="k">except</span> <span class="n">FilePathError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
         <span class="n">lst</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
-        <span class="k">raise</span> <span class="ne">PermissionError</span> <span class="kn">from</span> <span class="nn">err</span>
+        <span class="k">raise</span> <span class="n">FilePathError</span> <span class="kn">from</span> <span class="nn">err</span>
     <span class="k">return</span> <span class="n">lst</span>
 </code></pre></div>
         </details>
@@ -3664,9 +3662,7 @@ accepts a path as well as an open fileIO.</p>
         <span class="k">try</span><span class="p">:</span>
             <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">_fd</span><span class="p">:</span>
                 <span class="n">decoded</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">bendecode</span><span class="p">(</span><span class="n">_fd</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
-        <span class="k">except</span> <span class="ne">FileNotFoundError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="n">FilePathError</span><span class="p">(</span><span class="n">buffer</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">err</span>
-        <span class="k">except</span> <span class="ne">IsADirectoryError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+        <span class="k">except</span> <span class="p">(</span><span class="ne">FileNotFoundError</span><span class="p">,</span> <span class="ne">IsADirectoryError</span><span class="p">,</span> <span class="ne">PermissionError</span><span class="p">)</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">FilePathError</span><span class="p">(</span><span class="n">buffer</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">err</span>
     <span class="k">if</span> <span class="n">to_json</span><span class="p">:</span>
         <span class="n">decoded</span> <span class="o">=</span> <span class="n">_to_json</span><span class="p">(</span><span class="n">decoded</span><span class="p">)</span>
@@ -3757,9 +3753,9 @@ accepts a path as well as an open fileIO.</p>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">output</span> <span class="o">=</span> <span class="n">load</span><span class="p">(</span><span class="n">buffer</span><span class="p">)</span>
         <span class="n">lst</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
-    <span class="k">except</span> <span class="ne">PermissionError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+    <span class="k">except</span> <span class="n">FilePathError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
         <span class="n">lst</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
-        <span class="k">raise</span> <span class="ne">PermissionError</span> <span class="kn">from</span> <span class="nn">err</span>
+        <span class="k">raise</span> <span class="n">FilePathError</span> <span class="kn">from</span> <span class="nn">err</span>
     <span class="k">return</span> <span class="n">lst</span>
 </code></pre></div>
         </details>
@@ -7252,7 +7248,7 @@ does not exist.</p>
 
   <!--
   MkDocs version      : 1.2.3
-  Docs Build Date UTC : 2022-06-05 01:33:34.222245+00:00
+  Docs Build Date UTC : 2022-06-05 02:08:13.718946+00:00
   -->
 </body>
 </html>
