@@ -11,8 +11,6 @@ nav:
   - API: api.md
 
 theme: alabaster
-logo: img/pyben.png
-favicon: img/favicon.png
 
 plugins:
   - search

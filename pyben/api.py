@@ -24,6 +24,8 @@ Functions
 * loads
 * tojson
 
+Examples
+--------
 ## Usage Examples
 
 ### Encode inline code:
@@ -60,7 +62,6 @@ Functions
     ... {'item1': ['item2', 3, [4], {5: 'item6'}]}
     >>> decoded_file == data
     ... True
-
 """
 
 from pyben.bencode import bendecode, benencode
@@ -78,9 +79,8 @@ def dump(obj, buffer):
     ----------
     obj : any
         Data to be encoded.
-    buffer : `str` or `BytesIO`
+    buffer : str or BytesIO
         File of path-like to write the data to.
-
     """
     encoded = benencode(obj)
 
@@ -101,14 +101,13 @@ def dumps(obj):
 
     Parameters
     ----------
-    obj : `any`
+    obj : any
         Object to be encoded.py.
 
     Returns
     -------
-    `bytes` :
+    bytes :
         Encoded data.
-
     """
     return bytes(benencode(obj))
 
@@ -126,9 +125,8 @@ def load(buffer, to_json=False):
 
     Returns
     -------
-    any :
+    dict :
         (commonly `dict`), Decoded contents of file.
-
     """
     if buffer in [None, ""]:
         raise FilePathError(buffer)
@@ -156,16 +154,15 @@ def loads(encoded, to_json=False):
 
     Parameters
     ----------
-    encoded : `bytes`
+    encoded : bytes
         Bencoded data.
-    to_json : `bool`
+    to_json : bool
         Convert to json serializable if true otherwise leave it alone.
 
     Returns
     -------
-    any :
+    dict :
         (any), Decoded data.
-
     """
     decoded, _ = bendecode(encoded)
     if to_json:
@@ -179,12 +176,12 @@ def _to_json(decoded):
 
     Parameters
     ----------
-    decoded : `any`
+    decoded : any
         decoded input data with unknown data type.
 
     Returns
     -------
-    `dict` :
+    dict :
         json serializable dictionary.
     """
     if isinstance(decoded, (bytes, bytearray)):

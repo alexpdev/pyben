@@ -300,8 +300,8 @@ class Benencoder:
 
         Returns
         -------
-        `bytes`: Encoded data.
-
+        bytes:
+            Encoded data.
         """
         return cls(data).encode()
 
