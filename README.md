@@ -1,4 +1,4 @@
-# Pyben v0.3.0
+# Pyben v0.3.2
 
 Small library for encoding/decoding bencode data.
 Supports Unicode pathnames as of PyBen 3.0.
@@ -8,7 +8,7 @@ Pyben Enables fast and easy encoding and decoding of bencoded data.
 
 ---------
 
-![GitHub repo size](https://img.shields.io/github/repo-size/alexpdev/pyben&style=flat-square)
+![GitHub repo size](https://img.shields.io/github/repo-size/alexpdev/pyben?style=flat-square)
 ![GitHub contributors](https://img.shields.io/github/license/alexpdev/pyben)
 ![PyPI - Downloads](https://img.shields.io/pypi/dm/pyben?color=%23CC3919&label=PyPi%20Downloads&logo=PyPi&logoColor=cyan&style=flat-square)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/af86338dcf0a4a899228df470d20e894)](https://www.codacy.com/gh/alexpdev/pyben/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=alexpdev/pyben&amp;utm_campaign=Badge_Grade)
@@ -49,7 +49,7 @@ The API is intentionally designed to mimic Python's json and pickle modules.
     ... True
 
 One key difference is that the 'load' and 'dump' methods accept as arguments,
-string paths or path objects as well as open iobuffer.
+string paths or path-like objects as well as an open BytesIO object.
 
 For Example this:
 
@@ -76,4 +76,4 @@ See docs for more full API.
 
 ## License
 
-This project uses the following license: GNU LGPL v3
+This project uses the following license: Apache 2.0
