@@ -43,6 +43,7 @@ from pyben.api import dump, dumps, load, loadinto, loads, show
 from pyben.bencode import bendecode, benencode
 from pyben.classes import Bendecoder, Benencoder
 from pyben.version import version
+from pyben.exceptions import DecodeError, FilePathError, EncodeError
 
 __version__ = version
 __author__ = "alexpdev"
@@ -61,4 +62,7 @@ __all__ = [
     "loads",
     "show",
     "loadinto",
+    "DecodeError",
+    "FilePathError",
+    "EncodeError"
 ]

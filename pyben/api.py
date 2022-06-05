@@ -257,6 +257,10 @@ def loadinto(buffer, lst):
     list :
         the list containing the output.
     """
-    output = load(buffer)
-    lst.append(output)
+    try:
+        output = load(buffer)
+        lst.append(output)
+    except PermissionError as err:
+        lst.append(False)
+        raise PermissionError from err
     return lst
