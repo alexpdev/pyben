@@ -345,13 +345,13 @@ accepts a path as well as an open fileIO.</p>
   <tbody>
       <tr>
         <td><code>buffer</code></td>
-        <td><code>`str` or `BytesIO`</code></td>
+        <td><code>str</code></td>
         <td><p>Open and/or read data from file to be decoded.</p></td>
         <td><em>required</em></td>
       </tr>
       <tr>
         <td><code>to_json</code></td>
-        <td><code>`bool`</code></td>
+        <td><code>bool</code></td>
         <td><p>convert to json serializable metadata if True else leave it alone.</p></td>
         <td><code>False</code></td>
       </tr>
@@ -380,14 +380,14 @@ accepts a path as well as an open fileIO.</p>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    buffer : `str` or `BytesIO`</span>
+<span class="sd">    buffer : str</span>
 <span class="sd">        Open and/or read data from file to be decoded.</span>
-<span class="sd">    to_json : `bool`</span>
+<span class="sd">    to_json : bool</span>
 <span class="sd">        convert to json serializable metadata if True else leave it alone.</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-<span class="sd">    `any` :</span>
+<span class="sd">    any :</span>
 <span class="sd">        (commonly `dict`), Decoded contents of file.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -492,8 +492,12 @@ accepts a path as well as an open fileIO.</p>
 <span class="sd">    list :</span>
 <span class="sd">        the list containing the output.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">output</span> <span class="o">=</span> <span class="n">load</span><span class="p">(</span><span class="n">buffer</span><span class="p">)</span>
-    <span class="n">lst</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="n">load</span><span class="p">(</span><span class="n">buffer</span><span class="p">)</span>
+        <span class="n">lst</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">PermissionError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+        <span class="n">lst</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">PermissionError</span> <span class="kn">from</span> <span class="nn">err</span>
     <span class="k">return</span> <span class="n">lst</span>
 </code></pre></div>
         </details>
@@ -3330,7 +3334,7 @@ does not exist.</p>
 <span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Shortuct function to encoding given obj to bencode encoding.</span></li>
 
 <li class="function"><code class="mkapi-item-name">load</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">buffer</code>, <code class="mkapi-object-signature">to_json</code><code class="mkapi-object-parenthesis">)</code>
-<span class="mkapi-item-type">(`any` :)</span>
+<span class="mkapi-item-type">(any :)</span>
 <span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Load bencoded data from a file of path object and decodes it.</span></li>
 
 <li class="function"><code class="mkapi-item-name">loadinto</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">buffer</code>, <code class="mkapi-object-signature">lst</code><code class="mkapi-object-parenthesis">)</code>
@@ -3599,13 +3603,13 @@ accepts a path as well as an open fileIO.</p>
   <tbody>
       <tr>
         <td><code>buffer</code></td>
-        <td><code>`str` or `BytesIO`</code></td>
+        <td><code>str</code></td>
         <td><p>Open and/or read data from file to be decoded.</p></td>
         <td><em>required</em></td>
       </tr>
       <tr>
         <td><code>to_json</code></td>
-        <td><code>`bool`</code></td>
+        <td><code>bool</code></td>
         <td><p>convert to json serializable metadata if True else leave it alone.</p></td>
         <td><code>False</code></td>
       </tr>
@@ -3634,14 +3638,14 @@ accepts a path as well as an open fileIO.</p>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    buffer : `str` or `BytesIO`</span>
+<span class="sd">    buffer : str</span>
 <span class="sd">        Open and/or read data from file to be decoded.</span>
-<span class="sd">    to_json : `bool`</span>
+<span class="sd">    to_json : bool</span>
 <span class="sd">        convert to json serializable metadata if True else leave it alone.</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-<span class="sd">    `any` :</span>
+<span class="sd">    any :</span>
 <span class="sd">        (commonly `dict`), Decoded contents of file.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -3746,8 +3750,12 @@ accepts a path as well as an open fileIO.</p>
 <span class="sd">    list :</span>
 <span class="sd">        the list containing the output.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">output</span> <span class="o">=</span> <span class="n">load</span><span class="p">(</span><span class="n">buffer</span><span class="p">)</span>
-    <span class="n">lst</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="n">load</span><span class="p">(</span><span class="n">buffer</span><span class="p">)</span>
+        <span class="n">lst</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">PermissionError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+        <span class="n">lst</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">PermissionError</span> <span class="kn">from</span> <span class="nn">err</span>
     <span class="k">return</span> <span class="n">lst</span>
 </code></pre></div>
         </details>
@@ -7240,7 +7248,7 @@ does not exist.</p>
 
   <!--
   MkDocs version      : 1.2.3
-  Docs Build Date UTC : 2022-04-24 00:10:52.574919+00:00
+  Docs Build Date UTC : 2022-06-05 01:13:32.380622+00:00
   -->
 </body>
 </html>

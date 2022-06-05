@@ -245,6 +245,7 @@ def test_loadinto(tempfile):
     pyben.loadinto(tempfile, lst)
     assert meta == lst[0]
 
+
 def test_loadinto_exception(tempfile):
     """Test readinto function exception."""
     try:
