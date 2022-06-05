@@ -29,23 +29,22 @@ help:
 clean: clean-build ## remove all build, test, coverage and Python artifacts
 
 clean-build: ## remove build artifacts
-	rm -fr build/
-	rm -fr dist/
-	rm -fr .eggs/
-	rm -fr **/.pytest_cache
-	rm -fr *.egg-info
-	rm -fr *.egg
-	rm -f **.pyc
-	rm -f **.pyo
-	rm -f **~
-	rm -fr **/__pycache__
-	rm -fr .tox/
-	rm -f .coverage
-	rm -fr htmlcov/
-	rm -fr .pytest_cache
-	rm -f corbertura.xml
-	rm -f coverage.xml
-	rm -fr .codacy-coverage
+	rm -fvr build/
+	rm -fvr dist/
+	rm -fvr .eggs/
+	rm -fvr **/.pytest_cache
+	rm -fvr *.egg-info
+	rm -fvr *.egg
+	rm -fv **.pyc
+	rm -fv **.pyo
+	rm -fv **~
+	rm -fvr **/__pycache__
+	rm -fvr .tox/
+	rm -fv .coverage
+	rm -fvr htmlcov/
+	rm -fvr .pytest_cache
+	rm -fv corbertura.xml
+	rm -fv coverage.xml
 
 lint: ## check style with flake8
 	black pyben
@@ -59,13 +58,11 @@ test: ## run tests quickly with the default Python
 	pytest tests --cov=tests --cov=pyben --pylint
 
 push: lint docs clean test
+	coverage run --source pyben -m pytest tests
+	coverage xml -o coverage.xml
 	git add .
 	git commit -m "$m"
 	git push
-	coverage run --source pyben -m pytest tests
-	coverage xml -o coverage.xml
-	bash codacy.sh report -r coverage.xml
-	rm coverage.xml
 
 docs: ## generate Sphinx HTML documentation, including API docs
 	rm -rf docs

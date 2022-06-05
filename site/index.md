@@ -75,4 +75,4 @@ See docs for more full API.
 
 ## License
 
-This project uses the following license: GNU LGPL v3
+This project uses the following license: Apache 2.0
