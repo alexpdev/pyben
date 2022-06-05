@@ -24,9 +24,8 @@ class DecodeError(Exception):
 
     Parameters
     ----------
-    val : any
+    val : None
         Value that cause the exception
-
     """
 
     def __init__(self, val=None):
@@ -45,9 +44,8 @@ class EncodeError(Exception):
 
     Parameters
     ----------
-    val : any
+    val : None
         Value that cause the exception
-
     """
 
     def __init__(self, val=None):
@@ -64,9 +62,8 @@ class FilePathError(Exception):
 
     Parameters
     ----------
-    val : any
+    obj : None
         Value that cause the exception
-
     """
 
     def __init__(self, obj=None):

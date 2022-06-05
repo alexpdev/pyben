@@ -228,6 +228,15 @@ def test_api_show_str():
     assert pyben.show(meta)
 
 
+def test_api_with_directory():
+    """Test load as input."""
+    path = os.path.dirname(__file__)
+    try:
+        pyben.load(path)
+    except pyben.FilePathError:
+        assert True
+
+
 def test_api_show_bytes(tempmeta):
     """Test show function with bytes or bytearray as input."""
     meta, path = tempmeta
@@ -244,3 +253,11 @@ def test_loadinto(tempfile):
     meta = pyben.load(tempfile)
     pyben.loadinto(tempfile, lst)
     assert meta == lst[0]
+
+
+def test_loadinto_exception(tempfile):
+    """Test readinto function exception."""
+    try:
+        pyben.loadinto(os.path.dirname(tempfile), [])
+    except pyben.FilePathError:
+        assert True
