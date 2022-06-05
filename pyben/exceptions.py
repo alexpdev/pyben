@@ -62,7 +62,7 @@ class FilePathError(Exception):
 
     Parameters
     ----------
-    val : None
+    obj : None
         Value that cause the exception
     """
 
