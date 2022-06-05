@@ -404,8 +404,10 @@ accepts a path as well as an open fileIO.</p>
         <span class="k">try</span><span class="p">:</span>
             <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">_fd</span><span class="p">:</span>
                 <span class="n">decoded</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">bendecode</span><span class="p">(</span><span class="n">_fd</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
-        <span class="k">except</span> <span class="ne">FileNotFoundError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="n">FilePathError</span><span class="p">(</span><span class="n">buffer</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">e</span>
+        <span class="k">except</span> <span class="ne">FileNotFoundError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">FilePathError</span><span class="p">(</span><span class="n">buffer</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">err</span>
+        <span class="k">except</span> <span class="ne">IsADirectoryError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">FilePathError</span><span class="p">(</span><span class="n">buffer</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">err</span>
     <span class="k">if</span> <span class="n">to_json</span><span class="p">:</span>
         <span class="n">decoded</span> <span class="o">=</span> <span class="n">_to_json</span><span class="p">(</span><span class="n">decoded</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">decoded</span>
@@ -3662,8 +3664,10 @@ accepts a path as well as an open fileIO.</p>
         <span class="k">try</span><span class="p">:</span>
             <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">_fd</span><span class="p">:</span>
                 <span class="n">decoded</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">bendecode</span><span class="p">(</span><span class="n">_fd</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
-        <span class="k">except</span> <span class="ne">FileNotFoundError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="n">FilePathError</span><span class="p">(</span><span class="n">buffer</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">e</span>
+        <span class="k">except</span> <span class="ne">FileNotFoundError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">FilePathError</span><span class="p">(</span><span class="n">buffer</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">err</span>
+        <span class="k">except</span> <span class="ne">IsADirectoryError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">FilePathError</span><span class="p">(</span><span class="n">buffer</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">err</span>
     <span class="k">if</span> <span class="n">to_json</span><span class="p">:</span>
         <span class="n">decoded</span> <span class="o">=</span> <span class="n">_to_json</span><span class="p">(</span><span class="n">decoded</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">decoded</span>
@@ -7248,7 +7252,7 @@ does not exist.</p>
 
   <!--
   MkDocs version      : 1.2.3
-  Docs Build Date UTC : 2022-06-05 01:28:28.583052+00:00
+  Docs Build Date UTC : 2022-06-05 01:33:34.222245+00:00
   -->
 </body>
 </html>

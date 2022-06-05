@@ -143,8 +143,10 @@ def load(buffer, to_json=False):
         try:
             with open(path, "rb") as _fd:
                 decoded, _ = bendecode(_fd.read())
-        except FileNotFoundError as e:
-            raise FilePathError(buffer) from e
+        except FileNotFoundError as err:
+            raise FilePathError(buffer) from err
+        except IsADirectoryError as err:
+            raise FilePathError(buffer) from err
     if to_json:
         decoded = _to_json(decoded)
     return decoded
