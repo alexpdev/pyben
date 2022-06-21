@@ -3262,100 +3262,6 @@ does not exist.</p>
 
   </div>
 
-<div class="mkapi-node" id="pyben.api">
-<div class='mkapi-object-container'>
-  <div class="mkapi-object module code top">
-    <div class="mkapi-object-kind module top">module</div>
-    <div class="mkapi-object-body module top"><code class="mkapi-object-prefix">pyben.</code><code class="mkapi-object-name">api</code></div>
-  </div>
-  
-</div>
-<div class="mkapi-docstring">
-<div class="mkapi-section">
-      <div class="mkapi-section-body"><h1 id="bencode-utility-library">Bencode utility library.</h1>
-<p>Features simple API inspired by json and pickle modules in stdlib.</p>
-<h2 id="functions">Functions</h2>
-<ul>
-<li>dump</li>
-<li>dumps</li>
-<li>load</li>
-<li>loads</li>
-<li>tojson</li>
-</ul></div>
-    </div>
-  <div class="mkapi-section examples">
-      <div class="mkapi-section-name examples">
-          <span class="mkapi-section-name-body examples">Examples</span> 
-        </div>
-      <div class="mkapi-section-body examples"><h2 id="usage-examples">Usage Examples</h2>
-<h3 id="encode-inline-code">Encode inline code:</h3>
-<pre><code class="language-python">&gt;&gt;&gt; import os
-&gt;&gt;&gt; import pyben
-&gt;&gt;&gt; data = {&quot;item1&quot;: [&quot;item2&quot;, 3, [4], {5: &quot;item6&quot;}]}
-&gt;&gt;&gt; encoded = pyben.dumps(data)
-&gt;&gt;&gt; encoded
-... b'd5:item1l5:item2i3eli4eedi5e5:item6eee'
-</code></pre>
-<h3 id="encode-to-file">Encode to file:</h3>
-<pre><code class="language-python">&gt;&gt;&gt; fd = &quot;path/to/file&quot;
-&gt;&gt;&gt; pyben.dump(data, fd)
-&gt;&gt;&gt; os.path.exists(fd)
-... True
-&gt;&gt;&gt; encoded_file = open(fd, &quot;rb&quot;).read()
-&gt;&gt;&gt; encoded_file == encoded
-... True
-</code></pre>
-<h3 id="decode-inline-code">Decode inline code:</h3>
-<pre><code class="language-python">&gt;&gt;&gt; decoded = pybem.loads(encoded)
-&gt;&gt;&gt; decoded
-... {'item1': ['item2', 3, [4], {5: 'item6'}]}
-&gt;&gt;&gt; decoded == data
-... True
-</code></pre>
-<h3 id="decode-from-file">Decode from file:</h3>
-<pre><code class="language-python">&gt;&gt;&gt; decoded_file = pyben.load(fd)
-&gt;&gt;&gt; decoded_file
-... {'item1': ['item2', 3, [4], {5: 'item6'}]}
-&gt;&gt;&gt; decoded_file == data
-... True
-</code></pre></div>
-    </div>
-  <div class="mkapi-section functions">
-      <div class="mkapi-section-name functions">
-          <span class="mkapi-section-name-body functions">Functions</span> 
-        </div>
-      <div class="mkapi-section-body functions"><ul class="mkapi-items">
-<li class="function"><code class="mkapi-item-name">dump</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">obj</code>, <code class="mkapi-object-signature">buffer</code><code class="mkapi-object-parenthesis">)</code>
-
-<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Shortcut function for bencode encode data and write to file.</span></li>
-
-<li class="function"><code class="mkapi-item-name">dumps</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">obj</code><code class="mkapi-object-parenthesis">)</code>
-<span class="mkapi-item-type">(bytes :)</span>
-<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Shortuct function to encoding given obj to bencode encoding.</span></li>
-
-<li class="function"><code class="mkapi-item-name">load</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">buffer</code>, <code class="mkapi-object-signature">to_json</code><code class="mkapi-object-parenthesis">)</code>
-<span class="mkapi-item-type">(dict :)</span>
-<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Load bencoded data from a file of path object and decodes it.</span></li>
-
-<li class="function"><code class="mkapi-item-name">loadinto</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">buffer</code>, <code class="mkapi-object-signature">lst</code><code class="mkapi-object-parenthesis">)</code>
-<span class="mkapi-item-type">(list :)</span>
-<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Shortcut function to load becoded data from file and store it in list.</span></li>
-
-<li class="function"><code class="mkapi-item-name">loads</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">encoded</code>, <code class="mkapi-object-signature">to_json</code><code class="mkapi-object-parenthesis">)</code>
-<span class="mkapi-item-type">(dict :)</span>
-<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Shortcut function for decoding encoded data.</span></li>
-
-<li class="function"><code class="mkapi-item-name">show</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">inp</code><code class="mkapi-object-parenthesis">)</code>
-<span class="mkapi-item-type">(bool :)</span>
-<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Ouptut readable metadata.</span></li>
-
-
-</ul></div>
-    </div>
-  </div>
-
-</div>
-
 
 
   <div class="doc doc-object doc-module">
@@ -3947,45 +3853,6 @@ accepts a path as well as an open fileIO.</p>
     </div>
 
   </div>
-
-<div class="mkapi-node" id="pyben.classes">
-<div class='mkapi-object-container'>
-  <div class="mkapi-object module code top">
-    <div class="mkapi-object-kind module top">module</div>
-    <div class="mkapi-object-body module top"><code class="mkapi-object-prefix">pyben.</code><code class="mkapi-object-name">classes</code></div>
-  </div>
-  
-</div>
-<div class="mkapi-docstring">
-<div class="mkapi-section">
-      <div class="mkapi-section-body"><p>OOP implementation of bencode decoders and encoders.</p>
-<p>This style is not recommended as it can get bulky. The json-like api
-from the bencode.py module is much easier to use.</p>
-<h2 id="classes">Classes</h2>
-<ul>
-<li>Bendecoder</li>
-<li>Benencoder</li>
-</ul></div>
-    </div>
-  <div class="mkapi-section classes">
-      <div class="mkapi-section-name classes">
-          <span class="mkapi-section-name-body classes">Classes</span> 
-        </div>
-      <div class="mkapi-section-body classes"><ul class="mkapi-items">
-<li class="class"><code class="mkapi-item-name">Bendecoder</code>
-
-<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Decode class contains all decode methods.</span></li>
-
-<li class="class"><code class="mkapi-item-name">Benencoder</code>
-
-<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Encoder for bencode encoding used for Bittorrent meta-files.</span></li>
-
-
-</ul></div>
-    </div>
-  </div>
-
-</div>
 
 
 
@@ -5146,92 +5013,6 @@ Benencoder        </code>
 
   </div>
 
-<div class="mkapi-node" id="pyben.bencode">
-<div class='mkapi-object-container'>
-  <div class="mkapi-object module code top">
-    <div class="mkapi-object-kind module top">module</div>
-    <div class="mkapi-object-body module top"><code class="mkapi-object-prefix">pyben.</code><code class="mkapi-object-name">bencode</code></div>
-  </div>
-  
-</div>
-<div class="mkapi-docstring">
-<div class="mkapi-section">
-      <div class="mkapi-section-body"><p>API helper functions for decoding and encoding data with bencode format.</p>
-<h2 id="functions_1">Functions</h2>
-<ul>
-<li>bendecode</li>
-<li>bendecode_dict</li>
-<li>bendecode_int</li>
-<li>bendecode_list</li>
-<li>
-<p>bendecode_str</p>
-</li>
-<li>
-<p>benencode</p>
-</li>
-<li>bencode_bytes</li>
-<li>bencode_dict</li>
-<li>bencode_int</li>
-<li>bencode_list</li>
-<li>bencode_str</li>
-</ul></div>
-    </div>
-  <div class="mkapi-section functions">
-      <div class="mkapi-section-name functions">
-          <span class="mkapi-section-name-body functions">Functions</span> 
-        </div>
-      <div class="mkapi-section-body functions"><ul class="mkapi-items">
-<li class="function"><code class="mkapi-item-name">bencode_bytes</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">bits</code><code class="mkapi-object-parenthesis">)</code>
-<span class="mkapi-item-type">(`bytes`:)</span>
-<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Encode bytes.</span></li>
-
-<li class="function"><code class="mkapi-item-name">bencode_dict</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">dic</code><code class="mkapi-object-parenthesis">)</code>
-<span class="mkapi-item-type">(`bytes` :)</span>
-<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Encode dictionary and contents.</span></li>
-
-<li class="function"><code class="mkapi-item-name">bencode_int</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">i</code><code class="mkapi-object-parenthesis">)</code>
-<span class="mkapi-item-type">(`bytes` :)</span>
-<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Encode integer type.</span></li>
-
-<li class="function"><code class="mkapi-item-name">bencode_list</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">elems</code><code class="mkapi-object-parenthesis">)</code>
-<span class="mkapi-item-type">(`bytes` :)</span>
-<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Encode list and contents.</span></li>
-
-<li class="function"><code class="mkapi-item-name">bencode_str</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">txt</code><code class="mkapi-object-parenthesis">)</code>
-<span class="mkapi-item-type">(`bytes` :)</span>
-<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Encode string literals.</span></li>
-
-<li class="function"><code class="mkapi-item-name">bendecode</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">bits</code><code class="mkapi-object-parenthesis">)</code>
-<span class="mkapi-item-type">(any :)</span>
-<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Decode bencoded data.</span></li>
-
-<li class="function"><code class="mkapi-item-name">bendecode_dict</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">bits</code><code class="mkapi-object-parenthesis">)</code>
-<span class="mkapi-item-type">(`dict`)</span>
-<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Decode dictionary and it's contents.</span></li>
-
-<li class="function"><code class="mkapi-item-name">bendecode_int</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">bits</code><code class="mkapi-object-parenthesis">)</code>
-<span class="mkapi-item-type">(`int` :)</span>
-<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Decode digits.</span></li>
-
-<li class="function"><code class="mkapi-item-name">bendecode_list</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">bits</code><code class="mkapi-object-parenthesis">)</code>
-<span class="mkapi-item-type">(`list` :)</span>
-<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Decode list and list contents.</span></li>
-
-<li class="function"><code class="mkapi-item-name">bendecode_str</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">units</code><code class="mkapi-object-parenthesis">)</code>
-<span class="mkapi-item-type">(`str` :)</span>
-<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Bendecode string types.</span></li>
-
-<li class="function"><code class="mkapi-item-name">benencode</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">val</code><code class="mkapi-object-parenthesis">)</code>
-<span class="mkapi-item-type">(`bytes` :)</span>
-<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Encode data with bencoding.</span></li>
-
-
-</ul></div>
-    </div>
-  </div>
-
-</div>
-
 
 
   <div class="doc doc-object doc-module">
@@ -6219,42 +6000,6 @@ Benencoder        </code>
 
   </div>
 
-<div class="mkapi-node" id="pyben.exceptions">
-<div class='mkapi-object-container'>
-  <div class="mkapi-object module code top">
-    <div class="mkapi-object-kind module top">module</div>
-    <div class="mkapi-object-body module top"><code class="mkapi-object-prefix">pyben.</code><code class="mkapi-object-name">exceptions</code></div>
-  </div>
-  
-</div>
-<div class="mkapi-docstring">
-<div class="mkapi-section">
-      <div class="mkapi-section-body"><p>Exceptions used throughout the PyBen Package/Library.</p></div>
-    </div>
-  <div class="mkapi-section classes">
-      <div class="mkapi-section-name classes">
-          <span class="mkapi-section-name-body classes">Classes</span> 
-        </div>
-      <div class="mkapi-section-body classes"><ul class="mkapi-items">
-<li class="class"><code class="mkapi-item-name">DecodeError</code>
-
-<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Error occured during decode process.</span></li>
-
-<li class="class"><code class="mkapi-item-name">EncodeError</code>
-
-<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Error occured during encoding process.</span></li>
-
-<li class="class"><code class="mkapi-item-name">FilePathError</code>
-
-<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Bad path error.</span></li>
-
-
-</ul></div>
-    </div>
-  </div>
-
-</div>
-
 
 
   <div class="doc doc-object doc-module">
@@ -6916,40 +6661,6 @@ does not exist.</p>
     
   </ul>
     
-  </ul>
-  
-    <ul>
-    
-      <li><a href="#functions">Functions</a></li>
-      <ul>
-    
-  </ul>
-    
-      <li><a href="#usage-examples">Usage Examples</a></li>
-      <ul>
-    
-      <li><a href="#encode-inline-code">Encode inline code:</a></li>
-      <ul>
-    
-  </ul>
-    
-      <li><a href="#encode-to-file">Encode to file:</a></li>
-      <ul>
-    
-  </ul>
-    
-      <li><a href="#decode-inline-code">Decode inline code:</a></li>
-      <ul>
-    
-  </ul>
-    
-      <li><a href="#decode-from-file">Decode from file:</a></li>
-      <ul>
-    
-  </ul>
-    
-  </ul>
-    
       <li><a href="#pyben.api">api</a></li>
       <ul>
     
@@ -7020,11 +6731,6 @@ does not exist.</p>
     
   </ul>
     
-      <li><a href="#classes">Classes</a></li>
-      <ul>
-    
-  </ul>
-    
       <li><a href="#pyben.classes">classes</a></li>
       <ul>
     
@@ -7082,11 +6788,6 @@ does not exist.</p>
   </ul>
     
   </ul>
-    
-  </ul>
-    
-      <li><a href="#functions_1">Functions</a></li>
-      <ul>
     
   </ul>
     
@@ -7243,7 +6944,7 @@ does not exist.</p>
 
   <!--
   MkDocs version      : 1.2.3
-  Docs Build Date UTC : 2022-06-05 02:20:38.582540+00:00
+  Docs Build Date UTC : 2022-06-21 05:22:15.976227+00:00
   -->
 </body>
 </html>
