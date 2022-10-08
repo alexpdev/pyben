@@ -35,25 +35,24 @@ import re
 from pyben.exceptions import DecodeError, EncodeError
 
 
-def bendecode(bits):
+def bendecode(bits: bytes) -> tuple:
     """
     Decode bencoded data.
 
     Parameters
     ----------
-    bits : `bytes`
+    bits : bytes
         Bencode encoded data.
 
     Raises
     ------
-    `DecodeError` :
+    DecodeError
         Malformed data.
 
     Returns
     -------
-    any :
+    tuple
         Bencode decoded data.
-
     """
     if bits.startswith(b"i"):
         match, feed = bendecode_int(bits)
@@ -74,18 +73,18 @@ def bendecode(bits):
     raise DecodeError(bits)
 
 
-def bendecode_str(units):
+def bendecode_str(units: bytes) -> str:
     """
     Bendecode string types.
 
     Parameters
     ----------
-    units : `bytes`
+    units : bytes
         Bencoded string.
 
     Returns
     -------
-    `str` :
+    str
         Decoded data string.
 
     """
@@ -103,39 +102,37 @@ def bendecode_str(units):
     return text, end
 
 
-def bendecode_int(bits):
+def bendecode_int(bits: bytes) -> int:
     """
     Decode digits.
 
     Parameters
     ----------
-    bits : `bytes`
+    bits : bytes
         Bencoded intiger bytes
 
     Returns
     -------
-    `int` :
+    int :
         Decoded int value.
-
     """
     obj = re.match(rb"i(-?\d+)e", bits)
     return int(obj.group(1)), obj.end()
 
 
-def bendecode_dict(bits):
+def bendecode_dict(bits: bytes) -> tuple:
     """
     Decode dictionary and it's contents.
 
     Parameters
     ----------
-    bits : `bytes`
+    bits : bytes
         Bencoded dictionary.
 
     Returns
     -------
-    `dict`
+    tuple
         Decoded dictionary and contents
-
     """
     dic, feed = {}, 1
 
@@ -150,20 +147,19 @@ def bendecode_dict(bits):
     return dic, feed
 
 
-def bendecode_list(bits):
+def bendecode_list(bits: bytes) -> tuple:
     """
     Decode list and list contents.
 
     Parameters
     ----------
-    bits : `bytes`
+    bits : bytes
         Bencoded list.
 
     Returns
     -------
-    `list` :
+    tuple
         Bencode decoded list and contents.
-
     """
     lst, feed = [], 1
 
@@ -176,7 +172,7 @@ def bendecode_list(bits):
     return lst, feed
 
 
-def benencode(val):
+def benencode(val) -> bytes:
     """
     Encode data with bencoding.
 
@@ -187,14 +183,13 @@ def benencode(val):
 
     Raises
     ------
-    `EncodeError` :
+    EncodeError
         Cannot interpret data.
 
     Returns
     -------
-    `bytes` :
+    bytes
         Bencoded data.
-
     """
     if isinstance(val, str):
         return bencode_str(val)
@@ -217,77 +212,73 @@ def benencode(val):
     raise EncodeError(val)
 
 
-def bencode_bytes(bits):
+def bencode_bytes(bits: bytes) -> bytes:
     """
     Encode bytes.
 
     Parameters
     ----------
-    bits : `bytes`
+    bits : bytes
         Bytes treated as a byte-string literal.
 
     Returns
     -------
-    `bytes`:
+    bytes
         Bencode encoded byte string literal.
-
     """
     size = str(len(bits)) + ":"
     return size.encode("utf-8") + bits
 
 
-def bencode_str(txt):
+def bencode_str(txt: str) -> bytes:
     """
     Encode string literals.
 
     Parameters
     ----------
-    txt : `str`
+    txt : str
         Any text string.
 
     Returns
     -------
-    `bytes` :
+    bytes
         Bencoded string literal.
-
     """
     text = txt.encode("utf-8")
     size = str(len(text)) + ":"
     return size.encode("utf-8") + text
 
 
-def bencode_int(i):
+def bencode_int(i: int) -> bytes:
     """
     Encode integer type.
 
     Parameters
     ----------
-    i : `int`
+    i : int
         Number that needs encoding.
 
     Returns
     -------
-    `bytes` :
+    bytes
         Bencoded Integer.
-
     """
     return ("i" + str(i) + "e").encode("utf-8")
 
 
-def bencode_list(elems):
+def bencode_list(elems: list) -> bytes:
     """
     Encode list and contents.
 
     Parameters
     ----------
-    elems : `list`
+    elems : list
         List of items for bencoding.
 
     Returns
     -------
-    `bytes` :
+    bytes
         Bencoded list and contents.
-
     """
     arr = bytearray("l", encoding="utf-8")
 
@@ -299,18 +290,18 @@ def bencode_list(elems):
     return arr
 
 
-def bencode_dict(dic):
+def bencode_dict(dic: dict) -> bytes:
     """
     Encode dictionary and contents.
 
     Parameters
     ----------
-    dic : `dict`
+    dic : dict
         Any dictionary containing items that can be bencoded.
 
     Returns
     -------
-    `bytes` :
+    bytes :
         Bencoded key, value pairs of data.
     """
     result = b"d"
