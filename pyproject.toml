@@ -1,3 +1,35 @@
+[build-system]
+requires = ["setuptools>=40.8.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pyben"
+authors = [{name = "alexpdev", email = "alexpdev@pm.me"}]
+description = "Terminal based command line tool for creating Bittorrent files."
+license = {file = "LICENSE"}
+version = "0.3.3"
+readme = "README.md"
+requires-python = ">=3.5"
+keywords = ["Bittorrent", "bencode", "library"]
+classifiers = [
+    "Environment :: Console",
+    "Development Status :: 4 - Beta",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.6",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3 :: Only",
+    "Intended Audience :: End Users/Desktop",
+    "Intended Audience :: Developers",
+    "Topic :: Utilities",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "License :: OSI Approved :: Apache Software License",
+]
+
 [tool.bandit]
 skips = ["B101"]
 
@@ -19,5 +51,38 @@ testpaths = [
 console_output_style = "progress"
 addopts = "--maxfail=5"
 
-[build-system]
-requires = ["setuptools>=40.8.0", "wheel"]
+[tool.pylint. 'MESSAGES CONTROL']
+disable = [
+    "R1729",
+    "W0108",
+    "W1514",
+    "C0415",
+    "redefined-outer-name",
+    "attribute-defined-outside-init",
+    "invalid-name",
+    "not-callable",
+    "consider-using-with",
+    "implicit-str-concat",
+    "protected-access"
+]
+
+[tool.pylint. 'VARIABLES']
+callbacks = ["cb_", "_cb", "hook_"]
+
+[tool.pylint. 'FORMAT']
+max-line-length = 80
+single-line-if-stmt = true
+
+[tool.pylint.'SIMILARITIES']
+ignore-comments = true
+ignore-docstrings=true
+ignore-imports=true
+
+[tool.pylint. 'DESIGN']
+max-args=15
+min-public-methods=0
+max-attributes=20
+max-statements=75
+max-branches=20
+min-similarity-lines=4
+max-locals=25

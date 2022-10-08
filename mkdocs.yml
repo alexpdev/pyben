@@ -1,8 +1,9 @@
-site_name: My Docs
-site_url: https://alexpdev.github.io/pyben/
-repo_url: https://github.com/alexpdev/pyben/
+site_name: "PyBen Docs"
+site_url: "https://alexpdev.github.io/pyben/"
+repo_url: "https://github.com/alexpdev/pyben/"
 site_description: "Python Bencode Library API."
-copyright: alexpdev 2021
+copyright: "alexpdev 2022"
+repo_name: "alexpdev/pyben"
 
 nav:
   - Home: index.md
@@ -19,10 +20,10 @@ plugins:
   - mkdocstrings:
       handlers:
         python:
-          selection:
+          options:
             docstring_style: numpy
-          rendering:
             show_root_heading: yes
+
 
 docs_dir: site/
 site_dir: docs/

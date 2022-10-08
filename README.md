@@ -1,4 +1,4 @@
-# Pyben v0.3.2
+# Pyben v0.3.3
 
 Small library for encoding/decoding bencode data.
 Supports Unicode pathnames as of PyBen 3.0.
@@ -77,3 +77,8 @@ See docs for more full API.
 ## License
 
 This project uses the following license: Apache 2.0
+
+
+## Documentation
+
+Github Pages: https://alexpdev.github.io/pyben
