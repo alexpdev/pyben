@@ -30,7 +30,7 @@ class DecodeError(Exception):
 
     def __init__(self, val=None):
         """Construct Exception DecodeError."""
-        msg = f"Decoder is unable to interpret {type(val)} type = {str(val)}"
+        msg = f"Unable to decode invalid {type(val)} type = {str(val)}"
         super().__init__(msg)
 
 

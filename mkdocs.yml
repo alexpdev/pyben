@@ -7,7 +7,7 @@ copyright: alexpdev 2021
 nav:
   - Home: index.md
   - Examples: examples.md
-  - License: LICENSE.md
+  - License: LICENSE
   - API: api.md
 
 theme: alabaster

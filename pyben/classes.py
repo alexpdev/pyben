@@ -32,39 +32,37 @@ from pyben.exceptions import DecodeError, EncodeError
 class Bendecoder:
     """Decode class contains all decode methods."""
 
-    def __init__(self, data=None):
+    def __init__(self, data: bytes = None):
         """
         Initialize instance with optional pre compiled data.
 
         Parameters
         ----------
-        data : `bytes` or `bytearray`
+        data : bytes
             (Optional) (default=None) Target data for decoding.
-
         """
         self.data = data
         self.decoded = None
 
     @classmethod
-    def load(cls, item):
+    def load(cls, item: str) -> dict:
         """
         Extract contents from path/path-like and return Decoded data.
 
         Parameters
         ----------
-        item : `str` or `path-like`
+        item : str
             Path containing bencoded data.
 
         Raises
         ------
-        `FilePathError`:
+        FilePathError
             Incorrect path or IOBuffer doesnt exist.
 
         Returns
         -------
-        `any`
+        any
             Decoded contents of file, Usually a dictionary.
-
         """
         decoder = cls()
         if hasattr(item, "read"):
@@ -76,57 +74,54 @@ class Bendecoder:
         return decoder.decode(data)
 
     @classmethod
-    def loads(cls, data):
+    def loads(cls, data: bytes) -> dict:
         """
         Shortcut to Decode raw bencoded data.
 
         Parameters
         ----------
-        data : ``bytes`` or `bytearray`
-            Bendencoded `bytes`.
+        data : bytes
+            Bendencoded bytes
 
         Returns
         -------
-        `any`
+        any
             Decoded data usually a dictionary.
-
         """
         decoder = cls()
         return decoder.decode(data)
 
-    def decode(self, data=None):
+    def decode(self, data: bytes = None) -> dict:
         """
         Decode bencoded data.
 
         Parameters
         ----------
-        data : ``bytes``
+        data : bytes
             bencoded data for decoding.
 
         Returns
         -------
-        `any` :
+        any
             the decoded data.
-
         """
         data = self.data if not data else data
         self.decoded, _ = self._decode(bits=data)
         return self.decoded
 
-    def _decode(self, bits=None):
+    def _decode(self, bits: bytes = None) -> dict:
         """
         Decode bencoded data.
 
         Parameters
         ----------
-        bits : ``bytes``
+        bits : bytes
             Bencoded data for decoding.
 
         Returns
         -------
-        `any` :
+        dict
             The decoded data.
-
         """
         if bits.startswith(b"i"):
             match, feed = self._decode_int(bits)
@@ -149,18 +144,18 @@ class Bendecoder:
 
         raise DecodeError(bits)
 
-    def _decode_dict(self, bits):
+    def _decode_dict(self, bits: bytes) -> dict:
         """
         Decode keys and values in dictionary.
 
         Parameters
         ----------
-        bits : ``bytes`` or `bytearray`
+        bits : bytes
             `Bytes` of data for decoding.
 
         Returns
         -------
-        `dict` :
+        dict
             Dictionary and contents.
 
         """
@@ -174,20 +169,19 @@ class Bendecoder:
         feed += 1
         return dct, feed
 
-    def _decode_list(self, data):
+    def _decode_list(self, data: bytes) -> list:
         """
         Decode list and its contents.
 
         Parameters
         ----------
-        data : `bytearray`
+        data : bytes
             Bencoded data.
 
         Returns
         -------
-        `list`:
+        list
             decoded list and contents
-
         """
         seq, feed = [], 1
         while not data[feed:].startswith(b"e"):
@@ -198,20 +192,19 @@ class Bendecoder:
         return seq, feed
 
     @staticmethod
-    def _decode_str(bits):
+    def _decode_str(bits: bytes) -> str:
         """
         Decode string.
 
         Parameters
         ----------
-        bits : ``bytes`` or `bytearray`
+        bits : bytes
             Bencoded string.
 
         Returns
         -------
-        `str`:
+        str
             Decoded string.
-
         """
         match = re.match(rb"(\d+):", bits)
         word_size, start = int(match.groups()[0]), match.span()[1]
@@ -227,20 +220,19 @@ class Bendecoder:
         return word, finish
 
     @staticmethod
-    def _decode_int(bits):
+    def _decode_int(bits: bytes) -> int:
         """
         Decode integer type.
 
         Parameters
         ----------
-        bits : ``bytes`` or `bytearray`
+        bits : bytes
             Bencoded intiger.
 
         Returns
         -------
-        `int`:
+        int
             Decoded intiger.
-
         """
         obj = re.match(rb"i(-?\d+)e", bits)
         return int(obj.group(1)), obj.end()
@@ -249,21 +241,20 @@ class Bendecoder:
 class Benencoder:
     """Encoder for bencode encoding used for Bittorrent meta-files."""
 
-    def __init__(self, data=None):
+    def __init__(self, data: bytes = None):
         """
-        Initialize Benencoder insance with optional pre compiled data.
+        Construct the Bencoder class.
 
         Parameters
         ----------
-        data : any
-            (Optional) Target data for encoding. Defaults to None.
-
+        data : bytes, optional
+            data, by default None
         """
         self.data = data
         self.encoded = None
 
     @classmethod
-    def dump(cls, data, path):
+    def dump(cls, data: bytes, path: os.PathLike) -> bool:
         """
         Shortcut class method for encoding data and writing to file.
 
@@ -271,14 +262,13 @@ class Benencoder:
         ----------
         data : any
             Raw data to be encoded, usually dict.txt
-        path : `str` or `os.PathLike` or `BytesIO`
+        path : os.PathLike
             Where encoded data should be written to.py
 
         Returns
         -------
-        `bool` :
+        bool
             Return True if success.txt
-
         """
         encoded = cls(data).encode()
         if hasattr(path, "write"):
@@ -289,7 +279,7 @@ class Benencoder:
         return True
 
     @classmethod
-    def dumps(cls, data):
+    def dumps(cls, data) -> bytes:
         """
         Shortcut method for encoding data and immediately returning it.
 
@@ -300,12 +290,12 @@ class Benencoder:
 
         Returns
         -------
-        bytes:
+        bytes
             Encoded data.
         """
         return cls(data).encode()
 
-    def encode(self, val=None):
+    def encode(self, val=None) -> bytes:
         """
         Encode data provided as an arguement or provided at initialization.
 
@@ -316,7 +306,7 @@ class Benencoder:
 
         Returns
         -------
-        `bytes` :
+        bytes
             encoded data
         """
         if val is None:
@@ -324,18 +314,18 @@ class Benencoder:
         self.encoded = self._encode(val)
         return self.encoded
 
-    def _encode(self, val):
+    def _encode(self, val: bytes):
         """
         Encode data with bencode protocol.
 
         Parameters
         ----------
-        val : `bytes`
+        val : bytes
             Bencoded data for decoding.
 
         Returns
         -------
-        any :
+        any
             the decoded data.
         """
         if isinstance(val, str):
@@ -359,58 +349,70 @@ class Benencoder:
         raise EncodeError(val)
 
     @staticmethod
-    def _encode_bytes(val):
-        """Bencode encoding bytes as string literal."""
+    def _encode_bytes(val: bytes) -> bytes:
+        """
+        Bencode encoding bytes as string literal.
+
+        Parameters
+        ----------
+        val : bytes
+            data
+
+        Returns
+        -------
+        bytes
+            data
+        """
         size = str(len(val)) + ":"
         return size.encode("utf-8") + val
 
     @staticmethod
-    def _encode_str(txt):
+    def _encode_str(txt: str) -> bytes:
         """
         Decode string.
 
         Parameters
         ----------
-        txt : `str`
+        txt : str
             Any string literal.
 
         Returns
         -------
-        `bytes` :
+        bytes
             Bencoded string.
         """
         size = str(len(txt)).encode("utf-8")
         return size + b":" + txt.encode("utf-8")
 
     @staticmethod
-    def _encode_int(num):
+    def _encode_int(num: int) -> bytes:
         """
         Encode intiger.
 
         Parameters
         ----------
-        num : `int`
+        num : int
             Integer for encoding.
 
         Returns
         -------
-        `bytes` :
+        bytes
             Bencoded intiger.
         """
         return b"i" + str(num).encode("utf-8") + b"e"
 
-    def _encode_list(self, elems):
+    def _encode_list(self, elems: list) -> bytes:
         """
         Encode list and its contents.
 
         Parameters
         ----------
-        elems : `list`
+        elems : list
             List of content to be encoded.
 
         Returns
         -------
-        `bytes` :
+        bytes
             Bencoded data
         """
         lst = [b"l"]
@@ -421,18 +423,18 @@ class Benencoder:
         bit_lst = b"".join(lst)
         return bit_lst
 
-    def _encode_dict(self, dic):
+    def _encode_dict(self, dic: dict) -> bytes:
         """
         Encode keys and values in dictionary.
 
         Parameters
         ----------
-        dic : `dict`
+        dic : dict
             Dictionary of data for encoding.
 
         Returns
         -------
-        `bytes` :
+        bytes
             Bencoded data.
         """
         result = b"d"
