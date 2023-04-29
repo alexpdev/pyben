@@ -296,7 +296,7 @@ def bencode_dict(dic: dict) -> bytes:
 
     Parameters
     ----------
-    dic : dict
+    dic : `dict`
         Any dictionary containing items that can be bencoded.
 
     Returns

@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "pyben"
-authors = [{name = "alexpdev", email = "alexpdev@pm.me"}]
+authors = [{name = "alexpdev", email = "alexpdev@protonmail.com"}]
 description = "Terminal based command line tool for creating Bittorrent files."
 license = {file = "LICENSE"}
 version = "0.3.3"

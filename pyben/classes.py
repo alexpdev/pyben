@@ -150,14 +150,13 @@ class Bendecoder:
 
         Parameters
         ----------
-        bits : bytes
+        bits : `bytes`
             `Bytes` of data for decoding.
 
         Returns
         -------
-        dict
+        `dict`
             Dictionary and contents.
-
         """
         dct, feed = {}, 1
         while not bits[feed:].startswith(b"e"):
@@ -198,12 +197,12 @@ class Bendecoder:
 
         Parameters
         ----------
-        bits : bytes
+        bits : `bytes`
             Bencoded string.
 
         Returns
         -------
-        str
+        `str`
             Decoded string.
         """
         match = re.match(rb"(\d+):", bits)
@@ -226,12 +225,12 @@ class Bendecoder:
 
         Parameters
         ----------
-        bits : bytes
+        bits : `bytes`
             Bencoded intiger.
 
         Returns
         -------
-        int
+        `int`
             Decoded intiger.
         """
         obj = re.match(rb"i(-?\d+)e", bits)

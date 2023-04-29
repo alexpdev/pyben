@@ -30,7 +30,6 @@ Examples
 
 ### Encode inline code:
 
-    >>> import os
     >>> import pyben
     >>> data = {"item1": ["item2", 3, [4], {5: "item6"}]}
     >>> encoded = pyben.dumps(data)
@@ -41,27 +40,18 @@ Examples
 
     >>> fd = "path/to/file"
     >>> pyben.dump(data, fd)
-    >>> os.path.exists(fd)
-    ... True
-    >>> encoded_file = open(fd, "rb").read()
-    >>> encoded_file == encoded
-    ... True
 
 ### Decode inline code:
 
-    >>> decoded = pybem.loads(encoded)
+    >>> decoded = pyben.loads(encoded)
     >>> decoded
     ... {'item1': ['item2', 3, [4], {5: 'item6'}]}
-    >>> decoded == data
-    ... True
 
 ### Decode from file:
 
     >>> decoded_file = pyben.load(fd)
     >>> decoded_file
     ... {'item1': ['item2', 3, [4], {5: 'item6'}]}
-    >>> decoded_file == data
-    ... True
 """
 
 from pyben.bencode import bendecode, benencode
