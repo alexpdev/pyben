@@ -17,6 +17,8 @@ OOP implementation of bencode decoders and encoders.
 This style is not recommended as it can get bulky. The json-like api
 from the bencode.py module is much easier to use.
 
+This module is deprecated and will be removed in the future.
+
 Classes
 -------
 * Bendecoder
@@ -36,6 +38,8 @@ class Bendecoder:
         """
         Initialize instance with optional pre compiled data.
 
+        @deprecated
+
         Parameters
         ----------
         data : bytes
@@ -49,6 +53,8 @@ class Bendecoder:
         """
         Extract contents from path/path-like and return Decoded data.
 
+        @deprecated
+        
         Parameters
         ----------
         item : str
@@ -78,6 +84,8 @@ class Bendecoder:
         """
         Shortcut to Decode raw bencoded data.
 
+        @deprecated
+
         Parameters
         ----------
         data : bytes
@@ -94,6 +102,8 @@ class Bendecoder:
     def decode(self, data: bytes = None) -> dict:
         """
         Decode bencoded data.
+
+        @deprecated
 
         Parameters
         ----------
@@ -112,6 +122,8 @@ class Bendecoder:
     def _decode(self, bits: bytes = None) -> dict:
         """
         Decode bencoded data.
+
+        @deprecated
 
         Parameters
         ----------
@@ -148,6 +160,8 @@ class Bendecoder:
         """
         Decode keys and values in dictionary.
 
+        @deprecated
+
         Parameters
         ----------
         bits : `bytes`
@@ -172,6 +186,8 @@ class Bendecoder:
         """
         Decode list and its contents.
 
+        @deprecated
+
         Parameters
         ----------
         data : bytes
@@ -194,6 +210,8 @@ class Bendecoder:
     def _decode_str(bits: bytes) -> str:
         """
         Decode string.
+
+        @deprecated
 
         Parameters
         ----------
@@ -223,6 +241,8 @@ class Bendecoder:
         """
         Decode integer type.
 
+        @deprecated
+
         Parameters
         ----------
         bits : `bytes`
@@ -244,6 +264,8 @@ class Benencoder:
         """
         Construct the Bencoder class.
 
+        @deprecated
+
         Parameters
         ----------
         data : bytes, optional
@@ -256,6 +278,8 @@ class Benencoder:
     def dump(cls, data: bytes, path: os.PathLike) -> bool:
         """
         Shortcut class method for encoding data and writing to file.
+
+        @deprecated
 
         Parameters
         ----------
@@ -282,6 +306,8 @@ class Benencoder:
         """
         Shortcut method for encoding data and immediately returning it.
 
+        @deprecated
+
         Parameters
         ----------
         data : any
@@ -297,6 +323,8 @@ class Benencoder:
     def encode(self, val=None) -> bytes:
         """
         Encode data provided as an arguement or provided at initialization.
+
+        @deprecated
 
         Parameters
         ----------
@@ -316,6 +344,8 @@ class Benencoder:
     def _encode(self, val: bytes):
         """
         Encode data with bencode protocol.
+
+        @deprecated
 
         Parameters
         ----------
@@ -352,6 +382,8 @@ class Benencoder:
         """
         Bencode encoding bytes as string literal.
 
+        @deprecated
+
         Parameters
         ----------
         val : bytes
@@ -369,6 +401,8 @@ class Benencoder:
     def _encode_str(txt: str) -> bytes:
         """
         Decode string.
+
+        @deprecated
 
         Parameters
         ----------
@@ -388,6 +422,8 @@ class Benencoder:
         """
         Encode intiger.
 
+        @deprecated
+
         Parameters
         ----------
         num : int
@@ -403,6 +439,8 @@ class Benencoder:
     def _encode_list(self, elems: list) -> bytes:
         """
         Encode list and its contents.
+
+        @deprecated
 
         Parameters
         ----------
@@ -425,6 +463,8 @@ class Benencoder:
     def _encode_dict(self, dic: dict) -> bytes:
         """
         Encode keys and values in dictionary.
+
+        @deprecated
 
         Parameters
         ----------
