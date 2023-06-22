@@ -7,7 +7,7 @@ name = "pyben"
 authors = [{name = "alexpdev", email = "alexpdev@protonmail.com"}]
 description = "Terminal based command line tool for creating Bittorrent files."
 license = {file = "LICENSE"}
-version = "0.3.3"
+version = "0.3.4"
 readme = "README.md"
 requires-python = ">=3.5"
 keywords = ["Bittorrent", "bencode", "library"]
